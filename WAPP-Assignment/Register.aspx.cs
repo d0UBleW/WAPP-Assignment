@@ -13,18 +13,19 @@ namespace WAPP_Assignment
 {
     public partial class Register : System.Web.UI.Page
     {
+        protected string dbTable;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 this.UsernameValidPanel.Visible = false;
-                UserTypeRadio_SelectedIndexChanged(sender, e);
             }
+            UserTypeRadio_SelectedIndexChanged(sender, e);
         }
 
-        protected bool isUsernameDuplicate(string username, string dbTable)
+        protected bool isUsernameDuplicate(string username)
         {
-            string queryExist = "SELECT * FROM " + dbTable + " WHERE username=@username;";
+            string queryExist = $"SELECT * FROM {dbTable} WHERE username=@username;";
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnCon"].ConnectionString);
             conn.Open();
             SqlCommand cmd = new SqlCommand(queryExist, conn);
@@ -44,6 +45,7 @@ namespace WAPP_Assignment
         protected void UserTypeRadio_SelectedIndexChanged(object sender, EventArgs e)
         {
             string userType = UserTypeRadio.SelectedValue;
+            dbTable = userType;
             if (userType == "admin")
             {
                 this.StudentPanel.Visible = false;
@@ -52,8 +54,7 @@ namespace WAPP_Assignment
             {
                 this.StudentPanel.Visible = true;
             }
-            string dbTable = userType;
-            setUsernameValidPanel(this.UsernameTxtBox.Text, dbTable);
+            setUsernameValidPanel(this.UsernameTxtBox.Text);
         }
 
         protected void RegisterBtn_Click(object sender, EventArgs e)
@@ -61,13 +62,14 @@ namespace WAPP_Assignment
             string username = this.UsernameTxtBox.Text;
             string password = this.PasswordTxtBox.Text;
             string userType = this.UserTypeRadio.SelectedValue;
-            string dbTable = userType;
-            if (isUsernameDuplicate(username, dbTable))
+            if (isUsernameDuplicate(username))
             {
-                setUsernameValidPanel(username, dbTable);
+                setUsernameValidPanel(username);
+                this.UsernameTxtBox.Focus();
                 return;
             }
             string queryInsert = "INSERT INTO " + dbTable;
+            System.Diagnostics.Debug.WriteLine(queryInsert);
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnCon"].ConnectionString);
             conn.Open();
             SqlCommand cmd = new SqlCommand(queryInsert, conn);
@@ -95,7 +97,7 @@ namespace WAPP_Assignment
 
             cmd.ExecuteNonQuery();
             conn.Close();
-            Response.Write("<script>alert('Registration successful!'); window.location.href = 'Register.aspx';</script>");
+            Response.Write("<script>alert('Registration successful!'); window.location.href = 'Login.aspx';</script>");
         }
 
         protected void UsernameTxtBox_TextChanged(object sender, EventArgs e)
@@ -104,17 +106,17 @@ namespace WAPP_Assignment
             System.Diagnostics.Debug.WriteLine(username);
             string userType = this.UserTypeRadio.SelectedValue;
             string dbTable = userType;
-            setUsernameValidPanel(username, dbTable);
+            setUsernameValidPanel(username);
         }
 
-        protected void setUsernameValidPanel(string username, string dbTable)
+        protected void setUsernameValidPanel(string username)
         {
             if (String.IsNullOrEmpty(username))
             {
                 this.UsernameValidPanel.Visible = false;
                 return;
             }
-            if (isUsernameDuplicate(username, dbTable))
+            if (isUsernameDuplicate(username))
             {
                 this.UsernameValidLbl.ForeColor = System.Drawing.Color.Red;
                 this.UsernameValidLbl.Text = "Username is already taken.";
