@@ -11,5 +11,6 @@
         <div>
         </div>
     </form>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:iLearnCon %>" SelectCommand="SELECT * FROM [student]"></asp:SqlDataSource>
 </body>
 </html>

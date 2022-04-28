@@ -17,20 +17,25 @@
             <br />
             <asp:Label ID="UsernameLbl" runat="server" Text="Username"></asp:Label>
             <br />
-            <asp:TextBox ID="UsernameTxtBox" runat="server" TextMode="SingleLine" ToolTip="username for login"></asp:TextBox>
-            <br /><br />
+            <asp:TextBox ID="UsernameTxtBox" runat="server" TextMode="SingleLine" ToolTip="username for login" Required="required" AutoPostBack="True" OnTextChanged="UsernameTxtBox_TextChanged"></asp:TextBox>
+            <br />
+            <asp:Panel ID="UsernameValidPanel" runat="server">
+                <asp:Label ID="UsernameValidLbl" runat="server" Text="" ForeColor="Red"></asp:Label>
+                <br />
+            </asp:Panel>
+            <br />
             <asp:Label ID="PasswordLbl" runat="server" Text="Password"></asp:Label>
             <br />
-            <asp:TextBox ID="PasswordTxtBox" runat="server" TextMode="Password"></asp:TextBox>
+            <asp:TextBox ID="PasswordTxtBox" runat="server" TextMode="Password" Required="required"></asp:TextBox>
             <br /><br />
             <asp:Panel ID="StudentPanel" runat="server">
                 <asp:Label ID="FullNameLbl" runat="server" Text="Full Name"></asp:Label>
                 <br />
-                <asp:TextBox ID="FullNameTxtBox" runat="server" TextMode="SingleLine"></asp:TextBox>
+                <asp:TextBox ID="FullNameTxtBox" runat="server" TextMode="SingleLine" Required="required"></asp:TextBox>
                 <br /><br />
                 <asp:Label ID="EmailLbl" runat="server" Text="Email"></asp:Label>
                 <br />
-                <asp:TextBox ID="EmailTxtBox" runat="server" TextMode="Email"></asp:TextBox>
+                <asp:TextBox ID="EmailTxtBox" runat="server" TextMode="Email" Required="required"></asp:TextBox>
                 <br /><br />
                 <asp:Label ID="GenderLbl" runat="server" Text="Gender"></asp:Label>
                 <br />
@@ -41,7 +46,7 @@
                 </asp:DropDownList>
                 <br /><br />
             </asp:Panel>
-            <asp:Button ID="RegisterBtn" runat="server" Text="Register" />
+            <asp:Button ID="RegisterBtn" runat="server" Text="Register" OnClick="RegisterBtn_Click" />
         </div>
     </form>
 </body>
