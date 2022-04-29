@@ -25,12 +25,14 @@ namespace WAPP_Assignment.Admin
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
+            string sha1sum = "";
             if (ThumbnailUpload.HasFile)
             {
                 try
                 {
                     string contentType = ThumbnailUpload.PostedFile.ContentType;
-                    if (contentType != "image/jpeg" && contentType != "image/png")
+                    System.Diagnostics.Debug.WriteLine(contentType);
+                    if (contentType != "image/jpeg" && contentType != "image/png" && contentType != "image/svg+xml")
                     {
                         throw new Exception("Upload status: Only JPEG or PNG file is allowed");
                     }
@@ -39,7 +41,8 @@ namespace WAPP_Assignment.Admin
                         throw new Exception("Upload status: Only image lower than 100 KBs is allowed");
                     }
                     string filename = Path.GetFileName(ThumbnailUpload.FileName);
-                    ThumbnailUpload.SaveAs(Server.MapPath("~/upload/") + filename);
+                    sha1sum = ComputeSHA1(ThumbnailUpload.FileContent);
+                    ThumbnailUpload.SaveAs(Server.MapPath("~/upload/") + sha1sum);
                 }
                 catch (Exception ex)
                 {
@@ -56,10 +59,24 @@ namespace WAPP_Assignment.Admin
             conn.Open();
             string query = "INSERT INTO course (title, description) VALUES (@title, @description);";
             SqlCommand cmd = new SqlCommand(query, conn);
+            if (!String.IsNullOrEmpty(sha1sum))
+            {
+                cmd.CommandText = "INSERT INTO course (title, description, thumbnail) VALUES (@title, @description, @thumbnail);";
+                cmd.Parameters.AddWithValue("@thumbnail", sha1sum);
+            }
             cmd.Parameters.AddWithValue("@title", title);
             cmd.Parameters.AddWithValue("@description", description);
             cmd.ExecuteNonQuery();
             conn.Close();
+        }
+
+        protected static string ComputeSHA1(Stream stream)
+        {
+            using (var sha1 = System.Security.Cryptography.SHA1.Create())
+            {
+                var hash = sha1.ComputeHash(stream);
+                return BitConverter.ToString(hash).Replace("-", "");
+            }
         }
     }
 }
