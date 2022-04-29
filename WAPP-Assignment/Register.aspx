@@ -8,9 +8,14 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts>
+                <asp:ScriptReference Name="jquery" />
+            </Scripts>
+        </asp:ScriptManager> 
         <div>
             <asp:Label ID="UserTypeLbl" runat="server" Text="Register as"></asp:Label>
-            <asp:RadioButtonList ID="UserTypeRadio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="UserTypeRadio_SelectedIndexChanged">
+            <asp:RadioButtonList ID="UserTypeRadio" runat="server">
                 <asp:ListItem Selected="True" Text="Admin" Value="admin"></asp:ListItem>
                 <asp:ListItem Selected="False" Text="Student" Value="student"></asp:ListItem>
             </asp:RadioButtonList>
@@ -28,26 +33,27 @@
             <br />
             <asp:TextBox ID="PasswordTxtBox" runat="server" TextMode="Password" Required="required"></asp:TextBox>
             <br /><br />
-            <asp:Panel ID="StudentPanel" runat="server">
+            <div id="student-div">
                 <asp:Label ID="FullNameLbl" runat="server" Text="Full Name"></asp:Label>
                 <br />
-                <asp:TextBox ID="FullNameTxtBox" runat="server" TextMode="SingleLine" Required="required"></asp:TextBox>
+                <asp:TextBox ID="FullNameTxtBox" runat="server" TextMode="SingleLine" Enabled="false"></asp:TextBox>
                 <br /><br />
                 <asp:Label ID="EmailLbl" runat="server" Text="Email"></asp:Label>
                 <br />
-                <asp:TextBox ID="EmailTxtBox" runat="server" TextMode="Email" Required="required"></asp:TextBox>
+                <asp:TextBox ID="EmailTxtBox" runat="server" TextMode="Email" Enabled="false"></asp:TextBox>
                 <br /><br />
                 <asp:Label ID="GenderLbl" runat="server" Text="Gender"></asp:Label>
                 <br />
-                <asp:DropDownList ID="GenderDropDownList" runat="server" Required="required">
+                <asp:DropDownList ID="GenderDropDownList" runat="server" Enabled="false">
                     <asp:ListItem Selected="True" Text="Please select a gender" Value=""></asp:ListItem>
                     <asp:ListItem Selected="False" Text="Male" Value="m"></asp:ListItem>
                     <asp:ListItem Selected="False" Text="Female" Value="f"></asp:ListItem>
                 </asp:DropDownList>
                 <br /><br />
-            </asp:Panel>
+            </div>
             <asp:Button ID="RegisterBtn" runat="server" Text="Register" OnClick="RegisterBtn_Click" />
         </div>
     </form>
+    <script src="Scripts/register.js" defer></script>
 </body>
 </html>
