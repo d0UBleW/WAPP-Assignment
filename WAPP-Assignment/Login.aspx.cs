@@ -33,7 +33,7 @@ namespace WAPP_Assignment
             string username = this.UsernameTxtBox.Text;
             string password = this.PasswordTxtBox.Text;
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnCon"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
             conn.Open();
             string query = $"SELECT * FROM {dbTable} WHERE username=@username AND password=@password;";
             SqlCommand cmd = new SqlCommand(query, conn);

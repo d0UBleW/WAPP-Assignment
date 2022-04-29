@@ -26,7 +26,7 @@ namespace WAPP_Assignment
         protected bool isUsernameDuplicate(string username)
         {
             string queryExist = $"SELECT * FROM {dbTable} WHERE username=@username;";
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnCon"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
             conn.Open();
             SqlCommand cmd = new SqlCommand(queryExist, conn);
             cmd.Parameters.AddWithValue("@username", username);
@@ -70,7 +70,7 @@ namespace WAPP_Assignment
             }
             string queryInsert = "INSERT INTO " + dbTable;
             System.Diagnostics.Debug.WriteLine(queryInsert);
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnCon"].ConnectionString);
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
             conn.Open();
             SqlCommand cmd = new SqlCommand(queryInsert, conn);
             if (userType == "admin")
@@ -82,14 +82,14 @@ namespace WAPP_Assignment
             }
             else
             {
-                string name = this.FullNameTxtBox.Text;
+                string fullName = this.FullNameTxtBox.Text;
                 string email = this.EmailTxtBox.Text;
                 string gender = this.GenderDropDownList.SelectedValue;
-                queryInsert += " (username, password, name, email, gender) VALUES (@username, @password, @name, @email, @gender);";
+                queryInsert += " (username, password, full_name, email, gender) VALUES (@username, @password, @full_name, @email, @gender);";
                 cmd.CommandText = queryInsert;
                 cmd.Parameters.AddWithValue("@username", username);
                 cmd.Parameters.AddWithValue("@password", password);
-                cmd.Parameters.AddWithValue("@name", name);
+                cmd.Parameters.AddWithValue("@full_name", fullName);
                 cmd.Parameters.AddWithValue("@email", email);
                 cmd.Parameters.AddWithValue("@gender", gender);
             }
