@@ -60,6 +60,33 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.WebControls.TextBox DescTxtBox;
 
         /// <summary>
+        /// ListBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ListBox1;
+
+        /// <summary>
+        /// CatDropDList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList CatDropDList;
+
+        /// <summary>
+        /// AddCatBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddCatBtn;
+
+        /// <summary>
         /// ThumbnailLbl control.
         /// </summary>
         /// <remarks>

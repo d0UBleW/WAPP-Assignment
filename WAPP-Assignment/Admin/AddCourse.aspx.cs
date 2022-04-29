@@ -16,6 +16,16 @@ namespace WAPP_Assignment.Admin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user_id"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+            if (!(bool)Session["isAdmin"])
+            {
+                Response.StatusCode = (int)System.Net.HttpStatusCode.Unauthorized;
+                return;
+            }
             if (!IsPostBack)
             {
                 this.UploadStatusPanel.Visible = false;
@@ -57,16 +67,16 @@ namespace WAPP_Assignment.Admin
             string description = this.DescTxtBox.Text;
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
             conn.Open();
-            string query = "INSERT INTO course (title, description) VALUES (@title, @description);";
+            string query = "INSERT INTO course (title, description) OUTPUT INSERTED.course_id VALUES (@title, @description);";
             SqlCommand cmd = new SqlCommand(query, conn);
             if (!String.IsNullOrEmpty(sha1sum))
             {
-                cmd.CommandText = "INSERT INTO course (title, description, thumbnail) VALUES (@title, @description, @thumbnail);";
+                cmd.CommandText = "INSERT INTO course (title, description, thumbnail) OUTPUT INSERTED.course_id VALUES (@title, @description, @thumbnail);";
                 cmd.Parameters.AddWithValue("@thumbnail", sha1sum);
             }
             cmd.Parameters.AddWithValue("@title", title);
             cmd.Parameters.AddWithValue("@description", description);
-            cmd.ExecuteNonQuery();
+            string output = (string) cmd.ExecuteScalar();
             conn.Close();
         }
 

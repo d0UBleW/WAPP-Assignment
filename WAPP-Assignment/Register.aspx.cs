@@ -55,7 +55,6 @@ namespace WAPP_Assignment
                 return;
             }
             string queryInsert = "INSERT INTO " + DbTable;
-            System.Diagnostics.Debug.WriteLine(queryInsert);
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
             conn.Open();
             SqlCommand cmd = new SqlCommand(queryInsert, conn);

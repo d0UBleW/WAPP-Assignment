@@ -66,10 +66,6 @@
   <ItemGroup>
     <Content Include="Admin\AddCourse.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
-    <Content Include="App_Data\iLearnDB.mdf" />
-    <Content Include="App_Data\iLearnDB_log.ldf">
-      <DependentUpon>iLearnDB.mdf</DependentUpon>
-    </Content>
     <Content Include="App_Data\ilearn_log.ldf">
       <DependentUpon>ilearn.mdf</DependentUpon>
     </Content>

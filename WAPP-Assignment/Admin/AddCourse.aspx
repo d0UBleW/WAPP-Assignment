@@ -17,6 +17,14 @@
             <br />
             <asp:TextBox ID="DescTxtBox" runat="server" TextMode="MultiLine"></asp:TextBox>
             <br /><br />
+            <asp:ListBox ID="ListBox1" runat="server">
+            </asp:ListBox>
+            <br />
+            <asp:DropDownList ID="CatDropDList" runat="server">
+
+            </asp:DropDownList>
+            <asp:Button ID="AddCatBtn" runat="server" Text="Add Category" />
+            <br /><br />
             <asp:Label ID="ThumbnailLbl" runat="server" Text="Thumbnail"></asp:Label>
             <br />
             <asp:FileUpload ID="ThumbnailUpload" runat="server" />
