@@ -9,11 +9,13 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.IO;
+using System.Web.Services;
 
 namespace WAPP_Assignment.Admin
 {
     public partial class AddCourse : System.Web.UI.Page
     {
+        private SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user_id"] == null)
@@ -23,7 +25,7 @@ namespace WAPP_Assignment.Admin
             }
             if (!(bool)Session["isAdmin"])
             {
-                Response.StatusCode = (int)System.Net.HttpStatusCode.Unauthorized;
+                // Response.StatusCode = (int)System.Net.HttpStatusCode.Unauthorized;
                 return;
             }
             if (!IsPostBack)
@@ -65,7 +67,6 @@ namespace WAPP_Assignment.Admin
             }
             string title = this.TitleTxtBox.Text;
             string description = this.DescTxtBox.Text;
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
             conn.Open();
             string query = "INSERT INTO course (title, description) OUTPUT INSERTED.course_id VALUES (@title, @description);";
             SqlCommand cmd = new SqlCommand(query, conn);
@@ -76,8 +77,19 @@ namespace WAPP_Assignment.Admin
             }
             cmd.Parameters.AddWithValue("@title", title);
             cmd.Parameters.AddWithValue("@description", description);
-            string output = (string) cmd.ExecuteScalar();
+            int course_id = (int) cmd.ExecuteScalar();
             conn.Close();
+            AddCategory();
+            conn.Open();
+            List<string> inputCategories = CatField.Value.Split(new string[]{"<|>"}, StringSplitOptions.None).ToList();
+            cmd.CommandText = "INSERT INTO course_category (course_id, category_id) VALUES (@course_id, (SELECT category_id FROM category WHERE name=@name));";
+            foreach (string cat in inputCategories)
+            {
+                cmd.Parameters.AddWithValue("@course_id", course_id);
+                cmd.Parameters.AddWithValue("@name", cat);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+            }
         }
 
         protected static string ComputeSHA1(Stream stream)
@@ -87,6 +99,59 @@ namespace WAPP_Assignment.Admin
                 var hash = sha1.ComputeHash(stream);
                 return BitConverter.ToString(hash).Replace("-", "");
             }
+        }
+
+        protected void AddCategory()
+        {
+            conn.Open();
+            string query = "SELECT name FROM category;";
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = query;
+            cmd.Connection = conn;
+            List<string> currCategories = new List<string>();
+            using (SqlDataReader sdr = cmd.ExecuteReader())
+            {
+                while (sdr.Read())
+                {
+                    currCategories.Add(sdr["name"].ToString());
+                }
+            }
+            List<string> inputCategories = CatField.Value.Split(new string[]{"<|>"}, StringSplitOptions.None).ToList();
+            List<string> newCategories = inputCategories.Except(currCategories).ToList();
+            if (newCategories.Count == 0)
+            {
+                conn.Close();
+                return;
+            }
+            cmd.CommandText = "INSERT INTO category (name) VALUES (@name);";
+            foreach (string category in newCategories)
+            {
+                cmd.Parameters.AddWithValue("@name", category);
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
+            }
+            conn.Close();
+        }
+
+        [WebMethod]
+        public static List<string> SearchCategory(string prefixText, int count)
+        {
+            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandText = "SELECT name FROM category WHERE name LIKE @SearchText + '%'";
+            cmd.Parameters.AddWithValue("@SearchText", prefixText);
+            cmd.Connection = conn;
+            conn.Open();
+            List<string> categories = new List<string>();
+            using (SqlDataReader sdr = cmd.ExecuteReader())
+            {
+                while (sdr.Read())
+                {
+                    categories.Add(sdr["name"].ToString());
+                }
+            }
+            conn.Close();
+            return categories;
         }
     }
 }
