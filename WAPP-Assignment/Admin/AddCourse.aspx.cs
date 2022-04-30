@@ -36,24 +36,31 @@ namespace WAPP_Assignment.Admin
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
-            string sha1sum = "";
+            string filename = "";
             if (ThumbnailUpload.HasFile)
             {
+                string contentType = ThumbnailUpload.PostedFile.ContentType;
                 try
                 {
-                    string contentType = ThumbnailUpload.PostedFile.ContentType;
                     System.Diagnostics.Debug.WriteLine(contentType);
-                    if (contentType != "image/jpeg" && contentType != "image/png" && contentType != "image/svg+xml")
+                    string[] allowed = {"jpeg", "jpg", "png", "svg+xml"};
+                    bool valid = false;
+                    foreach (string allowedItem in allowed)
                     {
-                        throw new Exception("Upload status: Only JPEG or PNG file is allowed");
+                        if (contentType == $"image/{allowedItem}")
+                        {
+                            valid = true;
+                            break;
+                        }
+                    }
+                    if (!valid)
+                    {
+                        throw new Exception("Upload status: Only JPEG, JPG, PNG, or SVG file is allowed");
                     }
                     if (ThumbnailUpload.PostedFile.ContentLength > 102400)
                     {
                         throw new Exception("Upload status: Only image lower than 100 KBs is allowed");
                     }
-                    string filename = Path.GetFileName(ThumbnailUpload.FileName);
-                    sha1sum = ComputeSHA1(ThumbnailUpload.FileContent);
-                    ThumbnailUpload.SaveAs(Server.MapPath("~/upload/") + sha1sum);
                 }
                 catch (Exception ex)
                 {
@@ -62,6 +69,25 @@ namespace WAPP_Assignment.Admin
                     this.UploadStatusPanel.Visible = true;
                     return;
                 }
+                string ext = "";
+                switch (contentType)
+                {
+                    case "image/jpeg":
+                        ext = ".jpeg";
+                        break;
+                    case "image/jpg":
+                        ext = ".jpg";
+                        break;
+                    case "image/png":
+                        ext = ".png";
+                        break;
+                    case "image/svg+xml":
+                        ext = ".svg";
+                        break;
+                }
+                string sha1sum = ComputeSHA1(ThumbnailUpload.FileContent);
+                filename = sha1sum + ext;
+                ThumbnailUpload.SaveAs(Server.MapPath("~/upload/") + filename);
                 this.UploadStatusPanel.Visible = false;
             }
             string title = this.TitleTxtBox.Text;
@@ -72,10 +98,10 @@ namespace WAPP_Assignment.Admin
                 string query = "INSERT INTO course (title, description) OUTPUT INSERTED.course_id VALUES (@title, @description);";
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    if (!String.IsNullOrEmpty(sha1sum))
+                    if (!String.IsNullOrEmpty(filename))
                     {
                         cmd.CommandText = "INSERT INTO course (title, description, thumbnail) OUTPUT INSERTED.course_id VALUES (@title, @description, @thumbnail);";
-                        cmd.Parameters.AddWithValue("@thumbnail", sha1sum);
+                        cmd.Parameters.AddWithValue("@thumbnail", filename);
                     }
                     cmd.Parameters.AddWithValue("@title", title);
                     cmd.Parameters.AddWithValue("@description", description);
