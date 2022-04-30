@@ -13,7 +13,7 @@ namespace WAPP_Assignment
 {
     public partial class Register : System.Web.UI.Page
     {
-        protected string DbTable;
+        private string DbTable;
         protected void Page_Load(object sender, EventArgs e)
         {
             SetDbTable();
@@ -26,19 +26,27 @@ namespace WAPP_Assignment
         protected bool IsUsernameDuplicate(string username)
         {
             string queryExist = $"SELECT * FROM {DbTable} WHERE username=@username;";
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(queryExist, conn);
-            cmd.Parameters.AddWithValue("@username", username);
-            SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
 
-            if (dt.Rows.Count > 0)
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
-                return true;
+                conn.Open();
+
+                using (SqlCommand cmd = new SqlCommand(queryExist, conn))
+                {
+                    cmd.Parameters.AddWithValue("@username", username);
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        DataTable dt = new DataTable();
+                        sda.Fill(dt);
+                        conn.Close();
+                        if (dt.Rows.Count > 0)
+                        {
+                            return true;
+                        }
+                        return false;
+                    }
+                }
             }
-            return false;
 
         }
 
@@ -55,34 +63,38 @@ namespace WAPP_Assignment
                 return;
             }
             string queryInsert = "INSERT INTO " + DbTable;
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["iLearnDBConStr"].ConnectionString);
-            conn.Open();
-            SqlCommand cmd = new SqlCommand(queryInsert, conn);
-            if (userType == "admin")
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
-                queryInsert += " (username, password) VALUES (@username, @password);";
-                cmd.CommandText = queryInsert;
-                cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", password);
-            }
-            else
-            {
-                string fullName = this.FullNameTxtBox.Text;
-                string email = this.EmailTxtBox.Text;
-                string gender = this.GenderDropDownList.SelectedValue;
-                queryInsert += " (username, password, full_name, email, gender) VALUES (@username, @password, @full_name, @email, @gender);";
-                cmd.CommandText = queryInsert;
-                cmd.Parameters.AddWithValue("@username", username);
-                cmd.Parameters.AddWithValue("@password", password);
-                cmd.Parameters.AddWithValue("@full_name", fullName);
-                cmd.Parameters.AddWithValue("@email", email);
-                cmd.Parameters.AddWithValue("@gender", gender);
-            }
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    if (userType == "admin")
+                    {
+                        queryInsert += " (username, password) VALUES (@username, @password);";
+                        cmd.CommandText = queryInsert;
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+                    }
+                    else
+                    {
+                        string fullName = this.FullNameTxtBox.Text;
+                        string email = this.EmailTxtBox.Text;
+                        string gender = this.GenderDropDownList.SelectedValue;
+                        queryInsert += " (username, password, full_name, email, gender) VALUES (@username, @password, @full_name, @email, @gender);";
+                        cmd.CommandText = queryInsert;
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        cmd.Parameters.AddWithValue("@full_name", fullName);
+                        cmd.Parameters.AddWithValue("@email", email);
+                        cmd.Parameters.AddWithValue("@gender", gender);
+                    }
 
-
-            cmd.ExecuteNonQuery();
-            conn.Close();
-            Response.Write("<script>alert('Registration successful!'); window.location.href = 'Login.aspx';</script>");
+                    cmd.Connection = conn;
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    Response.Write("<script>alert('Registration successful!'); window.location.href = 'Login.aspx';</script>");
+                }
+            }
         }
 
         protected void UsernameTxtBox_TextChanged(object sender, EventArgs e)
