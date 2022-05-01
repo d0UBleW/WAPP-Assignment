@@ -11,6 +11,7 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server">
             <Scripts>
                 <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="bootstrap" />
             </Scripts>
         </asp:ScriptManager> 
         <div>

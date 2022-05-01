@@ -22,7 +22,7 @@ namespace WAPP_Assignment.Admin
             }
         }
 
-        protected void AddBtnASP_Click(object sender, EventArgs e)
+        protected void AddBtn_Click(object sender, EventArgs e)
         {
             string course_id = Request.QueryString["course_id"];
             if (String.IsNullOrEmpty(course_id))

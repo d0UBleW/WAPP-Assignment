@@ -69,30 +69,12 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.WebControls.TextBox EditorTxtBox;
 
         /// <summary>
-        /// dataField control.
+        /// AddBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField dataField;
-
-        /// <summary>
-        /// AddBtnASP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddBtnASP;
-
-        /// <summary>
-        /// TestPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel TestPanel;
+        protected global::System.Web.UI.WebControls.Button AddBtn;
     }
 }
