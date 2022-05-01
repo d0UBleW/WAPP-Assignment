@@ -210,5 +210,10 @@ namespace WAPP_Assignment.Admin
         {
             ThumbnailImg.ImageUrl = $"/upload/thumbnail/{MyUtil.defaultThumb}";
         }
+
+        protected void BackBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/ViewCourse.aspx");
+        }
     }
 }

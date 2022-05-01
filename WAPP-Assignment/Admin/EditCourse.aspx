@@ -13,10 +13,12 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <div>
+            <asp:Button ID="BackBtn" runat="server" Text="Back" OnClick="BackBtn_Click" />
+            <br /><br />
             <asp:Image ID="ThumbnailImg" runat="server" Height="200" Width="200" />
             <br />
             <asp:FileUpload ID="ThumbnailUpload" runat="server" />
-            <br />
+            <br /><br />
             <asp:Button ID="RemoveBtn" runat="server" OnClick="RemoveBtn_Click" Text="Remove image" />
             <br /><br />
             <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
