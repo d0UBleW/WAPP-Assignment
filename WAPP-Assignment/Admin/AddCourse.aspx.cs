@@ -169,26 +169,7 @@ namespace WAPP_Assignment.Admin
         [WebMethod]
         public static List<string> SearchCategory(string prefixText, int count)
         {
-            using (SqlConnection conn = DatabaseManager.CreateConnection())
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    conn.Open();
-                    cmd.CommandText = "SELECT name FROM category WHERE name LIKE @SearchText + '%'";
-                    cmd.Parameters.AddWithValue("@SearchText", prefixText);
-                    cmd.Connection = conn;
-                    List<string> categories = new List<string>();
-                    using (SqlDataReader sdr = cmd.ExecuteReader())
-                    {
-                        while (sdr.Read())
-                        {
-                            categories.Add(sdr["name"].ToString());
-                        }
-                    }
-                    conn.Close();
-                    return categories;
-                }
-            }
+            return MyAutoComplete.ListCategory(prefixText, count);
         }
     }
 }
