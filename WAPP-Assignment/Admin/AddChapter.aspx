@@ -1,11 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddChapter.aspx.cs" Inherits="WAPP_Assignment.Admin.AddChapter" validateRequest="false" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddChapter.aspx.cs" Inherits="WAPP_Assignment.Admin.AddChapter" ValidateRequest="false" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title></title>
-    <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/decoupled-document/ckeditor.js"></script>
+    <%--<script src="//cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>--%>
+    <script src="/ckeditor/ckeditor.js"></script>
     <script src="/Scripts/addChapter.js" defer></script>
 </head>
 <body>
@@ -21,8 +22,7 @@
             <br /><br />
             <asp:Label ID="ContentLbl" runat="server" Text="Content"></asp:Label>
             <br />
-            <div id="toolbar-container"></div>
-            <div id="editor" style="border: 1px solid black;"></div>
+            <asp:TextBox ID="EditorTxtBox" runat="server" TextMode="MultiLine"></asp:TextBox>
             <asp:HiddenField ID="dataField" runat="server" Value=""/>
             <br /><br />
             <asp:Button ID="AddBtnASP" runat="server" OnClick="AddBtnASP_Click" Text="Add" />

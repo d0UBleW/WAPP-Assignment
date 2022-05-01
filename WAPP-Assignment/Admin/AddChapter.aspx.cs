@@ -8,6 +8,7 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using Ganss.XSS;
 
 namespace WAPP_Assignment.Admin
 {
@@ -23,8 +24,6 @@ namespace WAPP_Assignment.Admin
 
         protected void AddBtnASP_Click(object sender, EventArgs e)
         {
-            //var data = new Literal { Text = dataField.Value };
-            //TestPanel.Controls.Add(data);
             string course_id = Request.QueryString["course_id"];
             if (String.IsNullOrEmpty(course_id))
             {
@@ -32,7 +31,10 @@ namespace WAPP_Assignment.Admin
                 return;
             }
             string title = TitleTxtBox.Text;
-            string content = dataField.Value;
+            var sanitizer = new HtmlSanitizer();
+            sanitizer.AllowedTags.Add("iframe");
+            var rawHtml = EditorTxtBox.Text;
+            string content = sanitizer.Sanitize(rawHtml);
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();
