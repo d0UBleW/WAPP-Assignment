@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="UserTypeLbl" runat="server" Text="Login as"></asp:Label>
-            <asp:RadioButtonList ID="UserTypeRadio" runat="server" AutoPostBack="True" OnSelectedIndexChanged="UserTypeRadio_SelectedIndexChanged">
+            <asp:RadioButtonList ID="UserTypeRadio" runat="server">
                 <asp:ListItem Selected="True" Text="Admin" Value="admin"></asp:ListItem>
                 <asp:ListItem Selected="False" Text="Student" Value="student"></asp:ListItem>
             </asp:RadioButtonList>
