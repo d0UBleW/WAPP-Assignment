@@ -28,11 +28,13 @@ namespace WAPP_Assignment
             {
                 courseContainer.AppendLine("<div class=\"container\">");
                 courseContainer.AppendLine("<div class=\"image-container\">");
-                courseContainer.AppendLine($"<img src=\"/upload/{dr["thumbnail"]}\" width=200px, height=200px />");
+                courseContainer.AppendLine($"<img src=\"/upload/thumbnail/{dr["thumbnail"]}\" width=200px, height=200px />");
                 courseContainer.AppendLine("</div>");
                 courseContainer.AppendLine($"<h3>{dr["title"]}</h3>");
-                courseContainer.AppendLine($"<span>{dr["description"]}</span><br/><br/>");
+                courseContainer.AppendLine($"<span>{dr["description"]}</span>");
+                courseContainer.AppendLine("<br /><br />");
                 courseContainer.AppendLine($"<input type=\"button\" value=\"Edit Course\" onclick='javascript:__doPostBack(\"EditCourseBtn\", \"{dr["course_id"]}\")'/>");
+                courseContainer.AppendLine("<br /><br />");
                 courseContainer.AppendLine("</div>");
             }
             CoursePlaceholder.Controls.Add(new Literal { Text = courseContainer.ToString() });

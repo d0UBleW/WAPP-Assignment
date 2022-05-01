@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
-    public class MyAutoComplete
+    public static class MyAutoComplete
     {
         public static List<string> ListCategory(string prefixText, int count)
         {

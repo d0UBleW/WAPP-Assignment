@@ -169,6 +169,7 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MyUtil.cs" />
     <Compile Include="ViewCourse.aspx.cs">
       <DependentUpon>ViewCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
