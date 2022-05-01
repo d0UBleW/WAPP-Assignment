@@ -17,9 +17,9 @@ namespace WAPP_Assignment
         {
             if (IsPostBack)
             {
-                if (Request.Form["__EVENTTARGET"] != null && Request.Form["__EVENTTARGET"] == "AspBtn")
+                if (Request.Form["__EVENTTARGET"] != null && Request.Form["__EVENTTARGET"] == "EditCourseBtn")
                 {
-                    AspBtn_Click(null, null);
+                    EditCourseBtn_Click(null, null);
                 }
             }
             DataTable dt = GetCourseData();
@@ -31,8 +31,8 @@ namespace WAPP_Assignment
                 courseContainer.AppendLine($"<img src=\"/upload/{dr["thumbnail"]}\" width=200px, height=200px />");
                 courseContainer.AppendLine("</div>");
                 courseContainer.AppendLine($"<h3>{dr["title"]}</h3>");
-                courseContainer.AppendLine($"<span>{dr["description"]}</span>");
-                courseContainer.AppendLine($"<input type=\"button\" value=\"Edit Course\" onclick='javascript:__doPostBack(\"AspBtn\", \"{dr["course_id"]}\")'/>");
+                courseContainer.AppendLine($"<span>{dr["description"]}</span><br/><br/>");
+                courseContainer.AppendLine($"<input type=\"button\" value=\"Edit Course\" onclick='javascript:__doPostBack(\"EditCourseBtn\", \"{dr["course_id"]}\")'/>");
                 courseContainer.AppendLine("</div>");
             }
             CoursePlaceholder.Controls.Add(new Literal { Text = courseContainer.ToString() });
@@ -58,7 +58,7 @@ namespace WAPP_Assignment
             }
         }
 
-        protected void AspBtn_Click(object sender, EventArgs e)
+        protected void EditCourseBtn_Click(object sender, EventArgs e)
         {
             string course_id = Request.Form["__EVENTARGUMENT"];
             Response.Redirect($"/Admin/EditCourse.aspx?course_id={course_id}");
