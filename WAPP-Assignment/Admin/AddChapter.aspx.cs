@@ -42,6 +42,7 @@ namespace WAPP_Assignment.Admin
             string title = TitleTxtBox.Text;
             var sanitizer = new HtmlSanitizer();
             sanitizer.AllowedTags.Add("iframe");
+            sanitizer.AllowedTags.Add("oembed");
             var rawHtml = EditorTxtBox.Text;
             string content = sanitizer.Sanitize(rawHtml);
             using (SqlConnection conn = DatabaseManager.CreateConnection())

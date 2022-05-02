@@ -49,6 +49,7 @@ namespace WAPP_Assignment.Admin
             string title = TitleTxtBox.Text;
             var sanitizer = new HtmlSanitizer();
             sanitizer.AllowedTags.Add("iframe");
+            sanitizer.AllowedTags.Add("oembed");
             var rawHtml = EditorTxtBox.Text;
             string content = sanitizer.Sanitize(rawHtml);
             using (SqlConnection conn = DatabaseManager.CreateConnection())
@@ -57,17 +58,20 @@ namespace WAPP_Assignment.Admin
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    if (seq > oldSeq)
+                    if (seq != oldSeq)
                     {
-                        cmd.CommandText = $"UPDATE chapter SET sequence=sequence-1 WHERE course_id=@course_id AND sequence > {oldSeq} AND sequence <= {seq};";
+                        if (seq > oldSeq)
+                        {
+                            cmd.CommandText = $"UPDATE chapter SET sequence=sequence-1 WHERE course_id=@course_id AND sequence > {oldSeq} AND sequence <= {seq};";
+                        }
+                        else if (seq < oldSeq)
+                        {
+                            cmd.CommandText = $"UPDATE chapter SET sequence=sequence+1 WHERE course_id=@course_id AND sequence >= {seq} AND sequence < {oldSeq};";
+                        }
+                        cmd.Parameters.AddWithValue("@course_id", course_id);
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
                     }
-                    else if (seq < oldSeq)
-                    {
-                        cmd.CommandText = $"UPDATE chapter SET sequence=sequence+1 WHERE course_id=@course_id AND sequence >= {seq} AND sequence < {oldSeq};";
-                    }
-                    cmd.Parameters.AddWithValue("@course_id", course_id);
-                    cmd.ExecuteNonQuery();
-                    cmd.Parameters.Clear();
 
                     cmd.CommandText = "UPDATE chapter SET title=@title, content=@content, sequence=@sequence WHERE chapter_id=@chapter_id";
                     cmd.Parameters.AddWithValue("@title", title);

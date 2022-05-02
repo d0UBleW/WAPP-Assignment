@@ -106,6 +106,7 @@
     <Content Include="Scripts\addChapter.js" />
     <Content Include="Scripts\addCourse.js" />
     <Content Include="Scripts\register.js" />
+    <Content Include="ViewChapter.aspx" />
     <Content Include="ViewCourse.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -170,6 +171,13 @@
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
     <Compile Include="MyUtil.cs" />
+    <Compile Include="ViewChapter.aspx.cs">
+      <DependentUpon>ViewChapter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ViewChapter.aspx.designer.cs">
+      <DependentUpon>ViewChapter.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewCourse.aspx.cs">
       <DependentUpon>ViewCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
