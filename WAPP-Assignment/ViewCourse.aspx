@@ -10,7 +10,6 @@
     <form id="form1" runat="server">
         <div>
             <asp:PlaceHolder ID="CoursePlaceholder" runat="server"></asp:PlaceHolder>
-            <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="True"></asp:RadioButtonList>
         </div>
     </form>
 </body>

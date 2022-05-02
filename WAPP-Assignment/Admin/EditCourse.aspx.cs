@@ -8,6 +8,7 @@ using System.Web.Services;
 using System.Data;
 using System.Data.SqlClient;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.IO;
 
 namespace WAPP_Assignment.Admin
@@ -44,24 +45,23 @@ namespace WAPP_Assignment.Admin
                     categoryList.Add(item.Text);
                 }
                 CatField.Value = string.Join("<|>", categoryList);
-
-                DataTable chapterDataTable = GetChapterData(course_id);
-                StringBuilder sb = new StringBuilder();
-                foreach (DataRow chapterData in chapterDataTable.Rows)
-                {
-                    sb.AppendLine("<div class=\"container\">");
-                    sb.AppendLine($"<h3>{chapterData["title"]}</h3>");
-                    sb.AppendLine($"<input type=\"button\" value=\"Edit Chapter\" onclick='javascript:__doPostBack(\"EditChapBtn\", \"{chapterData["chapter_id"]}\")'/>");
-                    sb.AppendLine("</div>");
-                }
-                ChapterPlaceholder.Controls.Add(new Literal { Text = sb.ToString() });
             }
-            else
+            DataTable chapterDataTable = GetChapterData(course_id);
+            StringBuilder sb = new StringBuilder();
+            foreach (DataRow chapterData in chapterDataTable.Rows)
             {
-                if (Request.Form["__EVENTTARGET"] != null && Request.Form["__EVENTTARGET"] == "EditChapBtn")
+                sb.AppendLine("<div class=\"container\">");
+                sb.AppendLine($"<h3>{chapterData["title"]}</h3>");
+                sb.AppendLine("</div>");
+                ChapterPlaceholder.Controls.Add(new Literal { Text = sb.ToString() });
+                sb.Clear();
+                Button editChapBtn = new Button
                 {
-                    EditChapBtn_Click(null, null);
-                }
+                    Text = "Edit Chapter",
+                    ID = $"editChapBtn{chapterData["chapter_id"]}"
+                };
+                editChapBtn.Click += new EventHandler(EditChapBtn_Click);
+                ChapterPlaceholder.Controls.Add(editChapBtn);
             }
         }
         protected DataTable GetChapterData(int course_id)
@@ -133,7 +133,10 @@ namespace WAPP_Assignment.Admin
         }
         protected void EditChapBtn_Click(object sender, EventArgs e)
         {
-            string chapter_id = Request.Form["__EVENTARGUMENT"];
+            Button btn = sender as Button;
+            Regex rg = new Regex(@"editChapBtn(\d+)");
+            Match match = rg.Match(btn.ID);
+            string chapter_id = match.Groups[1].Value;
             Response.Redirect($"/Admin/EditChapter.aspx?chapter_id={chapter_id}");
         }
 
