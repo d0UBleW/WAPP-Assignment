@@ -83,5 +83,10 @@ namespace WAPP_Assignment
             string course_id = match.Groups[1].Value;
             Response.Redirect($"/Admin/EditCourse.aspx?course_id={course_id}");
         }
+
+        protected void AddCourseBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("/Admin/AddCourse.aspx");
+        }
     }
 }

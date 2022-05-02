@@ -51,7 +51,7 @@ namespace WAPP_Assignment.Admin
             foreach (DataRow chapterData in chapterDataTable.Rows)
             {
                 sb.AppendLine("<div class=\"container\">");
-                sb.AppendLine($"<h3>{chapterData["title"]}</h3>");
+                sb.AppendLine($"<h3>{chapterData["sequence"]}. {chapterData["title"]}</h3>");
                 sb.AppendLine("</div>");
                 ChapterPlaceholder.Controls.Add(new Literal { Text = sb.ToString() });
                 sb.Clear();
@@ -71,7 +71,7 @@ namespace WAPP_Assignment.Admin
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM chapter WHERE course_id=@course_id";
+                    cmd.CommandText = "SELECT * FROM chapter WHERE course_id=@course_id ORDER BY sequence";
                     cmd.Connection = conn;
                     cmd.Parameters.AddWithValue("@course_id", course_id);
                     using (SqlDataAdapter sda = new SqlDataAdapter())
@@ -214,9 +214,5 @@ namespace WAPP_Assignment.Admin
             ThumbnailImg.ImageUrl = $"/upload/thumbnail/{MyUtil.defaultThumb}";
         }
 
-        protected void BackBtn_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/ViewCourse.aspx");
-        }
     }
 }
