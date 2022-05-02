@@ -48,7 +48,6 @@
             <asp:Button ID="AddChapBtn" runat="server" Text="Add Chapter" OnClick="AddChapBtn_Click" />
             <br /><br />
             <asp:Placeholder ID="ChapterPlaceholder" runat="server"></asp:Placeholder>
-            <asp:RadioButtonList ID="RadioButtonList1" runat="server" AutoPostBack="true"></asp:RadioButtonList>
         </div>
     </form>
 </body>
