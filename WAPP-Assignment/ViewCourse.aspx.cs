@@ -23,7 +23,7 @@ namespace WAPP_Assignment
             //        EditCourseBtn_Click(null, null);
             //    }
             //}
-            DataTable dt = GetCourseData();
+            DataTable dt = Course.GetAllCourseData();
             StringBuilder courseContainer = new StringBuilder();
             foreach (DataRow dr in dt.Rows)
             {
@@ -52,26 +52,6 @@ namespace WAPP_Assignment
                 //};
                 CoursePlaceholder.Controls.Add(editBtn);
                 courseContainer.Clear();
-            }
-        }
-
-        protected DataTable GetCourseData()
-        {
-            using (SqlConnection conn = DatabaseManager.CreateConnection())
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "SELECT * FROM course";
-                    cmd.Connection = conn;
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        sda.SelectCommand = cmd;
-                        DataTable dataTable = new DataTable();
-                        sda.Fill(dataTable);
-                        return dataTable;
-                    }
-                }
             }
         }
 

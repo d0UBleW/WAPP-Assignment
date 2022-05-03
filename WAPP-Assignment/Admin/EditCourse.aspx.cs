@@ -26,7 +26,7 @@ namespace WAPP_Assignment.Admin
             course_id = Convert.ToInt32(course_id_temp);
             if (!IsPostBack)
             {
-                DataTable courseDataTable = GetCourseData(course_id);
+                DataTable courseDataTable = Course.GetCourseData(course_id);
                 if (courseDataTable.Rows.Count == 0)
                 {
                     return;
@@ -36,7 +36,7 @@ namespace WAPP_Assignment.Admin
                 DescTxtBox.Text = courseData["description"].ToString();
                 ThumbnailImg.ImageUrl = $"/upload/thumbnail/{courseData["thumbnail"]}";
 
-                DataTable categoryDataTable = GetCategoryData(course_id);
+                DataTable categoryDataTable = Course.GetCourseCategoryData(course_id);
                 List<string> categoryList = new List<string>();
                 foreach (DataRow row in categoryDataTable.Rows)
                 {
@@ -46,7 +46,7 @@ namespace WAPP_Assignment.Admin
                 }
                 CatField.Value = string.Join("<|>", categoryList);
             }
-            DataTable chapterDataTable = GetChapterData(course_id);
+            DataTable chapterDataTable = Course.GetCourseChapterData(course_id);
             StringBuilder sb = new StringBuilder();
             foreach (DataRow chapterData in chapterDataTable.Rows)
             {
@@ -62,68 +62,6 @@ namespace WAPP_Assignment.Admin
                 };
                 editChapBtn.Click += new EventHandler(EditChapBtn_Click);
                 ChapterPlaceholder.Controls.Add(editChapBtn);
-            }
-        }
-        protected DataTable GetChapterData(int course_id)
-        {
-            using (SqlConnection conn = DatabaseManager.CreateConnection())
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "SELECT * FROM chapter WHERE course_id=@course_id ORDER BY sequence";
-                    cmd.Connection = conn;
-                    cmd.Parameters.AddWithValue("@course_id", course_id);
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        sda.SelectCommand = cmd;
-                        DataTable dataTable = new DataTable();
-                        sda.Fill(dataTable);
-                        return dataTable;
-                    }
-                }
-            }
-        }
-
-        protected DataTable GetCourseData(int course_id)
-        {
-            using (SqlConnection conn = DatabaseManager.CreateConnection())
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "SELECT * FROM course WHERE course_id=@course_id";
-                    cmd.Connection = conn;
-                    cmd.Parameters.AddWithValue("@course_id", course_id);
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        sda.SelectCommand = cmd;
-                        DataTable dataTable = new DataTable();
-                        sda.Fill(dataTable);
-                        return dataTable;
-                    }
-                }
-            }
-        }
-
-        protected DataTable GetCategoryData(int course_id)
-        {
-            using (SqlConnection conn = DatabaseManager.CreateConnection())
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "SELECT * FROM category WHERE category_id IN (SELECT category_id FROM course_category WHERE course_id=@course_id);";
-                    cmd.Connection = conn;
-                    cmd.Parameters.AddWithValue("@course_id", course_id);
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        sda.SelectCommand = cmd;
-                        DataTable dataTable = new DataTable();
-                        sda.Fill(dataTable);
-                        return dataTable;
-                    }
-                }
             }
         }
 

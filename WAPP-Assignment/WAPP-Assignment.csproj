@@ -140,6 +140,7 @@
       <DependentUpon>EditCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Chapter.cs" />
+    <Compile Include="Course.cs" />
     <Compile Include="MyAutoComplete.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
