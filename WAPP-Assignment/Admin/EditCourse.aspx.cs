@@ -61,7 +61,18 @@ namespace WAPP_Assignment.Admin
                     ID = $"editChapBtn{chapterData["chapter_id"]}"
                 };
                 editChapBtn.Click += new EventHandler(EditChapBtn_Click);
+                //Button delChapBtn = new Button
+                //{
+                //    Text = "Delete Chapter",
+                //    ID = $"delChapBtn{chapterData["chapter_id"]}",
+                //    UseSubmitBehavior = false,
+                //    CausesValidation = false,
+                //};
+                sb.AppendLine($"<button type=\"button\" id=\"delChapBtn{chapterData["chapter_id"]}\">Delete Chapter</button>");
                 ChapterPlaceholder.Controls.Add(editChapBtn);
+                ChapterPlaceholder.Controls.Add(new Literal { Text = sb.ToString() });
+                ChapterPlaceholder.Controls.Add(new Literal { Text = "<br/><br/>" });
+                sb.Clear();
             }
         }
 
@@ -76,6 +87,14 @@ namespace WAPP_Assignment.Admin
             Match match = rg.Match(btn.ID);
             string chapter_id = match.Groups[1].Value;
             Response.Redirect($"/Admin/EditChapter.aspx?chapter_id={chapter_id}");
+        }
+
+        protected void DelChapBtn_Click(object sender, EventArgs e)
+        {
+            Button btn = sender as Button;
+            Regex rg = new Regex(@"delChapBtn(\d+)");
+            Match match = rg.Match(btn.ID);
+            string chapter_id = match.Groups[1].Value;
         }
 
         protected void EditBtn_Click(object sender, EventArgs e)

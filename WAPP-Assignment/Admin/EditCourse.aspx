@@ -56,6 +56,15 @@
                 window.location.href = "/ViewCourse.aspx"
             }
         })
+
+        $("[id^='delChapBtn']").on('click', function () {
+            const match = this.id.match(/delChapBtn(\d+)/)
+            if (match != null)
+                chap_id = match[1]
+            if (confirm("Are you sure?")) {
+                window.location.href = "/Admin/DeleteChapter.aspx?chapter_id=" + chap_id
+            }
+        })
     </script>
 </body>
 </html>

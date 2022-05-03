@@ -93,6 +93,7 @@
   <ItemGroup>
     <Content Include="Admin\AddChapter.aspx" />
     <Content Include="Admin\AddCourse.aspx" />
+    <Content Include="Admin\DeleteChapter.aspx" />
     <Content Include="Admin\EditChapter.aspx" />
     <Content Include="Admin\EditCourse.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
@@ -124,6 +125,13 @@
     </Compile>
     <Compile Include="Admin\AddCourse.aspx.designer.cs">
       <DependentUpon>AddCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\DeleteChapter.aspx.cs">
+      <DependentUpon>DeleteChapter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DeleteChapter.aspx.designer.cs">
+      <DependentUpon>DeleteChapter.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\EditChapter.aspx.cs">
       <DependentUpon>EditChapter.aspx</DependentUpon>
