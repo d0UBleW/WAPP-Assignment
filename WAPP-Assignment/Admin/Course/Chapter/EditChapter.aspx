@@ -6,9 +6,8 @@
 <head runat="server">
     <title></title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <%--<script src="/ckeditor/ckeditor.js"></script>--%>
     <script src="https://cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
-    <script src="/Scripts/addChapter.js" defer></script>
+    <script src="/Scripts/ckeditor.js" defer></script>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -33,14 +32,10 @@
         </div>
     </form>
     <script>
-        //CKEDITOR.replace('EditorTxtBox', {
-        //    allowedContent: true,
-        //    embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
-        //})
         $("#BackBtn").on('click', function () {
             var courseID = $("#CourseIDField").val()
             if (confirm("Go back?")) {
-                window.location.href = "/Admin/EditCourse.aspx?course_id="+courseID
+                window.location.href = "/Admin/Course/EditCourse.aspx?course_id="+courseID
             }
         })
     </script>

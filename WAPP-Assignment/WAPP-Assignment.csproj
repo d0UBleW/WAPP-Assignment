@@ -91,11 +91,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Admin\AddChapter.aspx" />
-    <Content Include="Admin\AddCourse.aspx" />
-    <Content Include="Admin\DeleteChapter.aspx" />
-    <Content Include="Admin\EditChapter.aspx" />
-    <Content Include="Admin\EditCourse.aspx" />
+    <Content Include="Admin\Course\Chapter\AddChapter.aspx" />
+    <Content Include="Admin\Course\AddCourse.aspx" />
+    <Content Include="Admin\Course\Exam\AddExam.aspx" />
+    <Content Include="Admin\Course\Chapter\DeleteChapter.aspx" />
+    <Content Include="Admin\Course\Chapter\EditChapter.aspx" />
+    <Content Include="Admin\Course\EditCourse.aspx" />
+    <Content Include="Admin\Course\Exam\AddQuestion.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
       <DependentUpon>ilearn.mdf</DependentUpon>
@@ -104,48 +106,62 @@
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Register.aspx" />
-    <Content Include="Scripts\addChapter.js" />
+    <Content Include="Scripts\ckeditor.js" />
     <Content Include="Scripts\addCourse.js" />
     <Content Include="Scripts\register.js" />
     <Content Include="ViewChapter.aspx" />
-    <Content Include="ViewCourse.aspx" />
+    <Content Include="ListCourse.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Admin\AddChapter.aspx.cs">
+    <Compile Include="Admin\Course\Chapter\AddChapter.aspx.cs">
       <DependentUpon>AddChapter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AddChapter.aspx.designer.cs">
+    <Compile Include="Admin\Course\Chapter\AddChapter.aspx.designer.cs">
       <DependentUpon>AddChapter.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\AddCourse.aspx.cs">
+    <Compile Include="Admin\Course\AddCourse.aspx.cs">
       <DependentUpon>AddCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\AddCourse.aspx.designer.cs">
+    <Compile Include="Admin\Course\AddCourse.aspx.designer.cs">
       <DependentUpon>AddCourse.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\DeleteChapter.aspx.cs">
+    <Compile Include="Admin\Course\Exam\AddExam.aspx.cs">
+      <DependentUpon>AddExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\Exam\AddExam.aspx.designer.cs">
+      <DependentUpon>AddExam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\Chapter\DeleteChapter.aspx.cs">
       <DependentUpon>DeleteChapter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\DeleteChapter.aspx.designer.cs">
+    <Compile Include="Admin\Course\Chapter\DeleteChapter.aspx.designer.cs">
       <DependentUpon>DeleteChapter.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\EditChapter.aspx.cs">
+    <Compile Include="Admin\Course\Chapter\EditChapter.aspx.cs">
       <DependentUpon>EditChapter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\EditChapter.aspx.designer.cs">
+    <Compile Include="Admin\Course\Chapter\EditChapter.aspx.designer.cs">
       <DependentUpon>EditChapter.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\EditCourse.aspx.cs">
+    <Compile Include="Admin\Course\EditCourse.aspx.cs">
       <DependentUpon>EditCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\EditCourse.aspx.designer.cs">
+    <Compile Include="Admin\Course\EditCourse.aspx.designer.cs">
       <DependentUpon>EditCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\Exam\AddQuestion.aspx.cs">
+      <DependentUpon>AddQuestion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\Exam\AddQuestion.aspx.designer.cs">
+      <DependentUpon>AddQuestion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Category.cs" />
     <Compile Include="Chapter.cs" />
@@ -189,12 +205,12 @@
     <Compile Include="ViewChapter.aspx.designer.cs">
       <DependentUpon>ViewChapter.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewCourse.aspx.cs">
-      <DependentUpon>ViewCourse.aspx</DependentUpon>
+    <Compile Include="ListCourse.aspx.cs">
+      <DependentUpon>ListCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewCourse.aspx.designer.cs">
-      <DependentUpon>ViewCourse.aspx</DependentUpon>
+    <Compile Include="ListCourse.aspx.designer.cs">
+      <DependentUpon>ListCourse.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

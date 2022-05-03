@@ -54,16 +54,18 @@
         $(document).ready(function () {
             $("#BackBtn").on('click', function () {
                 if (confirm("Go back?")) {
-                    window.location.href = "/ViewCourse.aspx"
+                    window.location.href = "/ListCourse.aspx"
                 }
             })
 
             $("[id^='delChapBtn']").on('click', function () {
-                const match = this.id.match(/delChapBtn(\d+)/)
-                if (match != null)
-                    chap_id = match[1]
+                //const match = this.id.match(/delChapBtn-(\d+)/)
+                //if (match != null)
+                //    chap_id = match[1]
+                //const chap_id = this.data('chap-id')
+                const chap_id = this.dataset.chapId
                 if (confirm("Are you sure?")) {
-                    window.location.href = "/Admin/DeleteChapter.aspx?chapter_id=" + chap_id
+                    window.location.href = "/Admin/Course/Chapter/DeleteChapter.aspx?chapter_id=" + chap_id
                 }
             })
         })

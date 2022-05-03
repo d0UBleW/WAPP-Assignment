@@ -26,7 +26,7 @@ namespace WAPP_Assignment.Admin
             course_id = Convert.ToInt32(course_id_temp);
             if (!IsPostBack)
             {
-                DataTable courseDataTable = Course.GetCourseData(course_id);
+                DataTable courseDataTable = WAPP_Assignment.Course.GetCourseData(course_id);
                 if (courseDataTable.Rows.Count == 0)
                 {
                     return;
@@ -58,9 +58,10 @@ namespace WAPP_Assignment.Admin
                 Button editChapBtn = new Button
                 {
                     Text = "Edit Chapter",
-                    ID = $"editChapBtn{chapterData["chapter_id"]}"
+                    ID = $"editChapBtn-{chapterData["chapter_id"]}",
                 };
                 editChapBtn.Click += new EventHandler(EditChapBtn_Click);
+                editChapBtn.Attributes.Add("data-chap-id", chapterData["chapter_id"].ToString());
                 //Button delChapBtn = new Button
                 //{
                 //    Text = "Delete Chapter",
@@ -68,7 +69,7 @@ namespace WAPP_Assignment.Admin
                 //    UseSubmitBehavior = false,
                 //    CausesValidation = false,
                 //};
-                sb.AppendLine($"<button type=\"button\" id=\"delChapBtn{chapterData["chapter_id"]}\">Delete Chapter</button>");
+                sb.AppendLine($"<button type=\"button\" id=\"delChapBtn-{chapterData["chapter_id"]}\" data-chap-id=\"{chapterData["chapter_id"]}\">Delete Chapter</button>");
                 ChapterPlaceholder.Controls.Add(editChapBtn);
                 ChapterPlaceholder.Controls.Add(new Literal { Text = sb.ToString() });
                 ChapterPlaceholder.Controls.Add(new Literal { Text = "<br/><br/>" });
@@ -78,15 +79,16 @@ namespace WAPP_Assignment.Admin
 
         protected void AddChapBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect($"/Admin/AddChapter.aspx?course_id={course_id}");
+            Response.Redirect($"/Admin/Course/Chapter/AddChapter.aspx?course_id={course_id}");
         }
         protected void EditChapBtn_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            Regex rg = new Regex(@"editChapBtn(\d+)");
-            Match match = rg.Match(btn.ID);
-            string chapter_id = match.Groups[1].Value;
-            Response.Redirect($"/Admin/EditChapter.aspx?chapter_id={chapter_id}");
+            //Regex rg = new Regex(@"editChapBtn-(\d+)");
+            //Match match = rg.Match(btn.ID);
+            //string chapter_id = match.Groups[1].Value;
+            string chapter_id = btn.Attributes["data-chap-id"];
+            Response.Redirect($"/Admin/Course/Chapter/EditChapter.aspx?chapter_id={chapter_id}");
         }
 
         protected void DelChapBtn_Click(object sender, EventArgs e)

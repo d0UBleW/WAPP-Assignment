@@ -61,7 +61,7 @@ namespace WAPP_Assignment.Admin
                 }
                 conn.Close();
             }
-            Response.Redirect($"/Admin/EditCourse.aspx?course_id={course_id}");
+            Response.Redirect($"/Admin/Course/EditCourse.aspx?course_id={course_id}");
         }
 
     }

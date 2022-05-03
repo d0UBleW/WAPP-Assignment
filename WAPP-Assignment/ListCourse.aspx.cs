@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
-    public partial class ViewCourse : System.Web.UI.Page
+    public partial class ListCourse : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -61,12 +61,12 @@ namespace WAPP_Assignment
             Regex rg = new Regex(@"editBtn(\d+)");
             Match match = rg.Match(btn.ID);
             string course_id = match.Groups[1].Value;
-            Response.Redirect($"/Admin/EditCourse.aspx?course_id={course_id}");
+            Response.Redirect($"/Admin/Course/EditCourse.aspx?course_id={course_id}");
         }
 
         protected void AddCourseBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/Admin/AddCourse.aspx");
+            Response.Redirect("/Admin/Course/AddCourse.aspx");
         }
     }
 }

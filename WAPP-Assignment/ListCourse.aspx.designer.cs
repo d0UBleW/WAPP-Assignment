@@ -11,7 +11,7 @@ namespace WAPP_Assignment
 {
 
 
-    public partial class ViewCourse
+    public partial class ListCourse
     {
 
         /// <summary>
