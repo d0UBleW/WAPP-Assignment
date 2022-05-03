@@ -70,7 +70,7 @@ namespace WAPP_Assignment.Admin
                     cmd.Parameters.AddWithValue("@description", description);
                     int course_id = (int) cmd.ExecuteScalar();
                     List<string> inputCategories = CatField.Value.Split(new string[]{"<|>"}, StringSplitOptions.None).ToList();
-                    MyUtil.AddNewCategory(inputCategories);
+                    Category.AddNewCategory(inputCategories);
                     cmd.Parameters.Clear();
                     cmd.CommandText = "INSERT INTO course_category (course_id, category_id) VALUES (@course_id, (SELECT category_id FROM category WHERE name=@name));";
                     foreach (string cat in inputCategories)

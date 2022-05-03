@@ -139,6 +139,7 @@
     <Compile Include="Admin\EditCourse.aspx.designer.cs">
       <DependentUpon>EditCourse.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Category.cs" />
     <Compile Include="Chapter.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="MyAutoComplete.cs" />

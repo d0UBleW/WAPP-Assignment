@@ -27,7 +27,7 @@ namespace WAPP_Assignment.Admin
             course_id = Convert.ToInt32(course_id_temp);
             if (!IsPostBack)
             {
-                int maxSeq = MyUtil.GetChapterMaxSeq(course_id) + 1;
+                int maxSeq = Chapter.GetChapterMaxSeq(course_id) + 1;
                 ChapNoTxtBox.Attributes.Add("Max", maxSeq.ToString());
                 ChapNoRangeValidator.MaximumValue = maxSeq.ToString();
                 ChapNoRangeValidator.MinimumValue = "1";

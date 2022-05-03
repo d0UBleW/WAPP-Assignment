@@ -36,7 +36,7 @@ namespace WAPP_Assignment.Admin
                 DescTxtBox.Text = courseData["description"].ToString();
                 ThumbnailImg.ImageUrl = $"/upload/thumbnail/{courseData["thumbnail"]}";
 
-                DataTable categoryDataTable = Course.GetCourseCategoryData(course_id);
+                DataTable categoryDataTable = Category.GetCourseCategoryData(course_id);
                 List<string> categoryList = new List<string>();
                 foreach (DataRow row in categoryDataTable.Rows)
                 {
@@ -46,7 +46,7 @@ namespace WAPP_Assignment.Admin
                 }
                 CatField.Value = string.Join("<|>", categoryList);
             }
-            DataTable chapterDataTable = Course.GetCourseChapterData(course_id);
+            DataTable chapterDataTable = Chapter.GetCourseChapterData(course_id);
             StringBuilder sb = new StringBuilder();
             foreach (DataRow chapterData in chapterDataTable.Rows)
             {
@@ -114,7 +114,7 @@ namespace WAPP_Assignment.Admin
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
                     List<string> inputCategories = CatField.Value.Split(new string[]{"<|>"}, StringSplitOptions.None).ToList();
-                    MyUtil.AddNewCategory(inputCategories);
+                    Category.AddNewCategory(inputCategories);
                     List<string> newCategories = inputCategories.Except(old_category).ToList();
                     cmd.CommandText = "INSERT INTO course_category (course_id, category_id) VALUES (@course_id, (SELECT category_id FROM category WHERE name=@name));";
                     foreach (string cat in inputCategories)
@@ -133,7 +133,7 @@ namespace WAPP_Assignment.Admin
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                     }
-                    MyUtil.UpdateCategory();
+                    Category.UpdateCategory();
                     MyUtil.UpdateThumbnailStorage(Server.MapPath("~/upload/thumbnail/"));
                     old_category = newCategories;
                 }

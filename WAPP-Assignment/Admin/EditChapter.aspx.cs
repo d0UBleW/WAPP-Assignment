@@ -31,7 +31,7 @@ namespace WAPP_Assignment.Admin
                 DataRow dr = dt.Rows[0];
                 TitleTxtBox.Text = dr["title"].ToString();
                 EditorTxtBox.Text = dr["content"].ToString();
-                int maxSeq = MyUtil.GetChapterMaxSeq(Convert.ToInt32(dr["course_id"]));
+                int maxSeq = Chapter.GetChapterMaxSeq(Convert.ToInt32(dr["course_id"]));
                 ChapNoTxtBox.Attributes.Add("Max", maxSeq.ToString());
                 ChapNoRangeValidator.MaximumValue = maxSeq.ToString();
                 ChapNoRangeValidator.MinimumValue = "1";
