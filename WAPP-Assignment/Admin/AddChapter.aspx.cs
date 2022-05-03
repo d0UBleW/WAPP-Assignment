@@ -50,14 +50,8 @@ namespace WAPP_Assignment.Admin
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
+                    Chapter.UpdateChapterSequence(course_id, seq, maxSeq);
                     cmd.Connection = conn;
-                    if (seq != maxSeq)
-                    {
-                        cmd.CommandText = $"UPDATE chapter SET sequence=sequence+1 WHERE sequence >= {seq} AND course_id=@course_id";
-                        cmd.Parameters.AddWithValue("@course_id", course_id);
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-                    }
                     cmd.CommandText = "INSERT INTO chapter (course_id, title, content, sequence) VALUES (@course_id, @title, @content, @sequence);";
                     cmd.Parameters.AddWithValue("@course_id", course_id);
                     cmd.Parameters.AddWithValue("@title", title);

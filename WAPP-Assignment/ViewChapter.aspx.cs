@@ -28,30 +28,10 @@ namespace WAPP_Assignment
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 return;
             }
-            DataTable dt = GetChapterData(chapter_id);
+            DataTable dt = Chapter.GetChapterData(chapter_id);
             DataRow dr = dt.Rows[0];
             TitleLbl.Text = dr["title"].ToString();
             ContentPlaceholder.Controls.Add(new Literal { Text = dr["content"].ToString() });
-        }
-        protected DataTable GetChapterData(int chapter_id)
-        {
-            using (SqlConnection conn = DatabaseManager.CreateConnection())
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "SELECT * FROM chapter WHERE chapter_id=@chapter_id";
-                    cmd.Connection = conn;
-                    cmd.Parameters.AddWithValue("@chapter_id", chapter_id);
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        sda.SelectCommand = cmd;
-                        DataTable dataTable = new DataTable();
-                        sda.Fill(dataTable);
-                        return dataTable;
-                    }
-                }
-            }
         }
     }
 }

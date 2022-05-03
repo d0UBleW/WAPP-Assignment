@@ -23,7 +23,7 @@ namespace WAPP_Assignment.Admin
             chapter_id = int.Parse(chapter_id_temp);
             if (!IsPostBack)
             {
-                DataTable dt = GetChapterData(chapter_id);
+                DataTable dt = Chapter.GetChapterData(chapter_id);
                 if (dt.Rows.Count == 0)
                 {
                     return;
@@ -43,7 +43,7 @@ namespace WAPP_Assignment.Admin
         protected void EditBtn_Click(object sender, EventArgs e)
         {
             int seq = Convert.ToInt32(ChapNoTxtBox.Text);
-            DataTable dt = GetChapterData(chapter_id);
+            DataTable dt = Chapter.GetChapterData(chapter_id);
             int course_id = Convert.ToInt32(dt.Rows[0]["course_id"]);
             int oldSeq = Convert.ToInt32(dt.Rows[0]["sequence"]);
             string title = TitleTxtBox.Text;
@@ -57,22 +57,8 @@ namespace WAPP_Assignment.Admin
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
+                    Chapter.UpdateChapterSequence(course_id, seq, oldSeq);
                     cmd.Connection = conn;
-                    if (seq != oldSeq)
-                    {
-                        if (seq > oldSeq)
-                        {
-                            cmd.CommandText = $"UPDATE chapter SET sequence=sequence-1 WHERE course_id=@course_id AND sequence > {oldSeq} AND sequence <= {seq};";
-                        }
-                        else if (seq < oldSeq)
-                        {
-                            cmd.CommandText = $"UPDATE chapter SET sequence=sequence+1 WHERE course_id=@course_id AND sequence >= {seq} AND sequence < {oldSeq};";
-                        }
-                        cmd.Parameters.AddWithValue("@course_id", course_id);
-                        cmd.ExecuteNonQuery();
-                        cmd.Parameters.Clear();
-                    }
-
                     cmd.CommandText = "UPDATE chapter SET title=@title, content=@content, sequence=@sequence WHERE chapter_id=@chapter_id";
                     cmd.Parameters.AddWithValue("@title", title);
                     cmd.Parameters.AddWithValue("@content", content);
@@ -84,30 +70,10 @@ namespace WAPP_Assignment.Admin
             }
         }
 
-        protected DataTable GetChapterData(int chapter_id)
-        {
-            using (SqlConnection conn = DatabaseManager.CreateConnection())
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand())
-                {
-                    cmd.CommandText = "SELECT * FROM chapter WHERE chapter_id=@chapter_id";
-                    cmd.Connection = conn;
-                    cmd.Parameters.AddWithValue("@chapter_id", chapter_id);
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        sda.SelectCommand = cmd;
-                        DataTable dataTable = new DataTable();
-                        sda.Fill(dataTable);
-                        return dataTable;
-                    }
-                }
-            }
-        }
 
         protected void BackBtn_Click(object sender, EventArgs e)
         {
-            DataTable dataTable = GetChapterData(chapter_id);
+            DataTable dataTable = Chapter.GetChapterData(chapter_id);
             DataRow dataRow = dataTable.Rows[0];
             Response.Redirect($"/Admin/EditCourse.aspx?course_id={dataRow["course_id"]}");
         }
