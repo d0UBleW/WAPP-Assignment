@@ -51,19 +51,21 @@
         </div>
     </form>
     <script>
-        $("#BackBtn").on('click', function () {
-            if (confirm("Go back?")) {
-                window.location.href = "/ViewCourse.aspx"
-            }
-        })
+        $(document).ready(function () {
+            $("#BackBtn").on('click', function () {
+                if (confirm("Go back?")) {
+                    window.location.href = "/ViewCourse.aspx"
+                }
+            })
 
-        $("[id^='delChapBtn']").on('click', function () {
-            const match = this.id.match(/delChapBtn(\d+)/)
-            if (match != null)
-                chap_id = match[1]
-            if (confirm("Are you sure?")) {
-                window.location.href = "/Admin/DeleteChapter.aspx?chapter_id=" + chap_id
-            }
+            $("[id^='delChapBtn']").on('click', function () {
+                const match = this.id.match(/delChapBtn(\d+)/)
+                if (match != null)
+                    chap_id = match[1]
+                if (confirm("Are you sure?")) {
+                    window.location.href = "/Admin/DeleteChapter.aspx?chapter_id=" + chap_id
+                }
+            })
         })
     </script>
 </body>
