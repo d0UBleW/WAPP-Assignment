@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WAPP_Assignment.Admin
+namespace WAPP_Assignment
 {
 
 
-    public partial class AddExam
+    public partial class test
     {
 
         /// <summary>
@@ -24,30 +24,12 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// TitleLbl control.
+        /// btn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLbl;
-
-        /// <summary>
-        /// TitleTxtBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TitleTxtBox;
-
-        /// <summary>
-        /// AddExBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddExBtn;
+        protected global::System.Web.UI.WebControls.Button btn;
     }
 }

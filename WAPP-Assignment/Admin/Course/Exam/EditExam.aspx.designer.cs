@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WAPP_Assignment.Admin
+namespace WAPP_Assignment.Admin.Course.Exam
 {
 
 
-    public partial class AddExam
+    public partial class EditExam
     {
 
         /// <summary>
@@ -42,12 +42,21 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.WebControls.TextBox TitleTxtBox;
 
         /// <summary>
-        /// AddExBtn control.
+        /// AddQueBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddExBtn;
+        protected global::System.Web.UI.WebControls.Button AddQueBtn;
+
+        /// <summary>
+        /// QuePlaceholder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder QuePlaceholder;
     }
 }

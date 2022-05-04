@@ -48,6 +48,10 @@
             <asp:Button ID="AddChapBtn" runat="server" Text="Add Chapter" OnClick="AddChapBtn_Click" />
             <br /><br />
             <asp:Placeholder ID="ChapterPlaceholder" runat="server"></asp:Placeholder>
+            <br /><br />
+            <asp:Button ID="AddExBtn" runat="server" Text="Add Exam" OnClick="AddExBtn_Click" />
+            <br /><br />
+            <asp:Placeholder ID="ExamPlaceholder" runat="server"></asp:Placeholder>
         </div>
     </form>
     <script>

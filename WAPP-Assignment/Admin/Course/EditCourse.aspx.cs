@@ -173,5 +173,9 @@ namespace WAPP_Assignment.Admin
             ThumbnailImg.ImageUrl = $"/upload/thumbnail/{MyUtil.defaultThumb}";
         }
 
+        protected void AddExBtn_Click(object sender, EventArgs e)
+        {
+            Response.Redirect($"/Admin/Course/Exam/AddExam.aspx?course_id={course_id}");
+        }
     }
 }

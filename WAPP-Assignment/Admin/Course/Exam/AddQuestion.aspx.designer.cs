@@ -96,30 +96,21 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected global::System.Web.UI.WebControls.Button AddBtn;
 
         /// <summary>
-        /// OptTxtBox control.
+        /// OptStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox OptTxtBox;
+        protected global::System.Web.UI.WebControls.Label OptStatus;
 
         /// <summary>
-        /// AddOptBtn control.
+        /// Button1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddOptBtn;
-
-        /// <summary>
-        /// OptRadioList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList OptRadioList;
+        protected global::System.Web.UI.WebControls.Button Button1;
     }
 }

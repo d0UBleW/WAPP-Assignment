@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddQuestion.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Exam.AddQuestion" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddQuestion.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Exam.AddQuestion" ValidateRequest="false" %>
 
 <!DOCTYPE html>
 
@@ -8,14 +8,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
     <script src="/Scripts/ckeditor.js" defer></script>
+    <script src="/Scripts/addOption.js" defer></script>
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="QueNoLbl" runat="server" Text="Question No."></asp:Label>
-            <asp:TextBox ID="QueNoTxtBox" runat="server" TextMode="Number" Required="required" Min="1"></asp:TextBox>
+            <asp:TextBox ID="QueNoTxtBox" runat="server" TextMode="Number" Required="required" Min="1" Max="5"></asp:TextBox>
             <asp:RangeValidator ID="QueNoRangeValidator" runat="server" ErrorMessage="Invalid Question Number"
-                ForeColor="Red" ControlToValidate="QueNoTxtBox" Type="Integer" SetFocusOnError="True" MinimumValue="1"
+                ForeColor="Red" ControlToValidate="QueNoTxtBox" Type="Integer" SetFocusOnError="True" MinimumValue="1" MaximumValue="5"
                 ></asp:RangeValidator>
             <br /><br />
             <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
@@ -25,12 +26,21 @@
             <br />
             <asp:TextBox ID="EditorTxtBox" runat="server" TextMode="MultiLine"></asp:TextBox>
             <br /><br />
-            <asp:Button ID="AddBtn" runat="server" OnClick="AddBtn_Click" Text="Add" />
+            <asp:Button ID="AddBtn" runat="server" OnClick="AddBtn_Click" OnClientClick="return CheckOption();" Text="Add" />
             <br /><br />
-            <asp:TextBox ID="OptTxtBox" runat="server"></asp:TextBox>
-            <asp:Button ID="AddOptBtn" runat="server" Text="Add Option" OnClick="AddOptBtn_Click" />
+            <input type="text" id="OptTxtBox" />
             <br /><br />
-            <asp:RadioButtonList ID="OptRadioList" runat="server"></asp:RadioButtonList>
+            <button type="button" id="AddOptBtn">Add Option</button>
+            <br /><br />
+            <asp:Label ID="OptStatus" runat="server" ForeColor="Red" style="display: none;" Text="Please choose at least one option as answer."></asp:Label>
+            <br /><br />
+            <h4>Option</h4>
+            <table id="OptTable">
+                <tbody>
+                </tbody>
+            </table>
+            <br /><br />
+            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         </div>
     </form>
 </body>

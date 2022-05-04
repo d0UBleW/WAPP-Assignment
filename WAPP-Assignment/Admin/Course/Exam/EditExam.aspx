@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddExam.aspx.cs" Inherits="WAPP_Assignment.Admin.AddExam" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditExam.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Exam.EditExam" %>
 
 <!DOCTYPE html>
 
@@ -12,7 +12,9 @@
             <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
             <asp:TextBox ID="TitleTxtBox" runat="server"></asp:TextBox>
             <br /><br />
-            <asp:Button ID="AddExBtn" runat="server" Text="Add Exam" OnClick="AddExBtn_Click" />
+            <asp:Button ID="AddQueBtn" runat="server" Text="Add Question" OnClick="AddQueBtn_Click" />
+            <br /><br />
+            <asp:PlaceHolder ID="QuePlaceholder" runat="server"></asp:PlaceHolder>
         </div>
     </form>
 </body>
