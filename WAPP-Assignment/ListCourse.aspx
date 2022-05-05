@@ -9,6 +9,8 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:HyperLink ID="DashboardLink" runat="server" NavigateUrl="/Dashboard.aspx">Dashboard</asp:HyperLink>
+            <br />
             <asp:Button ID="AddCourseBtn" runat="server" Text="Add Course" OnClick="AddCourseBtn_Click" />
             <br /><br />
             <asp:PlaceHolder ID="CoursePlaceholder" runat="server"></asp:PlaceHolder>

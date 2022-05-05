@@ -11,44 +11,17 @@ namespace WAPP_Assignment
 {
 
 
-    public partial class ViewCourse
+    public partial class ViewChapter
     {
 
         /// <summary>
-        /// form1 control.
+        /// TOCPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// CourseDetailPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel CourseDetailPanel;
-
-        /// <summary>
-        /// ImagePanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ImagePanel;
-
-        /// <summary>
-        /// ThumbnailImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ThumbnailImage;
+        protected global::System.Web.UI.WebControls.Panel TOCPanel;
 
         /// <summary>
         /// TitleLbl control.
@@ -60,48 +33,48 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.Label TitleLbl;
 
         /// <summary>
-        /// DescriptionLbl control.
+        /// ContentPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DescriptionLbl;
+        protected global::System.Web.UI.WebControls.Panel ContentPanel;
 
         /// <summary>
-        /// EnrollBtn control.
+        /// ContentPlaceholder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button EnrollBtn;
+        protected global::System.Web.UI.WebControls.PlaceHolder ContentPlaceholder;
 
         /// <summary>
-        /// LearnBtn control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LearnBtn;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// ChapterTOCPanel control.
+        /// PrevBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ChapterTOCPanel;
+        protected global::System.Web.UI.WebControls.Button PrevBtn;
 
         /// <summary>
-        /// RatingPanel control.
+        /// NextBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel RatingPanel;
+        protected global::System.Web.UI.WebControls.Button NextBtn;
     }
 }

@@ -113,8 +113,7 @@
     <Content Include="Scripts\ckeditor.js" />
     <Content Include="Scripts\addCourse.js" />
     <Content Include="Scripts\register.js" />
-    <Content Include="test.aspx" />
-    <Content Include="ViewChapter.aspx" />
+    <Content Include="Learn\ViewChapter.aspx" />
     <Content Include="ListCourse.aspx" />
     <Content Include="ViewCourse.aspx" />
     <Content Include="Web.config" />
@@ -176,9 +175,9 @@
     <Compile Include="Admin\Course\Exam\EditExam.aspx.designer.cs">
       <DependentUpon>EditExam.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Category.cs" />
-    <Compile Include="Chapter.cs" />
-    <Compile Include="Course.cs" />
+    <Compile Include="UtilClass\Category.cs" />
+    <Compile Include="UtilClass\Chapter.cs" />
+    <Compile Include="UtilClass\Course.cs" />
     <Compile Include="EnrollCourse.aspx.cs">
       <DependentUpon>EnrollCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -186,8 +185,8 @@
     <Compile Include="EnrollCourse.aspx.designer.cs">
       <DependentUpon>EnrollCourse.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Exam.cs" />
-    <Compile Include="MyAutoComplete.cs" />
+    <Compile Include="UtilClass\Exam.cs" />
+    <Compile Include="UtilClass\MyAutoComplete.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -195,7 +194,7 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseManager.cs" />
+    <Compile Include="UtilClass\DatabaseManager.cs" />
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -218,7 +217,7 @@
       <DependentUpon>MyCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Question.cs" />
+    <Compile Include="UtilClass\Question.cs" />
     <Compile Include="Register.aspx.cs">
       <DependentUpon>Register.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -226,21 +225,14 @@
     <Compile Include="Register.aspx.designer.cs">
       <DependentUpon>Register.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MyUtil.cs" />
-    <Compile Include="SessionManager.cs" />
-    <Compile Include="Student.cs" />
-    <Compile Include="test.aspx.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="test.aspx.designer.cs">
-      <DependentUpon>test.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="ViewChapter.aspx.cs">
+    <Compile Include="UtilClass\MyUtil.cs" />
+    <Compile Include="UtilClass\SessionManager.cs" />
+    <Compile Include="UtilClass\Student.cs" />
+    <Compile Include="Learn\ViewChapter.aspx.cs">
       <DependentUpon>ViewChapter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewChapter.aspx.designer.cs">
+    <Compile Include="Learn\ViewChapter.aspx.designer.cs">
       <DependentUpon>ViewChapter.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListCourse.aspx.cs">

@@ -101,5 +101,84 @@ namespace WAPP_Assignment
             }
             return seq;
         }
+
+        public static int GetFirstChapterID(int course_id)
+        {
+            int chapter_id;
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT chapter_id FROM chapter WHERE course_id=@course_id AND sequence=1;";
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    var result = cmd.ExecuteScalar();
+                    if (result == DBNull.Value)
+                        chapter_id = 0;
+                    else
+                        chapter_id = Convert.ToInt32(result);
+                }
+                conn.Close();
+            }
+            return chapter_id;
+        }
+
+        public static bool IsValidChapterID(int chapter_id)
+        {
+            List<int> availableChapterID = new List<int>();
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT chapter_id FROM chapter;";
+                    using (SqlDataReader sdr = cmd.ExecuteReader())
+                    {
+                        while (sdr.Read())
+                        {
+                            availableChapterID.Add(Convert.ToInt32(sdr["chapter_id"]));
+                        }
+                    }
+                }
+                conn.Close();
+            }
+            if (availableChapterID.Contains(chapter_id))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public static int GetNextOrPrevChapterID(int course_id, int seq, string direction)
+        {
+            int chapter_id;
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT chapter_id FROM chapter WHERE course_id=@course_id AND sequence=@sequence;";
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    if (direction == "next")
+                        cmd.Parameters.AddWithValue("@sequence", seq+1);
+                    else
+                        cmd.Parameters.AddWithValue("@sequence", seq-1);
+                    var result = cmd.ExecuteScalar();
+                    if (result == DBNull.Value)
+                    {
+                        chapter_id = 0;
+                    }
+                    else
+                    {
+                        chapter_id = Convert.ToInt32(result);
+                    }
+                }
+                conn.Close();
+            }
+            return chapter_id;
+        }
     }
 }

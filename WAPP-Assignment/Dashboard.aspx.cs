@@ -16,6 +16,14 @@ namespace WAPP_Assignment
                 Response.Redirect("/Login.aspx");
                 return;
             }
+            if (!(bool)Session["isAdmin"])
+            {
+                MyCoursesLink.Visible = true;
+            }
+            else
+            {
+                MyCoursesLink.Visible = false;
+            }
         }
 
         protected void LogoutBtn_Click(object sender, EventArgs e)

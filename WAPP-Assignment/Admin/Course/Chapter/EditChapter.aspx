@@ -12,7 +12,7 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <button type="button" id="BackBtn">Back</button>
+            <asp:Button ID="BackBtn" runat="server" OnClientClick="return confirm('Go back?');"  Text="Back" OnClick="BackBtn_Click" />
             <br /><br />
             <asp:Label ID="ChapNoLbl" runat="server" Text="Chapter No."></asp:Label>
             <asp:TextBox ID="ChapNoTxtBox" runat="server" TextMode="Number" Required="required" Min="1"></asp:TextBox>
@@ -31,13 +31,5 @@
             <asp:HiddenField ID="CourseIDField" runat="server" />
         </div>
     </form>
-    <script>
-        $("#BackBtn").on('click', function () {
-            var courseID = $("#CourseIDField").val()
-            if (confirm("Go back?")) {
-                window.location.href = "/Admin/Course/EditCourse.aspx?course_id="+courseID
-            }
-        })
-    </script>
 </body>
 </html>

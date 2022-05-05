@@ -11,6 +11,7 @@ namespace WAPP_Assignment
     public static class MyUtil
     {
         public const string defaultThumb = "3041EBCF66C0270BBB172CCDB32C9386F61CC211.svg";
+
         public static string ValidateImage(FileUpload file)
         {
             string contentType = file.PostedFile.ContentType;

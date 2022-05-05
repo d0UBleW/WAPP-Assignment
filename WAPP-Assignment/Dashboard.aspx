@@ -21,5 +21,6 @@
     </form>
     <br /><br />
     <asp:HyperLink ID="AllCoursesLink" runat="server" NavigateUrl="/ListCourse.aspx">All Courses</asp:HyperLink>
+    <asp:HyperLink ID="MyCoursesLink" runat="server" NavigateUrl="/MyCourse.aspx" Visible="false">My Courses</asp:HyperLink>
 </body>
 </html>

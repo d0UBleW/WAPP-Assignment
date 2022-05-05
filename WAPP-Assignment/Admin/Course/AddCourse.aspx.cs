@@ -31,7 +31,6 @@ namespace WAPP_Assignment.Admin
             {
                 this.UploadStatusPanel.Visible = false;
             }
-            System.Diagnostics.Debug.WriteLine(Server.MapPath("~/upload"));
         }
 
         protected void AddBtn_Click(object sender, EventArgs e)

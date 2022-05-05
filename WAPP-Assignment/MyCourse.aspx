@@ -9,7 +9,6 @@
 <body>
     <asp:Panel ID="CoursePanel" runat="server">
         <asp:PlaceHolder ID="CoursePlaceholder" runat="server"></asp:PlaceHolder>
-        <asp:HyperLink ID="HyperLink1" runat="server">HyperLink</asp:HyperLink>
     </asp:Panel>
 </body>
 </html>

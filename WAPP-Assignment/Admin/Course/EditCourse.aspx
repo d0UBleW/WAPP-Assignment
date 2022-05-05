@@ -16,7 +16,7 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <div>
-            <button type="button" id="BackBtn">Back</button>
+            <asp:Button ID="BackBtn" runat="server" OnClientClick="return confirm('Go back?');" Text="Back" OnClick="BackBtn_Click" />
             <br /><br />
             <asp:Image ID="ThumbnailImg" runat="server" Height="200" Width="200" />
             <br />
@@ -59,12 +59,6 @@
     </form>
     <script>
         $(document).ready(function () {
-            $("#BackBtn").on('click', function () {
-                if (confirm("Go back?")) {
-                    window.location.href = "/ListCourse.aspx"
-                }
-            })
-
             $("[id^='delChapBtn']").on('click', function () {
                 //const match = this.id.match(/delChapBtn-(\d+)/)
                 //if (match != null)

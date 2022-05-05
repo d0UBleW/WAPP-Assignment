@@ -13,12 +13,12 @@ namespace WAPP_Assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(Request.QueryString["course_id"]) ||
-                string.IsNullOrEmpty(Session["user_id"].ToString()) ||
+                Session["user_id"] == null ||
                 (bool)Session["isAdmin"])
             {
                 return;
             }
-            int student_id = int.Parse(Session["user_id"].ToString());
+            int student_id = Convert.ToInt32(Session["user_id"]);
             int course_id = int.Parse(Request.QueryString["course_id"]);
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
@@ -32,6 +32,10 @@ namespace WAPP_Assignment
                     cmd.ExecuteNonQuery();
                 }
                 conn.Close();
+            }
+            if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
+            {
+                Response.Redirect(Request.UrlReferrer.ToString());
             }
         }
     }

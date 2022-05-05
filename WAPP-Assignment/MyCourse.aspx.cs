@@ -13,33 +13,56 @@ namespace WAPP_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Session["user_id"].ToString()) || (bool)Session["isAdmin"])
+            if (Session["user_id"] == null || (bool)Session["isAdmin"])
             {
                 return;
             }
-            int student_id = int.Parse(Session["user_id"].ToString());
+            int student_id = Convert.ToInt32(Session["user_id"].ToString());
             DataTable courseTable = Course.GetEnrolledCourseData(student_id);
-            StringBuilder courseContainer = new StringBuilder();
             foreach (DataRow dr in courseTable.Rows)
             {
-                courseContainer.AppendLine("<div class=\"container\">");
-                courseContainer.AppendLine("<div class=\"image-container\">");
-                courseContainer.AppendLine($"<img src=\"/upload/loading.gif\" onload=\"this.onload=null;this.src='/upload/thumbnail/{dr["thumbnail"]}'\" width=200px, height=200px />");
-                courseContainer.AppendLine("</div>");
-                courseContainer.AppendLine($"<h3><a href=\"/ViewCourse.aspx?course_id={dr["course_id"]}\">{dr["title"]}</a></h3>");
-                courseContainer.AppendLine($"<span>{dr["description"]}</span>");
-                courseContainer.AppendLine("</div>");
-                courseContainer.AppendLine("<br />");
-                // courseContainer.AppendLine($"<input type=\"button\" value=\"Edit Course\" onclick='javascript:__doPostBack(\"EditCourseBtn\", \"{dr["course_id"]}\")'/>");
-                CoursePlaceholder.Controls.Add(new Literal { Text = courseContainer.ToString() });
-                Button viewBtn = new Button
+                Panel cPanel = new Panel();
+                CoursePlaceholder.Controls.Add(cPanel);
+                Panel imgPanel = new Panel();
+                cPanel.Controls.Add(imgPanel);
+                cPanel.CssClass = "container bg-blue";
+                Image thumbnail = new Image
                 {
-                    Text = "View Course",
-                    ID = $"viewBtn_{dr["course_id"]}"
+                    ImageUrl = "/upload/loading.gif",
+                    Width = 200,
+                    Height = 200,
                 };
-                viewBtn.Attributes.Add("data-course-id", dr["course_id"].ToString());
-                //viewBtn.Click += new EventHandler()
-                courseContainer.Clear();
+                thumbnail.Attributes.Add("onload", $"javascript:this.onload=null;this.src='/upload/thumbnail/{dr["thumbnail"]}'");
+                imgPanel.Controls.Add(thumbnail);
+                HyperLink title = new HyperLink
+                {
+                    NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
+                    Text = dr["title"].ToString(),
+                };
+                title.Style.Add("font-size", "36px");
+                cPanel.Controls.Add(title);
+                Label description = new Label
+                {
+                    Text = dr["description"].ToString(),
+                };
+                cPanel.Controls.Add(new Literal { Text = "<br />" } );
+                cPanel.Controls.Add(description);
+                cPanel.Controls.Add(new Literal { Text = "<br />" } );
+                HyperLink viewLink = new HyperLink
+                {
+                    NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
+                    Text = "View Course",
+                };
+                cPanel.Controls.Add(viewLink);
+                cPanel.Controls.Add(new Literal { Text = "<br />" } );
+                int chapter_id = Chapter.GetFirstChapterID(Convert.ToInt32(dr["course_id"]));
+                HyperLink learnLink = new HyperLink
+                {
+                    NavigateUrl = $"/Learn/ViewChapter.aspx?chapter_id={chapter_id}",
+                    Text = "Learn",
+                };
+                cPanel.Controls.Add(learnLink);
+                cPanel.Controls.Add(new Literal { Text = "<br />" } );
             }
         }
     }

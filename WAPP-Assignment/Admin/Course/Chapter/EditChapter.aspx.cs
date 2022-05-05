@@ -75,7 +75,7 @@ namespace WAPP_Assignment.Admin
         {
             DataTable dataTable = Chapter.GetChapterData(chapter_id);
             DataRow dataRow = dataTable.Rows[0];
-            Response.Redirect($"/Admin/EditCourse.aspx?course_id={dataRow["course_id"]}");
+            Response.Redirect($"/Admin/Course/EditCourse.aspx?course_id={dataRow["course_id"]}");
         }
     }
 }

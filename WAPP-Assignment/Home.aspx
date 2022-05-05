@@ -8,8 +8,8 @@
 </head>
 <body>
     <h1>Home</h1>
-    <a href="Login.aspx">Login</a>
-    <a href="Register.aspx">Register</a>
+    <a href="/Login.aspx">Login</a>
+    <a href="/Register.aspx">Register</a>
     <form id="form1" runat="server">
         <div>
         </div>

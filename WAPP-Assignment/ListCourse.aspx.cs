@@ -16,6 +16,21 @@ namespace WAPP_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            string userType;
+            List<int> enroll_course_id = new List<int>();
+            if (Session["user_id"] == null)
+            {
+                userType = "nobody";
+            }
+            else if ((bool)Session["isAdmin"])
+            {
+                userType = "admin";
+            }
+            else
+            {
+                userType = "student";
+                enroll_course_id = Student.GetEnrolledCourseID(Convert.ToInt32(Session["user_id"]));
+            }
             DataTable dt = Course.GetAllCourseData();
             foreach (DataRow dr in dt.Rows)
             {
@@ -45,10 +60,7 @@ namespace WAPP_Assignment
                 cPanel.Controls.Add(new Literal { Text = "<br />" } );
                 cPanel.Controls.Add(description);
                 CoursePlaceholder.Controls.Add(cPanel);
-                if (Session["isAdmin"] == null)
-                {
-                }
-                else if ((bool)Session["isAdmin"])
+                if (userType == "admin")
                 {
                     Button editBtn = new Button
                     {
@@ -66,16 +78,51 @@ namespace WAPP_Assignment
                     //};
                     CoursePlaceholder.Controls.Add(editBtn);
                 }
-                else if (!(bool)Session["isAdmin"])
+                else if (userType == "student")
                 {
-                    Button enrollBtn = new Button
+                    if (enroll_course_id.Contains(Convert.ToInt32(dr["course_id"]))) {
+                        int chapter_id = Chapter.GetFirstChapterID(Convert.ToInt32(dr["course_id"]));
+                        HyperLink learnLink = new HyperLink
+                        {
+                            NavigateUrl = $"/Learn/ViewChapter.aspx?chapter_id={chapter_id}",
+                            Text = "Learn",
+                        };
+                        HyperLink viewLink = new HyperLink
+                        {
+                            NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
+                            Text = "View Course",
+                        };
+                        CoursePlaceholder.Controls.Add(learnLink);
+                        CoursePlaceholder.Controls.Add(new Literal { Text = "<br />"} );
+                        CoursePlaceholder.Controls.Add(viewLink);
+                    }
+                    else
                     {
-                        Text = "Enroll",
-                        ID = $"enrollBtn_{dr["course_id"]}"
+                        Button enrollBtn = new Button
+                        {
+                            Text = "Enroll",
+                            ID = $"enrollBtn_{dr["course_id"]}"
+                        };
+                        enrollBtn.Attributes.Add("data-course-id", dr["course_id"].ToString());
+                        enrollBtn.Click += new EventHandler(EnrollBtn_Click);
+                        CoursePlaceholder.Controls.Add(enrollBtn);
+                        HyperLink viewLink = new HyperLink
+                        {
+                            NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
+                            Text = "View Course",
+                        };
+                        CoursePlaceholder.Controls.Add(new Literal { Text = "<br />"} );
+                        CoursePlaceholder.Controls.Add(viewLink);
+                    }
+                }
+                else
+                {
+                    HyperLink viewLink = new HyperLink
+                    {
+                        NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
+                        Text = "View Course",
                     };
-                    enrollBtn.Attributes.Add("data-course-id", dr["course_id"].ToString());
-                    enrollBtn.Click += new EventHandler(EnrollBtn_Click);
-                    CoursePlaceholder.Controls.Add(enrollBtn);
+                    CoursePlaceholder.Controls.Add(viewLink);
                 }
                 CoursePlaceholder.Controls.Add(new Literal { Text = "<br />" });
             }
