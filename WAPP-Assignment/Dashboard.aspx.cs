@@ -13,9 +13,15 @@ namespace WAPP_Assignment
         {
             if (Session["user_id"] == null)
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("/Login.aspx");
                 return;
             }
+        }
+
+        protected void LogoutBtn_Click(object sender, EventArgs e)
+        {
+            Session.Abandon();
+            Response.Redirect("/Home.aspx");
         }
     }
 }

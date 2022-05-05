@@ -11,34 +11,34 @@ namespace WAPP_Assignment
 {
 
 
-    public partial class Dashboard
+    public partial class MyCourse
     {
 
         /// <summary>
-        /// form1 control.
+        /// CoursePanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.WebControls.Panel CoursePanel;
 
         /// <summary>
-        /// LogoutBtn control.
+        /// CoursePlaceholder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LogoutBtn;
+        protected global::System.Web.UI.WebControls.PlaceHolder CoursePlaceholder;
 
         /// <summary>
-        /// AllCoursesLink control.
+        /// HyperLink1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink AllCoursesLink;
+        protected global::System.Web.UI.WebControls.HyperLink HyperLink1;
     }
 }
