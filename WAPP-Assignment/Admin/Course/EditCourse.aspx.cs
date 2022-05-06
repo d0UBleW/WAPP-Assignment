@@ -47,14 +47,13 @@ namespace WAPP_Assignment.Admin
                 CatField.Value = string.Join("<|>", categoryList);
             }
             DataTable chapterDataTable = Chapter.GetCourseChapterData(course_id);
-            StringBuilder sb = new StringBuilder();
             foreach (DataRow chapterData in chapterDataTable.Rows)
             {
-                sb.AppendLine("<div class=\"container\">");
-                sb.AppendLine($"<h3>{chapterData["sequence"]}. {chapterData["title"]}</h3>");
-                sb.AppendLine("</div>");
-                ChapterPlaceholder.Controls.Add(new Literal { Text = sb.ToString() });
-                sb.Clear();
+                Panel container = new Panel();
+                container.CssClass = "container";
+                Label chapTitle = new Label {  Text = $"{chapterData["sequence"]}. {chapterData["title"]}" };
+                container.Controls.Add(chapTitle);
+                ChapterPlaceholder.Controls.Add(container);
                 Button editChapBtn = new Button
                 {
                     Text = "Edit Chapter",
@@ -62,18 +61,19 @@ namespace WAPP_Assignment.Admin
                 };
                 editChapBtn.Click += new EventHandler(EditChapBtn_Click);
                 editChapBtn.Attributes.Add("data-chap-id", chapterData["chapter_id"].ToString());
-                //Button delChapBtn = new Button
-                //{
-                //    Text = "Delete Chapter",
-                //    ID = $"delChapBtn{chapterData["chapter_id"]}",
-                //    UseSubmitBehavior = false,
-                //    CausesValidation = false,
-                //};
-                sb.AppendLine($"<button type=\"button\" id=\"delChapBtn-{chapterData["chapter_id"]}\" data-chap-id=\"{chapterData["chapter_id"]}\">Delete Chapter</button>");
+                Button delChapBtn = new Button
+                {
+                    Text = "Delete Chapter",
+                    ID = $"delChapBtn_{chapterData["chapter_id"]}",
+                    // UseSubmitBehavior = false,
+                    // CausesValidation = false,
+                };
+                delChapBtn.Attributes.Add("data-chap-id", chapterData["chapter_id"].ToString());
+                delChapBtn.OnClientClick = "return confirm('Are you sure?');";
+                delChapBtn.Click += new EventHandler(DelChapBtn_Click);
                 ChapterPlaceholder.Controls.Add(editChapBtn);
-                ChapterPlaceholder.Controls.Add(new Literal { Text = sb.ToString() });
+                ChapterPlaceholder.Controls.Add(delChapBtn);
                 ChapterPlaceholder.Controls.Add(new Literal { Text = "<br/><br/>" });
-                sb.Clear();
             }
         }
 
@@ -94,9 +94,11 @@ namespace WAPP_Assignment.Admin
         protected void DelChapBtn_Click(object sender, EventArgs e)
         {
             Button btn = sender as Button;
-            Regex rg = new Regex(@"delChapBtn(\d+)");
-            Match match = rg.Match(btn.ID);
-            string chapter_id = match.Groups[1].Value;
+            //Regex rg = new Regex(@"delChapBtn(\d+)");
+            //Match match = rg.Match(btn.ID);
+            //string chapter_id = match.Groups[1].Value;
+            string chapter_id = btn.Attributes["data-chap-id"];
+            Response.Redirect($"/Admin/Course/Chapter/DeleteChapter.aspx?chapter_id={chapter_id}");
         }
 
         protected void EditBtn_Click(object sender, EventArgs e)

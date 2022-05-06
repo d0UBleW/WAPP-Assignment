@@ -11,7 +11,7 @@ namespace WAPP_Assignment
 {
 
 
-    public partial class Dashboard
+    public partial class Profile
     {
 
         /// <summary>
@@ -24,39 +24,66 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// LogoutBtn control.
+        /// ProfileImg control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button LogoutBtn;
+        protected global::System.Web.UI.WebControls.Image ProfileImg;
 
         /// <summary>
-        /// AllCoursesLink control.
+        /// ProfileUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink AllCoursesLink;
+        protected global::System.Web.UI.WebControls.FileUpload ProfileUpload;
 
         /// <summary>
-        /// MyCoursesLink control.
+        /// RemoveBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink MyCoursesLink;
+        protected global::System.Web.UI.WebControls.Button RemoveBtn;
 
         /// <summary>
-        /// MyProfileLink control.
+        /// FullNameLbl control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink MyProfileLink;
+        protected global::System.Web.UI.WebControls.Label FullNameLbl;
+
+        /// <summary>
+        /// FullNameTxtBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox FullNameTxtBox;
+
+        /// <summary>
+        /// EmailLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label EmailLbl;
+
+        /// <summary>
+        /// EmailTxtBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox EmailTxtBox;
     }
 }

@@ -16,16 +16,17 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <div>
-            <asp:Button ID="BackBtn" runat="server" OnClientClick="return confirm('Go back?');" Text="Back" OnClick="BackBtn_Click" />
+            <asp:Button ID="BackBtn" runat="server" OnClientClick="return confirm('Go back?');" Text="Back" OnClick="BackBtn_Click" CausesValidation="False" />
             <br /><br />
             <asp:Image ID="ThumbnailImg" runat="server" Height="200" Width="200" />
             <br />
             <asp:FileUpload ID="ThumbnailUpload" runat="server" />
             <br /><br />
-            <asp:Button ID="RemoveBtn" runat="server" OnClick="RemoveBtn_Click" Text="Remove image" UseSubmitBehavior="False" />
+            <asp:Button ID="RemoveBtn" runat="server" OnClick="RemoveBtn_Click" Text="Remove image" UseSubmitBehavior="false" CausesValidation="false" />
             <br /><br />
             <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
-            <asp:TextBox ID="TitleTxtBox" runat="server" Required="required"></asp:TextBox>
+            <asp:TextBox ID="TitleTxtBox" runat="server"></asp:TextBox>
+            <asp:RequiredFieldValidator ID="TitleRequired" runat="server" ErrorMessage="Title is required" ForeColor="Red" ControlToValidate="TitleTxtBox" ValidationGroup="EditCourse"></asp:RequiredFieldValidator>
             <br /><br />
             <asp:Label ID="DescLbl" runat="server" Text="Description"></asp:Label>
             <br />
@@ -41,7 +42,7 @@
             <button id="CatDelBtn" type="button">Remove Category</button>
             <asp:HiddenField ID="CatField" runat="server" />
             <br /><br />
-            <asp:Button ID="EditBtn" runat="server" Text="Edit Course" OnClick="EditBtn_Click" />
+            <asp:Button ID="EditBtn" runat="server" Text="Edit Course" OnClick="EditBtn_Click" ValidationGroup="EditCourse" />
             <br />
             <asp:Panel ID="UploadStatusPanel" runat="server">
                 <asp:Label ID="UploadStatusLbl" runat="server" Text=""></asp:Label>
@@ -59,16 +60,7 @@
     </form>
     <script>
         $(document).ready(function () {
-            $("[id^='delChapBtn']").on('click', function () {
-                //const match = this.id.match(/delChapBtn-(\d+)/)
-                //if (match != null)
-                //    chap_id = match[1]
-                //const chap_id = this.data('chap-id')
-                const chap_id = this.dataset.chapId
-                if (confirm("Are you sure?")) {
-                    window.location.href = "/Admin/Course/Chapter/DeleteChapter.aspx?chapter_id=" + chap_id
-                }
-            })
+            $("#BackBtn").attr("disableValidation", "true")
         })
     </script>
 </body>

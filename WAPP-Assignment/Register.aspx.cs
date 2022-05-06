@@ -80,13 +80,17 @@ namespace WAPP_Assignment
                         string fullName = this.FullNameTxtBox.Text;
                         string email = this.EmailTxtBox.Text;
                         string gender = this.GenderDropDownList.SelectedValue;
-                        queryInsert += " (username, password, full_name, email, gender) VALUES (@username, @password, @full_name, @email, @gender);";
+                        queryInsert += " (username, password, full_name, email, gender, profile) VALUES (@username, @password, @full_name, @email, @gender, @profile);";
                         cmd.CommandText = queryInsert;
                         cmd.Parameters.AddWithValue("@username", username);
                         cmd.Parameters.AddWithValue("@password", password);
                         cmd.Parameters.AddWithValue("@full_name", fullName);
                         cmd.Parameters.AddWithValue("@email", email);
                         cmd.Parameters.AddWithValue("@gender", gender);
+                        if (gender == "m")
+                            cmd.Parameters.AddWithValue("@profile", "man.png");
+                        else
+                            cmd.Parameters.AddWithValue("@profile", "girl.png");
                     }
 
                     cmd.Connection = conn;
