@@ -16,7 +16,9 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
         <div>
-            <asp:Button ID="BackBtn" runat="server" OnClientClick="return confirm('Go back?');" Text="Back" OnClick="BackBtn_Click" CausesValidation="False" />
+            <asp:LinkButton ID="BackLinkButton" runat="server"
+                OnClick="BackLinkButton_Click" OnClientClick="return confirm('Go back?');"
+                Text="Back" CssClass="btn btn-secondary btn-sm"></asp:LinkButton>
             <br /><br />
             <asp:Image ID="ThumbnailImg" runat="server" Height="200" Width="200" />
             <br />
@@ -25,8 +27,7 @@
             <asp:Button ID="RemoveBtn" runat="server" OnClick="RemoveBtn_Click" Text="Remove image" UseSubmitBehavior="false" CausesValidation="false" />
             <br /><br />
             <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
-            <asp:TextBox ID="TitleTxtBox" runat="server"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="TitleRequired" runat="server" ErrorMessage="Title is required" ForeColor="Red" ControlToValidate="TitleTxtBox" ValidationGroup="EditCourse"></asp:RequiredFieldValidator>
+            <asp:TextBox ID="TitleTxtBox" runat="server" Required="required"></asp:TextBox>
             <br /><br />
             <asp:Label ID="DescLbl" runat="server" Text="Description"></asp:Label>
             <br />
@@ -42,7 +43,7 @@
             <button id="CatDelBtn" type="button">Remove Category</button>
             <asp:HiddenField ID="CatField" runat="server" />
             <br /><br />
-            <asp:Button ID="EditBtn" runat="server" Text="Edit Course" OnClick="EditBtn_Click" ValidationGroup="EditCourse" />
+            <asp:Button ID="EditBtn" runat="server" Text="Edit Course" OnClick="EditBtn_Click" />
             <br />
             <asp:Panel ID="UploadStatusPanel" runat="server">
                 <asp:Label ID="UploadStatusLbl" runat="server" Text=""></asp:Label>
@@ -58,10 +59,5 @@
             <asp:Placeholder ID="ExamPlaceholder" runat="server"></asp:Placeholder>
         </div>
     </form>
-    <script>
-        $(document).ready(function () {
-            $("#BackBtn").attr("disableValidation", "true")
-        })
-    </script>
 </body>
 </html>

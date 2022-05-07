@@ -71,7 +71,7 @@ namespace WAPP_Assignment.Admin
         }
 
 
-        protected void BackBtn_Click(object sender, EventArgs e)
+        protected void BackLinkButton_Click(object sender, EventArgs e)
         {
             DataTable dataTable = Chapter.GetChapterData(chapter_id);
             DataRow dataRow = dataTable.Rows[0];

@@ -24,13 +24,13 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// BackBtn control.
+        /// BackLinkButton control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BackBtn;
+        protected global::System.Web.UI.WebControls.LinkButton BackLinkButton;
 
         /// <summary>
         /// ChapNoLbl control.
@@ -60,15 +60,6 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.WebControls.RangeValidator ChapNoRangeValidator;
 
         /// <summary>
-        /// ChapNoRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator ChapNoRequired;
-
-        /// <summary>
         /// TitleLbl control.
         /// </summary>
         /// <remarks>
@@ -85,15 +76,6 @@ namespace WAPP_Assignment.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TitleTxtBox;
-
-        /// <summary>
-        /// TitleRequired control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator TitleRequired;
 
         /// <summary>
         /// ContentLbl control.

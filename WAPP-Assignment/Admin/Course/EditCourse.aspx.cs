@@ -180,7 +180,7 @@ namespace WAPP_Assignment.Admin
             Response.Redirect($"/Admin/Course/Exam/AddExam.aspx?course_id={course_id}");
         }
 
-        protected void BackBtn_Click(object sender, EventArgs e)
+        protected void BackLinkButton_Click(object sender, EventArgs e)
         {
             Response.Redirect("/ListCourse.aspx");
         }
