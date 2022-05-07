@@ -103,8 +103,8 @@ namespace WAPP_Assignment.Admin
 
         protected void EditBtn_Click(object sender, EventArgs e)
         {
-            string filename = Path.GetFileName(ThumbnailImg.ImageUrl);
             List<string> old_category = CatField.Value.Split(new string[] { "<|>" }, StringSplitOptions.None).ToList();
+            string filename = Path.GetFileName(ThumbnailImg.ImageUrl);
             if (ThumbnailUpload.HasFile)
             {
                 string result = MyUtil.ValidateImage(ThumbnailUpload);
@@ -157,7 +157,9 @@ namespace WAPP_Assignment.Admin
                         cmd.Parameters.Clear();
                     }
                     Category.UpdateCategory();
-                    MyUtil.UpdateThumbnailStorage(Server.MapPath("~/upload/thumbnail/"));
+                    List<string> defaultThumbList = new List<string>();
+                    defaultThumbList.Add(MyUtil.defaultThumb);
+                    MyUtil.UpdateImageStorage(Server.MapPath("~/upload/thumbnail/"), defaultThumbList, "course", "thumbnail");
                     old_category = newCategories;
                 }
                 conn.Close();

@@ -16,13 +16,14 @@ namespace WAPP_Assignment
                 Response.Redirect("/Login.aspx");
                 return;
             }
-            if (!(bool)Session["isAdmin"])
+            if ((bool)Session["isAdmin"])
             {
-                MyCoursesLink.Visible = true;
+                MyCoursesLink.Visible = false;
             }
             else
             {
-                MyCoursesLink.Visible = false;
+                MyCoursesLink.Visible = true;
+                MyProfileLink.Visible = true;
             }
         }
 

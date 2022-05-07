@@ -2,12 +2,38 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
     public static class Student
     {
+        public static DataRow GetStudentData(int student_id)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = WAPP_Assignment.DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT * FROM student WHERE student_id=@student_id;";
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
+                    {
+                        sda.Fill(dataTable);
+                    }
+                }
+                conn.Close();
+            }
+            if (dataTable.Rows.Count > 0)
+            {
+                return dataTable.Rows[0];
+            }
+            return null;
+        }
+
         public static List<int> GetEnrolledCourseID(int student_id)
         {
             List<int> course_id_list = new List<int>();

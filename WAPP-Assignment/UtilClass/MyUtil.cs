@@ -12,6 +12,9 @@ namespace WAPP_Assignment
     public static class MyUtil
     {
         public const string defaultThumb = "3041EBCF66C0270BBB172CCDB32C9386F61CC211.svg";
+        public const string defaultMaleProfile = "man.png";
+        public const string defaultFemaleProfile = "girl.png";
+        public const string defaultProfile = "default.svg";
 
         public static string ValidateImage(FileUpload file)
         {
@@ -79,9 +82,9 @@ namespace WAPP_Assignment
             }
         }
 
-        public static void UpdateThumbnailStorage(string dir)
+        public static void UpdateImageStorage(string dir, List<string> defaultImg, string tbl, string col)
         {
-            string defaultFile = dir + defaultThumb;
+            List<string> defaultFile = defaultImg;
             string[] currFile = Directory.GetFiles(dir);
             List<string> usedFile = new List<string>();
             using (SqlConnection conn = DatabaseManager.CreateConnection())
@@ -90,18 +93,19 @@ namespace WAPP_Assignment
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT DISTINCT thumbnail FROM course;";
+                    cmd.CommandText = $"SELECT DISTINCT {col} FROM {tbl};";
                     using (SqlDataReader sdr = cmd.ExecuteReader())
                     {
                         while (sdr.Read())
                         {
-                            usedFile.Add(dir+sdr["thumbnail"].ToString());
+                            usedFile.Add(dir+sdr[col].ToString());
                         }
                     }
                     List<string> unusedFile = currFile.Except(usedFile).ToList();
                     foreach (string file in unusedFile)
                     {
-                        if (file != defaultFile)
+                        string temp = Path.GetFileName(file);
+                        if (!defaultFile.Contains(temp))
                         {
                             File.Delete(file);
                         }
