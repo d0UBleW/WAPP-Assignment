@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Data.SqlClient;
+using System.Text;
 
 namespace WAPP_Assignment
 {
@@ -63,6 +64,17 @@ namespace WAPP_Assignment
             using (var sha1 = System.Security.Cryptography.SHA1.Create())
             {
                 var hash = sha1.ComputeHash(stream);
+                return BitConverter.ToString(hash).Replace("-", "");
+            }
+        }
+
+        public static string ComputeSHA1(string str)
+        {
+            byte[] byteArr = Encoding.ASCII.GetBytes(str);
+            MemoryStream ms = new MemoryStream(byteArr);
+            using (var sha1 = System.Security.Cryptography.SHA1.Create())
+            {
+                var hash = sha1.ComputeHash(ms);
                 return BitConverter.ToString(hash).Replace("-", "");
             }
         }

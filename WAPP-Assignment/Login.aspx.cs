@@ -24,8 +24,9 @@ namespace WAPP_Assignment
         protected void LoginBtn_Click(object sender, EventArgs e)
         {
             SetDbTable();
-            string username = this.UsernameTxtBox.Text;
-            string password = this.PasswordTxtBox.Text;
+            string username = UsernameTxtBox.Text;
+            string password = PasswordTxtBox.Text;
+            password = MyUtil.ComputeSHA1(password);
 
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {

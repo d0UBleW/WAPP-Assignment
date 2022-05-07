@@ -53,9 +53,10 @@ namespace WAPP_Assignment
         protected void RegisterBtn_Click(object sender, EventArgs e)
         {
             SetDbTable();
-            string username = this.UsernameTxtBox.Text;
-            string password = this.PasswordTxtBox.Text;
-            string userType = this.UserTypeRadio.SelectedValue;
+            string username = UsernameTxtBox.Text;
+            string password = PasswordTxtBox.Text;
+            password = MyUtil.ComputeSHA1(password);
+            string userType = UserTypeRadio.SelectedValue;
             if (IsUsernameDuplicate(username))
             {
                 SetUsernameValidPanel(username);
