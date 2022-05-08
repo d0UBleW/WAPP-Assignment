@@ -63,6 +63,16 @@ namespace WAPP_Assignment
                 ChapterTOCPanel.Controls.Add(title);
                 ChapterTOCPanel.Controls.Add(new Literal { Text = "<br />" });
             }
+            DataTable examTable = Exam.GetCourseExamData(course_id);
+            foreach (DataRow examRow in examTable.Rows)
+            {
+                Label title = new Label
+                {
+                    Text = $"{examRow["title"]}",
+                };
+                ExamPanel.Controls.Add(title);
+                ExamPanel.Controls.Add(new Literal { Text = "<br />" });
+            }
         }
 
         protected void EnrollBtn_Click(object sender, EventArgs e)

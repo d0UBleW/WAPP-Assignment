@@ -20,6 +20,7 @@
         </asp:Panel>
     </form>
     <asp:Panel ID="ChapterTOCPanel" runat="server"></asp:Panel>
+    <asp:Panel ID="ExamPanel" runat="server"></asp:Panel>
     <asp:Panel ID="RatingPanel" runat="server"></asp:Panel>
 </body>
 </html>

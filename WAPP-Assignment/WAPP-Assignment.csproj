@@ -116,6 +116,7 @@
     <Content Include="Scripts\register.js" />
     <Content Include="Learn\ViewChapter.aspx" />
     <Content Include="ListCourse.aspx" />
+    <Content Include="Scripts\searchCourse.js" />
     <Content Include="ViewCourse.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
