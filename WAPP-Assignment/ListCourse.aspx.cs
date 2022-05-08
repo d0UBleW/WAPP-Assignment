@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Services;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Configuration;
@@ -34,9 +35,11 @@ namespace WAPP_Assignment
             DataTable dt = Course.GetAllCourseData();
             foreach (DataRow dr in dt.Rows)
             {
+                DataTable courseCatTable = Category.GetCourseCategoryData(Convert.ToInt32(dr["course_id"]));
                 Panel cPanel = new Panel();
                 Panel imgPanel = new Panel();
-                cPanel.CssClass = "container bg-blue";
+                cPanel.CssClass = "container bg-blue course-container";
+                //cPanel.ID = $"CourseContainer_{dr["course_id"]}";
                 Image thumbnail = new Image
                 {
                     ImageUrl = "/upload/loading.gif",
@@ -50,33 +53,46 @@ namespace WAPP_Assignment
                 {
                     NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
                     Text = dr["title"].ToString(),
+                    CssClass = "course-title",
+                    //ID = $"CourseTitle_{dr["course_id"]}",
                 };
-                title.Style.Add("font-size", "36px");
+                title.Style.Add("font-size", "24px");
                 cPanel.Controls.Add(title);
+                Panel categoryPanel = new Panel
+                {
+                    CssClass = "course-category"
+                };
+                cPanel.Controls.Add(new Literal { Text = "<br />" } );
+                cPanel.Controls.Add(categoryPanel);
+
+                foreach (DataRow categoryRow in courseCatTable.Rows)
+                {
+                    Label cat = new Label
+                    {
+                        Text = categoryRow["name"].ToString(),
+                    };
+                    categoryPanel.Controls.Add(cat);
+                    if (courseCatTable.Rows.IndexOf(categoryRow) != courseCatTable.Rows.Count - 1)
+                        categoryPanel.Controls.Add(new Literal { Text = ", "});
+                }
+
                 Label description = new Label
                 {
                     Text = dr["description"].ToString(),
                 };
                 cPanel.Controls.Add(new Literal { Text = "<br />" } );
                 cPanel.Controls.Add(description);
+                cPanel.Controls.Add(new Literal { Text = "<br />" } );
                 CoursePlaceholder.Controls.Add(cPanel);
                 if (userType == "admin")
                 {
-                    Button editBtn = new Button
+                    HyperLink editLink = new HyperLink
                     {
                         Text = "Edit Course",
-                        ID = $"editBtn_{dr["course_id"]}"
+                        NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={dr["course_id"]}",
+                        CssClass = "btn btn-secondary btn-sm",
                     };
-                    editBtn.Attributes.Add("data-course-id", dr["course_id"].ToString());
-                    editBtn.Click += new EventHandler(EditCourseBtn_Click);
-                    //editBtn.Click += (s, evt) =>
-                    //{
-                    //    Regex rg = new Regex(@"editBtn(\d+)");
-                    //    Match match = rg.Match(editBtn.ID);
-                    //    string course_id = match.Groups[1].Value;
-                    //    Response.Redirect($"/Admin/EditCourse.aspx?course_id={course_id}");
-                    //};
-                    CoursePlaceholder.Controls.Add(editBtn);
+                    cPanel.Controls.Add(editLink);
                 }
                 else if (userType == "student")
                 {
@@ -86,33 +102,35 @@ namespace WAPP_Assignment
                         {
                             NavigateUrl = $"/Learn/ViewChapter.aspx?chapter_id={chapter_id}",
                             Text = "Learn",
+                            CssClass = "btn btn-secondary btn-sm",
                         };
                         HyperLink viewLink = new HyperLink
                         {
                             NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
                             Text = "View Course",
+                            CssClass = "btn btn-secondary btn-sm",
                         };
-                        CoursePlaceholder.Controls.Add(learnLink);
-                        CoursePlaceholder.Controls.Add(new Literal { Text = "<br />"} );
-                        CoursePlaceholder.Controls.Add(viewLink);
+                        cPanel.Controls.Add(learnLink);
+                        cPanel.Controls.Add(new Literal { Text = "<br />"} );
+                        cPanel.Controls.Add(viewLink);
                     }
                     else
                     {
-                        Button enrollBtn = new Button
+                        HyperLink enrollLink = new HyperLink
                         {
                             Text = "Enroll",
-                            ID = $"enrollBtn_{dr["course_id"]}"
+                            NavigateUrl = $"/EnrollCourse.aspx?course_id={dr["course_id"]}",
+                            CssClass = "btn btn-secondary btn-sm",
                         };
-                        enrollBtn.Attributes.Add("data-course-id", dr["course_id"].ToString());
-                        enrollBtn.Click += new EventHandler(EnrollBtn_Click);
-                        CoursePlaceholder.Controls.Add(enrollBtn);
+                        cPanel.Controls.Add(enrollLink);
                         HyperLink viewLink = new HyperLink
                         {
                             NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
                             Text = "View Course",
+                            CssClass = "btn btn-secondary btn-sm",
                         };
-                        CoursePlaceholder.Controls.Add(new Literal { Text = "<br />"} );
-                        CoursePlaceholder.Controls.Add(viewLink);
+                        cPanel.Controls.Add(new Literal { Text = "<br />"} );
+                        cPanel.Controls.Add(viewLink);
                     }
                 }
                 else
@@ -122,31 +140,48 @@ namespace WAPP_Assignment
                         NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
                         Text = "View Course",
                     };
-                    CoursePlaceholder.Controls.Add(viewLink);
+                    cPanel.Controls.Add(viewLink);
                 }
                 CoursePlaceholder.Controls.Add(new Literal { Text = "<br />" });
             }
         }
 
-        protected void EnrollBtn_Click(object sender ,EventArgs e)
-        {
-            Button btn = sender as Button;
-            string course_id = btn.Attributes["data-course-id"];
-            Response.Redirect($"/EnrollCourse.aspx?course_id={course_id}");
-        }
-
-        protected void EditCourseBtn_Click(object sender, EventArgs e)
-        {
-            Button btn = sender as Button;
-            Regex rg = new Regex(@"editBtn_(\d+)");
-            Match match = rg.Match(btn.ID);
-            string course_id = match.Groups[1].Value;
-            Response.Redirect($"/Admin/Course/EditCourse.aspx?course_id={course_id}");
-        }
-
         protected void AddCourseBtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("/Admin/Course/AddCourse.aspx");
+        }
+
+        protected void SearchBtn_Click(object sender, EventArgs e)
+        {
+            string keyword;
+            if (true)
+            {
+                System.Diagnostics.Debug.WriteLine("title");
+                keyword = SearchTitleTxtBox.Text;
+            }
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("cat");
+                keyword = SearchCatTxtBox.Text;
+            }
+            //Response.Redirect("/ListCourse.aspx?keyword=");
+        }
+
+        protected void FilterList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            System.Diagnostics.Debug.WriteLine(FilterList.SelectedValue);
+        }
+
+        [WebMethod]
+        public static List<string> SearchCategory(string prefixText, int count)
+        {
+            return MyAutoComplete.ListCategory(prefixText, count);
+        }
+
+        [WebMethod]
+        public static List<string> SearchTitle(string prefixText, int count)
+        {
+            return MyAutoComplete.ListCourseTitle(prefixText, count);
         }
     }
 }
