@@ -1,12 +1,8 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddExam.aspx.cs" Inherits="WAPP_Assignment.Admin.AddExam" %>
+﻿<%@ Page Title="Add Exam" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="AddExam.aspx.cs" Inherits="WAPP_Assignment.Admin.AddExam" %>
 
-<!DOCTYPE html>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server"></asp:Content>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
+<asp:Content ID="AddExamContent" ContentPlaceHolderID="SubMainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
@@ -15,5 +11,4 @@
             <asp:Button ID="AddExBtn" runat="server" Text="Add Exam" OnClick="AddExBtn_Click" />
         </div>
     </form>
-</body>
-</html>
+</asp:Content>

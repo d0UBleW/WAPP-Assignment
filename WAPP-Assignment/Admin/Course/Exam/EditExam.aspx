@@ -1,12 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditExam.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Exam.EditExam" %>
+﻿<%@ Page Title="Edit Exam" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="EditExam.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Exam.EditExam" %>
 
-<!DOCTYPE html>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
+</asp:Content>
+
+<asp:Content ID="EditExamContent" ContentPlaceHolderID="SubMainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
@@ -17,5 +15,4 @@
             <asp:PlaceHolder ID="QuePlaceholder" runat="server"></asp:PlaceHolder>
         </div>
     </form>
-</body>
-</html>
+</asp:Content>

@@ -1,14 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="MyCourse.aspx.cs" Inherits="WAPP_Assignment.MyCourse" %>
+﻿<%@ Page Title="My Courses" Language="C#" MasterPageFile="~/SiteStudent.Master" AutoEventWireup="true" CodeBehind="MyCourse.aspx.cs" Inherits="WAPP_Assignment.MyCourse" %>
 
-<!DOCTYPE html>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
+</asp:Content>
+
+<asp:Content ID="CourseContent" ContentPlaceHolderID="SubMainContent" runat="server">
     <asp:Panel ID="CoursePanel" runat="server">
         <asp:PlaceHolder ID="CoursePlaceholder" runat="server"></asp:PlaceHolder>
     </asp:Panel>
-</body>
-</html>
+</asp:Content>

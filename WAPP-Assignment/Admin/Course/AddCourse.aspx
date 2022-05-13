@@ -1,16 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddCourse.aspx.cs" Inherits="WAPP_Assignment.Admin.AddCourse" %>
+﻿<%@ Page Title="Add Course" Language="C#" MasterPageFile="~/SiteAdmin.master" AutoEventWireup="true" CodeBehind="AddCourse.aspx.cs" Inherits="WAPP_Assignment.Admin.AddCourse" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Add Course</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
     <script src="/Scripts/addCourse.js" defer></script>
-</head>
-<body>
+</asp:Content>
+
+<asp:Content ID="AddCourseContent" ContentPlaceHolderID="SubMainContent" runat="server">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
@@ -45,5 +41,4 @@
             <asp:Button ID="AddBtn" runat="server" Text="Add" OnClick="AddBtn_Click" />
         </div>
     </form>
-</body>
-</html>
+</asp:Content>

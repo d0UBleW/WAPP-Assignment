@@ -9,7 +9,7 @@ namespace WAPP_Assignment
 {
     public partial class Dashboard : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_PreInit(object sender, EventArgs e)
         {
             if (Session["user_id"] == null)
             {
@@ -18,12 +18,20 @@ namespace WAPP_Assignment
             }
             if ((bool)Session["isAdmin"])
             {
-                MyCoursesLink.Visible = false;
+                Page.MasterPageFile = "~/SiteAdmin.Master";
             }
             else
             {
-                MyCoursesLink.Visible = true;
-                MyProfileLink.Visible = true;
+                Page.MasterPageFile = "~/SiteStudent.Master";
+            }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["user_id"] == null)
+            {
+                Response.Redirect("/Login.aspx");
+                return;
             }
         }
 

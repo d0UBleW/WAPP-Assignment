@@ -15,23 +15,30 @@ namespace WAPP_Assignment
 {
     public partial class ListCourse : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        string userType;
+        protected void Page_PreInit(object sender, EventArgs e)
         {
-            string userType;
-            List<int> enroll_course_id = new List<int>();
             if (Session["user_id"] == null)
             {
                 userType = "nobody";
+                Page.MasterPageFile = "~/SiteAnon.Master";
             }
             else if ((bool)Session["isAdmin"])
             {
                 userType = "admin";
+                Page.MasterPageFile = "~/SiteAdmin.Master";
             }
             else
             {
                 userType = "student";
-                enroll_course_id = Student.GetEnrolledCourseID(Convert.ToInt32(Session["user_id"]));
+                Page.MasterPageFile = "~/SiteStudent.Master";
             }
+        }
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            List<int> enroll_course_id = new List<int>();
+            enroll_course_id = Student.GetEnrolledCourseID(Convert.ToInt32(Session["user_id"]));
             DataTable dt = Course.GetAllCourseData();
             foreach (DataRow dr in dt.Rows)
             {
@@ -42,7 +49,7 @@ namespace WAPP_Assignment
                 //cPanel.ID = $"CourseContainer_{dr["course_id"]}";
                 Image thumbnail = new Image
                 {
-                    ImageUrl = "/upload/loading.gif",
+                    ImageUrl = "/images/loading.gif",
                     Width = 200,
                     Height = 200,
                 };

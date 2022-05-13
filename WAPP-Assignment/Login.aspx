@@ -1,14 +1,9 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WAPP_Assignment.Login" %>
+﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WAPP_Assignment.Login" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Login</title>
-</head>
-<body>
+<asp:Content ID="LoginContent" ContentPlaceHolderID="MainContent" runat="server">
+    <input id="LogNavHidden" name="LogNavHidden" type="hidden" value="Login" disabled="disabled" />
     <form id="form1" runat="server">
-        <div>
+        <div class="container">
             <asp:Label ID="UserTypeLbl" runat="server" Text="Login as"></asp:Label>
             <asp:RadioButtonList ID="UserTypeRadio" runat="server">
                 <asp:ListItem Selected="True" Text="Admin" Value="admin"></asp:ListItem>
@@ -23,10 +18,9 @@
             <br />
             <asp:TextBox ID="PasswordTxtBox" runat="server" TextMode="Password" Required="required"></asp:TextBox>
             <br /><br />
-            <asp:Button ID="LoginBtn" runat="server" Text="Login" OnClick="LoginBtn_Click" />
+            <asp:Button ID="LoginBtn" runat="server" Text="Login" OnClick="LoginBtn_Click" CssClass="btn btn-primary btn-md btn-block" />
             <br /><br />
             <asp:Label ID="ErrorLbl" runat="server" Text="Login credential is incorrect." ForeColor="Red" Visible="false"></asp:Label>
         </div>
     </form>
-</body>
-</html>
+</asp:Content>

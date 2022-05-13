@@ -1,15 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="EditChapter.aspx.cs" Inherits="WAPP_Assignment.Admin.EditChapter" ValidateRequest="false" %>
+﻿<%@ Page Title="Edit Chapter" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="EditChapter.aspx.cs" Inherits="WAPP_Assignment.Admin.EditChapter" ValidateRequest="false" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
     <script src="https://cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
     <script src="/Scripts/ckeditor.js" defer></script>
-</head>
-<body>
+</asp:Content>
+
+<asp:Content ID="EditChapterContent" ContentPlaceHolderID="SubMainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:LinkButton ID="BackLinkButton" runat="server" OnClick="BackLinkButton_Click" OnClientClick="return confirm('Go back?');" Text="Back"></asp:LinkButton>
@@ -31,5 +27,4 @@
             <asp:HiddenField ID="CourseIDField" runat="server" />
         </div>
     </form>
-</body>
-</html>
+</asp:Content>

@@ -1,16 +1,12 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AddQuestion.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Exam.AddQuestion" ValidateRequest="false" %>
+﻿<%@ Page Title="Add Question" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="AddQuestion.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Exam.AddQuestion" ValidateRequest="false" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
     <script src="https://cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
     <script src="/Scripts/ckeditor.js" defer></script>
     <script src="/Scripts/addOption.js" defer></script>
-</head>
-<body>
+</asp:Content>
+
+<asp:Content ID="AddQuestionContent" ContentPlaceHolderID="SubMainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="QueNoLbl" runat="server" Text="Question No."></asp:Label>
@@ -43,5 +39,4 @@
             <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         </div>
     </form>
-</body>
-</html>
+</asp:Content>

@@ -28,7 +28,7 @@ namespace WAPP_Assignment
                 cPanel.CssClass = "container bg-blue";
                 Image thumbnail = new Image
                 {
-                    ImageUrl = "/upload/loading.gif",
+                    ImageUrl = "/images/loading.gif",
                     Width = 200,
                     Height = 200,
                 };

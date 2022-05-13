@@ -17,6 +17,7 @@ namespace WAPP_Assignment
         {
             if (Session["user_id"] == null || (bool)Session["isAdmin"])
             {
+                Response.Redirect("/Login.aspx");
                 return;
             }
             student_id = Convert.ToInt32(Session["user_id"]);

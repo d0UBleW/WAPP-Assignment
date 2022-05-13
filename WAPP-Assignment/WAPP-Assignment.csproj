@@ -103,10 +103,12 @@
     <Content Include="App_Data\ilearn_log.ldf">
       <DependentUpon>ilearn.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\master.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="EnrollCourse.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="Logout.aspx" />
     <Content Include="MyCourse.aspx" />
     <Content Include="Profile.aspx" />
     <Content Include="Register.aspx" />
@@ -177,12 +179,47 @@
     <Compile Include="Admin\Course\Exam\EditExam.aspx.designer.cs">
       <DependentUpon>EditExam.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="SiteAdmin.master.cs">
+      <DependentUpon>SiteAdmin.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteAdmin.master.designer.cs">
+      <DependentUpon>SiteAdmin.master</DependentUpon>
+    </Compile>
+    <Compile Include="SiteAnon.master.cs">
+      <DependentUpon>SiteAnon.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteAnon.master.designer.cs">
+      <DependentUpon>SiteAnon.master</DependentUpon>
+    </Compile>
+    <Compile Include="SiteStudent.master.cs">
+      <DependentUpon>SiteStudent.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiteStudent.master.designer.cs">
+      <DependentUpon>SiteStudent.master</DependentUpon>
     </Compile>
     <Compile Include="UtilClass\Category.cs" />
     <Compile Include="UtilClass\Chapter.cs" />
@@ -261,6 +298,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Site.Master" />
+    <Content Include="SiteAnon.master" />
+    <Content Include="SiteAdmin.master" />
+    <Content Include="SiteStudent.master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -269,6 +310,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="images\" />
     <Folder Include="upload\" />
   </ItemGroup>
   <ItemGroup>

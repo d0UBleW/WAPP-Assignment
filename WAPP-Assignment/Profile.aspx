@@ -1,12 +1,6 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="WAPP_Assignment.Profile" %>
+﻿<%@ Page Title="Profile" Language="C#" MasterPageFile="~/SiteStudent.master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="WAPP_Assignment.Profile" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
+<asp:Content ID="ProfileContent" ContentPlaceHolderID="SubMainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:Image ID="ProfileImg" runat="server" Height="200" Width="200" />
@@ -37,5 +31,4 @@
                 Text="Change password" CssClass="btn btn-secondary btn-sm"></asp:HyperLink>
         </div>
     </form>
-</body>
-</html>
+</asp:Content>
