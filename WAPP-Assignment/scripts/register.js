@@ -35,7 +35,17 @@ $(document).ready(function () {
   })
 })
 
+let valid = false;
+
+const isValidUsername = (data) => {
+  if (data == "true")
+    valid = false;
+  else
+    valid = true;
+}
+
 const checkUsername = () => {
+  console.log("check")
   const $usernameTxtBox = $("input[name$='UsernameTxtBox']")
   $.ajax({
     type: "POST",
@@ -62,8 +72,16 @@ const checkUsername = () => {
         $("#username_feedback").addClass("valid-feedback")
         $("#username_feedback").hide()
       }
+      isValidUsername(isDup);
     }
   })
 }
+
+$("[id$='RegisterBtn']").on('click', function () {
+  if (!valid) {
+    $("[id$='UsernameTxtBox']").focus()
+  }
+  return valid
+})
 
 $("[id$='UsernameTxtBox']").on('change', checkUsername)

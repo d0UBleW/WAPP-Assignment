@@ -17,10 +17,6 @@
       <asp:TextBox ID="UsernameTxtBox" runat="server" CssClass="form-control" TextMode="SingleLine" ToolTip="username for login" Required="required" ></asp:TextBox>
       <br />
       <div id="username_feedback"></div>
-      <asp:Panel ID="UsernameValidPanel" runat="server">
-        <asp:Label ID="UsernameValidLbl" runat="server" Text="" ForeColor="Red"></asp:Label>
-        <br />
-      </asp:Panel>
       <br />
       <asp:Label ID="PasswordLbl" runat="server" Text="Password"></asp:Label>
       <br />

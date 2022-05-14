@@ -70,6 +70,8 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Text.Encoding.CodePages, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Text.Encoding.CodePages.5.0.0\lib\net461\System.Text.Encoding.CodePages.dll</HintPath>
     </Reference>
@@ -103,6 +105,13 @@
     <Content Include="App_Data\ilearn_log.ldf">
       <DependentUpon>ilearn.mdf</DependentUpon>
     </Content>
+    <None Include="Connected Services\MyServiceReference\MyService.disco" />
+    <None Include="Connected Services\MyServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\MyServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\MyServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Content\master.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="EnrollCourse.aspx" />
@@ -179,6 +188,11 @@
     </Compile>
     <Compile Include="Admin\Course\Exam\EditExam.aspx.designer.cs">
       <DependentUpon>EditExam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\MyServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
@@ -302,6 +316,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\MyServiceReference\MyService.wsdl" />
+    <Content Include="Connected Services\MyServiceReference\WAPP_Assignment.MyServiceReference.HelloWorldResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\MyServiceReference\WAPP_Assignment.MyServiceReference.IsUsernameDuplicateResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="SiteAnon.master" />
@@ -320,6 +341,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\MyServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -8,6 +8,8 @@ using System.Text;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
+using System.Collections.Specialized;
 
 namespace WAPP_Assignment
 {
@@ -17,7 +19,6 @@ namespace WAPP_Assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             SetDbTable();
-            SetUsernameValidPanel(this.UsernameTxtBox.Text);
             if (!IsPostBack)
             {
             }
@@ -57,9 +58,9 @@ namespace WAPP_Assignment
             string password = PasswordTxtBox.Text;
             password = MyUtil.ComputeSHA1(password);
             string userType = UserTypeRadio.SelectedValue;
-            if (IsUsernameDuplicate(username))
+            var client = new MyService();
+            if (client.IsUsernameDuplicate(DbTable, username))
             {
-                SetUsernameValidPanel(username);
                 this.UsernameTxtBox.Focus();
                 return;
             }
@@ -100,33 +101,6 @@ namespace WAPP_Assignment
                     Response.Write("<script>alert('Registration successful!'); window.location.href = 'Login.aspx';</script>");
                 }
             }
-        }
-
-        protected void UsernameTxtBox_TextChanged(object sender, EventArgs e)
-        {
-            string username = this.UsernameTxtBox.Text;
-            SetDbTable();
-            SetUsernameValidPanel(username);
-        }
-
-        protected void SetUsernameValidPanel(string username)
-        {
-            if (String.IsNullOrEmpty(username))
-            {
-                this.UsernameValidPanel.Visible = false;
-                return;
-            }
-            if (IsUsernameDuplicate(username))
-            {
-                this.UsernameValidLbl.ForeColor = System.Drawing.Color.Red;
-                this.UsernameValidLbl.Text = "Username is already taken.";
-            }
-            else
-            {
-                this.UsernameValidLbl.ForeColor = System.Drawing.Color.Green;
-                this.UsernameValidLbl.Text = "✔";
-            }
-            this.UsernameValidPanel.Visible = true;
         }
 
         protected void SetDbTable()
