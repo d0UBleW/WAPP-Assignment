@@ -18,6 +18,7 @@
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" integrity="sha384-ejwKkLla8gPP8t2u0eQyL0Q/4ItcnyveF505U0NIobD/SMsNyXrLti6CWaD0L52l" crossorigin="anonymous">
   <style>
     .nav-loc {
       visibility: hidden;
@@ -78,7 +79,7 @@
   <script>
     $(document).ready(function () {
       $("#main_nav .nav-link").each(function () {
-        const navText = $("input[id$='NavLocation'").text()
+        const navText = $("input[id$='NavLocation']").val()
         if (this.innerText == navText) {
           $(this).addClass("active");
         }

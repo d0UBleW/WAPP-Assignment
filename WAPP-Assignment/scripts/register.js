@@ -22,31 +22,48 @@ $(function () {
 })
 
 $(document).ready(function () {
-    $("input[name$='UserTypeRadio']").each(function () {
-        $(this).on("change", function () {
-            if ($(this).val() == "student" && $(this).is(":checked")) {
-                toggleStudentDiv(true)
-            }
-            else if ($(this).val() == "admin" && $(this).is(":checked")) {
-                toggleStudentDiv(false)
-            }
-        })
+  $("input[name$='UserTypeRadio']").each(function () {
+    $(this).on("change", function () {
+      if ($(this).val() == "student" && $(this).is(":checked")) {
+          toggleStudentDiv(true)
+      }
+      else if ($(this).val() == "admin" && $(this).is(":checked")) {
+          toggleStudentDiv(false)
+      }
+      checkUsername()
     })
+  })
 })
 
 const checkUsername = () => {
+  const $usernameTxtBox = $("input[name$='UsernameTxtBox']")
   $.ajax({
     type: "POST",
     url: "MyService.asmx/IsUsernameDuplicate",
     data: {
       table: $("input[name$='UserTypeRadio']:checked").val(),
-      username: $("input[name$='UsernameTxtBox'").val()
+      username: $usernameTxtBox.val()
     },
     success: function (response) {
-      $("div[id$='UsernameValidPanel']").hide()
-      if (response.d == true) {
-        $("span[id$='UsernameValidLbl']").text("Username is already taken")
+      $("#username_feedback").hide()
+      const isDup = $(response).find("boolean").text()
+      if (isDup == "true") {
+        $usernameTxtBox.removeClass("is-valid")
+        $("#username_feedback").removeClass("valid-feedback")
+        $usernameTxtBox.addClass("is-invalid")
+        $("#username_feedback").addClass("invalid-feedback")
+        $("#username_feedback").text("Username is already taken")
+        $("#username_feedback").show()
+      }
+      else {
+        $usernameTxtBox.removeClass("is-invalid")
+        $("#username_feedback").removeClass("invalid-feedback")
+        $usernameTxtBox.addClass("is-valid")
+        $("#username_feedback").addClass("valid-feedback")
+        $("#username_feedback").hide()
       }
     }
   })
 }
+
+$("[id$='UsernameTxtBox']").on('change', checkUsername)

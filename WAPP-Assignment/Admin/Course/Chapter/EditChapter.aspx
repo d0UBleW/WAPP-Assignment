@@ -21,7 +21,7 @@
             <br /><br />
             <asp:Label ID="ContentLbl" runat="server" Text="Content"></asp:Label>
             <br />
-            <asp:TextBox ID="EditorTxtBox" runat="server" TextMode="MultiLine"></asp:TextBox>
+            <asp:TextBox ID="EditorTxtBox" runat="server" TextMode="MultiLine" ClientIDMode="Static"></asp:TextBox>
             <br /><br />
             <asp:Button ID="EditBtn" runat="server" OnClick="EditBtn_Click" Text="Edit" />
             <asp:HiddenField ID="CourseIDField" runat="server" />

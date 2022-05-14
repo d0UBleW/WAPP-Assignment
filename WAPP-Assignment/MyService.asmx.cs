@@ -14,7 +14,7 @@ namespace WAPP_Assignment
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
     [System.ComponentModel.ToolboxItem(false)]
     // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    // [System.Web.Script.Services.ScriptService]
+    [System.Web.Script.Services.ScriptService]
     public class MyService : System.Web.Services.WebService
     {
 
@@ -25,10 +25,10 @@ namespace WAPP_Assignment
         }
 
         [WebMethod]
-        public bool IsUsernameDuplicate(string tbl, string username)
+        public bool IsUsernameDuplicate(string table, string username)
         {
             int count;
-            string queryExist = $"SELECT COUNT(*) FROM {tbl} WHERE username=@username;";
+            string queryExist = $"SELECT COUNT(*) FROM {table} WHERE username=@username;";
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();

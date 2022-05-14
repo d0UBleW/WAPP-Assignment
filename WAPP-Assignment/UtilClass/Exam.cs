@@ -22,6 +22,7 @@ namespace WAPP_Assignment
                     cmd.Parameters.AddWithValue("@course_id", course_id);
                     using (SqlDataAdapter adapter = new SqlDataAdapter())
                     {
+                        adapter.SelectCommand = cmd;
                         adapter.Fill(dataTable);
                     }
                 }

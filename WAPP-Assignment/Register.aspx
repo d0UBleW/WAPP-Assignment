@@ -14,10 +14,9 @@
       <br />
       <asp:Label ID="UsernameLbl" runat="server" Text="Username"></asp:Label>
       <br />
-      <asp:TextBox ID="UsernameTxtBox" runat="server" TextMode="SingleLine" ToolTip="username for login" Required="required" AutoPostBack="True" OnTextChanged="UsernameTxtBox_TextChanged"></asp:TextBox>
+      <asp:TextBox ID="UsernameTxtBox" runat="server" CssClass="form-control" TextMode="SingleLine" ToolTip="username for login" Required="required" ></asp:TextBox>
       <br />
-      <span class="glyphicon glyphicon-ok"></span>
-      <br />
+      <div id="username_feedback"></div>
       <asp:Panel ID="UsernameValidPanel" runat="server">
         <asp:Label ID="UsernameValidLbl" runat="server" Text="" ForeColor="Red"></asp:Label>
         <br />

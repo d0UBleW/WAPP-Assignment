@@ -35,11 +35,11 @@
 }
 
 $(document).ready(function () {
-    $("#AddOptBtn").on('click', function () {
-        const opt = $("#OptTxtBox").val()
-        $("#OptTxtBox").val("")
+    $("[id$='AddOptBtn']").on('click', function () {
+        const opt = $("[id$='OptTxtBox']").val()
+        $("[id$='OptTxtBox").val("']")
         if (opt === "") return
-        const $tbody = $("#OptTable").find("tbody")
+        const $tbody = $("[id$='OptTable").find("tbody']")
         const $lastRow = $tbody.find("tr:last")
         if ($lastRow.length == 0) {
             const $newRow = createOption("OptTable", 0, opt)
@@ -59,6 +59,6 @@ const CheckOption = () => {
             checked = true
         }
     })
-    $("#OptStatus").show()
+    $("[id$='OptStatus']").show()
     return checked
 }
