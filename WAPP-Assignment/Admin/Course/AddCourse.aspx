@@ -10,7 +10,7 @@
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>
-        <div>
+        <div class="container">
             <asp:Label ID="TitleLbl" runat="server" Text="Course Title"></asp:Label>
             <br />
             <asp:TextBox ID="TitleTxtBox" runat="server" TextMode="SingleLine" Required="required"></asp:TextBox>

@@ -34,3 +34,19 @@ $(document).ready(function () {
     })
 })
 
+const checkUsername = () => {
+  $.ajax({
+    type: "POST",
+    url: "MyService.asmx/IsUsernameDuplicate",
+    data: {
+      table: $("input[name$='UserTypeRadio']:checked").val(),
+      username: $("input[name$='UsernameTxtBox'").val()
+    },
+    success: function (response) {
+      $("div[id$='UsernameValidPanel']").hide()
+      if (response.d == true) {
+        $("span[id$='UsernameValidLbl']").text("Username is already taken")
+      }
+    }
+  })
+}

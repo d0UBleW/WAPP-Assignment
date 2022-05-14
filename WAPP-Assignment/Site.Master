@@ -60,6 +60,7 @@
                 <asp:ContentPlaceHolder ID="CourseDropDownContent" runat="server"></asp:ContentPlaceHolder>
               </ul>
             </li>
+            <asp:ContentPlaceHolder ID="NavLeftContent" runat="server"></asp:ContentPlaceHolder>
           </ul>
           <ul class="navbar-nav justify-content-end">
             <asp:ContentPlaceHolder ID="NavRightContent" runat="server">
@@ -74,11 +75,10 @@
   <br />
   <asp:ContentPlaceHolder ID="MainContent" runat="server">
   </asp:ContentPlaceHolder>
-  <asp:Label ID="NavLocation" runat="server" style="visibility: hidden;"></asp:Label>
   <script>
     $(document).ready(function () {
       $("#main_nav .nav-link").each(function () {
-        const navText = $("span[id$='NavLocation'").text()
+        const navText = $("input[id$='NavLocation'").text()
         if (this.innerText == navText) {
           $(this).addClass("active");
         }

@@ -4,6 +4,6 @@
 </asp:Content>
 
 <asp:Content ID="HomeContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>Home Page</h1>
-  <asp:PlaceHolder ID="NavLocPH" runat="server"></asp:PlaceHolder>
+  <h1>Home Page</h1>
+  <input type="hidden" id="NavLocation" value="Home" disabled="disabled" />
 </asp:Content>

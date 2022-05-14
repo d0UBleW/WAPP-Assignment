@@ -16,6 +16,23 @@ namespace WAPP_Assignment.Admin.Course.Exam
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user_id"] == null)
+            {
+                Response.Redirect("~/Home.aspx");
+                return;
+            }
+            if (!(bool)Session["isAdmin"])
+            {
+                if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
+                {
+                    Response.Redirect(Request.UrlReferrer.ToString());
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
+                return;
+            }
             string exam_id_temp = Request.QueryString["exam_id"];
             if (String.IsNullOrEmpty(exam_id_temp))
             {

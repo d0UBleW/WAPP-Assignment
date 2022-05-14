@@ -1,9 +1,8 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SiteAnon.master.cs" Inherits="WAPP_Assignment.SiteAnon" %>
-<%@ MasterType TypeName="WAPP_Assignment.BaseM" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+  <asp:ContentPlaceHolder ID="head" runat="server">
+  </asp:ContentPlaceHolder>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="NavRightContent" runat="server">
   <li class="nav-item">
@@ -14,7 +13,6 @@
   </li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ContentPlaceHolder ID="MainContent" runat="server">
-    </asp:ContentPlaceHolder>
-  <asp:Label ID="NavLocation" CssClass="nav-loc" runat="server"></asp:Label>
+  <asp:ContentPlaceHolder ID="MainContent" runat="server">
+  </asp:ContentPlaceHolder>
 </asp:Content>

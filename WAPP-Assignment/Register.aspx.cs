@@ -134,5 +134,6 @@ namespace WAPP_Assignment
             string userType = this.UserTypeRadio.SelectedValue.ToString();
             DbTable = userType;
         }
+
     }
 }

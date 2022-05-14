@@ -28,11 +28,5 @@ namespace WAPP_Assignment
         protected void Page_Load(object sender, EventArgs e)
         {
         }
-
-        protected override void OnLoadComplete(EventArgs e)
-        {
-            BaseM master = Master as BaseM;
-            master.Location = "Home";
-        }
     }
 }

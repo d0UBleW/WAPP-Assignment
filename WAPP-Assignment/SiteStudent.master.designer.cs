@@ -15,6 +15,24 @@ namespace WAPP_Assignment
     {
 
         /// <summary>
+        /// head control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder head;
+
+        /// <summary>
+        /// DashLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink DashLink;
+
+        /// <summary>
         /// LogoutLink control.
         /// </summary>
         /// <remarks>
@@ -33,17 +51,12 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.HyperLink ProfileLink;
 
         /// <summary>
-        /// Master property.
+        /// MainContent control.
         /// </summary>
         /// <remarks>
-        /// Auto-generated property.
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        public new WAPP_Assignment.BaseM Master
-        {
-            get
-            {
-                return ((WAPP_Assignment.BaseM)(base.Master));
-            }
-        }
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
     }
 }

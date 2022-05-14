@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace WAPP_Assignment
 {
-    public partial class SiteAdmin : BaseM
+    public partial class SiteAdmin : System.Web.UI.MasterPage
     {
-        protected new void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
         }
     }

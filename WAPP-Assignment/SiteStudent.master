@@ -1,12 +1,18 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SiteStudent.master.cs" Inherits="WAPP_Assignment.SiteStudent" %>
-<%@ MasterType TypeName="WAPP_Assignment.BaseM" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <title>Student | <%: Page.Title %></title>
-    <asp:ContentPlaceHolder ID="head" runat="server">
-    </asp:ContentPlaceHolder>
+  <title>Student | <%: Page.Title %></title>
+  <asp:ContentPlaceHolder ID="head" runat="server">
+  </asp:ContentPlaceHolder>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="NavRightContent" runat="server">
+
+<asp:Content ID="NavLeft" ContentPlaceHolderID="NavLeftContent" runat="server">
+  <li class="nav-item">
+    <asp:HyperLink CssClass="nav-link" runat="server" ID="DashLink" NavigateUrl="~/Dashboard.aspx" Text="Dashboard"></asp:HyperLink>
+  </li>
+</asp:Content>
+
+<asp:Content ID="NavRight" ContentPlaceHolderID="NavRightContent" runat="server">
   <li class="nav-item">
     <asp:HyperLink CssClass="nav-link" runat="server" ID="LogoutLink" NavigateUrl="/Logout.aspx" Text="Logout"></asp:HyperLink>
   </li>
@@ -17,10 +23,9 @@
   </li>
 </asp:Content>
 <asp:Content ID="CourseDropDown" ContentPlaceHolderID="CourseDropDownContent" runat="server">
-      <li><a class="dropdown-item" href="/MyCourse.aspx">My Courses</a></li>
+  <li><a class="dropdown-item" href="/MyCourse.aspx">My Courses</a></li>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:ContentPlaceHolder ID="MainContent" runat="server">
-    </asp:ContentPlaceHolder>
-  <asp:Label ID="NavLocation" CssClass="nav-loc" runat="server"></asp:Label>
+  <asp:ContentPlaceHolder ID="MainContent" runat="server">
+  </asp:ContentPlaceHolder>
 </asp:Content>

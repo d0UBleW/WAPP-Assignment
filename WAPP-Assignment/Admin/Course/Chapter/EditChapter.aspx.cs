@@ -15,6 +15,23 @@ namespace WAPP_Assignment.Admin
         private int chapter_id;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["user_id"] == null)
+            {
+                Response.Redirect("~/Home.aspx");
+                return;
+            }
+            if (!(bool)Session["isAdmin"])
+            {
+                if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
+                {
+                    Response.Redirect(Request.UrlReferrer.ToString());
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
+                return;
+            }
             string chapter_id_temp = Request.QueryString["chapter_id"];
             if (string.IsNullOrEmpty(chapter_id_temp))
             {

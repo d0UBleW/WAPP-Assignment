@@ -19,12 +19,19 @@ namespace WAPP_Assignment.Admin
         {
             if (Session["user_id"] == null)
             {
-                Response.Redirect("~/Login.aspx");
+                Response.Redirect("~/Home.aspx");
                 return;
             }
             if (!(bool)Session["isAdmin"])
             {
-                // Response.StatusCode = (int)System.Net.HttpStatusCode.Unauthorized;
+                if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
+                {
+                    Response.Redirect(Request.UrlReferrer.ToString());
+                }
+                else
+                {
+                    Response.Redirect("~/Home.aspx");
+                }
                 return;
             }
             if (!IsPostBack)

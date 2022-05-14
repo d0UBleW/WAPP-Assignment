@@ -33,6 +33,15 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.ContentPlaceHolder CourseDropDownContent;
 
         /// <summary>
+        /// NavLeftContent control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder NavLeftContent;
+
+        /// <summary>
         /// NavRightContent control.
         /// </summary>
         /// <remarks>
@@ -49,14 +58,5 @@ namespace WAPP_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
-
-        /// <summary>
-        /// NavLocation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label NavLocation;
     }
 }
