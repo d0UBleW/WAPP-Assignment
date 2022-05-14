@@ -7,11 +7,21 @@ using System.Web.UI.WebControls;
 
 namespace WAPP_Assignment
 {
-    public partial class SiteAnon : System.Web.UI.MasterPage
+    public partial class SiteAnon : BaseM
     {
-        protected void Page_Load(object sender, EventArgs e)
+        //public string Location
+        //{
+        //    get
+        //    {
+        //        return Master.Location;
+        //    }
+        //    set
+        //    {
+        //        Master.Location = value;
+        //    }
+        //}
+        protected new void Page_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="Edit Exam" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="EditExam.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Exam.EditExam" %>
 
-<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 
 </asp:Content>
 
-<asp:Content ID="EditExamContent" ContentPlaceHolderID="SubMainContent" runat="server">
+<asp:Content ID="EditExamContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>

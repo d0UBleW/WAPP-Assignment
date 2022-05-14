@@ -15,15 +15,6 @@ namespace WAPP_Assignment
     {
 
         /// <summary>
-        /// SubHead control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder SubHead;
-
-        /// <summary>
         /// LogoutLink control.
         /// </summary>
         /// <remarks>
@@ -42,12 +33,17 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.HyperLink ProfileLink;
 
         /// <summary>
-        /// SubMainContent control.
+        /// Master property.
         /// </summary>
         /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
+        /// Auto-generated property.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder SubMainContent;
+        public new WAPP_Assignment.BaseM Master
+        {
+            get
+            {
+                return ((WAPP_Assignment.BaseM)(base.Master));
+            }
+        }
     }
 }

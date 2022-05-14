@@ -1,8 +1,8 @@
 ﻿<%@ Page Title="Add Exam" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="AddExam.aspx.cs" Inherits="WAPP_Assignment.Admin.AddExam" %>
 
-<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server"></asp:Content>
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server"></asp:Content>
 
-<asp:Content ID="AddExamContent" ContentPlaceHolderID="SubMainContent" runat="server">
+<asp:Content ID="AddExamContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>

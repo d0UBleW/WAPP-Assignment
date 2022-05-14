@@ -1,12 +1,12 @@
 ﻿<%@ Page Title="Add Question" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="AddQuestion.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Exam.AddQuestion" ValidateRequest="false" %>
 
-<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <script src="https://cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
     <script src="/Scripts/ckeditor.js" defer></script>
     <script src="/Scripts/addOption.js" defer></script>
 </asp:Content>
 
-<asp:Content ID="AddQuestionContent" ContentPlaceHolderID="SubMainContent" runat="server">
+<asp:Content ID="AddQuestionContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="QueNoLbl" runat="server" Text="Question No."></asp:Label>

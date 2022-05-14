@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="All Courses" Language="C#" MasterPageFile="~/SiteAnon.master" AutoEventWireup="true" CodeBehind="ListCourse.aspx.cs" Inherits="WAPP_Assignment.ListCourse" %>
 
-<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <script src="/Scripts/searchCourse.js" defer></script>
 </asp:Content>
 
-<asp:Content ID="CourseContent" ContentPlaceHolderID="SubMainContent" runat="server">
+<asp:Content ID="CourseContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>

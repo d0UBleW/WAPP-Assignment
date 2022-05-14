@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="Profile" Language="C#" MasterPageFile="~/SiteStudent.master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="WAPP_Assignment.Profile" %>
 
-<asp:Content ID="ProfileContent" ContentPlaceHolderID="SubMainContent" runat="server">
+<asp:Content ID="ProfileContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:Image ID="ProfileImg" runat="server" Height="200" Width="200" />

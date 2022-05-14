@@ -158,22 +158,6 @@ namespace WAPP_Assignment
             Response.Redirect("/Admin/Course/AddCourse.aspx");
         }
 
-        protected void SearchBtn_Click(object sender, EventArgs e)
-        {
-            string keyword;
-            if (true)
-            {
-                System.Diagnostics.Debug.WriteLine("title");
-                keyword = SearchTitleTxtBox.Text;
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("cat");
-                keyword = SearchCatTxtBox.Text;
-            }
-            //Response.Redirect("/ListCourse.aspx?keyword=");
-        }
-
         protected void FilterList_SelectedIndexChanged(object sender, EventArgs e)
         {
             System.Diagnostics.Debug.WriteLine(FilterList.SelectedValue);

@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace WAPP_Assignment
 {
-    public partial class SiteAdmin : BaseM
+    public class BaseM : WAPP_Assignment.Site
     {
-        protected new void Page_Load(object sender, EventArgs e)
+        public void SetLocation(string loc)
         {
         }
     }

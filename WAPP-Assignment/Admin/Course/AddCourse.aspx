@@ -2,11 +2,11 @@
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
 
-<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <script src="/Scripts/addCourse.js" defer></script>
 </asp:Content>
 
-<asp:Content ID="AddCourseContent" ContentPlaceHolderID="SubMainContent" runat="server">
+<asp:Content ID="AddCourseContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
         </asp:ScriptManager>

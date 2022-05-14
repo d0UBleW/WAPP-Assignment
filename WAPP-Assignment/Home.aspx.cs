@@ -9,7 +9,6 @@ namespace WAPP_Assignment
 {
     public partial class Home : System.Web.UI.Page
     {
-        public const string navText = "Home";
 
         protected void Page_PreInit(object sender, EventArgs e)
         {
@@ -28,7 +27,12 @@ namespace WAPP_Assignment
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+        }
 
+        protected override void OnLoadComplete(EventArgs e)
+        {
+            BaseM master = Master as BaseM;
+            master.Location = "Home";
         }
     }
 }

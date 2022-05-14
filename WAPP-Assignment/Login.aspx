@@ -1,7 +1,6 @@
-﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WAPP_Assignment.Login" %>
+﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/SiteAnon.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WAPP_Assignment.Login" %>
 
 <asp:Content ID="LoginContent" ContentPlaceHolderID="MainContent" runat="server">
-    <input id="LogNavHidden" name="LogNavHidden" type="hidden" value="Login" disabled="disabled" />
     <form id="form1" runat="server">
         <div class="container">
             <asp:Label ID="UserTypeLbl" runat="server" Text="Login as"></asp:Label>

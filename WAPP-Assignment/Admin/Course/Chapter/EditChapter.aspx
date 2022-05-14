@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="Edit Chapter" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="EditChapter.aspx.cs" Inherits="WAPP_Assignment.Admin.EditChapter" ValidateRequest="false" %>
 
-<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <script src="https://cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
     <script src="/Scripts/ckeditor.js" defer></script>
 </asp:Content>
 
-<asp:Content ID="EditChapterContent" ContentPlaceHolderID="SubMainContent" runat="server">
+<asp:Content ID="EditChapterContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:LinkButton ID="BackLinkButton" runat="server" OnClick="BackLinkButton_Click" OnClientClick="return confirm('Go back?');" Text="Back"></asp:LinkButton>

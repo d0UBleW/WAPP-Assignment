@@ -1,10 +1,9 @@
-﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="WAPP_Assignment.Register" %>
+﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/SiteAnon.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="WAPP_Assignment.Register" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <script src="/Scripts/register.js" defer></script>
 </asp:Content>
 <asp:Content ID="RegisterContent" ContentPlaceHolderID="MainContent" runat="server">
-    <input id="RegNavHidden" name="RegNavHidden" type="hidden" value="Register" disabled="disabled" />
     <form id="form1" runat="server">
         <div class="container">
             <asp:Label ID="UserTypeLbl" runat="server" Text="Register as"></asp:Label>

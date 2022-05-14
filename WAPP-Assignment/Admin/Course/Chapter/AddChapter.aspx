@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="Add Chapter" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="AddChapter.aspx.cs" Inherits="WAPP_Assignment.Admin.AddChapter" ValidateRequest="false" %>
 
-<asp:Content ID="HeadContent" ContentPlaceHolderID="SubHead" runat="server">
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <script src="https://cdn.ckeditor.com/4.18.0/full/ckeditor.js"></script>
     <script src="/Scripts/ckeditor.js" defer></script>
 </asp:Content>
-<asp:Content ID="AddChapterContent" ContentPlaceHolderID="SubMainContent" runat="server">
+<asp:Content ID="AddChapterContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="ChapNoLbl" runat="server" Text="Chapter No."></asp:Label>
