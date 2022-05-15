@@ -7,28 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace WAPP_Assignment
 {
-    public partial class Dashboard : System.Web.UI.Page
+    public partial class Dashboard : UtilClass.BasePage
     {
-        protected void Page_PreInit(object sender, EventArgs e)
-        {
-            if (Session["user_id"] == null)
-            {
-                Response.Redirect("/Login.aspx");
-                return;
-            }
-            if ((bool)Session["isAdmin"])
-            {
-                Page.MasterPageFile = "~/SiteAdmin.Master";
-            }
-            else
-            {
-                Page.MasterPageFile = "~/SiteStudent.Master";
-            }
-        }
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user_id"] == null)
+            if (userType == "nobody")
             {
                 Response.Redirect("/Login.aspx");
                 return;

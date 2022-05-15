@@ -8,12 +8,18 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
-    public partial class EnrollCourse : System.Web.UI.Page
+    public partial class EnrollCourse : UtilClass.BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // TODO: Enroll student from admin
+
+            if (userType == "nobody")
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
             if (string.IsNullOrEmpty(Request.QueryString["course_id"]) ||
-                Session["user_id"] == null ||
                 (bool)Session["isAdmin"])
             {
                 return;

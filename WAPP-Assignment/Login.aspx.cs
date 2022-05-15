@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
-    public partial class Login : System.Web.UI.Page
+    public partial class Login : UtilClass.BasePage
     {
         private string DbTable;
         protected void Page_Load(object sender, EventArgs e)

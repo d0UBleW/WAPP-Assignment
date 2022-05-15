@@ -57,7 +57,7 @@
                 role="button"
                 data-bs-toggle="dropdown">Course</a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="/ListCourse.aspx">All Courses</a></li>
+                <li><a class="dropdown-item active" href="/ListCourse.aspx">All Courses</a></li>
                 <asp:ContentPlaceHolder ID="CourseDropDownContent" runat="server"></asp:ContentPlaceHolder>
               </ul>
             </li>

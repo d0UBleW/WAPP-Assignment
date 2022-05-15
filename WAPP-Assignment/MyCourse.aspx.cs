@@ -9,11 +9,16 @@ using System.Text;
 
 namespace WAPP_Assignment
 {
-    public partial class MyCourse : System.Web.UI.Page
+    public partial class MyCourse : UtilClass.BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user_id"] == null || (bool)Session["isAdmin"])
+            if (userType == "nobody")
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+            if (userType == "admin")
             {
                 return;
             }

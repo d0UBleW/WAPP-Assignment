@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/SiteStudent.master" AutoEventWireup="true" CodeBehind="ViewChapter.aspx.cs" Inherits="WAPP_Assignment.ViewChapter" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteStudent.master" AutoEventWireup="true" CodeBehind="ViewExam.aspx.cs" Inherits="WAPP_Assignment.Learn.ViewExam" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
     <script src="/jquery-oembed-all/jquery.oembed.js" defer></script>

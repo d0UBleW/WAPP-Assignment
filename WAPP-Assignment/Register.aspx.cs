@@ -13,7 +13,7 @@ using System.Collections.Specialized;
 
 namespace WAPP_Assignment
 {
-    public partial class Register : System.Web.UI.Page
+    public partial class Register : UtilClass.BasePage
     {
         private string DbTable;
         protected void Page_Load(object sender, EventArgs e)

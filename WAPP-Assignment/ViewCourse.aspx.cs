@@ -8,7 +8,7 @@ using System.Data;
 
 namespace WAPP_Assignment
 {
-    public partial class ViewCourse : System.Web.UI.Page
+    public partial class ViewCourse : UtilClass.BasePage
     {
         private int course_id;
         protected void Page_Load(object sender, EventArgs e)
@@ -18,24 +18,12 @@ namespace WAPP_Assignment
             {
                 return;
             }
-            string userType;
-            if (Session["user_id"] == null)
-            {
-                userType = "nobody";
-            }
-            else if ((bool)Session["isAdmin"])
-            {
-                userType = "admin";
-            }
-            else
-            {
-                userType = "student";
-            }
             course_id = int.Parse(course_id_temp);
             DataTable courseTable = Course.GetCourseData(course_id);
             DataRow courseRow = courseTable.Rows[0];
             ThumbnailImage.ImageUrl = $"/upload/thumbnail/{courseRow["thumbnail"]}";
             TitleLbl.Text = courseRow["title"].ToString();
+            Page.Title = courseRow["title"].ToString();
             DescriptionLbl.Text = courseRow["description"].ToString();
 
             if (userType == "student")
@@ -44,11 +32,13 @@ namespace WAPP_Assignment
                 if (Student.IsEnrolled(student_id, course_id))
                 {
                     LearnBtn.Visible = true;
+                    UnenrollBtn.Visible = true;
                     EnrollBtn.Visible = false;
                 }
                 else
                 {
                     EnrollBtn.Visible = true;
+                    UnenrollBtn.Visible = false;
                     LearnBtn.Visible = false;
                 }
             }
@@ -56,17 +46,25 @@ namespace WAPP_Assignment
             DataTable chapterTable = Chapter.GetCourseChapterData(course_id);
             foreach (DataRow chapterRow in chapterTable.Rows)
             {
-                Label title = new Label
+                HyperLink title = new HyperLink
                 {
                     Text = $"{chapterRow["sequence"]}. {chapterRow["title"]}",
                 };
+                if (userType == "student" || userType == "admin")
+                {
+                    title.NavigateUrl = $"/Learn/ViewChapter.aspx?chapter_id={chapterRow["chapter_id"]}";
+                }
+                else
+                {
+                    title.NavigateUrl = "#";
+                }
                 ChapterTOCPanel.Controls.Add(title);
                 ChapterTOCPanel.Controls.Add(new Literal { Text = "<br />" });
             }
             DataTable examTable = Exam.GetCourseExamData(course_id);
             foreach (DataRow examRow in examTable.Rows)
             {
-                Label title = new Label
+                HyperLink title = new HyperLink
                 {
                     Text = $"{examRow["title"]}",
                 };

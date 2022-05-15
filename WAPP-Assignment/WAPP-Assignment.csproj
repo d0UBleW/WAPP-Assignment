@@ -116,6 +116,7 @@
     <Content Include="Dashboard.aspx" />
     <Content Include="EnrollCourse.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="Learn\ViewExam.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
     <Content Include="MyCourse.aspx" />
@@ -194,6 +195,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Learn\ViewExam.aspx.cs">
+      <DependentUpon>ViewExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Learn\ViewExam.aspx.designer.cs">
+      <DependentUpon>ViewExam.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Logout.aspx.cs">
       <DependentUpon>Logout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -239,6 +247,9 @@
     </Compile>
     <Compile Include="SiteStudent.master.designer.cs">
       <DependentUpon>SiteStudent.master</DependentUpon>
+    </Compile>
+    <Compile Include="UtilClass\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UtilClass\Category.cs" />
     <Compile Include="UtilClass\Chapter.cs" />

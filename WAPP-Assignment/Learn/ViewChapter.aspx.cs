@@ -13,10 +13,34 @@ namespace WAPP_Assignment
     {
         private int chapter_id;
         DataRow chapterRow;
+        private string userType;
+        protected void Page_PreInit(object sender, EventArgs e)
+        {
+            if (Session["user_id"] == null)
+            {
+                userType = "nobody";
+                Page.MasterPageFile = "~/SiteAnon.Master";
+            }
+            else if ((bool)Session["isAdmin"])
+            {
+                userType = "admin";
+                Page.MasterPageFile = "~/SiteAdmin.Master";
+            }
+            else
+            {
+                userType = "student";
+                Page.MasterPageFile = "~/SiteStudent.Master";
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             string chapter_id_temp = Request.QueryString["chapter_id"];
-            if (string.IsNullOrEmpty(chapter_id_temp) || Session["user_id"] == null || (bool)Session["isAdmin"])
+            if (Session["user_id"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+                return;
+            }
+            if (string.IsNullOrEmpty(chapter_id_temp))
             {
                 return;
             }
@@ -36,8 +60,9 @@ namespace WAPP_Assignment
 
             int course_id = Convert.ToInt32(chapterRow["course_id"]);
             List<int> enroll_course_id = Student.GetEnrolledCourseID(student_id);
-            if (!enroll_course_id.Contains(course_id))
+            if (!enroll_course_id.Contains(course_id) && userType != "admin")
             {
+                Response.Write($"<script>alert('Please enroll prior to viewing the chapter'); window.location.href = '{Request.UrlReferrer}'</script>");
                 return;
             }
             DataTable chapterTable = Chapter.GetCourseChapterData(course_id);
@@ -61,6 +86,7 @@ namespace WAPP_Assignment
             TOCPanel.Controls.Add(new Literal { Text = "<br />" });
 
             TitleLbl.Text = chapterRow["title"].ToString();
+            Page.Title = chapterRow["title"].ToString();
             ContentPlaceholder.Controls.Add(new Literal { Text = chapterRow["content"].ToString() });
 
             int chapter_no = Convert.ToInt32(chapterRow["sequence"]);

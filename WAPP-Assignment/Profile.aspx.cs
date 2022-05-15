@@ -10,14 +10,18 @@ using System.IO;
 
 namespace WAPP_Assignment
 {
-    public partial class Profile : System.Web.UI.Page
+    public partial class Profile : UtilClass.BasePage
     {
         private int student_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user_id"] == null || (bool)Session["isAdmin"])
+            if (userType == "nobody")
             {
                 Response.Redirect("/Login.aspx");
+                return;
+            }
+            if (userType == "admin")
+            {
                 return;
             }
             student_id = Convert.ToInt32(Session["user_id"]);
