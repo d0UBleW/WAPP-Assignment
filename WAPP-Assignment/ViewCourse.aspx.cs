@@ -43,6 +43,7 @@ namespace WAPP_Assignment
             OverallRatingLbl.Text = $"Rating: {overallRating.ToString("0.00")}/5";
 
             RatingSubPanel.Visible = false;
+            EnrollLink.Visible = true;
             if (userType == "student")
             {
                 int student_id = Convert.ToInt32(Session["user_id"]);
@@ -104,6 +105,17 @@ namespace WAPP_Assignment
             foreach (DataRow ratingData in ratingTable.Rows)
             {
                 Panel p = new Panel();
+                int student_id = Convert.ToInt32(ratingData["student_id"]);
+                DataRow studentData = StudentC.GetStudentData(student_id);
+                Image image = new Image
+                {
+                    ImageUrl = $"/upload/profile/{studentData["profile"]}",
+                    Width = 40,
+                    Height = 40,
+                };
+                p.Controls.Add(image);
+                p.Controls.Add(new Label { Text = studentData["full_name"].ToString() });
+
                 RatingPanel.Controls.Add(p);
                 AjaxControlToolkit.Rating rating = new AjaxControlToolkit.Rating
                 {
@@ -117,7 +129,9 @@ namespace WAPP_Assignment
                     ReadOnly = true,
                 };
                 p.Controls.Add(rating);
+                p.Controls.Add(new Literal { Text = "<br/>" });
                 p.Controls.Add(new Label { Text = ratingData["content"].ToString() });
+                RatingPanel.Controls.Add(new Literal { Text = "<br/>" });
             }
         }
 

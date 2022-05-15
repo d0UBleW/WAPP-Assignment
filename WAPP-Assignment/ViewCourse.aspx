@@ -37,9 +37,10 @@
     <asp:Label ID="OverallRatingLbl" runat="server"></asp:Label>
     <br />
     <br />
-    <asp:HyperLink ID="EnrollLink" runat="server" Text="Enroll" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
-    <asp:HyperLink ID="UnenrollLink" runat="server" Text="Unenroll" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
+    <asp:HyperLink ID="EnrollLink" runat="server" Text="Enroll" Visible="false" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
+    <asp:HyperLink ID="UnenrollLink" runat="server" Text="Unenroll" Visible="false" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
   </asp:Panel>
+  <br />
   <div class="container">
     <asp:Panel ID="ChapterTOCPanel" runat="server">
       <asp:Label ID="ChpLbl" runat="server" Text="Chapter"></asp:Label>
