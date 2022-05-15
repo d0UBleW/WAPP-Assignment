@@ -71,7 +71,47 @@ namespace WAPP_Assignment
                     }
                 }
             }
+        }
 
+        public static DataTable GetCourseRating(int course_id)
+        {
+            DataTable ratingTable = new DataTable();
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT * FROM rating WHERE course_id=@course_id;";
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    {
+                        sda.SelectCommand = cmd;
+                        sda.Fill(ratingTable);
+                    }
+                }
+                conn.Close();
+            }
+            return ratingTable;
+        }
+
+        public static double GetCourseOverallRating(int course_id)
+        {
+            double rating = 0;
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT ISNULL(AVG(CAST(rating as DECIMAL)), 0) FROM [rating] WHERE course_id=@course_id;";
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    var result = cmd.ExecuteScalar();
+                    rating = double.Parse(result.ToString());
+                }
+                conn.Close();
+            }
+            return rating;
         }
     }
 }

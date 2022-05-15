@@ -47,6 +47,7 @@ const isValidUsername = (data) => {
 const checkUsername = () => {
   console.log("check")
   const $usernameTxtBox = $("input[name$='UsernameTxtBox']")
+  if ($usernameTxtBox.val() == "") return;
   $.ajax({
     type: "POST",
     url: "MyService.asmx/IsUsernameDuplicate",

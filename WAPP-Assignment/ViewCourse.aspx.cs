@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
@@ -38,25 +39,28 @@ namespace WAPP_Assignment
             TitleLbl.Text = courseRow["title"].ToString();
             Page.Title = courseRow["title"].ToString();
             DescriptionLbl.Text = courseRow["description"].ToString();
+            double overallRating = Course.GetCourseOverallRating(course_id);
+            OverallRatingLbl.Text = $"Rating: {overallRating.ToString("0.00")}/5";
 
+            RatingSubPanel.Visible = false;
             if (userType == "student")
             {
                 int student_id = Convert.ToInt32(Session["user_id"]);
                 if (StudentC.IsEnrolled(student_id, course_id))
                 {
-                    // LearnBtn.Visible = true;
                     UnenrollLink.Visible = true;
                     EnrollLink.Visible = false;
+                    RatingSubPanel.Visible = true;
                 }
                 else
                 {
                     EnrollLink.Visible = true;
                     UnenrollLink.Visible = false;
-                    // LearnBtn.Visible = false;
                 }
             }
+            EnrollLink.NavigateUrl = $"/Student/Course/EnrollCourse.aspx?course_id={course_id}";
+            UnenrollLink.NavigateUrl = "#";
 
-            ChapterTOCPanel.Controls.Add(new Literal { Text = "Chapter<br/>" });
             DataTable chapterTable = Chapter.GetCourseChapterData(course_id);
             foreach (DataRow chapterRow in chapterTable.Rows)
             {
@@ -75,9 +79,7 @@ namespace WAPP_Assignment
                 ChapterTOCPanel.Controls.Add(title);
                 ChapterTOCPanel.Controls.Add(new Literal { Text = "<br />" });
             }
-            ChapterTOCPanel.Controls.Add(new Literal { Text = "<br />" });
 
-            ExamPanel.Controls.Add(new Literal { Text = "Exam<br/>" });
             DataTable examTable = Exam.GetCourseExamData(course_id);
             foreach (DataRow examRow in examTable.Rows)
             {
@@ -96,25 +98,56 @@ namespace WAPP_Assignment
                 ExamPanel.Controls.Add(title);
                 ExamPanel.Controls.Add(new Literal { Text = "<br />" });
             }
-            ExamPanel.Controls.Add(new Literal { Text = "<br />" });
-            RatingPanel.Controls.Add(new Literal { Text = "Rating<br/>" });
+
+            DataTable ratingTable = Course.GetCourseRating(course_id);
+            int i = 0;
+            foreach (DataRow ratingData in ratingTable.Rows)
+            {
+                Panel p = new Panel();
+                RatingPanel.Controls.Add(p);
+                AjaxControlToolkit.Rating rating = new AjaxControlToolkit.Rating
+                {
+                    ID = $"userRating_{i++}",
+                    MaxRating = 5,
+                    CurrentRating = Convert.ToInt32(ratingData["rating"]),
+                    StarCssClass = "Star",
+                    WaitingStarCssClass = "WaitingStar",
+                    FilledStarCssClass = "FilledStar",
+                    EmptyStarCssClass = "EmptyStar",
+                    ReadOnly = true,
+                };
+                p.Controls.Add(rating);
+                p.Controls.Add(new Label { Text = ratingData["content"].ToString() });
+            }
         }
 
-        protected void LearnBtn_Click(object sender, EventArgs e)
+        protected void RatingBtn_Click(object sender, EventArgs e)
         {
-            int chapter_id = Chapter.GetFirstChapterID(course_id);
-            Response.Redirect($"/Student/Learn/ViewChapter.aspx?chapter_id={chapter_id}");
-        }
+            int student_id = Convert.ToInt32(Session["user_id"]);
+            int rating = Rating1.CurrentRating;
+            string content = RatingContentTxtBox.Text;
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "DELETE rating WHERE student_id=@student_id AND course_id=@course_id;";
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
 
-
-        protected void EnrollLink_Click(object sender, EventArgs e)
-        {
-            Response.Redirect($"/Student/Course/EnrollCourse.aspx?course_id={course_id}");
-        }
-
-        protected void UnenrollLink_Click(object sender, EventArgs e)
-        {
-
+                    cmd.CommandText = "INSERT INTO rating (student_id, course_id, rating, content) VALUES (@student_id, @course_id, @rating, @content);";
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    cmd.Parameters.AddWithValue("@rating", rating);
+                    cmd.Parameters.AddWithValue("@content", content);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+            Response.Redirect(Request.UrlReferrer.ToString());
         }
     }
 }
