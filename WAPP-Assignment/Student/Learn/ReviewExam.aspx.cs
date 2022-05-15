@@ -8,21 +8,11 @@ using System.Data;
 
 namespace WAPP_Assignment.Learn
 {
-    public partial class ReviewExam : UtilClass.BasePage
+    public partial class ReviewExam : UtilClass.BaseStudentPage
     {
         private int student_id, exam_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (userType == "nobody")
-            {
-                Response.Redirect("~/Login.aspx");
-                return;
-            }
-
-            if (userType == "admin")
-            {
-                return;
-            }
             student_id = Convert.ToInt32(Session["user_id"]);
 
             string exam_id_temp = Request.QueryString["exam_id"];
@@ -30,7 +20,16 @@ namespace WAPP_Assignment.Learn
             {
                 return;
             }
-            exam_id = Convert.ToInt32(exam_id_temp);
+            try
+            {
+                exam_id = Convert.ToInt32(exam_id_temp);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return;
+            }
+
             DataTable examTable = Exam.GetExamData(exam_id);
             if (examTable.Rows.Count == 0)
             {

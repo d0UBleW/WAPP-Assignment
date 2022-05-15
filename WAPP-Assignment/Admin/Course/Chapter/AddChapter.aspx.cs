@@ -12,29 +12,12 @@ using Ganss.XSS;
 
 namespace WAPP_Assignment.Admin
 {
-    public partial class AddChapter : System.Web.UI.Page
+    public partial class AddChapter : UtilClass.BaseAdminPage
     {
         private int course_id;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user_id"] == null)
-            {
-                Response.Redirect("~/Home.aspx");
-                return;
-            }
-            if (!(bool)Session["isAdmin"])
-            {
-                if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
-                {
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
-                else
-                {
-                    Response.Redirect("~/Home.aspx");
-                }
-                return;
-            }
             string course_id_temp = Request.QueryString["course_id"];
             if (String.IsNullOrEmpty(course_id_temp))
             {

@@ -65,7 +65,7 @@ namespace WAPP_Assignment
                 };
                 if (userType == "student" || userType == "admin")
                 {
-                    title.NavigateUrl = $"/Learn/ViewChapter.aspx?chapter_id={chapterRow["chapter_id"]}";
+                    title.NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={chapterRow["chapter_id"]}";
                 }
                 else
                 {
@@ -83,7 +83,7 @@ namespace WAPP_Assignment
                 };
                 if (userType == "student" || userType == "admin")
                 {
-                    title.NavigateUrl = $"/Learn/ViewExam.aspx?exam_id={examRow["exam_id"]}";
+                    title.NavigateUrl = $"/Student/Learn/ViewExam.aspx?exam_id={examRow["exam_id"]}";
                 }
                 else
                 {
@@ -96,13 +96,13 @@ namespace WAPP_Assignment
 
         protected void EnrollBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect($"/EnrollCourse.aspx?course_id={course_id}");
+            Response.Redirect($"/Student/Course/EnrollCourse.aspx?course_id={course_id}");
         }
 
         protected void LearnBtn_Click(object sender, EventArgs e)
         {
             int chapter_id = Chapter.GetFirstChapterID(course_id);
-            Response.Redirect($"/Learn/ViewChapter.aspx?chapter_id={chapter_id}");
+            Response.Redirect($"/Student/Learn/ViewChapter.aspx?chapter_id={chapter_id}");
         }
     }
 }

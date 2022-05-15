@@ -8,19 +8,12 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
-    public partial class EnrollCourse : UtilClass.BasePage
+    public partial class EnrollCourse : UtilClass.BaseStudentPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
             // TODO: Enroll student from admin
-
-            if (userType == "nobody")
-            {
-                Response.Redirect("~/Login.aspx");
-                return;
-            }
-            if (string.IsNullOrEmpty(Request.QueryString["course_id"]) ||
-                (bool)Session["isAdmin"])
+            if (string.IsNullOrEmpty(Request.QueryString["course_id"]))
             {
                 return;
             }
@@ -39,7 +32,7 @@ namespace WAPP_Assignment
                 }
                 conn.Close();
             }
-            if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
+            if (Request.UrlReferrer != null)
             {
                 Response.Redirect(Request.UrlReferrer.ToString());
             }

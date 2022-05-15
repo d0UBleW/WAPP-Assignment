@@ -8,28 +8,11 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment.Admin
 {
-    public partial class AddExam : System.Web.UI.Page
+    public partial class AddExam : UtilClass.BaseAdminPage
     {
         private int course_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user_id"] == null)
-            {
-                Response.Redirect("~/Home.aspx");
-                return;
-            }
-            if (!(bool)Session["isAdmin"])
-            {
-                if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
-                {
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
-                else
-                {
-                    Response.Redirect("~/Home.aspx");
-                }
-                return;
-            }
             string course_id_temp = Request.QueryString["course_id"];
             if (string.IsNullOrEmpty(course_id_temp))
             {
@@ -54,7 +37,7 @@ namespace WAPP_Assignment.Admin
                 }
                 conn.Close();
             }
-            if (!String.IsNullOrEmpty(Request.UrlReferrer.ToString()))
+            if (Request.UrlReferrer != null)
             {
                 Response.Redirect(Request.UrlReferrer.ToString());
             }

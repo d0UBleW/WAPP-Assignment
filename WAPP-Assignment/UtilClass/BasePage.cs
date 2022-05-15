@@ -10,19 +10,38 @@ namespace WAPP_Assignment.UtilClass
         protected string userType;
         protected void Page_PreInit(object sender, EventArgs e)
         {
+            SetUserType();
+            SetMasterPageFile();
+        }
+
+        protected void SetUserType()
+        {
             if (Session["user_id"] == null)
             {
                 userType = "nobody";
-                Page.MasterPageFile = "~/SiteAnon.Master";
             }
             else if ((bool)Session["isAdmin"])
             {
                 userType = "admin";
-                Page.MasterPageFile = "~/SiteAdmin.Master";
             }
             else
             {
                 userType = "student";
+            }
+        }
+
+        protected void SetMasterPageFile()
+        {
+            if (userType == "nobody")
+            {
+                Page.MasterPageFile = "~/SiteAnon.Master";
+            }
+            else if (userType == "admin")
+            {
+                Page.MasterPageFile = "~/SiteAdmin.Master";
+            }
+            else
+            {
                 Page.MasterPageFile = "~/SiteStudent.Master";
             }
         }

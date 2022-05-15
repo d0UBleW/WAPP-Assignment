@@ -10,21 +10,12 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment.Learn
 {
-    public partial class ViewExam : UtilClass.BasePage
+    public partial class ViewExam : UtilClass.BaseStudentPage
     {
         private int exam_id;
         private int student_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (userType == "nobody")
-            {
-                Response.Redirect("~/Login.aspx");
-                return;
-            }
-            if (userType == "admin")
-            {
-                return;
-            }
             string exam_id_temp = Request.QueryString["exam_id"].ToString();
             if (string.IsNullOrEmpty(exam_id_temp))
             {
@@ -120,7 +111,7 @@ namespace WAPP_Assignment.Learn
                 }
                 conn.Close();
             }
-            Response.Redirect($"/Learn/ReviewExam.aspx?exam_id={exam_id}");
+            Response.Redirect($"/Student/Learn/ReviewExam.aspx?exam_id={exam_id}");
         }
     }
 }

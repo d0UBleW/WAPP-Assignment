@@ -8,28 +8,11 @@ using System.Data;
 
 namespace WAPP_Assignment.Admin.Course.Exam
 {
-    public partial class EditExam : UtilClass.BasePage
+    public partial class EditExam : UtilClass.BaseAdminPage
     {
         private int exam_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (userType == "nobody")
-            {
-                Response.Redirect("~/Home.aspx");
-                return;
-            }
-            if (userType == "student")
-            {
-                if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
-                {
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
-                else
-                {
-                    Response.Redirect("~/Home.aspx");
-                }
-                return;
-            }
             string exam_id_temp = Request.QueryString["exam_id"];
             if (string.IsNullOrEmpty(exam_id_temp))
             {

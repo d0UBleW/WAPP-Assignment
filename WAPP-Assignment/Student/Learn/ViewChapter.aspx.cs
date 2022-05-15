@@ -9,18 +9,13 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
-    public partial class ViewChapter : UtilClass.BasePage
+    public partial class ViewChapter : UtilClass.BaseStudentPage
     {
         private int chapter_id;
         DataRow chapterRow;
         protected void Page_Load(object sender, EventArgs e)
         {
             string chapter_id_temp = Request.QueryString["chapter_id"];
-            if (userType == "nobody")
-            {
-                Response.Redirect("~/Login.aspx");
-                return;
-            }
             if (string.IsNullOrEmpty(chapter_id_temp))
             {
                 return;
@@ -59,7 +54,7 @@ namespace WAPP_Assignment
                 }
                 else
                 {
-                    link.NavigateUrl = $"/Learn/ViewChapter.aspx?chapter_id={dataRow["chapter_id"]}";
+                    link.NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={dataRow["chapter_id"]}";
                 }
                 TOCPanel.Controls.Add(link);
                 TOCPanel.Controls.Add(new Literal { Text = "<br />" });
@@ -94,7 +89,7 @@ namespace WAPP_Assignment
             int course_id = Convert.ToInt32(chapterRow["course_id"]);
             int seq = Convert.ToInt32(chapterRow["sequence"]);
             int chapter_id = Chapter.GetNextOrPrevChapterID(course_id, seq, "prev");
-            Response.Redirect($"/Learn/ViewChapter.aspx?chapter_id={chapter_id}");
+            Response.Redirect($"/Student/Learn/ViewChapter.aspx?chapter_id={chapter_id}");
         }
 
         protected void NextBtn_Click(object sender, EventArgs e)
@@ -102,7 +97,7 @@ namespace WAPP_Assignment
             int course_id = Convert.ToInt32(chapterRow["course_id"]);
             int seq = Convert.ToInt32(chapterRow["sequence"]);
             int chapter_id = Chapter.GetNextOrPrevChapterID(course_id, seq, "next");
-            Response.Redirect($"/Learn/ViewChapter.aspx?chapter_id={chapter_id}");
+            Response.Redirect($"/Student/Learn/ViewChapter.aspx?chapter_id={chapter_id}");
         }
     }
 }

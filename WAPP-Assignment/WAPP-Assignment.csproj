@@ -95,6 +95,7 @@
   <ItemGroup>
     <Content Include="Admin\Course\Chapter\AddChapter.aspx" />
     <Content Include="Admin\Course\AddCourse.aspx" />
+    <Content Include="Admin\Course\DeleteCourse.aspx" />
     <Content Include="Admin\Course\Exam\AddExam.aspx" />
     <Content Include="Admin\Course\Chapter\DeleteChapter.aspx" />
     <Content Include="Admin\Course\Chapter\EditChapter.aspx" />
@@ -114,21 +115,21 @@
     </None>
     <Content Include="Content\master.css" />
     <Content Include="Dashboard.aspx" />
-    <Content Include="EnrollCourse.aspx" />
+    <Content Include="Student\Course\EnrollCourse.aspx" />
     <Content Include="Home.aspx" />
-    <Content Include="Learn\ReviewExam.aspx" />
-    <Content Include="Learn\ViewExam.aspx" />
+    <Content Include="Student\Learn\ReviewExam.aspx" />
+    <Content Include="Student\Learn\ViewExam.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
-    <Content Include="MyCourse.aspx" />
+    <Content Include="Student\Course\MyCourse.aspx" />
     <Content Include="MyService.asmx" />
-    <Content Include="Profile.aspx" />
+    <Content Include="Student\Profile.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\addOption.js" />
     <Content Include="Scripts\ckeditor.js" />
     <Content Include="Scripts\addCourse.js" />
     <Content Include="Scripts\register.js" />
-    <Content Include="Learn\ViewChapter.aspx" />
+    <Content Include="Student\Learn\ViewChapter.aspx" />
     <Content Include="ListCourse.aspx" />
     <Content Include="Scripts\searchCourse.js" />
     <Content Include="ViewCourse.aspx" />
@@ -148,6 +149,13 @@
     </Compile>
     <Compile Include="Admin\Course\AddCourse.aspx.designer.cs">
       <DependentUpon>AddCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\DeleteCourse.aspx.cs">
+      <DependentUpon>DeleteCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\DeleteCourse.aspx.designer.cs">
+      <DependentUpon>DeleteCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Course\Exam\AddExam.aspx.cs">
       <DependentUpon>AddExam.aspx</DependentUpon>
@@ -196,18 +204,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Learn\ReviewExam.aspx.cs">
+    <Compile Include="Student\Learn\ReviewExam.aspx.cs">
       <DependentUpon>ReviewExam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Learn\ReviewExam.aspx.designer.cs">
+    <Compile Include="Student\Learn\ReviewExam.aspx.designer.cs">
       <DependentUpon>ReviewExam.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Learn\ViewExam.aspx.cs">
+    <Compile Include="Student\Learn\ViewExam.aspx.cs">
       <DependentUpon>ViewExam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Learn\ViewExam.aspx.designer.cs">
+    <Compile Include="Student\Learn\ViewExam.aspx.designer.cs">
       <DependentUpon>ViewExam.aspx</DependentUpon>
     </Compile>
     <Compile Include="Logout.aspx.cs">
@@ -221,11 +229,11 @@
       <DependentUpon>MyService.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Profile.aspx.cs">
+    <Compile Include="Student\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Profile.aspx.designer.cs">
+    <Compile Include="Student\Profile.aspx.designer.cs">
       <DependentUpon>Profile.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site.Master.cs">
@@ -256,17 +264,23 @@
     <Compile Include="SiteStudent.master.designer.cs">
       <DependentUpon>SiteStudent.master</DependentUpon>
     </Compile>
+    <Compile Include="UtilClass\BaseAdminPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="UtilClass\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UtilClass\BaseStudentPage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UtilClass\Category.cs" />
     <Compile Include="UtilClass\Chapter.cs" />
     <Compile Include="UtilClass\Course.cs" />
-    <Compile Include="EnrollCourse.aspx.cs">
+    <Compile Include="Student\Course\EnrollCourse.aspx.cs">
       <DependentUpon>EnrollCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="EnrollCourse.aspx.designer.cs">
+    <Compile Include="Student\Course\EnrollCourse.aspx.designer.cs">
       <DependentUpon>EnrollCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="UtilClass\Exam.cs" />
@@ -293,11 +307,11 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MyCourse.aspx.cs">
+    <Compile Include="Student\Course\MyCourse.aspx.cs">
       <DependentUpon>MyCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MyCourse.aspx.designer.cs">
+    <Compile Include="Student\Course\MyCourse.aspx.designer.cs">
       <DependentUpon>MyCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -312,11 +326,11 @@
     <Compile Include="UtilClass\MyUtil.cs" />
     <Compile Include="UtilClass\SessionManager.cs" />
     <Compile Include="UtilClass\Student.cs" />
-    <Compile Include="Learn\ViewChapter.aspx.cs">
+    <Compile Include="Student\Learn\ViewChapter.aspx.cs">
       <DependentUpon>ViewChapter.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Learn\ViewChapter.aspx.designer.cs">
+    <Compile Include="Student\Learn\ViewChapter.aspx.designer.cs">
       <DependentUpon>ViewChapter.aspx</DependentUpon>
     </Compile>
     <Compile Include="ListCourse.aspx.cs">

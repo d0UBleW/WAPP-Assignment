@@ -9,19 +9,10 @@ using System.Text;
 
 namespace WAPP_Assignment
 {
-    public partial class MyCourse : UtilClass.BasePage
+    public partial class MyCourse : UtilClass.BaseStudentPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (userType == "nobody")
-            {
-                Response.Redirect("~/Login.aspx");
-                return;
-            }
-            if (userType == "admin")
-            {
-                return;
-            }
             int student_id = Convert.ToInt32(Session["user_id"].ToString());
             DataTable courseTable = Course.GetEnrolledCourseData(student_id);
             foreach (DataRow dr in courseTable.Rows)
@@ -63,7 +54,7 @@ namespace WAPP_Assignment
                 int chapter_id = Chapter.GetFirstChapterID(Convert.ToInt32(dr["course_id"]));
                 HyperLink learnLink = new HyperLink
                 {
-                    NavigateUrl = $"/Learn/ViewChapter.aspx?chapter_id={chapter_id}",
+                    NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={chapter_id}",
                     Text = "Learn",
                 };
                 cPanel.Controls.Add(learnLink);

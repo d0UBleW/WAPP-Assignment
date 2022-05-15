@@ -98,7 +98,7 @@ namespace WAPP_Assignment
                         HyperLink enrollLink = new HyperLink
                         {
                             Text = "Enroll",
-                            NavigateUrl = $"/EnrollCourse.aspx?course_id={dr["course_id"]}",
+                            NavigateUrl = $"/Student/Course/EnrollCourse.aspx?course_id={dr["course_id"]}",
                             CssClass = "btn btn-secondary btn-sm",
                         };
                         cPanel.Controls.Add(enrollLink);

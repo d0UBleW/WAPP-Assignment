@@ -10,29 +10,12 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment.Admin.Course.Exam
 {
-    public partial class AddQuestion : UtilClass.BasePage
+    public partial class AddQuestion : UtilClass.BaseAdminPage
     {
         private int exam_id;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (userType == "nobody")
-            {
-                Response.Redirect("~/Home.aspx");
-                return;
-            }
-            if (userType == "student")
-            {
-                if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
-                {
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
-                else
-                {
-                    Response.Redirect("~/Home.aspx");
-                }
-                return;
-            }
             string exam_id_temp = Request.QueryString["exam_id"];
             if (String.IsNullOrEmpty(exam_id_temp))
             {
@@ -101,7 +84,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
                     }
                 }
                 conn.Close();
-                if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
+                if (Request.UrlReferrer != null)
                     Response.Redirect(Request.UrlReferrer.ToString());
                 else
                     Response.Redirect("~/Home.aspx");
