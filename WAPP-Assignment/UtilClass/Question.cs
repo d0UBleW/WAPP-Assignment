@@ -53,22 +53,28 @@ namespace WAPP_Assignment
             return optionTable;
         }
 
-        public static int GetNumOfAnswer(int question_id)
+        public static List<int> GetAnswerID(int question_id)
         {
-            int numOfAnswer;
+            List<int> answerID = new List<int>();
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "SELECT COUNT(*) FROM [option] WHERE question_id=@question_id AND isAnswer='True';";
+                    cmd.CommandText = "SELECT option_id FROM [option] WHERE question_id=@question_id AND isAnswer='True';";
                     cmd.Parameters.AddWithValue("@question_id", question_id);
-                    numOfAnswer = (int) cmd.ExecuteScalar();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            answerID.Add(int.Parse(reader["option_id"].ToString()));
+                        }
+                    }
                 }
                 conn.Close();
             }
-            return numOfAnswer;
+            return answerID;
         }
 
         public static int GetQueMaxSeq(int exam_id)

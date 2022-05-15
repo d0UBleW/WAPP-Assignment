@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Text;
+using System.Data.SqlClient;
 
 namespace WAPP_Assignment.Learn
 {
@@ -49,83 +51,76 @@ namespace WAPP_Assignment.Learn
             DataTable questionTable = Question.GetExamQuestion(exam_id);
             foreach (DataRow questData in questionTable.Rows)
             {
-                int question_id = int.Parse(questData["question_id"].ToString());
-                Panel qPanel = new Panel
-                {
-                    ID = $"qPanel_{question_id}",
-                };
-                qPanel.Attributes.Add("data-question-id", question_id.ToString());
+                Panel qPanel = Exam.DisplayQue(exam_id, questData);
                 ContentPanel.Controls.Add(qPanel);
-                Literal question = new Literal
-                {
-                    Text = $"Question {questData["sequence"]} {questData["content"]}",
-                };
-                qPanel.Controls.Add(question);
-                int numOfAnswer = Question.GetNumOfAnswer(question_id);
-                DataTable optTable = Question.GetQuestionOption(question_id);
-                if (numOfAnswer > 1)
-                {
-                    CheckBoxList optList = new CheckBoxList
-                    {
-                        ID = $"optList_{question_id}",
-                    };
-                    optList.Attributes.Add("data-question-id", question_id.ToString()); 
-                    foreach (DataRow optData in optTable.Rows)
-                    {
-                        ListItem optListItem = new ListItem
-                        {
-                            Text = optData["content"].ToString(),
-                            Value = optData["option_id"].ToString(),
-                        };
-                        optList.Items.Add(optListItem);
-                    }
-                    qPanel.Controls.Add(optList);
-                }
-                else
-                {
-                    RadioButtonList optList = new RadioButtonList
-                    {
-                        ID = $"optList_{question_id}",
-                    };
-                    optList.Attributes.Add("data-question-id", question_id.ToString()); 
-                    foreach (DataRow optData in optTable.Rows)
-                    {
-                        ListItem optListItem = new ListItem
-                        {
-                            Text = optData["content"].ToString(),
-                            Value = optData["option_id"].ToString(),
-                        };
-                        optList.Items.Add(optListItem);
-                    }
-                    qPanel.Controls.Add(optList);
-                }
                 ContentPanel.Controls.Add(new Literal { Text = "<br/><br/>" });
             }
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
+            int score = 0;
             DataTable questionTable = Question.GetExamQuestion(exam_id);
+            List<string> worksheet = new List<string>();
             foreach (DataRow questData in questionTable.Rows)
             {
+                StringBuilder sb = new StringBuilder();
                 int question_id = int.Parse(questData["question_id"].ToString());
-                int numOfAnswer = Question.GetNumOfAnswer(question_id);
+                List<int> answer_id = Question.GetAnswerID(question_id);
+                int numOfAnswer = answer_id.Count;
                 if (numOfAnswer > 1)
                 {
-                    CheckBoxList optList = ContentPanel.FindControl($"optList_{questData["question_id"]}") as CheckBoxList;
+                    CheckBoxList optList = ContentPanel.FindControl($"optList_{question_id}") as CheckBoxList;
+                    sb.Append($"{ question_id}.");
+                    List<string> studentAns = new List<string>();
                     foreach (ListItem optListItem in optList.Items)
                     {
                         if (optListItem.Selected)
-                        System.Diagnostics.Debug.WriteLine(optListItem.Value);
+                        {
+                            studentAns.Add(optListItem.Value);
+                            if (answer_id.Contains(int.Parse(optListItem.Value)))
+                            {
+                                score++;
+                            }
+                        }
                     }
+                    sb.Append(string.Join(",", studentAns));
                 }
                 else
                 {
-                    RadioButtonList optList = ContentPanel.FindControl($"optList_{questData["question_id"]}") as RadioButtonList;
-                    System.Diagnostics.Debug.WriteLine(optList.SelectedValue);
+                    RadioButtonList optList = ContentPanel.FindControl($"optList_{question_id}") as RadioButtonList;
+                    sb.Append($"{question_id}.{optList.SelectedValue}");
+                    if (optList.SelectedValue != "" && answer_id.Contains(int.Parse(optList.SelectedValue)))
+                    {
+                        score++;
+                    }
                 }
-                System.Diagnostics.Debug.WriteLine("abc");
+                worksheet.Add(sb.ToString());
             }
+
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+
+                    cmd.CommandText = "DELETE grade WHERE exam_id=@exam_id AND student_id=@student_id";
+                    cmd.Parameters.AddWithValue("@exam_id", exam_id);
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "INSERT INTO [grade] (exam_id, student_id, value, worksheet) VALUES (@exam_id, @student_id, @value, @worksheet);";
+                    cmd.Parameters.AddWithValue("@exam_id", exam_id);
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    cmd.Parameters.AddWithValue("@value", score);
+                    cmd.Parameters.AddWithValue("@worksheet", string.Join(";", worksheet));
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+            Response.Redirect($"/Learn/ReviewExam.aspx?exam_id={exam_id}");
         }
     }
 }

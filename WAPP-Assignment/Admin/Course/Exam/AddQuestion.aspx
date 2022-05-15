@@ -33,7 +33,6 @@
                 </tbody>
             </table>
             <br /><br />
-            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
         </div>
     </form>
 </asp:Content>

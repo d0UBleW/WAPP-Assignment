@@ -116,6 +116,7 @@
     <Content Include="Dashboard.aspx" />
     <Content Include="EnrollCourse.aspx" />
     <Content Include="Home.aspx" />
+    <Content Include="Learn\ReviewExam.aspx" />
     <Content Include="Learn\ViewExam.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Logout.aspx" />
@@ -194,6 +195,13 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Learn\ReviewExam.aspx.cs">
+      <DependentUpon>ReviewExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Learn\ReviewExam.aspx.designer.cs">
+      <DependentUpon>ReviewExam.aspx</DependentUpon>
     </Compile>
     <Compile Include="Learn\ViewExam.aspx.cs">
       <DependentUpon>ViewExam.aspx</DependentUpon>

@@ -53,6 +53,7 @@ namespace WAPP_Assignment
                         }
                     }
                 }
+                conn.Close();
             }
             return course_id_list;
         }
@@ -66,5 +67,29 @@ namespace WAPP_Assignment
             }
             return false;
         }
+
+        public static DataTable GetExamResult(int student_id, int exam_id)
+        {
+            DataTable result = new DataTable();
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT * FROM grade WHERE student_id=@student_id AND exam_id=@exam_id;";
+                    cmd.Parameters.AddWithValue("@exam_id", exam_id);
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    using (SqlDataAdapter sda = new SqlDataAdapter())
+                    {
+                        sda.SelectCommand = cmd;
+                        sda.Fill(result);
+                    }
+                }
+                conn.Close();
+            }
+            return result;
+        }
+
     }
 }
