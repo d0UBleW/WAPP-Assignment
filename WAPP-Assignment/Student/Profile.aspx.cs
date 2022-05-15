@@ -16,7 +16,7 @@ namespace WAPP_Assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             student_id = Convert.ToInt32(Session["user_id"]);
-            DataRow studentRow = Student.GetStudentData(student_id);
+            DataRow studentRow = StudentC.GetStudentData(student_id);
             if (studentRow == null) return;
             if (!IsPostBack)
             {

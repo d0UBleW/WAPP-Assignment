@@ -35,7 +35,7 @@ namespace WAPP_Assignment
             chapterRow = dt.Rows[0];
 
             int course_id = Convert.ToInt32(chapterRow["course_id"]);
-            List<int> enroll_course_id = Student.GetEnrolledCourseID(student_id);
+            List<int> enroll_course_id = StudentC.GetEnrolledCourseID(student_id);
             if (!enroll_course_id.Contains(course_id) && userType != "admin")
             {
                 Response.Write($"<script>alert('Please enroll prior to viewing the chapter'); window.location.href = '{Request.UrlReferrer}'</script>");

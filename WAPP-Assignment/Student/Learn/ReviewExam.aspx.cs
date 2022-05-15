@@ -45,7 +45,7 @@ namespace WAPP_Assignment.Learn
                 ContentPanel.Controls.Add(new Literal { Text = "<br/><br/>" });
             }
 
-            DataTable examResult = Student.GetExamResult(student_id, exam_id);
+            DataTable examResult = StudentC.GetExamResult(student_id, exam_id);
             if (examResult.Rows.Count == 0)
             {
                 return;

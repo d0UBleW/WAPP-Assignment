@@ -15,15 +15,6 @@ namespace WAPP_Assignment
     {
 
         /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
         /// CourseDetailPanel control.
         /// </summary>
         /// <remarks>
@@ -69,22 +60,22 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.Label DescriptionLbl;
 
         /// <summary>
-        /// EnrollBtn control.
+        /// EnrollLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button EnrollBtn;
+        protected global::System.Web.UI.WebControls.HyperLink EnrollLink;
 
         /// <summary>
-        /// UnenrollBtn control.
+        /// UnenrollLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UnenrollBtn;
+        protected global::System.Web.UI.WebControls.HyperLink UnenrollLink;
 
         /// <summary>
         /// ChapterTOCPanel control.
@@ -112,5 +103,14 @@ namespace WAPP_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel RatingPanel;
+
+        /// <summary>
+        /// form1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
     }
 }

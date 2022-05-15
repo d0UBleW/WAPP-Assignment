@@ -18,7 +18,7 @@ namespace WAPP_Assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             List<int> enroll_course_id = new List<int>();
-            enroll_course_id = Student.GetEnrolledCourseID(Convert.ToInt32(Session["user_id"]));
+            enroll_course_id = StudentC.GetEnrolledCourseID(Convert.ToInt32(Session["user_id"]));
             DataTable dt = Course.GetAllCourseData();
             foreach (DataRow dr in dt.Rows)
             {

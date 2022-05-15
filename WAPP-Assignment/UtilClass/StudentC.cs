@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
-    public static class Student
+    public static class StudentC
     {
         public static DataRow GetStudentData(int student_id)
         {

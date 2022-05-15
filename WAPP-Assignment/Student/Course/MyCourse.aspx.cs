@@ -51,14 +51,6 @@ namespace WAPP_Assignment
                 };
                 cPanel.Controls.Add(viewLink);
                 cPanel.Controls.Add(new Literal { Text = "<br />" } );
-                int chapter_id = Chapter.GetFirstChapterID(Convert.ToInt32(dr["course_id"]));
-                HyperLink learnLink = new HyperLink
-                {
-                    NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={chapter_id}",
-                    Text = "Learn",
-                };
-                cPanel.Controls.Add(learnLink);
-                cPanel.Controls.Add(new Literal { Text = "<br />" } );
             }
         }
     }
