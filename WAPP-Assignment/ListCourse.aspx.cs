@@ -67,7 +67,6 @@ namespace WAPP_Assignment
                 {
                     Text = dr["description"].ToString(),
                 };
-                cPanel.Controls.Add(new Literal { Text = "<br />" } );
                 cPanel.Controls.Add(description);
                 cPanel.Controls.Add(new Literal { Text = "<br />" } );
                 CoursePlaceholder.Controls.Add(cPanel);
@@ -80,26 +79,19 @@ namespace WAPP_Assignment
                         CssClass = "btn btn-secondary btn-sm",
                     };
                     cPanel.Controls.Add(editLink);
+                    cPanel.Controls.Add(new Literal { Text = "<br />"} );
                 }
                 else if (userType == "student")
                 {
                     if (enroll_course_id.Contains(Convert.ToInt32(dr["course_id"]))) {
                         int chapter_id = Chapter.GetFirstChapterID(Convert.ToInt32(dr["course_id"]));
-                        HyperLink learnLink = new HyperLink
+                        HyperLink unenrollLink = new HyperLink
                         {
-                            NavigateUrl = $"/Learn/ViewChapter.aspx?chapter_id={chapter_id}",
-                            Text = "Learn",
+                            NavigateUrl = $"#",
+                            Text = "Unenroll",
                             CssClass = "btn btn-secondary btn-sm",
                         };
-                        HyperLink viewLink = new HyperLink
-                        {
-                            NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
-                            Text = "View Course",
-                            CssClass = "btn btn-secondary btn-sm",
-                        };
-                        cPanel.Controls.Add(learnLink);
-                        cPanel.Controls.Add(new Literal { Text = "<br />"} );
-                        cPanel.Controls.Add(viewLink);
+                        cPanel.Controls.Add(unenrollLink);
                     }
                     else
                     {
@@ -110,25 +102,16 @@ namespace WAPP_Assignment
                             CssClass = "btn btn-secondary btn-sm",
                         };
                         cPanel.Controls.Add(enrollLink);
-                        HyperLink viewLink = new HyperLink
-                        {
-                            NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
-                            Text = "View Course",
-                            CssClass = "btn btn-secondary btn-sm",
-                        };
-                        cPanel.Controls.Add(new Literal { Text = "<br />"} );
-                        cPanel.Controls.Add(viewLink);
                     }
+                    cPanel.Controls.Add(new Literal { Text = "<br />"} );
                 }
-                else
+                HyperLink viewLink = new HyperLink
                 {
-                    HyperLink viewLink = new HyperLink
-                    {
-                        NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
-                        Text = "View Course",
-                    };
-                    cPanel.Controls.Add(viewLink);
-                }
+                    NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
+                    Text = "View Course",
+                    CssClass = "btn btn-secondary btn-sm",
+                };
+                cPanel.Controls.Add(viewLink);
                 CoursePlaceholder.Controls.Add(new Literal { Text = "<br />" });
             }
         }

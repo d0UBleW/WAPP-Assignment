@@ -10,13 +10,10 @@
     <form id="form1" runat="server">
         <div>
             <asp:Label ID="QueNoLbl" runat="server" Text="Question No."></asp:Label>
-            <asp:TextBox ID="QueNoTxtBox" runat="server" TextMode="Number" Required="required" Min="1" Max="5"></asp:TextBox>
+            <asp:TextBox ID="QueNoTxtBox" runat="server" TextMode="Number" Required="required" Min="1"></asp:TextBox>
             <asp:RangeValidator ID="QueNoRangeValidator" runat="server" ErrorMessage="Invalid Question Number"
-                ForeColor="Red" ControlToValidate="QueNoTxtBox" Type="Integer" SetFocusOnError="True" MinimumValue="1" MaximumValue="5"
+                ForeColor="Red" ControlToValidate="QueNoTxtBox" Type="Integer" SetFocusOnError="True" MinimumValue="1"
                 ></asp:RangeValidator>
-            <br /><br />
-            <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
-            <asp:TextBox ID="TitleTxtBox" runat="server" TextMode="SingleLine" Required="required"></asp:TextBox>
             <br /><br />
             <asp:Label ID="ContentLbl" runat="server" Text="Content"></asp:Label>
             <br />

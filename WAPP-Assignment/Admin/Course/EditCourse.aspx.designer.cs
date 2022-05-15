@@ -33,6 +33,15 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
+        /// Panel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel Panel1;
+
+        /// <summary>
         /// BackLinkButton control.
         /// </summary>
         /// <remarks>
@@ -60,13 +69,13 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.WebControls.FileUpload ThumbnailUpload;
 
         /// <summary>
-        /// RemoveBtn control.
+        /// RemoveLinkBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button RemoveBtn;
+        protected global::System.Web.UI.WebControls.LinkButton RemoveLinkBtn;
 
         /// <summary>
         /// TitleLbl control.

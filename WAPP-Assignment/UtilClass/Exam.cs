@@ -30,5 +30,27 @@ namespace WAPP_Assignment
             }
             return dataTable;
         }
+
+        public static DataTable GetExamData(int exam_id)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = WAPP_Assignment.DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT * FROM exam WHERE exam_id=@exam_id;";
+                    cmd.Parameters.AddWithValue("@exam_id", exam_id);
+                    using (SqlDataAdapter adapter = new SqlDataAdapter())
+                    {
+                        adapter.SelectCommand = cmd;
+                        adapter.Fill(dataTable);
+                    }
+                }
+                conn.Close();
+            }
+            return dataTable;
+        }
     }
 }

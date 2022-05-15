@@ -18,8 +18,21 @@ namespace WAPP_Assignment
             {
                 return;
             }
-            course_id = int.Parse(course_id_temp);
+            try
+            {
+                course_id = int.Parse(course_id_temp);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                return;
+            }
             DataTable courseTable = Course.GetCourseData(course_id);
+            if (courseTable.Rows.Count == 0)
+            {
+                CourseDetailPanel.Visible = false;
+                return;
+            }
             DataRow courseRow = courseTable.Rows[0];
             ThumbnailImage.ImageUrl = $"/upload/thumbnail/{courseRow["thumbnail"]}";
             TitleLbl.Text = courseRow["title"].ToString();
@@ -31,7 +44,7 @@ namespace WAPP_Assignment
                 int student_id = Convert.ToInt32(Session["user_id"]);
                 if (Student.IsEnrolled(student_id, course_id))
                 {
-                    LearnBtn.Visible = true;
+                    // LearnBtn.Visible = true;
                     UnenrollBtn.Visible = true;
                     EnrollBtn.Visible = false;
                 }
@@ -39,7 +52,7 @@ namespace WAPP_Assignment
                 {
                     EnrollBtn.Visible = true;
                     UnenrollBtn.Visible = false;
-                    LearnBtn.Visible = false;
+                    // LearnBtn.Visible = false;
                 }
             }
 
@@ -68,6 +81,14 @@ namespace WAPP_Assignment
                 {
                     Text = $"{examRow["title"]}",
                 };
+                if (userType == "student" || userType == "admin")
+                {
+                    title.NavigateUrl = $"/Learn/ViewExam.aspx?exam_id={examRow["exam_id"]}";
+                }
+                else
+                {
+                    title.NavigateUrl = "#";
+                }
                 ExamPanel.Controls.Add(title);
                 ExamPanel.Controls.Add(new Literal { Text = "<br />" });
             }

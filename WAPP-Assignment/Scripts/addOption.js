@@ -37,9 +37,9 @@
 $(document).ready(function () {
     $("[id$='AddOptBtn']").on('click', function () {
         const opt = $("[id$='OptTxtBox']").val()
-        $("[id$='OptTxtBox").val("']")
+        $("[id$='OptTxtBox']").val("")
         if (opt === "") return
-        const $tbody = $("[id$='OptTable").find("tbody']")
+        const $tbody = $("[id$='OptTable']").find("tbody")
         const $lastRow = $tbody.find("tr:last")
         if ($lastRow.length == 0) {
             const $newRow = createOption("OptTable", 0, opt)
@@ -53,12 +53,18 @@ $(document).ready(function () {
 })
 
 const CheckOption = () => {
-    let checked = false
-    $("input[type='checkbox']").each(function () {
-        if ($(this).is(":checked")) {
-            checked = true
-        }
-    })
+  let checked = false
+  $("[id$='OptStatus']").hide()
+  $("input[type='checkbox']").each(function () {
+      if ($(this).is(":checked")) {
+          checked = true
+      }
+  })
+  if (!checked) {
     $("[id$='OptStatus']").show()
-    return checked
+  }
+  else {
+    $("[id$='OptStatus']").hide()
+  }
+  return checked
 }

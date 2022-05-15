@@ -51,24 +51,6 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected global::System.Web.UI.WebControls.RangeValidator QueNoRangeValidator;
 
         /// <summary>
-        /// TitleLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLbl;
-
-        /// <summary>
-        /// TitleTxtBox control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TitleTxtBox;
-
-        /// <summary>
         /// ContentLbl control.
         /// </summary>
         /// <remarks>

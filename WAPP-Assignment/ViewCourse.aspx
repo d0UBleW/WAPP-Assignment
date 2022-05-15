@@ -13,7 +13,7 @@
       <br />
       <asp:Button ID="EnrollBtn" runat="server" Visible="false" OnClick="EnrollBtn_Click" Text="Enroll" />
       <asp:Button ID="UnenrollBtn" runat="server" Visible="false" Text="Unenroll" />
-      <asp:Button ID="LearnBtn" runat="server" Visible="false" OnClick="LearnBtn_Click" Text="Learn" />
+      <%--<asp:Button ID="LearnBtn" runat="server" Visible="false" OnClick="LearnBtn_Click" Text="Learn" />--%>
     </asp:Panel>
   </form>
   <div class="container">

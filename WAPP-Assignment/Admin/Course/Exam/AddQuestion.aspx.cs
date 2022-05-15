@@ -10,18 +10,18 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment.Admin.Course.Exam
 {
-    public partial class AddQuestion : System.Web.UI.Page
+    public partial class AddQuestion : UtilClass.BasePage
     {
         private int exam_id;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user_id"] == null)
+            if (userType == "nobody")
             {
                 Response.Redirect("~/Home.aspx");
                 return;
             }
-            if (!(bool)Session["isAdmin"])
+            if (userType == "student")
             {
                 if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
                 {
@@ -55,7 +55,6 @@ namespace WAPP_Assignment.Admin.Course.Exam
         {
             int maxSeq = Convert.ToInt32(QueNoTxtBox.Attributes["Max"]);
             int seq = Convert.ToInt32(QueNoTxtBox.Text);
-            string title = TitleTxtBox.Text;
             var sanitizer = new HtmlSanitizer();
             sanitizer.AllowedTags.Add("iframe");
             sanitizer.AllowedTags.Add("oembed");
@@ -102,6 +101,10 @@ namespace WAPP_Assignment.Admin.Course.Exam
                     }
                 }
                 conn.Close();
+                if (!string.IsNullOrEmpty(Request.UrlReferrer.ToString()))
+                    Response.Redirect(Request.UrlReferrer.ToString());
+                else
+                    Response.Redirect("~/Home.aspx");
             }
 
         }

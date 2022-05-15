@@ -9,33 +9,14 @@ using System.Data.SqlClient;
 
 namespace WAPP_Assignment
 {
-    public partial class ViewChapter : System.Web.UI.Page
+    public partial class ViewChapter : UtilClass.BasePage
     {
         private int chapter_id;
         DataRow chapterRow;
-        private string userType;
-        protected void Page_PreInit(object sender, EventArgs e)
-        {
-            if (Session["user_id"] == null)
-            {
-                userType = "nobody";
-                Page.MasterPageFile = "~/SiteAnon.Master";
-            }
-            else if ((bool)Session["isAdmin"])
-            {
-                userType = "admin";
-                Page.MasterPageFile = "~/SiteAdmin.Master";
-            }
-            else
-            {
-                userType = "student";
-                Page.MasterPageFile = "~/SiteStudent.Master";
-            }
-        }
         protected void Page_Load(object sender, EventArgs e)
         {
             string chapter_id_temp = Request.QueryString["chapter_id"];
-            if (Session["user_id"] == null)
+            if (userType == "nobody")
             {
                 Response.Redirect("~/Login.aspx");
                 return;
@@ -53,9 +34,9 @@ namespace WAPP_Assignment
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 return;
             }
-            if (!Chapter.IsValidChapterID(chapter_id)) return;
             int student_id = Convert.ToInt32(Session["user_id"]);
             DataTable dt = Chapter.GetChapterData(chapter_id);
+            if (dt.Rows.Count == 0) return;
             chapterRow = dt.Rows[0];
 
             int course_id = Convert.ToInt32(chapterRow["course_id"]);

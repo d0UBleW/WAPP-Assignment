@@ -24,6 +24,15 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// MainPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel MainPanel;
+
+        /// <summary>
         /// TitleLbl control.
         /// </summary>
         /// <remarks>
@@ -42,13 +51,22 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected global::System.Web.UI.WebControls.TextBox TitleTxtBox;
 
         /// <summary>
-        /// AddQueBtn control.
+        /// AddQueBtnLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddQueBtn;
+        protected global::System.Web.UI.WebControls.LinkButton AddQueBtnLink;
+
+        /// <summary>
+        /// QuePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel QuePanel;
 
         /// <summary>
         /// QuePlaceholder control.

@@ -33,24 +33,6 @@ namespace WAPP_Assignment.Learn
         protected global::System.Web.UI.WebControls.Label TitleLbl;
 
         /// <summary>
-        /// ContentPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ContentPanel;
-
-        /// <summary>
-        /// ContentPlaceholder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ContentPlaceholder;
-
-        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -60,21 +42,21 @@ namespace WAPP_Assignment.Learn
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// PrevBtn control.
+        /// ContentPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button PrevBtn;
+        protected global::System.Web.UI.WebControls.Panel ContentPanel;
 
         /// <summary>
-        /// NextBtn control.
+        /// SubmitBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button NextBtn;
+        protected global::System.Web.UI.WebControls.Button SubmitBtn;
     }
 }
