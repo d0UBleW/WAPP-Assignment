@@ -44,10 +44,9 @@ namespace WAPP_Assignment.Learn
                     Label info = new Label
                     {
                         Text = "You've attempted this exam before, no retake is allowed",
-                        CssClass = "fs-3",
+                        CssClass = "fs-2",
                         ForeColor = System.Drawing.Color.Red,
                     };
-                    ContentPanel.Controls.Add(new Literal { Text = "<br/>" });
                     ContentPanel.Controls.Add(info);
                     SubmitBtn.Visible = false;
                     return;
@@ -57,12 +56,12 @@ namespace WAPP_Assignment.Learn
                     Label info = new Label
                     {
                         Text = "You've attempted this exam before, retaking will overwrite previous attempt!",
-                        CssClass = "fs-3",
+                        CssClass = "fs-2",
                         ForeColor = System.Drawing.Color.Red,
                     };
-                    ContentPanel.Controls.Add(new Literal { Text = "<br/>" });
                     ContentPanel.Controls.Add(info);
                 }
+                ContentPanel.Controls.Add(new Literal { Text = "<br/>" });
             }
 
             DataTable questionTable = Question.GetExamQuestion(exam_id);

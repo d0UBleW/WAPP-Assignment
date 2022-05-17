@@ -10,6 +10,9 @@
   <li class="nav-item">
     <asp:HyperLink CssClass="nav-link" runat="server" ID="DashLink" NavigateUrl="~/Dashboard.aspx" Text="Dashboard"></asp:HyperLink>
   </li>
+  <li>
+    <asp:HyperLink CssClass="nav-link" runat="server" ID="MyGradeLink" NavigateUrl="/Student/MyGrade.aspx" Text="My Grades"></asp:HyperLink>
+  </li>
 </asp:Content>
 
 <asp:Content ID="NavRight" ContentPlaceHolderID="NavRightContent" runat="server">
@@ -17,15 +20,12 @@
     <asp:HyperLink CssClass="nav-link" runat="server" ID="LogoutLink" NavigateUrl="/Logout.aspx" Text="Logout"></asp:HyperLink>
   </li>
   <li class="nav-item">
-    <asp:HyperLink CssClass="nav-link" runat="server" ID="ProfileLink" NavigateUrl="/Student/Profile.aspx">
-        Profile
-    </asp:HyperLink>
+    <asp:HyperLink CssClass="nav-link" runat="server" ID="ProfileLink" NavigateUrl="/Student/Profile.aspx" Text="Profile"></asp:HyperLink>
   </li>
 </asp:Content>
 
 <asp:Content ID="CourseDropDown" ContentPlaceHolderID="CourseDropDownContent" runat="server">
   <li><a class="dropdown-item" href="/Student/Course/MyCourse.aspx">My Courses</a></li>
-  <li><a class="dropdown-item" href="/Student/Course/MyGrade.aspx">My Grades</a></li>
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">

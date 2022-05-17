@@ -10,15 +10,28 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="container">
 
-  <asp:Panel ID="TOCPanel" runat="server"></asp:Panel>
-  <h1>
-    <asp:Label ID="TitleLbl" runat="server"></asp:Label>
-  </h1>
+    <asp:Panel ID="TOCPanel" runat="server"></asp:Panel>
+    <h1>
+      <asp:Label ID="TitleLbl" runat="server"></asp:Label>
+    </h1>
     <asp:Label ID="ScoreLbl" runat="server"></asp:Label>
-  <form id="form1" runat="server">
-    <asp:Panel ID="ContentPanel" runat="server">
-    </asp:Panel>
-  </form>
+    <br />
+    <br />
+    <asp:HyperLink ID="RetakeLink" runat="server" CssClass="btn btn-primary btn-md" Text="Retake" Visible="false"></asp:HyperLink>
+    <br />
+    <br />
+    <div class="form-check">
+      <input type="checkbox" class="form-check-input" id="toggleAnswer" />
+      <label for="toggleAnswer" class="form-check-label">Show answer</label>
+    </div>
+    <br />
+    <br />
+
+    <form id="form1" runat="server">
+      <asp:Panel ID="ContentPanel" runat="server">
+      </asp:Panel>
+      <asp:HiddenField ID="CorrectOptIDField" runat="server" />
+    </form>
   </div>
   <script>
 
@@ -39,6 +52,23 @@
         hljs.highlightElement(el);
       });
     });
+
+    $("#toggleAnswer").on('change', function () {
+      console.log("ch")
+      const answerIds = $("input[id$='CorrectOptIDField']").val().split(',')
+      $("input[id*='optList']").each(function () {
+        if (answerIds.includes($(this).val())) {
+          const $label = $(this).closest("span").find("label")
+          const currText = $label.text()
+          if ($("#toggleAnswer").is(":checked")) {
+            $label.text(currText + " ✔")
+          }
+          else {
+            $label.text(currText.slice(0, currText.length-2))
+          }
+        }
+      })
+    })
 
   </script>
 </asp:Content>

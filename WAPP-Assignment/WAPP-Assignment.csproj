@@ -102,6 +102,7 @@
     <Content Include="Admin\Course\EditCourse.aspx" />
     <Content Include="Admin\Course\Exam\AddQuestion.aspx" />
     <Content Include="Admin\Course\Exam\EditExam.aspx" />
+    <Content Include="Admin\Course\Exam\EditQuestion.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
       <DependentUpon>ilearn.mdf</DependentUpon>
@@ -125,6 +126,7 @@
     <Content Include="Logout.aspx" />
     <Content Include="Student\Course\MyCourse.aspx" />
     <Content Include="MyService.asmx" />
+    <Content Include="Student\MyGrade.aspx" />
     <Content Include="Student\Profile.aspx" />
     <Content Include="Register.aspx" />
     <Content Include="Scripts\addOption.js" />
@@ -201,6 +203,13 @@
     <Compile Include="Admin\Course\Exam\EditExam.aspx.designer.cs">
       <DependentUpon>EditExam.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Course\Exam\EditQuestion.aspx.cs">
+      <DependentUpon>EditQuestion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\Exam\EditQuestion.aspx.designer.cs">
+      <DependentUpon>EditQuestion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\MyServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -244,6 +253,13 @@
     <Compile Include="MyService.asmx.cs">
       <DependentUpon>MyService.asmx</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Student\MyGrade.aspx.cs">
+      <DependentUpon>MyGrade.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\MyGrade.aspx.designer.cs">
+      <DependentUpon>MyGrade.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\Profile.aspx.cs">
       <DependentUpon>Profile.aspx</DependentUpon>

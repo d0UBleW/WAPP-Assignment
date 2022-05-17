@@ -76,7 +76,7 @@ namespace WAPP_Assignment.UtilClass
             return -1;
         }
 
-        protected string GetQueryString(string param, bool redirect = false, bool type)
+        protected string GetQueryString(string param, bool type, bool redirect = false)
         {
             if (CheckQueryString(param))
             {
