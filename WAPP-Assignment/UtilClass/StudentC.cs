@@ -9,6 +9,44 @@ namespace WAPP_Assignment
 {
     public static class StudentC
     {
+
+        public static void Unenroll(int student_id, int course_id)
+        {
+            DataTable courseTable = CourseC.GetCourseData(course_id);
+            if (courseTable.Rows.Count == 0)
+            {
+                return;
+            }
+
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "DELETE enroll WHERE course_id=@course_id AND student_id=@student_id;";
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "DELETE rating WHERE course_id=@course_id AND student_id=@student_id;";
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "DELETE grade WHERE exam_id IN (SELECT exam_id FROM exam WHERE course_id=@course_id) AND student_id=@student_id;";
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
+                }
+                conn.Close();
+            }
+
+        }
+
         public static DataRow GetStudentData(int student_id)
         {
             DataTable dataTable = new DataTable();

@@ -120,7 +120,7 @@
     <Content Include="Student\ChangePassword.aspx" />
     <Content Include="Student\Course\EnrollCourse.aspx" />
     <Content Include="Home.aspx" />
-    <Content Include="Student\Course\RateCourse.aspx" />
+    <Content Include="Student\Course\UnenrollCourse.aspx" />
     <Content Include="Student\Learn\ReviewExam.aspx" />
     <Content Include="Student\Learn\ViewExam.aspx" />
     <Content Include="Login.aspx" />
@@ -230,12 +230,12 @@
     <Compile Include="Student\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Student\Course\RateCourse.aspx.cs">
-      <DependentUpon>RateCourse.aspx</DependentUpon>
+    <Compile Include="Student\Course\UnenrollCourse.aspx.cs">
+      <DependentUpon>UnenrollCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Student\Course\RateCourse.aspx.designer.cs">
-      <DependentUpon>RateCourse.aspx</DependentUpon>
+    <Compile Include="Student\Course\UnenrollCourse.aspx.designer.cs">
+      <DependentUpon>UnenrollCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\Learn\ReviewExam.aspx.cs">
       <DependentUpon>ReviewExam.aspx</DependentUpon>

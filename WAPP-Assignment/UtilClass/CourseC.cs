@@ -94,10 +94,9 @@ namespace WAPP_Assignment
             else if (userType == "student")
             {
                 if (enrolledCourseID != null && enrolledCourseID.Contains(course_id)) {
-                    int chapter_id = ChapterC.GetFirstChapterID(course_id);
                     HyperLink unenrollLink = new HyperLink
                     {
-                        NavigateUrl = $"#",
+                        NavigateUrl = $"/Student/Course/UnenrollCourse.aspx?course_id={course_id}",
                         Text = "Unenroll",
                         CssClass = "btn btn-secondary btn-sm unenroll-link",
                     };

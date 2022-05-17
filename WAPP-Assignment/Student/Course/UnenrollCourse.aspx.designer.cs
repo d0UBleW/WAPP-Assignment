@@ -11,7 +11,7 @@ namespace WAPP_Assignment.Student.Course
 {
 
 
-    public partial class RateCourse
+    public partial class UnenrollCourse
     {
     }
 }
