@@ -101,8 +101,9 @@
     <Content Include="Admin\Course\Chapter\EditChapter.aspx" />
     <Content Include="Admin\Course\EditCourse.aspx" />
     <Content Include="Admin\Course\Exam\AddQuestion.aspx" />
+    <Content Include="Admin\Course\Exam\DeleteExam.aspx" />
+    <Content Include="Admin\Course\Exam\DeleteQuestion.aspx" />
     <Content Include="Admin\Course\Exam\EditExam.aspx" />
-    <Content Include="Admin\Course\Exam\EditQuestion.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
       <DependentUpon>ilearn.mdf</DependentUpon>
@@ -196,19 +197,26 @@
     <Compile Include="Admin\Course\Exam\AddQuestion.aspx.designer.cs">
       <DependentUpon>AddQuestion.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Course\Exam\DeleteExam.aspx.cs">
+      <DependentUpon>DeleteExam.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\Exam\DeleteExam.aspx.designer.cs">
+      <DependentUpon>DeleteExam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\Exam\DeleteQuestion.aspx.cs">
+      <DependentUpon>DeleteQuestion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\Exam\DeleteQuestion.aspx.designer.cs">
+      <DependentUpon>DeleteQuestion.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Course\Exam\EditExam.aspx.cs">
       <DependentUpon>EditExam.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Course\Exam\EditExam.aspx.designer.cs">
       <DependentUpon>EditExam.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Course\Exam\EditQuestion.aspx.cs">
-      <DependentUpon>EditQuestion.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Course\Exam\EditQuestion.aspx.designer.cs">
-      <DependentUpon>EditQuestion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\MyServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>

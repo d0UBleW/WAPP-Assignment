@@ -20,6 +20,7 @@ namespace WAPP_Assignment.Admin
             int course_id = (int)dr["course_id"];
             int seq = (int)dr["sequence"];
             int maxSeq = ChapterC.GetChapterMaxSeq(course_id);
+            ChapterC.UpdateChapterSequence(course_id, maxSeq, seq);
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();
@@ -32,7 +33,6 @@ namespace WAPP_Assignment.Admin
                 }
                 conn.Close();
             }
-            ChapterC.UpdateChapterSequence(course_id, maxSeq, seq);
             RedirectBack();
         }
     }

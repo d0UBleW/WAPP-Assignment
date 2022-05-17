@@ -11,7 +11,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
 {
 
 
-    public partial class EditQuestion
+    public partial class DeleteQuestion
     {
     }
 }

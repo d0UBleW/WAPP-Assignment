@@ -9,6 +9,57 @@ namespace WAPP_Assignment
 {
     public static class Question
     {
+
+        public static void DeleteQuestion(int question_id)
+        {
+            DataTable questTable = Question.GetQuestionData(question_id);
+            if (questTable.Rows.Count == 0) return;
+            DataRow questRow = questTable.Rows[0];
+            int exam_id = Convert.ToInt32(questRow["exam_id"]);
+            int oldSeq = Convert.ToInt32(questRow["sequence"]);
+            int maxSeq = Question.GetQueMaxSeq(exam_id);
+            Question.UpdateQueSequence(exam_id, maxSeq, oldSeq);
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "DELETE [option] WHERE question_id=@question_id;";
+                    cmd.Parameters.AddWithValue("@question_id", question_id);
+                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.Clear();
+
+                    cmd.CommandText = "DELETE question WHERE question_id=@question_id;";
+                    cmd.Parameters.AddWithValue("@question_id", question_id);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
+        public static DataTable GetQuestionData(int question_id)
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT * FROM question WHERE question_id=@question_id;";
+                    cmd.Parameters.AddWithValue("@question_id", question_id);
+                    using (SqlDataAdapter adapter = new SqlDataAdapter())
+                    {
+                        adapter.SelectCommand = cmd;
+                        adapter.Fill(dataTable);
+                    }
+                }
+                conn.Close();
+            }
+            return dataTable;
+        }
+
         public static DataTable GetExamQuestion(int exam_id)
         {
             DataTable questTable = new DataTable();

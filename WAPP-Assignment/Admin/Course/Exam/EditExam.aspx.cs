@@ -28,14 +28,6 @@ namespace WAPP_Assignment.Admin.Course.Exam
                 {
                     Text = $"{questData["sequence"]}",
                 };
-                LinkButton editQueBtn = new LinkButton
-                {
-                    Text = "Edit Question",
-                    ID = $"editQueBtn-{questData["question_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
-                };
-                editQueBtn.Click += new EventHandler(EditQueBtn_Click);
-                editQueBtn.Attributes.Add("data-question-id", questData["question_id"].ToString());
                 LinkButton delQueBtn = new LinkButton
                 {
                     Text = "Delete Question",
@@ -46,17 +38,16 @@ namespace WAPP_Assignment.Admin.Course.Exam
                 delQueBtn.OnClientClick = "return confirm('Are you sure?');";
                 delQueBtn.Click += new EventHandler(DelQueBtn_Click);
                 QuePlaceholder.Controls.Add(quest);
-                QuePlaceholder.Controls.Add(editQueBtn);
+                QuePlaceholder.Controls.Add(delQueBtn);
                 QuePlaceholder.Controls.Add(new Literal { Text = "<br/>" });
             }
         }
 
-        protected void EditQueBtn_Click(object sender, EventArgs e)
-        {
-        }
-
         protected void DelQueBtn_Click(object sender, EventArgs e)
         {
+            LinkButton linkButton = sender as LinkButton;
+            int question_id = Convert.ToInt32(linkButton.Attributes["data-question-id"]);
+            Response.Redirect($"~/Admin/Course/Exam/DeleteQuestion.aspx?question_id={question_id}");
         }
 
         protected void AddQueBtnLink_Click(object sender, EventArgs e)
