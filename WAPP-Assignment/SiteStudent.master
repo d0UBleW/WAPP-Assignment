@@ -15,6 +15,10 @@
   </li>
 </asp:Content>
 
+<asp:Content ID="Greet" ContentPlaceHolderID="GreetContent" runat="server">
+  <asp:Label ID="GreetingLbl" CssClass="navbar-text text-white" runat="server"></asp:Label>
+</asp:Content>
+
 <asp:Content ID="NavRight" ContentPlaceHolderID="NavRightContent" runat="server">
   <li class="nav-item">
     <asp:HyperLink CssClass="nav-link" runat="server" ID="LogoutLink" NavigateUrl="/Logout.aspx" Text="Logout"></asp:HyperLink>

@@ -121,6 +121,7 @@
     <Content Include="Student\Course\EnrollCourse.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Student\Course\UnenrollCourse.aspx" />
+    <Content Include="Student\Feedback.aspx" />
     <Content Include="Student\Learn\ReviewExam.aspx" />
     <Content Include="Student\Learn\ViewExam.aspx" />
     <Content Include="Login.aspx" />
@@ -236,6 +237,13 @@
     </Compile>
     <Compile Include="Student\Course\UnenrollCourse.aspx.designer.cs">
       <DependentUpon>UnenrollCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\Feedback.aspx.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\Feedback.aspx.designer.cs">
+      <DependentUpon>Feedback.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\Learn\ReviewExam.aspx.cs">
       <DependentUpon>ReviewExam.aspx</DependentUpon>

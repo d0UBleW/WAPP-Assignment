@@ -63,6 +63,7 @@
             </li>
             <asp:ContentPlaceHolder ID="NavLeftContent" runat="server"></asp:ContentPlaceHolder>
           </ul>
+          <asp:ContentPlaceHolder ID="GreetContent" runat="server"></asp:ContentPlaceHolder>
           <ul class="navbar-nav justify-content-end">
             <asp:ContentPlaceHolder ID="NavRightContent" runat="server">
             </asp:ContentPlaceHolder>
