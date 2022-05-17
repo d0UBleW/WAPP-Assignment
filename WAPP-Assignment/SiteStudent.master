@@ -1,6 +1,6 @@
 ﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="SiteStudent.master.cs" Inherits="WAPP_Assignment.SiteStudent" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
   <title>Student | <%: Page.Title %></title>
   <asp:ContentPlaceHolder ID="head" runat="server">
   </asp:ContentPlaceHolder>
@@ -22,10 +22,13 @@
     </asp:HyperLink>
   </li>
 </asp:Content>
+
 <asp:Content ID="CourseDropDown" ContentPlaceHolderID="CourseDropDownContent" runat="server">
   <li><a class="dropdown-item" href="/Student/Course/MyCourse.aspx">My Courses</a></li>
+  <li><a class="dropdown-item" href="/Student/Course/MyGrade.aspx">My Grades</a></li>
 </asp:Content>
-<asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
+
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <asp:ContentPlaceHolder ID="MainContent" runat="server">
   </asp:ContentPlaceHolder>
 </asp:Content>

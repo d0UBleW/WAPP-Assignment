@@ -5,20 +5,24 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace WAPP_Assignment
 {
     public partial class EnrollCourse : UtilClass.BaseStudentPage
     {
+        private int course_id;
         protected void Page_Load(object sender, EventArgs e)
         {
             // TODO: Enroll student from admin
-            if (string.IsNullOrEmpty(Request.QueryString["course_id"]))
+            course_id = GetQueryString("course_id");
+            DataTable courseTable = CourseC.GetCourseData(course_id);
+            if (courseTable.Rows.Count == 0)
             {
+                RedirectBack();
                 return;
             }
             int student_id = Convert.ToInt32(Session["user_id"]);
-            int course_id = int.Parse(Request.QueryString["course_id"]);
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();
@@ -32,10 +36,7 @@ namespace WAPP_Assignment
                 }
                 conn.Close();
             }
-            if (Request.UrlReferrer != null)
-            {
-                Response.Redirect(Request.UrlReferrer.ToString());
-            }
+            RedirectBack();
         }
     }
 }

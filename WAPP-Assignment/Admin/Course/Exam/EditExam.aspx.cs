@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace WAPP_Assignment.Admin.Course.Exam
 {
@@ -13,13 +14,13 @@ namespace WAPP_Assignment.Admin.Course.Exam
         private int exam_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string exam_id_temp = Request.QueryString["exam_id"];
-            if (string.IsNullOrEmpty(exam_id_temp))
+            exam_id = GetQueryString("exam_id");
+            if (!IsPostBack)
             {
-                MainPanel.Visible = false;
-                return;
+                DataTable examTable = ExamC.GetExamData(exam_id);
+                TitleTxtBox.Text = examTable.Rows[0]["title"].ToString();
+                RetakeChkBox.Checked = Convert.ToBoolean(examTable.Rows[0]["retake"]);
             }
-            exam_id = int.Parse(exam_id_temp);
             DataTable questionTable = Question.GetExamQuestion(exam_id);
             foreach (DataRow questData in questionTable.Rows)
             {
@@ -61,6 +62,26 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected void AddQueBtnLink_Click(object sender, EventArgs e)
         {
             Response.Redirect($"~/Admin/Course/Exam/AddQuestion.aspx?exam_id={exam_id}");
+        }
+
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            string title = TitleTxtBox.Text;
+            bool retake = RetakeChkBox.Checked;
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "UPDATE exam SET title=@title, retake=@retake WHERE exam_id=@exam_id;";
+                    cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@retake", retake.ToString());
+                    cmd.Parameters.AddWithValue("@exam_id", exam_id);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
         }
     }
 }

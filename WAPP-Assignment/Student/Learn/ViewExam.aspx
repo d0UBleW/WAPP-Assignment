@@ -14,6 +14,7 @@
   <h1>
     <asp:Label ID="TitleLbl" runat="server"></asp:Label>
   </h1>
+  <asp:Label ID="RetakeLbl" runat="server"></asp:Label>
   <form id="form1" runat="server">
     <asp:Panel ID="ContentPanel" runat="server">
     </asp:Panel>

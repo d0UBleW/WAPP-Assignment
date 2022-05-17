@@ -16,13 +16,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string exam_id_temp = Request.QueryString["exam_id"];
-            if (String.IsNullOrEmpty(exam_id_temp))
-            {
-                // throw error
-                return;
-            }
-            exam_id = Convert.ToInt32(exam_id_temp);
+            exam_id = GetQueryString("exam_id");
             if (!IsPostBack)
             {
                 int maxSeq = WAPP_Assignment.Question.GetQueMaxSeq(exam_id) + 1;
@@ -84,10 +78,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
                     }
                 }
                 conn.Close();
-                if (Request.UrlReferrer != null)
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                else
-                    Response.Redirect("~/Home.aspx");
+                RedirectBack();
             }
 
         }

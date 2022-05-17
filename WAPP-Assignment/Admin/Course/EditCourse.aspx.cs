@@ -18,29 +18,15 @@ namespace WAPP_Assignment.Admin
         private int course_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string course_id_temp = Request.QueryString["course_id"];
-            if (String.IsNullOrEmpty(course_id_temp))
+            course_id = GetQueryString("course_id");
+            DataTable courseDataTable = WAPP_Assignment.CourseC.GetCourseData(course_id);
+            if (courseDataTable.Rows.Count == 0)
             {
-                Panel1.Visible = false;
-                return;
-            }
-            try
-            {
-                course_id = Convert.ToInt32(course_id_temp);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
                 Panel1.Visible = false;
                 return;
             }
             if (!IsPostBack)
             {
-                DataTable courseDataTable = WAPP_Assignment.Course.GetCourseData(course_id);
-                if (courseDataTable.Rows.Count == 0)
-                {
-                    return;
-                }
                 DataRow courseData = courseDataTable.Rows[0];
                 TitleTxtBox.Text = courseData["title"].ToString();
                 DescTxtBox.Text = courseData["description"].ToString();
@@ -56,7 +42,7 @@ namespace WAPP_Assignment.Admin
                 }
                 CatField.Value = string.Join("<|>", categoryList);
             }
-            DataTable chapterDataTable = Chapter.GetCourseChapterData(course_id);
+            DataTable chapterDataTable = ChapterC.GetCourseChapterData(course_id);
             foreach (DataRow chapterData in chapterDataTable.Rows)
             {
                 Panel container = new Panel();
@@ -85,7 +71,7 @@ namespace WAPP_Assignment.Admin
                 ChapterPlaceholder.Controls.Add(delChapBtn);
                 ChapterPlaceholder.Controls.Add(new Literal { Text = "<br/><br/>" });
             }
-            DataTable examTable = Exam.GetCourseExamData(course_id);
+            DataTable examTable = ExamC.GetCourseExamData(course_id);
             foreach (DataRow examData in examTable.Rows)
             {
                 Panel container = new Panel();

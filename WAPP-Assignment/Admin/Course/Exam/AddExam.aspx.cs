@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace WAPP_Assignment.Admin
 {
@@ -13,34 +14,33 @@ namespace WAPP_Assignment.Admin
         private int course_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string course_id_temp = Request.QueryString["course_id"];
-            if (string.IsNullOrEmpty(course_id_temp))
+            course_id = GetQueryString("course_id");
+            DataTable courseTable = CourseC.GetCourseData(course_id);
+            if (courseTable.Rows.Count == 0)
             {
+                AddExBtn.Visible = false;
                 return;
             }
-            course_id = int.Parse(course_id_temp);
         }
 
         protected void AddExBtn_Click(object sender, EventArgs e)
         {
             string title = TitleTxtBox.Text;
+            bool retake = RetakeChkBox.Checked;
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO exam (course_id, title) VALUES (@course_id, @title);";
+                    cmd.CommandText = "INSERT INTO exam (course_id, title, retake) VALUES (@course_id, @title, @retake);";
                     cmd.Parameters.AddWithValue("@course_id", course_id);
                     cmd.Parameters.AddWithValue("@title", title);
+                    cmd.Parameters.AddWithValue("@retake", retake.ToString());
                     cmd.ExecuteNonQuery();
                 }
                 conn.Close();
             }
-            if (Request.UrlReferrer != null)
-            {
-                Response.Redirect(Request.UrlReferrer.ToString());
-            }
-        }
+            RedirectBack();        }
     }
 }

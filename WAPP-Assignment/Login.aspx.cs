@@ -27,6 +27,7 @@ namespace WAPP_Assignment
             string username = UsernameTxtBox.Text;
             string password = PasswordTxtBox.Text;
             password = MyUtil.ComputeSHA1(password);
+            System.Diagnostics.Debug.WriteLine(password);
 
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
@@ -44,17 +45,18 @@ namespace WAPP_Assignment
                         sda.Fill(dt);
                         if (dt.Rows.Count > 0)
                         {
-                            this.ErrorLbl.Visible = false;
+                            ErrorLbl.Visible = false;
                             string user_id = dt.Rows[0][DbTable+"_id"].ToString();
-                            this.Session["username"] = username;
-                            this.Session["user_id"] = Convert.ToInt32(user_id);
-                            this.Session["isAdmin"] = DbTable == "admin";
+                            Session["username"] = username;
+                            Session["user_id"] = Convert.ToInt32(user_id);
+                            Session["isAdmin"] = DbTable == "admin";
                             Response.Redirect("Dashboard.aspx");
                             return;
                         }
                         else
                         {
-                            this.ErrorLbl.Visible = true;
+                            ErrorLbl.Visible = true;
+                            PasswordTxtBox.Focus();
                         }
                         conn.Close();
                     }

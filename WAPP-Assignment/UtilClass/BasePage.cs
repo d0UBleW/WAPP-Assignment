@@ -45,5 +45,67 @@ namespace WAPP_Assignment.UtilClass
                 Page.MasterPageFile = "~/SiteStudent.Master";
             }
         }
+
+        protected bool CheckQueryString(string param)
+        {
+            string queryString = Request.QueryString[param];
+            if (string.IsNullOrEmpty(queryString))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        protected int GetQueryString(string param, bool redirect = false)
+        {
+            if (CheckQueryString(param))
+            {
+                try
+                {
+                    return Convert.ToInt32(Request.QueryString[param]);
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+            }
+            if (redirect)
+            {
+                RedirectBack();
+            }
+            return -1;
+        }
+
+        protected string GetQueryString(string param, bool redirect = false, bool type)
+        {
+            if (CheckQueryString(param))
+            {
+                try
+                {
+                    return Request.QueryString[param];
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine(ex.Message);
+                }
+            }
+            if (redirect)
+            {
+                RedirectBack();
+            }
+            return "";
+        }
+
+        protected void RedirectBack(string defaultUrl = "~/Home.aspx")
+        {
+            if (Request.UrlReferrer != null)
+            {
+                Response.Redirect(Request.UrlReferrer.ToString());
+            }
+            else
+            {
+                Response.Redirect(defaultUrl);
+            }
+        }
     }
 }

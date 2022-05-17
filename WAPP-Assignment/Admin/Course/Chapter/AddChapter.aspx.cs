@@ -18,16 +18,16 @@ namespace WAPP_Assignment.Admin
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            string course_id_temp = Request.QueryString["course_id"];
-            if (String.IsNullOrEmpty(course_id_temp))
+            course_id = GetQueryString("course_id");
+            DataTable courseTable = WAPP_Assignment.CourseC.GetCourseData(course_id);
+            if (courseTable.Rows.Count == 0)
             {
-                // throw error
                 return;
             }
-            course_id = Convert.ToInt32(course_id_temp);
+
             if (!IsPostBack)
             {
-                int maxSeq = Chapter.GetChapterMaxSeq(course_id) + 1;
+                int maxSeq = ChapterC.GetChapterMaxSeq(course_id) + 1;
                 ChapNoTxtBox.Attributes.Add("Max", maxSeq.ToString());
                 ChapNoRangeValidator.MaximumValue = maxSeq.ToString();
                 ChapNoRangeValidator.MinimumValue = "1";
@@ -50,7 +50,7 @@ namespace WAPP_Assignment.Admin
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    Chapter.UpdateChapterSequence(course_id, seq, maxSeq);
+                    ChapterC.UpdateChapterSequence(course_id, seq, maxSeq);
                     cmd.Connection = conn;
                     cmd.CommandText = "INSERT INTO chapter (course_id, title, content, sequence) VALUES (@course_id, @title, @content, @sequence);";
                     cmd.Parameters.AddWithValue("@course_id", course_id);

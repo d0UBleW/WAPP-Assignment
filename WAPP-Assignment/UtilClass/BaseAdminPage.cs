@@ -18,14 +18,7 @@ namespace WAPP_Assignment.UtilClass
             }
             if (userType == "student")
             {
-                if (Request.UrlReferrer != null)
-                {
-                    Response.Redirect(Request.UrlReferrer.ToString());
-                }
-                else
-                {
-                    Response.Redirect("~/Home.aspx");
-                }
+                RedirectBack();
                 return;
             }
         }

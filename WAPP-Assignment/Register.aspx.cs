@@ -24,33 +24,6 @@ namespace WAPP_Assignment
             }
         }
 
-        protected bool IsUsernameDuplicate(string username)
-        {
-            string queryExist = $"SELECT * FROM {DbTable} WHERE username=@username;";
-
-            using (SqlConnection conn = DatabaseManager.CreateConnection())
-            {
-                conn.Open();
-
-                using (SqlCommand cmd = new SqlCommand(queryExist, conn))
-                {
-                    cmd.Parameters.AddWithValue("@username", username);
-                    using (SqlDataAdapter sda = new SqlDataAdapter(cmd))
-                    {
-                        DataTable dt = new DataTable();
-                        sda.Fill(dt);
-                        conn.Close();
-                        if (dt.Rows.Count > 0)
-                        {
-                            return true;
-                        }
-                        return false;
-                    }
-                }
-            }
-
-        }
-
         protected void RegisterBtn_Click(object sender, EventArgs e)
         {
             SetDbTable();

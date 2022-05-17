@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="Profile" Language="C#" MasterPageFile="~/SiteStudent.master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="WAPP_Assignment.Profile" %>
 
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server"></asp:Content>
+
 <asp:Content ID="ProfileContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
         <div>
@@ -27,8 +29,10 @@
                 <asp:Label ID="UploadStatusLbl" runat="server" Text=""></asp:Label>
                 <br />
             </asp:Panel>
-            <asp:HyperLink ID="ChangePasswdLink" runat="server" NavigateUrl="/ChangePassword.aspx"
-                Text="Change password" CssClass="btn btn-secondary btn-sm"></asp:HyperLink>
+          <br />
+          <br />
+            <asp:HyperLink ID="ChangePasswdLink" runat="server" NavigateUrl="/Student/ChangePassword.aspx"
+                Text="Change Password" CssClass="btn btn-secondary btn-sm"></asp:HyperLink>
         </div>
     </form>
 </asp:Content>

@@ -16,33 +16,59 @@ namespace WAPP_Assignment.Learn
         private int student_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string exam_id_temp = Request.QueryString["exam_id"].ToString();
-            if (string.IsNullOrEmpty(exam_id_temp))
-            {
-                return;
-            }
-            try
-            {
-                exam_id = Convert.ToInt32(exam_id_temp);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                return;
-            }
+            exam_id = GetQueryString("exam_id");
             student_id = Convert.ToInt32(Session["user_id"]);
-            DataTable examTable = Exam.GetExamData(exam_id);
+            DataTable examTable = ExamC.GetExamData(exam_id);
             if (examTable.Rows.Count == 0)
             {
+                SubmitBtn.Visible = false;
                 return;
             }
             DataRow examData = examTable.Rows[0];
             TitleLbl.Text = examData["title"].ToString();
+            bool retake = Convert.ToBoolean(examData["retake"]);
+            if (retake)
+            {
+                RetakeLbl.Text = "Retake: Yes";
+            }
+            else
+            {
+                RetakeLbl.Text = "Retake: No";
+            }
+
+            DataTable studentExamAttempt = StudentC.GetExamResult(student_id, exam_id);
+            if (studentExamAttempt.Rows.Count > 0)
+            {
+                if (!retake)
+                {
+                    Label info = new Label
+                    {
+                        Text = "You've attempted this exam before, no retake is allowed",
+                        CssClass = "fs-3",
+                        ForeColor = System.Drawing.Color.Red,
+                    };
+                    ContentPanel.Controls.Add(new Literal { Text = "<br/>" });
+                    ContentPanel.Controls.Add(info);
+                    SubmitBtn.Visible = false;
+                    return;
+                }
+                else
+                {
+                    Label info = new Label
+                    {
+                        Text = "You've attempted this exam before, retaking will overwrite previous attempt!",
+                        CssClass = "fs-3",
+                        ForeColor = System.Drawing.Color.Red,
+                    };
+                    ContentPanel.Controls.Add(new Literal { Text = "<br/>" });
+                    ContentPanel.Controls.Add(info);
+                }
+            }
 
             DataTable questionTable = Question.GetExamQuestion(exam_id);
             foreach (DataRow questData in questionTable.Rows)
             {
-                Panel qPanel = Exam.DisplayQue(exam_id, questData);
+                Panel qPanel = ExamC.DisplayQue(exam_id, questData);
                 ContentPanel.Controls.Add(qPanel);
                 ContentPanel.Controls.Add(new Literal { Text = "<br/><br/>" });
             }

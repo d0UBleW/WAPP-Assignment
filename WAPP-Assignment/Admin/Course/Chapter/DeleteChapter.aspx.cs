@@ -11,30 +11,15 @@ namespace WAPP_Assignment.Admin
 {
     public partial class DeleteChapter : UtilClass.BaseAdminPage
     {
+        private int chapter_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string chapter_id_temp = Request.QueryString["chapter_id"];
-            if (string.IsNullOrEmpty(chapter_id_temp))
-            {
-                return;
-            }
-
-            int chapter_id;
-            try
-            {
-                chapter_id = int.Parse(chapter_id_temp);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                return;
-            }
-
-            DataTable dt = Chapter.GetChapterData(chapter_id);
+            chapter_id = GetQueryString("chapter_id");
+            DataTable dt = ChapterC.GetChapterData(chapter_id);
             DataRow dr = dt.Rows[0];
             int course_id = (int)dr["course_id"];
             int seq = (int)dr["sequence"];
-            int maxSeq = Chapter.GetChapterMaxSeq(course_id);
+            int maxSeq = ChapterC.GetChapterMaxSeq(course_id);
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();
@@ -47,9 +32,8 @@ namespace WAPP_Assignment.Admin
                 }
                 conn.Close();
             }
-            Chapter.UpdateChapterSequence(course_id, maxSeq, seq);
-            if (Request.UrlReferrer != null)
-                Response.Redirect(Request.UrlReferrer.ToString());
+            ChapterC.UpdateChapterSequence(course_id, maxSeq, seq);
+            RedirectBack();
         }
     }
 }

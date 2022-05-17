@@ -7,7 +7,11 @@
   <form id="form1" runat="server">
     <asp:Panel ID="MainPanel" CssClass="container" runat="server">
       <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
-      <asp:TextBox ID="TitleTxtBox" runat="server"></asp:TextBox>
+      <asp:TextBox ID="TitleTxtBox" runat="server" Required="required"></asp:TextBox>
+      <asp:CheckBox ID="RetakeChkBox" runat="server" Text="Allow retake" />
+      <br />
+      <br />
+      <asp:Button ID="EditBtn" runat="server" Text="Edit Exam" OnClick="EditBtn_Click" />
       <br />
       <br />
       <asp:LinkButton ID="AddQueBtnLink" runat="server" Text="Add Question" CssClass="btn btn-secondary btn-md" OnClick="AddQueBtnLink_Click"></asp:LinkButton>

@@ -115,6 +115,7 @@
     </None>
     <Content Include="Content\master.css" />
     <Content Include="Dashboard.aspx" />
+    <Content Include="Student\ChangePassword.aspx" />
     <Content Include="Student\Course\EnrollCourse.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Student\Course\RateCourse.aspx" />
@@ -205,6 +206,13 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Student\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Student\Course\RateCourse.aspx.cs">
       <DependentUpon>RateCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -282,8 +290,8 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="UtilClass\Category.cs" />
-    <Compile Include="UtilClass\Chapter.cs" />
-    <Compile Include="UtilClass\Course.cs" />
+    <Compile Include="UtilClass\ChapterC.cs" />
+    <Compile Include="UtilClass\CourseC.cs" />
     <Compile Include="Student\Course\EnrollCourse.aspx.cs">
       <DependentUpon>EnrollCourse.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,7 +299,7 @@
     <Compile Include="Student\Course\EnrollCourse.aspx.designer.cs">
       <DependentUpon>EnrollCourse.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UtilClass\Exam.cs" />
+    <Compile Include="UtilClass\ExamC.cs" />
     <Compile Include="UtilClass\MyAutoComplete.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

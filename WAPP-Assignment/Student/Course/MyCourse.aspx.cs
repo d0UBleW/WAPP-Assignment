@@ -14,7 +14,7 @@ namespace WAPP_Assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             int student_id = Convert.ToInt32(Session["user_id"].ToString());
-            DataTable courseTable = Course.GetEnrolledCourseData(student_id);
+            DataTable courseTable = CourseC.GetEnrolledCourseData(student_id);
             foreach (DataRow dr in courseTable.Rows)
             {
                 Panel cPanel = new Panel();

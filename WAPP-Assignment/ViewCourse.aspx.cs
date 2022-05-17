@@ -28,7 +28,7 @@ namespace WAPP_Assignment
                 System.Diagnostics.Debug.WriteLine(ex.Message);
                 return;
             }
-            DataTable courseTable = Course.GetCourseData(course_id);
+            DataTable courseTable = CourseC.GetCourseData(course_id);
             if (courseTable.Rows.Count == 0)
             {
                 CourseDetailPanel.Visible = false;
@@ -39,7 +39,7 @@ namespace WAPP_Assignment
             TitleLbl.Text = courseRow["title"].ToString();
             Page.Title = courseRow["title"].ToString();
             DescriptionLbl.Text = courseRow["description"].ToString();
-            double overallRating = Course.GetCourseOverallRating(course_id);
+            double overallRating = CourseC.GetCourseOverallRating(course_id);
             OverallRatingLbl.Text = $"Rating: {overallRating.ToString("0.00")}/5";
 
             RatingSubPanel.Visible = false;
@@ -62,7 +62,7 @@ namespace WAPP_Assignment
             EnrollLink.NavigateUrl = $"/Student/Course/EnrollCourse.aspx?course_id={course_id}";
             UnenrollLink.NavigateUrl = "#";
 
-            DataTable chapterTable = Chapter.GetCourseChapterData(course_id);
+            DataTable chapterTable = ChapterC.GetCourseChapterData(course_id);
             foreach (DataRow chapterRow in chapterTable.Rows)
             {
                 HyperLink title = new HyperLink
@@ -81,7 +81,7 @@ namespace WAPP_Assignment
                 ChapterTOCPanel.Controls.Add(new Literal { Text = "<br />" });
             }
 
-            DataTable examTable = Exam.GetCourseExamData(course_id);
+            DataTable examTable = ExamC.GetCourseExamData(course_id);
             foreach (DataRow examRow in examTable.Rows)
             {
                 HyperLink title = new HyperLink
@@ -100,7 +100,7 @@ namespace WAPP_Assignment
                 ExamPanel.Controls.Add(new Literal { Text = "<br />" });
             }
 
-            DataTable ratingTable = Course.GetCourseRating(course_id);
+            DataTable ratingTable = CourseC.GetCourseRating(course_id);
             int i = 0;
             foreach (DataRow ratingData in ratingTable.Rows)
             {

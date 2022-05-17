@@ -15,22 +15,9 @@ namespace WAPP_Assignment
         DataRow chapterRow;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string chapter_id_temp = Request.QueryString["chapter_id"];
-            if (string.IsNullOrEmpty(chapter_id_temp))
-            {
-                return;
-            }
-            try
-            {
-                chapter_id = int.Parse(chapter_id_temp);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                return;
-            }
+            chapter_id = GetQueryString("chapter_id");
             int student_id = Convert.ToInt32(Session["user_id"]);
-            DataTable dt = Chapter.GetChapterData(chapter_id);
+            DataTable dt = ChapterC.GetChapterData(chapter_id);
             if (dt.Rows.Count == 0) return;
             chapterRow = dt.Rows[0];
 
@@ -41,7 +28,7 @@ namespace WAPP_Assignment
                 Response.Write($"<script>alert('Please enroll prior to viewing the chapter'); window.location.href = '{Request.UrlReferrer}'</script>");
                 return;
             }
-            DataTable chapterTable = Chapter.GetCourseChapterData(course_id);
+            DataTable chapterTable = ChapterC.GetCourseChapterData(course_id);
             foreach (DataRow dataRow in chapterTable.Rows)
             {
                 HyperLink link = new HyperLink
@@ -66,7 +53,7 @@ namespace WAPP_Assignment
             ContentPlaceholder.Controls.Add(new Literal { Text = chapterRow["content"].ToString() });
 
             int chapter_no = Convert.ToInt32(chapterRow["sequence"]);
-            int chapter_no_end = Chapter.GetChapterMaxSeq(course_id);
+            int chapter_no_end = ChapterC.GetChapterMaxSeq(course_id);
             if (chapter_no_end == 1)
             {
                 PrevBtn.Visible = false;
@@ -88,7 +75,7 @@ namespace WAPP_Assignment
         {
             int course_id = Convert.ToInt32(chapterRow["course_id"]);
             int seq = Convert.ToInt32(chapterRow["sequence"]);
-            int chapter_id = Chapter.GetNextOrPrevChapterID(course_id, seq, "prev");
+            int chapter_id = ChapterC.GetNextOrPrevChapterID(course_id, seq, "prev");
             Response.Redirect($"/Student/Learn/ViewChapter.aspx?chapter_id={chapter_id}");
         }
 
@@ -96,7 +83,7 @@ namespace WAPP_Assignment
         {
             int course_id = Convert.ToInt32(chapterRow["course_id"]);
             int seq = Convert.ToInt32(chapterRow["sequence"]);
-            int chapter_id = Chapter.GetNextOrPrevChapterID(course_id, seq, "next");
+            int chapter_id = ChapterC.GetNextOrPrevChapterID(course_id, seq, "next");
             Response.Redirect($"/Student/Learn/ViewChapter.aspx?chapter_id={chapter_id}");
         }
     }

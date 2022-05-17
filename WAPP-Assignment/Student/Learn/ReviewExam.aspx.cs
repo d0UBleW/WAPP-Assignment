@@ -15,22 +15,9 @@ namespace WAPP_Assignment.Learn
         {
             student_id = Convert.ToInt32(Session["user_id"]);
 
-            string exam_id_temp = Request.QueryString["exam_id"];
-            if (string.IsNullOrEmpty(exam_id_temp))
-            {
-                return;
-            }
-            try
-            {
-                exam_id = Convert.ToInt32(exam_id_temp);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                return;
-            }
+            exam_id = GetQueryString("exam_id");
 
-            DataTable examTable = Exam.GetExamData(exam_id);
+            DataTable examTable = ExamC.GetExamData(exam_id);
             if (examTable.Rows.Count == 0)
             {
                 return;
@@ -40,7 +27,7 @@ namespace WAPP_Assignment.Learn
             DataTable questionTable = Question.GetExamQuestion(exam_id);
             foreach (DataRow questData in questionTable.Rows)
             {
-                Panel qPanel = Exam.DisplayQue(exam_id, questData);
+                Panel qPanel = ExamC.DisplayQue(exam_id, questData);
                 ContentPanel.Controls.Add(qPanel);
                 ContentPanel.Controls.Add(new Literal { Text = "<br/><br/>" });
             }

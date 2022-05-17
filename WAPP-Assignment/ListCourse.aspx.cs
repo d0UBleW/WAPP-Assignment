@@ -19,7 +19,7 @@ namespace WAPP_Assignment
         {
             List<int> enroll_course_id = new List<int>();
             enroll_course_id = StudentC.GetEnrolledCourseID(Convert.ToInt32(Session["user_id"]));
-            DataTable dt = Course.GetAllCourseData();
+            DataTable dt = CourseC.GetAllCourseData();
             foreach (DataRow dr in dt.Rows)
             {
                 DataTable courseCatTable = Category.GetCourseCategoryData(Convert.ToInt32(dr["course_id"]));
@@ -84,7 +84,7 @@ namespace WAPP_Assignment
                 else if (userType == "student")
                 {
                     if (enroll_course_id.Contains(Convert.ToInt32(dr["course_id"]))) {
-                        int chapter_id = Chapter.GetFirstChapterID(Convert.ToInt32(dr["course_id"]));
+                        int chapter_id = ChapterC.GetFirstChapterID(Convert.ToInt32(dr["course_id"]));
                         HyperLink unenrollLink = new HyperLink
                         {
                             NavigateUrl = $"#",
