@@ -35,7 +35,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
                     CssClass = "btn btn-secondary btn-md",
                 };
                 delQueBtn.Attributes.Add("data-question-id", questData["question_id"].ToString());
-                delQueBtn.OnClientClick = "return confirm('Are you sure?');";
+                delQueBtn.OnClientClick = "return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';";
                 delQueBtn.Click += new EventHandler(DelQueBtn_Click);
                 QuePlaceholder.Controls.Add(quest);
                 QuePlaceholder.Controls.Add(delQueBtn);

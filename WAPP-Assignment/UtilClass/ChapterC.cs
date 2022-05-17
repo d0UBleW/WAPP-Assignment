@@ -9,6 +9,27 @@ namespace WAPP_Assignment
 {
     public static class ChapterC
     {
+        public static void DeleteChapter(int chapter_id)
+        {
+            DataTable dt = ChapterC.GetChapterData(chapter_id);
+            DataRow dr = dt.Rows[0];
+            int course_id = (int)dr["course_id"];
+            int seq = (int)dr["sequence"];
+            int maxSeq = ChapterC.GetChapterMaxSeq(course_id);
+            ChapterC.UpdateChapterSequence(course_id, maxSeq, seq);
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "DELETE chapter WHERE chapter_id=@chapter_id";
+                    cmd.Parameters.AddWithValue("@chapter_id", chapter_id);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
         public static DataTable GetChapterData(int chapter_id)
         {
             using (SqlConnection conn = DatabaseManager.CreateConnection())

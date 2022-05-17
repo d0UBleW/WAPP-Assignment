@@ -95,7 +95,6 @@
   <ItemGroup>
     <Content Include="Admin\Course\Chapter\AddChapter.aspx" />
     <Content Include="Admin\Course\AddCourse.aspx" />
-    <Content Include="Admin\Course\DeleteCourse.aspx" />
     <Content Include="Admin\Course\Exam\AddExam.aspx" />
     <Content Include="Admin\Course\Chapter\DeleteChapter.aspx" />
     <Content Include="Admin\Course\Chapter\EditChapter.aspx" />
@@ -104,6 +103,7 @@
     <Content Include="Admin\Course\Exam\DeleteExam.aspx" />
     <Content Include="Admin\Course\Exam\DeleteQuestion.aspx" />
     <Content Include="Admin\Course\Exam\EditExam.aspx" />
+    <Content Include="Admin\Course\DeleteCourse.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
       <DependentUpon>ilearn.mdf</DependentUpon>
@@ -154,13 +154,6 @@
     </Compile>
     <Compile Include="Admin\Course\AddCourse.aspx.designer.cs">
       <DependentUpon>AddCourse.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Admin\Course\DeleteCourse.aspx.cs">
-      <DependentUpon>DeleteCourse.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Admin\Course\DeleteCourse.aspx.designer.cs">
-      <DependentUpon>DeleteCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Course\Exam\AddExam.aspx.cs">
       <DependentUpon>AddExam.aspx</DependentUpon>
@@ -217,6 +210,13 @@
     </Compile>
     <Compile Include="Admin\Course\Exam\EditExam.aspx.designer.cs">
       <DependentUpon>EditExam.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\DeleteCourse.aspx.cs">
+      <DependentUpon>DeleteCourse.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\DeleteCourse.aspx.designer.cs">
+      <DependentUpon>DeleteCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\MyServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>

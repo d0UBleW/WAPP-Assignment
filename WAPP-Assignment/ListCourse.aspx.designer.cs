@@ -60,24 +60,6 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.TextBox SearchCatTxtBox;
 
         /// <summary>
-        /// FilterLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FilterLbl;
-
-        /// <summary>
-        /// EnrollmentRadioList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList EnrollmentRadioList;
-
-        /// <summary>
         /// AutoTitle control.
         /// </summary>
         /// <remarks>
@@ -96,6 +78,15 @@ namespace WAPP_Assignment
         protected global::AjaxControlToolkit.AutoCompleteExtender AutoCat;
 
         /// <summary>
+        /// FilterLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label FilterLbl;
+
+        /// <summary>
         /// FilterList control.
         /// </summary>
         /// <remarks>
@@ -105,22 +96,13 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.DropDownList FilterList;
 
         /// <summary>
-        /// DashboardLink control.
+        /// EnrollmentDiv control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink DashboardLink;
-
-        /// <summary>
-        /// AddCourseLink control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink AddCourseLink;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl EnrollmentDiv;
 
         /// <summary>
         /// CoursePanel control.
@@ -139,23 +121,5 @@ namespace WAPP_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder CoursePlaceholder;
-
-        /// <summary>
-        /// ExamPanel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel ExamPanel;
-
-        /// <summary>
-        /// ExamPlaceholder control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder ExamPlaceholder;
     }
 }

@@ -17,101 +17,19 @@ namespace WAPP_Assignment
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<int> enroll_course_id = new List<int>();
-            enroll_course_id = StudentC.GetEnrolledCourseID(Convert.ToInt32(Session["user_id"]));
+            EnrollmentDiv.Visible = false;
+            List<int> enrolledCourseID = null;
+            if (userType == "student")
+            {
+                EnrollmentDiv.Visible = true;
+                enrolledCourseID = StudentC.GetEnrolledCourseID(Convert.ToInt32(Session["user_id"]));
+            }
             DataTable dt = CourseC.GetAllCourseData();
             foreach (DataRow dr in dt.Rows)
             {
-                DataTable courseCatTable = Category.GetCourseCategoryData(Convert.ToInt32(dr["course_id"]));
-                Panel cPanel = new Panel();
-                Panel imgPanel = new Panel();
-                cPanel.CssClass = "container bg-blue course-container";
-                //cPanel.ID = $"CourseContainer_{dr["course_id"]}";
-                Image thumbnail = new Image
-                {
-                    ImageUrl = "/images/loading.gif",
-                    Width = 200,
-                    Height = 200,
-                };
-                cPanel.Controls.Add(imgPanel);
-                thumbnail.Attributes.Add("onload", $"javascript:this.onload=null;this.src='/upload/thumbnail/{dr["thumbnail"]}'");
-                imgPanel.Controls.Add(thumbnail);
-                HyperLink title = new HyperLink
-                {
-                    NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
-                    Text = dr["title"].ToString(),
-                    CssClass = "course-title",
-                    //ID = $"CourseTitle_{dr["course_id"]}",
-                };
-                title.Style.Add("font-size", "24px");
-                cPanel.Controls.Add(title);
-                Panel categoryPanel = new Panel
-                {
-                    CssClass = "course-category"
-                };
-                cPanel.Controls.Add(new Literal { Text = "<br />" } );
-                cPanel.Controls.Add(categoryPanel);
-
-                foreach (DataRow categoryRow in courseCatTable.Rows)
-                {
-                    Label cat = new Label
-                    {
-                        Text = categoryRow["name"].ToString(),
-                    };
-                    categoryPanel.Controls.Add(cat);
-                    if (courseCatTable.Rows.IndexOf(categoryRow) != courseCatTable.Rows.Count - 1)
-                        categoryPanel.Controls.Add(new Literal { Text = ", "});
-                }
-
-                Label description = new Label
-                {
-                    Text = dr["description"].ToString(),
-                };
-                cPanel.Controls.Add(description);
-                cPanel.Controls.Add(new Literal { Text = "<br />" } );
+                int course_id = Convert.ToInt32(dr["course_id"]);
+                Panel cPanel = CourseC.DisplayCourse(course_id, userType, enrolledCourseID);
                 CoursePlaceholder.Controls.Add(cPanel);
-                if (userType == "admin")
-                {
-                    HyperLink editLink = new HyperLink
-                    {
-                        Text = "Edit Course",
-                        NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={dr["course_id"]}",
-                        CssClass = "btn btn-secondary btn-sm",
-                    };
-                    cPanel.Controls.Add(editLink);
-                    cPanel.Controls.Add(new Literal { Text = "<br />"} );
-                }
-                else if (userType == "student")
-                {
-                    if (enroll_course_id.Contains(Convert.ToInt32(dr["course_id"]))) {
-                        int chapter_id = ChapterC.GetFirstChapterID(Convert.ToInt32(dr["course_id"]));
-                        HyperLink unenrollLink = new HyperLink
-                        {
-                            NavigateUrl = $"#",
-                            Text = "Unenroll",
-                            CssClass = "btn btn-secondary btn-sm",
-                        };
-                        cPanel.Controls.Add(unenrollLink);
-                    }
-                    else
-                    {
-                        HyperLink enrollLink = new HyperLink
-                        {
-                            Text = "Enroll",
-                            NavigateUrl = $"/Student/Course/EnrollCourse.aspx?course_id={dr["course_id"]}",
-                            CssClass = "btn btn-secondary btn-sm",
-                        };
-                        cPanel.Controls.Add(enrollLink);
-                    }
-                    cPanel.Controls.Add(new Literal { Text = "<br />"} );
-                }
-                HyperLink viewLink = new HyperLink
-                {
-                    NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}",
-                    Text = "View Course",
-                    CssClass = "btn btn-secondary btn-sm",
-                };
-                cPanel.Controls.Add(viewLink);
                 CoursePlaceholder.Controls.Add(new Literal { Text = "<br />" });
             }
         }

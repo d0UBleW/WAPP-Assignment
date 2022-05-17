@@ -42,7 +42,7 @@ const search = () => {
         })
     }
     else {
-        const $ele = $courseContainer.find(".course-category")
+        const $ele = $courseContainer.find(".course-category-item")
         const keyword = $SearchCatTxtBox.val()
         if (keyword != "") {
             $courseContainer.each(function () {
@@ -55,16 +55,13 @@ const search = () => {
         const pattern = `.*${escapeRegExp(keyword.toLowerCase())}.*`
         const rg = new RegExp(pattern)
         $ele.each(function () {
-            const $sp = $(this).find("span")
-            $sp.each(function () {
-                if (this.innerText.match(rg) != null) {
-                    $(this).closest(".course-container").show()
-                    return false // breaks out
-                }
-                else {
-                    $(this).closest(".course-container").hide()
-                }
-            })
+            if ($(this).text().match(rg) != null) {
+                $(this).closest(".course-container").show()
+                return false // breaks out
+            }
+            else {
+                $(this).closest(".course-container").hide()
+            }
         })
     }
 }

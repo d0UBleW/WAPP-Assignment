@@ -65,7 +65,7 @@ namespace WAPP_Assignment.Admin
                     CssClass = "btn btn-secondary btn-md",
                 };
                 delChapBtn.Attributes.Add("data-chap-id", chapterData["chapter_id"].ToString());
-                delChapBtn.OnClientClick = "return confirm('Are you sure?');";
+                delChapBtn.OnClientClick = "return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';";
                 delChapBtn.Click += new EventHandler(DelChapBtn_Click);
                 ChapterPlaceholder.Controls.Add(editChapBtn);
                 ChapterPlaceholder.Controls.Add(delChapBtn);
@@ -94,7 +94,7 @@ namespace WAPP_Assignment.Admin
                     CssClass = "btn btn-secondary btn-md",
                 };
                 delExamBtn.Attributes.Add("data-exam-id", examData["exam_id"].ToString());
-                delExamBtn.OnClientClick = "return confirm('Are you sure?');";
+                delExamBtn.OnClientClick = "return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';";
                 delExamBtn.Click += new EventHandler(DelExamBtn_Click);
                 ExamPlaceholder.Controls.Add(editExamBtn);
                 ExamPlaceholder.Controls.Add(delExamBtn);
