@@ -56,10 +56,14 @@
     $("#toggleAnswer").on('change', function () {
       console.log("ch")
       const answerIds = $("input[id$='CorrectOptIDField']").val().split(',')
+      console.log(answerIds)
       $("input[id*='optList']").each(function () {
         if (answerIds.includes($(this).val())) {
+          console.log($(this))
           const $label = $(this).closest("span").find("label")
+          console.log($label)
           const currText = $label.text()
+          console.log(currText)
           if ($("#toggleAnswer").is(":checked")) {
             $label.text(currText + " ✔")
           }

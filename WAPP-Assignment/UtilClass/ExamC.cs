@@ -54,7 +54,7 @@ namespace WAPP_Assignment
             return dataTable;
         }
 
-        public static Panel DisplayQue(int exam_id, DataRow questData)
+        public static Panel DisplayQue(int exam_id, DataRow questData, bool enable = true)
         {
             int question_id = int.Parse(questData["question_id"].ToString());
             Panel qPanel = new Panel
@@ -74,6 +74,7 @@ namespace WAPP_Assignment
                 CheckBoxList optList = new CheckBoxList
                 {
                     ID = $"optList_{question_id}",
+                    Enabled = enable,
                 };
                 optList.Attributes.Add("data-question-id", question_id.ToString()); 
                 foreach (DataRow optData in optTable.Rows)
@@ -92,6 +93,7 @@ namespace WAPP_Assignment
                 RadioButtonList optList = new RadioButtonList
                 {
                     ID = $"optList_{question_id}",
+                    Enabled = enable,
                 };
                 optList.Attributes.Add("data-question-id", question_id.ToString()); 
                 foreach (DataRow optData in optTable.Rows)

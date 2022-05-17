@@ -41,33 +41,44 @@ namespace WAPP_Assignment.Learn
             DataTable questionTable = Question.GetExamQuestion(exam_id);
             foreach (DataRow questData in questionTable.Rows)
             {
-                Panel qPanel = ExamC.DisplayQue(exam_id, questData);
+                Panel qPanel = ExamC.DisplayQue(exam_id, questData, false);
                 ContentPanel.Controls.Add(qPanel);
                 ContentPanel.Controls.Add(new Literal { Text = "<br/><br/>" });
             }
 
             DataRow examResultData = examResult.Rows[0];
             List<string> worksheet = examResultData["worksheet"].ToString().Split(new string[] { ";" }, StringSplitOptions.None).ToList();
-            int totalScore = 0;
-            List<int> overall_answer_id = new List<int>();
+            Dictionary<int, List<string>> worksheetDict = new Dictionary<int, List<string>>();
             foreach (string work in worksheet)
             {
                 List<string> temp = work.Split(new string[] { "." }, StringSplitOptions.None).ToList();
                 int question_id = Convert.ToInt32(temp[0]);
+                List<string> studentAnswer = temp[1].Split(new string[] { "," }, StringSplitOptions.None).ToList();
+                worksheetDict.Add(question_id, studentAnswer);
+            }
+
+            int totalScore = 0;
+            List<int> overall_answer_id = new List<int>();
+            foreach (DataRow questData in questionTable.Rows)
+            {
+                int question_id = Convert.ToInt32(questData["question_id"]);
                 List<int> answer_id = Question.GetAnswerID(question_id);
                 overall_answer_id.AddRange(answer_id);
                 totalScore += answer_id.Count;
                 Panel qPanel = ContentPanel.FindControl($"qPanel_{question_id}") as Panel;
-                List<string> studentAnswer = temp[1].Split(new string[] { "," }, StringSplitOptions.None).ToList();
                 string wrongHexColor = "#fee9e9";
+                if (!worksheetDict.ContainsKey(question_id))
+                {
+                    qPanel.Style.Add("background-color", wrongHexColor);
+                    continue;
+                }
+                List<string> studentAnswer = worksheetDict[question_id];
                 if (answer_id.Count > 1)
                 {
                     CheckBoxList optList = qPanel.FindControl($"optList_{question_id}") as CheckBoxList;
-                    optList.Enabled = false;
-                    foreach (int id in answer_id)
+                    if (studentAnswer.Count != answer_id.Count)
                     {
-                        ListItem listItem = optList.Items.FindByValue(id.ToString());
-                        //listItem.Text = listItem.Text + " ✔";
+                        qPanel.Style.Add("background-color", wrongHexColor);
                     }
                     foreach (string stuAns in studentAnswer)
                     {
@@ -78,26 +89,13 @@ namespace WAPP_Assignment.Learn
                             {
                                 ListItem listItem = optList.Items.FindByValue(stuAns);
                                 listItem.Text = listItem.Text + " ❌";
-                                //qPanel.CssClass = incorrectClass;
-                                qPanel.Style.Add("background-color", wrongHexColor);
                             }
-                        }
-                        else
-                        {
-                            //qPanel.CssClass = incorrectClass;
-                            qPanel.Style.Add("background-color", wrongHexColor);
                         }
                     }
                 }
                 else
                 {
                     RadioButtonList optList = qPanel.FindControl($"optList_{question_id}") as RadioButtonList;
-                    optList.Enabled = false;
-                    foreach (int id in answer_id)
-                    {
-                        ListItem listItem = optList.Items.FindByValue(id.ToString());
-                        //listItem.Text = listItem.Text + " ✔";
-                    }
                     if (studentAnswer[0] != "")
                     {
                         optList.SelectedValue = studentAnswer[0];
@@ -115,7 +113,6 @@ namespace WAPP_Assignment.Learn
                         qPanel.Style.Add("background-color", wrongHexColor);
                     }
                 }
-                System.Diagnostics.Debug.WriteLine("");
             }
             ScoreLbl.Text = $"Score: {examResultData["value"]}/{totalScore}";
             foreach (int id in overall_answer_id)
