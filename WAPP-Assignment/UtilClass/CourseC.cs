@@ -24,13 +24,13 @@ namespace WAPP_Assignment
 
             Panel cPanel = new Panel
             {
-                CssClass = "card course-card",
+                CssClass = "card mb-3 course-card",
             };
             colPanel.Controls.Add(cPanel);
 
             Panel rowInCard = new Panel
             {
-                CssClass = "row g-0",
+                CssClass = "row g-0 flex-grow-1",
             };
             cPanel.Controls.Add(rowInCard);
 
@@ -51,7 +51,7 @@ namespace WAPP_Assignment
             Image thumbnail = new Image
             {
                 ImageUrl = "/images/loading.gif",
-                CssClass = "cover img-fluid rounded-start"
+                CssClass = "cover img-fluid rounded-start course-img"
             };
             thumbnail.Attributes.Add("onload", $"javascript:this.onload=null;this.src='/upload/thumbnail/{dr["thumbnail"]}'");
             imgCol.Controls.Add(thumbnail);

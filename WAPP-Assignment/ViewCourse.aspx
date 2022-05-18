@@ -39,6 +39,8 @@
     <br />
     <asp:HyperLink ID="EnrollLink" runat="server" Text="Enroll" Visible="false" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
     <asp:HyperLink ID="UnenrollLink" runat="server" Text="Unenroll" Visible="false" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
+    <asp:HyperLink ID="EditLink" runat="server" Text="Edit Course" Visible="false" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
+    <asp:HyperLink ID="DelLink" runat="server" Text="Delete Course" Visible="false" CssClass="btn btn-danger btn-md"></asp:HyperLink>
   </asp:Panel>
   <br />
   <div class="container">
@@ -74,4 +76,9 @@
     </form>
   </div>
   <input type="hidden" id="NavLocation" value="Course" disabled="disabled" />
+  <script>
+    $("[id$='DelLink'").on('click', function () {
+      return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
+    })
+  </script>
 </asp:Content>

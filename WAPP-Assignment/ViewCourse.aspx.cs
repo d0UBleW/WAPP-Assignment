@@ -32,6 +32,7 @@ namespace WAPP_Assignment
             if (courseTable.Rows.Count == 0)
             {
                 CourseDetailPanel.Visible = false;
+                Response.Redirect("~/ListCourse.aspx");
                 return;
             }
             DataRow courseRow = courseTable.Rows[0];
@@ -40,10 +41,19 @@ namespace WAPP_Assignment
             Page.Title = courseRow["title"].ToString();
             DescriptionLbl.Text = courseRow["description"].ToString();
             double overallRating = CourseC.GetCourseOverallRating(course_id);
-            OverallRatingLbl.Text = $"Rating: {overallRating.ToString("0.00")}/5";
+            OverallRatingLbl.Text = $"Rating: {overallRating:0.00}/5";
 
             RatingSubPanel.Visible = false;
+
+            EnrollLink.NavigateUrl = $"/Student/Course/EnrollCourse.aspx?course_id={course_id}";
+            UnenrollLink.NavigateUrl = $"/Student/Course/UnenrollCourse.aspx?course_id={course_id}";
+            EditLink.NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={course_id}";
+            DelLink.NavigateUrl = $"/Admin/Course/DeleteCourse.aspx?course_id={course_id}";
+
             EnrollLink.Visible = true;
+            UnenrollLink.Visible = false;
+            EditLink.Visible = false;
+            DelLink.Visible = false;
             if (userType == "student")
             {
                 int student_id = Convert.ToInt32(Session["user_id"]);
@@ -59,8 +69,12 @@ namespace WAPP_Assignment
                     UnenrollLink.Visible = false;
                 }
             }
-            EnrollLink.NavigateUrl = $"/Student/Course/EnrollCourse.aspx?course_id={course_id}";
-            UnenrollLink.NavigateUrl = "#";
+            else if (userType == "admin")
+            {
+                EnrollLink.Visible = false;
+                EditLink.Visible = true;
+                DelLink.Visible = true;
+            }
 
             DataTable chapterTable = ChapterC.GetCourseChapterData(course_id);
             foreach (DataRow chapterRow in chapterTable.Rows)

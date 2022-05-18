@@ -8,3 +8,7 @@
 .course-card {
   height: 250px;
 }
+
+.course-img {
+  height: 100%;
+}

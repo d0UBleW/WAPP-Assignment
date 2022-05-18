@@ -4,7 +4,7 @@
 
 <asp:Content ID="ProfileContent" ContentPlaceHolderID="MainContent" runat="server">
     <form id="form1" runat="server">
-        <div>
+        <div class="container">
             <asp:Image ID="ProfileImg" runat="server" Height="200" Width="200" />
             <br /><br />
             <asp:FileUpload ID="ProfileUpload" runat="server" />

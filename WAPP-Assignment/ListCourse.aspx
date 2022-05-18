@@ -33,11 +33,12 @@
         <asp:ListItem Selected="True" Text="Title" Value="title"></asp:ListItem>
         <asp:ListItem Selected="False" Text="Category" Value="category"></asp:ListItem>
       </asp:DropDownList>
+      <br />
       <div class="form-check" id="EnrollmentDiv" runat="server">
         <input type="checkbox" id="enrollmentChk" class="form-check-input" />
         <label for="enrollmentChk" class="form-check-label">Unenrolled</label>
+        <br />
       </div>
-      <br />
       <br />
       <button type="button" id="searchBtn" class="btn btn-primary btn-sm">Search</button>
     </div>
