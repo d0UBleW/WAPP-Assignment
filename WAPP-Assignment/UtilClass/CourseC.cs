@@ -16,34 +16,72 @@ namespace WAPP_Assignment
             if (courseTable.Rows.Count == 0) return null;
             DataRow dr = courseTable.Rows[0];
             DataTable courseCatTable = Category.GetCourseCategoryData(course_id);
-            Panel cPanel = new Panel();
-            Panel imgPanel = new Panel();
-            cPanel.CssClass = "container bg-blue course-container";
-            //cPanel.ID = $"CourseContainer_{dr["course_id"]}";
+
+            Panel colPanel = new Panel
+            {
+                CssClass = "col course-container",
+            };
+
+            Panel cPanel = new Panel
+            {
+                CssClass = "card course-card",
+            };
+            colPanel.Controls.Add(cPanel);
+
+            Panel rowInCard = new Panel
+            {
+                CssClass = "row g-0",
+            };
+            cPanel.Controls.Add(rowInCard);
+
+            Panel imgCol = new Panel
+            {
+                CssClass = "col-md-4",
+            };
+
+            rowInCard.Controls.Add(imgCol);
+
+
+            //Panel imgPanel = new Panel
+            //{
+            //    CssClass = "course-img-container",
+            //};
+            //imgCol.Controls.Add(imgPanel);
+
             Image thumbnail = new Image
             {
                 ImageUrl = "/images/loading.gif",
-                Width = 200,
-                Height = 200,
+                CssClass = "cover img-fluid rounded-start"
             };
-            cPanel.Controls.Add(imgPanel);
             thumbnail.Attributes.Add("onload", $"javascript:this.onload=null;this.src='/upload/thumbnail/{dr["thumbnail"]}'");
-            imgPanel.Controls.Add(thumbnail);
+            imgCol.Controls.Add(thumbnail);
+
+            Panel detailCol = new Panel
+            {
+                CssClass = "col-md-8",
+            };
+            rowInCard.Controls.Add(detailCol);
+
+            Panel detail = new Panel
+            {
+                CssClass = "course-detail-container card-body",
+            };
+            detailCol.Controls.Add(detail);
+
             HyperLink title = new HyperLink
             {
                 NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}",
                 Text = dr["title"].ToString(),
-                CssClass = "course-title",
-                //ID = $"CourseTitle_{dr["course_id"]}",
+                CssClass = "course-title card-title fs-4",
             };
-            title.Style.Add("font-size", "24px");
-            cPanel.Controls.Add(title);
+            detail.Controls.Add(title);
+
             Panel categoryPanel = new Panel
             {
                 CssClass = "course-category"
             };
-            cPanel.Controls.Add(new Literal { Text = "<br />" });
-            cPanel.Controls.Add(categoryPanel);
+            detail.Controls.Add(new Literal { Text = "<br />" });
+            detail.Controls.Add(categoryPanel);
 
             foreach (DataRow categoryRow in courseCatTable.Rows)
             {
@@ -53,43 +91,47 @@ namespace WAPP_Assignment
                     CssClass = "course-category-item badge rounded-pill bg-secondary",
                 };
                 categoryPanel.Controls.Add(cat);
-                // if (courseCatTable.Rows.IndexOf(categoryRow) != courseCatTable.Rows.Count - 1)
-                    // categoryPanel.Controls.Add(new Literal { Text = " " });
             }
 
             Label description = new Label
             {
                 Text = dr["description"].ToString(),
+                CssClass = "card-text",
             };
-            cPanel.Controls.Add(description);
-            cPanel.Controls.Add(new Literal { Text = "<br />" });
+            detail.Controls.Add(description);
+            detail.Controls.Add(new Literal { Text = "<br />" });
+
             double overallRating = CourseC.GetCourseOverallRating(course_id);
             Label rating = new Label
             {
-                Text = $"Rating: {overallRating.ToString("0.00")}/5",
-        };
-            cPanel.Controls.Add(rating);
-            cPanel.Controls.Add(new Literal { Text = "<br />" } );
+                Text = $"Rating: {overallRating:0.00}/5",
+            };
+            detail.Controls.Add(rating);
+            detail.Controls.Add(new Literal { Text = "<br />" } );
+            detail.Controls.Add(new Literal { Text = "<br />" } );
+
+            Panel linkBtnGroup = new Panel
+            {
+                CssClass = "btn-group btn-group-md"
+            };
+            linkBtnGroup.Attributes.Add("role", "group");
+
             if (userType == "admin")
             {
                 HyperLink editLink = new HyperLink
                 {
                     Text = "Edit Course",
                     NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={course_id}",
-                    CssClass = "btn btn-secondary btn-sm",
+                    CssClass = "btn btn-outline-primary btn-sm",
                 };
-                cPanel.Controls.Add(editLink);
-                cPanel.Controls.Add(new Literal { Text = "<br />"} );
-                cPanel.Controls.Add(new Literal { Text = "<br />"} );
+                linkBtnGroup.Controls.Add(editLink);
                 HyperLink delLink = new HyperLink
                 {
                     Text = "Delete Course",
                     NavigateUrl = $"~/Admin/Course/DeleteCourse.aspx?course_id={course_id}",
-                    CssClass = "btn btn-secondary btn-sm del-course-link",
+                    CssClass = "btn btn-outline-primary btn-sm del-course-link",
                 };
-                cPanel.Controls.Add(delLink);
-                cPanel.Controls.Add(new Literal { Text = "<br />"} );
-                cPanel.Controls.Add(new Literal { Text = "<br />"} );
+                linkBtnGroup.Controls.Add(delLink);
             }
             else if (userType == "student")
             {
@@ -98,9 +140,9 @@ namespace WAPP_Assignment
                     {
                         NavigateUrl = $"/Student/Course/UnenrollCourse.aspx?course_id={course_id}",
                         Text = "Unenroll",
-                        CssClass = "btn btn-secondary btn-sm unenroll-link",
+                        CssClass = "btn btn-outline-primary btn-sm unenroll-link",
                     };
-                    cPanel.Controls.Add(unenrollLink);
+                    linkBtnGroup.Controls.Add(unenrollLink);
                 }
                 else
                 {
@@ -108,22 +150,20 @@ namespace WAPP_Assignment
                     {
                         Text = "Enroll",
                         NavigateUrl = $"/Student/Course/EnrollCourse.aspx?course_id={course_id}",
-                        CssClass = "btn btn-secondary btn-sm",
+                        CssClass = "btn btn-outline-primary btn-sm",
                     };
-                    cPanel.Controls.Add(enrollLink);
+                    linkBtnGroup.Controls.Add(enrollLink);
                 }
-                cPanel.Controls.Add(new Literal { Text = "<br />"} );
-                cPanel.Controls.Add(new Literal { Text = "<br />"} );
             }
             HyperLink viewLink = new HyperLink
             {
                 NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}",
                 Text = "View Course",
-                CssClass = "btn btn-secondary btn-sm",
+                CssClass = "btn btn-outline-primary btn-sm",
             };
-            cPanel.Controls.Add(viewLink);
-            cPanel.Controls.Add(new Literal { Text = "<br />"} );
-            return cPanel;
+            linkBtnGroup.Controls.Add(viewLink);
+            detail.Controls.Add(linkBtnGroup);
+            return colPanel;
         }
 
         public static DataTable GetAllCourseData()

@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="CourseContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:Panel ID="CoursePanel" runat="server">
+    <asp:Panel ID="CoursePanel" runat="server" CssClass="container">
         <asp:PlaceHolder ID="CoursePlaceholder" runat="server"></asp:PlaceHolder>
     </asp:Panel>
   <script>

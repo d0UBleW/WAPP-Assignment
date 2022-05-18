@@ -33,7 +33,7 @@ const search = () => {
         const pattern = `.*${escapeRegExp(keyword.toLowerCase())}.*`
         const rg = new RegExp(pattern)
         $ele.each(function () {
-            if (this.innerText.match(rg) != null) {
+            if ($(this).text().toLowerCase().match(rg) != null) {
                 $(this).closest(".course-container").show()
             }
             else {
@@ -55,7 +55,7 @@ const search = () => {
         const pattern = `.*${escapeRegExp(keyword.toLowerCase())}.*`
         const rg = new RegExp(pattern)
         $ele.each(function () {
-            if ($(this).text().match(rg) != null) {
+            if ($(this).text().toLowerCase().match(rg) != null) {
                 $(this).closest(".course-container").show()
                 return false // breaks out
             }

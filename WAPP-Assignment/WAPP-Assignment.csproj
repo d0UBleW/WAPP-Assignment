@@ -115,6 +115,7 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+    <Content Include="Content\course.css" />
     <Content Include="Content\master.css" />
     <Content Include="Dashboard.aspx" />
     <Content Include="Student\ChangePassword.aspx" />

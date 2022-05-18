@@ -1,0 +1,10 @@
+﻿body {
+}
+
+.cover {
+  object-fit: cover;
+}
+
+.course-card {
+  height: 250px;
+}

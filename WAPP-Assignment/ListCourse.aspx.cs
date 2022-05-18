@@ -30,7 +30,6 @@ namespace WAPP_Assignment
                 int course_id = Convert.ToInt32(dr["course_id"]);
                 Panel cPanel = CourseC.DisplayCourse(course_id, userType, enrolledCourseID);
                 CoursePlaceholder.Controls.Add(cPanel);
-                CoursePlaceholder.Controls.Add(new Literal { Text = "<br />" });
             }
         }
 

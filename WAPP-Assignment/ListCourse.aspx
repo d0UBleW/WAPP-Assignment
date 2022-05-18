@@ -2,6 +2,7 @@
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
   <script src="/Scripts/searchCourse.js" defer></script>
+  <link rel="stylesheet" href="/Content/course.css" />
   <style>
     .badge {
       margin: 0px 2px 0px 2px;
@@ -42,8 +43,10 @@
     </div>
     <br />
     <br />
-    <asp:Panel ID="CoursePanel" runat="server">
-      <asp:PlaceHolder ID="CoursePlaceholder" runat="server"></asp:PlaceHolder>
+    <asp:Panel ID="CoursePanel" runat="server" CssClass="container">
+      <asp:Panel ID="GridPanel" runat="server" CssClass="row row-cols-3 g-4">
+        <asp:PlaceHolder ID="CoursePlaceholder" runat="server"></asp:PlaceHolder>
+      </asp:Panel>
     </asp:Panel>
   </form>
   <script>
