@@ -104,6 +104,7 @@
     <Content Include="Admin\Course\Exam\DeleteQuestion.aspx" />
     <Content Include="Admin\Course\Exam\EditExam.aspx" />
     <Content Include="Admin\Course\DeleteCourse.aspx" />
+    <Content Include="Admin\StudentData\StudentList.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
       <DependentUpon>ilearn.mdf</DependentUpon>
@@ -219,6 +220,13 @@
     </Compile>
     <Compile Include="Admin\Course\DeleteCourse.aspx.designer.cs">
       <DependentUpon>DeleteCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\StudentData\StudentList.aspx.cs">
+      <DependentUpon>StudentList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\StudentData\StudentList.aspx.designer.cs">
+      <DependentUpon>StudentList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Connected Services\MyServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>

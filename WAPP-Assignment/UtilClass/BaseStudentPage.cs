@@ -16,11 +16,11 @@ namespace WAPP_Assignment.UtilClass
                 Response.Redirect("~/Login.aspx");
                 return;
             }
-            if (userType == "admin")
-            {
-                Response.Redirect("~/Home.aspx");
-                return;
-            }
+            //if (userType == "admin")
+            //{
+            //    Response.Redirect("~/Home.aspx");
+            //    return;
+            //}
         }
     }
 }

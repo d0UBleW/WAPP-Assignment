@@ -39,9 +39,11 @@ namespace WAPP_Assignment
             ThumbnailImage.ImageUrl = $"/upload/thumbnail/{courseRow["thumbnail"]}";
             TitleLbl.Text = courseRow["title"].ToString();
             Page.Title = courseRow["title"].ToString();
+
             DescriptionLbl.Text = courseRow["description"].ToString();
             double overallRating = CourseC.GetCourseOverallRating(course_id);
-            OverallRatingLbl.Text = $"Rating: {overallRating:0.00}/5";
+            int ratingCount = CourseC.GetCourseRatingCount(course_id);
+            OverallRatingLbl.Text = $"Rating: {overallRating:0.00}/5 ({ratingCount})";
 
             RatingSubPanel.Visible = false;
 
@@ -83,13 +85,19 @@ namespace WAPP_Assignment
                 {
                     Text = $"{chapterRow["sequence"]}. {chapterRow["title"]}",
                 };
-                if (userType == "student" || userType == "admin")
+                title.NavigateUrl = "#";
+                if (userType == "admin")
                 {
                     title.NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={chapterRow["chapter_id"]}";
                 }
-                else
+                if (userType == "student")
                 {
-                    title.NavigateUrl = "#";
+                    int student_id = Convert.ToInt32(Session["user_id"]);
+                    List<int> enrolled = StudentC.GetEnrolledCourseID(student_id);
+                    if (enrolled.Contains(course_id))
+                    {
+                        title.NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={chapterRow["chapter_id"]}";
+                    }
                 }
                 ChapterTOCPanel.Controls.Add(title);
                 ChapterTOCPanel.Controls.Add(new Literal { Text = "<br />" });
@@ -102,18 +110,25 @@ namespace WAPP_Assignment
                 {
                     Text = $"{examRow["title"]}",
                 };
-                if (userType == "student" || userType == "admin")
+                title.NavigateUrl = "#";
+                if (userType == "admin")
                 {
-                    title.NavigateUrl = $"/Student/Learn/ViewExam.aspx?exam_id={examRow["exam_id"]}";
+                    title.NavigateUrl = $"/Student/Learn/ReviewExam.aspx?exam_id={examRow["exam_id"]}";
                 }
-                else
+                if (userType == "student")
                 {
-                    title.NavigateUrl = "#";
+                    int student_id = Convert.ToInt32(Session["user_id"]);
+                    List<int> enrolled = StudentC.GetEnrolledCourseID(student_id);
+                    if (enrolled.Contains(course_id))
+                    {
+                        title.NavigateUrl = $"/Student/Learn/ViewExam.aspx?exam_id={examRow["exam_id"]}";
+                    }
                 }
                 ExamPanel.Controls.Add(title);
                 ExamPanel.Controls.Add(new Literal { Text = "<br />" });
             }
 
+            RtgLbl.Text = $"Rating ({ratingCount})";
             DataTable ratingTable = CourseC.GetCourseRating(course_id);
             int i = 0;
             foreach (DataRow ratingData in ratingTable.Rows)

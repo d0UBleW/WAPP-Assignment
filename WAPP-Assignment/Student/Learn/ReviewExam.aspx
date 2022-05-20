@@ -15,16 +15,16 @@
       <asp:Label ID="TitleLbl" runat="server"></asp:Label>
     </h1>
     <asp:Label ID="ScoreLbl" runat="server"></asp:Label>
-    <br />
-    <br />
-    <asp:HyperLink ID="RetakeLink" runat="server" CssClass="btn btn-primary btn-md" Text="Retake" Visible="false"></asp:HyperLink>
-    <br />
-    <br />
+    <asp:Panel ID="RetakePanel" runat="server">
+      <br />
+      <asp:HyperLink ID="RetakeLink" runat="server" CssClass="btn btn-primary btn-md" Text="Retake"></asp:HyperLink>
+      <br />
+      <br />
+    </asp:Panel>
     <div class="form-check">
       <input type="checkbox" class="form-check-input" id="toggleAnswer" />
       <label for="toggleAnswer" class="form-check-label">Show answer</label>
     </div>
-    <br />
     <br />
 
     <form id="form1" runat="server">

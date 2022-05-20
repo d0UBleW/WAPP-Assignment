@@ -14,6 +14,10 @@ namespace WAPP_Assignment.Learn
         protected void Page_Load(object sender, EventArgs e)
         {
             student_id = Convert.ToInt32(Session["user_id"]);
+            if (userType == "admin")
+            {
+                student_id = 0;
+            }
 
             exam_id = GetQueryString("exam_id");
 
@@ -25,15 +29,15 @@ namespace WAPP_Assignment.Learn
             TitleLbl.Text = examTable.Rows[0]["title"].ToString();
 
             bool retake = Convert.ToBoolean(examTable.Rows[0]["retake"]);
-            RetakeLink.Visible = false;
-            if (retake)
+            RetakePanel.Visible = false;
+            if (retake && userType == "student")
             {
-                RetakeLink.Visible = true;
+                RetakePanel.Visible = true;
                 RetakeLink.NavigateUrl = $"/Student/Learn/ViewExam.aspx?exam_id={exam_id}";
             }
 
             DataTable examResult = StudentC.GetExamResult(student_id, exam_id);
-            if (examResult.Rows.Count == 0)
+            if (examResult.Rows.Count == 0 && student_id != 0)
             {
                 return;
             }
@@ -46,15 +50,21 @@ namespace WAPP_Assignment.Learn
                 ContentPanel.Controls.Add(new Literal { Text = "<br/><br/>" });
             }
 
-            DataRow examResultData = examResult.Rows[0];
-            List<string> worksheet = examResultData["worksheet"].ToString().Split(new string[] { ";" }, StringSplitOptions.None).ToList();
-            Dictionary<int, List<string>> worksheetDict = new Dictionary<int, List<string>>();
-            foreach (string work in worksheet)
+            DataRow examResultData = null;
+            List<string> worksheet = null;
+            Dictionary<int, List<string>> worksheetDict = null;
+            if (userType == "student")
             {
-                List<string> temp = work.Split(new string[] { "." }, StringSplitOptions.None).ToList();
-                int question_id = Convert.ToInt32(temp[0]);
-                List<string> studentAnswer = temp[1].Split(new string[] { "," }, StringSplitOptions.None).ToList();
-                worksheetDict.Add(question_id, studentAnswer);
+                examResultData = examResult.Rows[0];
+                worksheet = examResultData["worksheet"].ToString().Split(new string[] { ";" }, StringSplitOptions.None).ToList();
+                worksheetDict = new Dictionary<int, List<string>>();
+                foreach (string work in worksheet)
+                {
+                    List<string> temp = work.Split(new string[] { "." }, StringSplitOptions.None).ToList();
+                    int question_id = Convert.ToInt32(temp[0]);
+                    List<string> studentAnswer = temp[1].Split(new string[] { "," }, StringSplitOptions.None).ToList();
+                    worksheetDict.Add(question_id, studentAnswer);
+                }
             }
 
             int totalScore = 0;
@@ -67,6 +77,7 @@ namespace WAPP_Assignment.Learn
                 totalScore += answer_id.Count;
                 Panel qPanel = ContentPanel.FindControl($"qPanel_{question_id}") as Panel;
                 string wrongHexColor = "#fee9e9";
+                if (userType == "admin") continue;
                 if (!worksheetDict.ContainsKey(question_id))
                 {
                     qPanel.Style.Add("background-color", wrongHexColor);
@@ -114,11 +125,9 @@ namespace WAPP_Assignment.Learn
                     }
                 }
             }
-            ScoreLbl.Text = $"Score: {examResultData["value"]}/{totalScore}";
-            foreach (int id in overall_answer_id)
-            {
-                System.Diagnostics.Debug.WriteLine(id);
-            }
+            if (userType == "student")
+                ScoreLbl.Text = $"Score: {examResultData["value"]}/{totalScore}";
+
             CorrectOptIDField.Value = String.Join(",", overall_answer_id);
         }
     }

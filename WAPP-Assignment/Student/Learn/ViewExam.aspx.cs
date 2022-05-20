@@ -18,6 +18,11 @@ namespace WAPP_Assignment.Learn
         {
             exam_id = GetQueryString("exam_id");
             student_id = Convert.ToInt32(Session["user_id"]);
+            if (userType == "admin")
+            {
+                SubmitBtn.Visible = false;
+                student_id = 0;
+            }
             DataTable examTable = ExamC.GetExamData(exam_id);
             if (examTable.Rows.Count == 0)
             {
@@ -25,6 +30,18 @@ namespace WAPP_Assignment.Learn
                 return;
             }
             DataRow examData = examTable.Rows[0];
+            int course_id = Convert.ToInt32(examData["course_id"]);
+            List<int> enrolled = StudentC.GetEnrolledCourseID(student_id);
+            if (!enrolled.Contains(course_id) && userType != "admin")
+            {
+                if (Request.UrlReferrer != null)
+                {
+                    Response.Write($"<script>alert('Please enroll prior to viewing the exam'); window.location.href = '{Request.UrlReferrer}'</script>");
+                    return;
+                }
+                Response.Write($"<script>alert('Please enroll prior to viewing the exam'); window.location.href = '/Home.aspx'</script>");
+                return;
+            }
             TitleLbl.Text = examData["title"].ToString();
             bool retake = Convert.ToBoolean(examData["retake"]);
             if (retake)

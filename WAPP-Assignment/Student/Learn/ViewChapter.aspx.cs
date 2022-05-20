@@ -25,7 +25,12 @@ namespace WAPP_Assignment
             List<int> enroll_course_id = StudentC.GetEnrolledCourseID(student_id);
             if (!enroll_course_id.Contains(course_id) && userType != "admin")
             {
-                Response.Write($"<script>alert('Please enroll prior to viewing the chapter'); window.location.href = '{Request.UrlReferrer}'</script>");
+                if (Request.UrlReferrer != null)
+                {
+                    Response.Write($"<script>alert('Please enroll prior to viewing the exam'); window.location.href = '{Request.UrlReferrer}'</script>");
+                    return;
+                }
+                Response.Write($"<script>alert('Please enroll prior to viewing the exam'); window.location.href = '/Home.aspx'</script>");
                 return;
             }
             DataTable chapterTable = ChapterC.GetCourseChapterData(course_id);

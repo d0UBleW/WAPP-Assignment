@@ -3,11 +3,6 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
   <script src="/Scripts/searchCourse.js" defer></script>
   <link rel="stylesheet" href="/Content/course.css" />
-  <style>
-    .badge {
-      margin: 0px 2px 0px 2px;
-    }
-  </style>
 </asp:Content>
 
 <asp:Content ID="CourseContent" ContentPlaceHolderID="MainContent" runat="server">

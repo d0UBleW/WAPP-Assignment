@@ -27,20 +27,22 @@ namespace WAPP_Assignment.Admin
         {
             string title = TitleTxtBox.Text;
             bool retake = RetakeChkBox.Checked;
+            int exam_id;
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO exam (course_id, title, retake) VALUES (@course_id, @title, @retake);";
+                    cmd.CommandText = "INSERT INTO exam (course_id, title, retake) OUTPUT INSERTED.exam_id VALUES (@course_id, @title, @retake);";
                     cmd.Parameters.AddWithValue("@course_id", course_id);
                     cmd.Parameters.AddWithValue("@title", title);
                     cmd.Parameters.AddWithValue("@retake", retake.ToString());
-                    cmd.ExecuteNonQuery();
+                    exam_id = (int) cmd.ExecuteScalar();
                 }
                 conn.Close();
             }
-            RedirectBack();        }
+            Response.Redirect($"~/Admin/Course/Exam/EditExam.aspx?exam_id={exam_id}");
+        }
     }
 }

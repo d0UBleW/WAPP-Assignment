@@ -102,9 +102,10 @@ namespace WAPP_Assignment
             detail.Controls.Add(new Literal { Text = "<br />" });
 
             double overallRating = CourseC.GetCourseOverallRating(course_id);
+            int ratingCount = CourseC.GetCourseRatingCount(course_id);
             Label rating = new Label
             {
-                Text = $"Rating: {overallRating:0.00}/5",
+                Text = $"Rating: {overallRating:0.00}/5.00 ({ratingCount})",
             };
             detail.Controls.Add(rating);
             detail.Controls.Add(new Literal { Text = "<br />" } );
@@ -269,6 +270,25 @@ namespace WAPP_Assignment
                 conn.Close();
             }
             return rating;
+        }
+
+        public static int GetCourseRatingCount(int course_id)
+        {
+            int count;
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT COUNT(*) FROM [rating] WHERE course_id=@course_id;";
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    var result = cmd.ExecuteScalar();
+                    count = Convert.ToInt32(result);
+                }
+                conn.Close();
+            }
+            return count;
         }
     }
 }
