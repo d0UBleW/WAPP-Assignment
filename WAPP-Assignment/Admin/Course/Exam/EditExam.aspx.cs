@@ -15,11 +15,13 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected void Page_Load(object sender, EventArgs e)
         {
             exam_id = GetQueryString("exam_id");
+            DataTable examTable = ExamC.GetExamData(exam_id);
+            DataRow examData = examTable.Rows[0];
+            EditLink.NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={examData["course_id"]}";
             if (!IsPostBack)
             {
-                DataTable examTable = ExamC.GetExamData(exam_id);
-                TitleTxtBox.Text = examTable.Rows[0]["title"].ToString();
-                RetakeChkBox.Checked = Convert.ToBoolean(examTable.Rows[0]["retake"]);
+                TitleTxtBox.Text = examData["title"].ToString();
+                RetakeChkBox.Checked = Convert.ToBoolean(examData["retake"]);
             }
             DataTable questionTable = Question.GetExamQuestion(exam_id);
             foreach (DataRow questData in questionTable.Rows)

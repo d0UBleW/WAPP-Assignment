@@ -3,6 +3,14 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
+<asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+  <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
+  <li class="breadcrumb-item"><a href="/ListCourse.aspx">All Courses</a></li>
+  <li class="breadcrumb-item">
+    <asp:HyperLink ID="EditLink" runat="server" Text="Edit Course"></asp:HyperLink></li>
+  <li class="breadcrumb-item active" aria-current="page">Edit Exam</li>
+</asp:Content>
+
 <asp:Content ID="EditExamContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <asp:Panel ID="MainPanel" CssClass="container" runat="server">
@@ -22,4 +30,9 @@
       </asp:Panel>
     </asp:Panel>
   </form>
+  <script>
+    $("a").on('click', function () {
+      return confirm('Discard current working progress?');
+    })
+  </script>
 </asp:Content>

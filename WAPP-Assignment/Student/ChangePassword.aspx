@@ -2,6 +2,12 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
+<asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+  <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
+  <li class="breadcrumb-item"><a href="/Student/Profile.aspx">Profile</a></li>
+  <li class="breadcrumb-item active" aria-current="page">Change Password</li>
+</asp:Content>
+
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
@@ -51,5 +57,8 @@
       return checkNewPassMatch
     })
 
+    $("a").on('click', function () {
+      return confirm('Discard current working progress?');
+    })
   </script>
 </asp:Content>

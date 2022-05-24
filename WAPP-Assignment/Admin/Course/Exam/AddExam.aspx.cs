@@ -21,6 +21,7 @@ namespace WAPP_Assignment.Admin
                 AddExBtn.Visible = false;
                 return;
             }
+            EditLink.NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={course_id}";
         }
 
         protected void AddExBtn_Click(object sender, EventArgs e)

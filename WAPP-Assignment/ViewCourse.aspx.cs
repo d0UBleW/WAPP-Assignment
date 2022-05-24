@@ -38,7 +38,21 @@ namespace WAPP_Assignment
             DataRow courseRow = courseTable.Rows[0];
             ThumbnailImage.ImageUrl = $"/upload/thumbnail/{courseRow["thumbnail"]}";
             TitleLbl.Text = courseRow["title"].ToString();
+
+            BreadLiteral.Text = TitleLbl.Text;
+
             Page.Title = courseRow["title"].ToString();
+
+            DataTable courseCatTable = Category.GetCourseCategoryData(course_id);
+            foreach (DataRow categoryRow in courseCatTable.Rows)
+            {
+                Label cat = new Label
+                {
+                    Text = categoryRow["name"].ToString(),
+                    CssClass = "course-category-item badge rounded-pill bg-secondary",
+                };
+                CategoryPanel.Controls.Add(cat);
+            }
 
             DescriptionLbl.Text = courseRow["description"].ToString();
             double overallRating = CourseC.GetCourseOverallRating(course_id);
@@ -61,6 +75,8 @@ namespace WAPP_Assignment
                 int student_id = Convert.ToInt32(Session["user_id"]);
                 if (StudentC.IsEnrolled(student_id, course_id))
                 {
+                    CourseLink.Text = "My Courses";
+                    CourseLink.NavigateUrl = "~/Student/Course/MyCourse.aspx";
                     UnenrollLink.Visible = true;
                     EnrollLink.Visible = false;
                     RatingSubPanel.Visible = true;

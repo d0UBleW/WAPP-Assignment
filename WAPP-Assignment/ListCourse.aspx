@@ -5,6 +5,11 @@
   <link rel="stylesheet" href="/Content/course.css" />
 </asp:Content>
 
+<asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+  <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
+  <li class="breadcrumb-item active" aria-current="page">All Courses</li>
+</asp:Content>
+
 <asp:Content ID="CourseContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
@@ -45,6 +50,7 @@
       </asp:Panel>
     </asp:Panel>
   </form>
+  <input type="hidden" id="NavLocation" value="course" disabled="disabled" />
   <script>
     $("a.del-course-link").on('click', function () {
       return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';

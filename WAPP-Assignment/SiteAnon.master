@@ -4,14 +4,23 @@
   <asp:ContentPlaceHolder ID="head" runat="server">
   </asp:ContentPlaceHolder>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="NavRightContent" runat="server">
   <li class="nav-item">
-    <asp:HyperLink CssClass="nav-link" runat="server" ID="LoginLink" NavigateUrl="/Login.aspx" Text="Login"></asp:HyperLink>
+    <a href="/Login.aspx" class="nav-link" data-nav-loc="login">Login</a>
+    <%--<asp:HyperLink CssClass="nav-link" runat="server" ID="LoginLink" NavigateUrl="/Login.aspx" Text="Login"></asp:HyperLink>--%>
   </li>
   <li class="nav-item">
-    <asp:HyperLink CssClass="nav-link" runat="server" ID="RegisterLink" NavigateUrl="/Register.aspx" Text="Register"></asp:HyperLink>
+    <a href="/Register.aspx" class="nav-link" data-nav-loc="register">Register</a>
+    <%--<asp:HyperLink CssClass="nav-link" runat="server" ID="RegisterLink" NavigateUrl="/Register.aspx" Text="Register"></asp:HyperLink>--%>
   </li>
 </asp:Content>
+
+<asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+  <asp:ContentPlaceHolder ID="BreadcrumbContent" runat="server">
+  </asp:ContentPlaceHolder>
+</asp:Content>
+
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
   <asp:ContentPlaceHolder ID="MainContent" runat="server">
   </asp:ContentPlaceHolder>

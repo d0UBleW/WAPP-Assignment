@@ -3,6 +3,11 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
+<asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+  <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
+  <li class="breadcrumb-item active" aria-current="page">My Grades</li>
+</asp:Content>
+
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
@@ -22,7 +27,7 @@
       </asp:SqlDataSource>
     </div>
   </form>
-  <input type="hidden" id="NavLocation" value="My Grades" disabled="disabled" />
+  <input type="hidden" id="NavLocation" value="grade" disabled="disabled" />
   <script>
     $("[id$='GradeView']").find("td.review-exam a").addClass("btn btn-primary btn-sm")
   </script>

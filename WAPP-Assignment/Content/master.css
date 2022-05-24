@@ -1,7 +1,21 @@
 ﻿body {
+  margin-top: 80px;
 }
 
-@media all {
+/*@media (max-width: 768px) {
+  body {
+    margin-top: 80px;
+  }
+}
+*/
+:target::before {
+  content: "";
+  display: block;
+  height: 80px; /* fixed header height*/
+  margin: -80px 0 0; /* negative fixed header height */
+}
+
+@media (min-width: 768px) {
     .navbar .nav-item .dropdown-menu { display: none; }
     .navbar .nav-item:hover .nav-link { }
     .navbar .nav-item:hover .dropdown-menu { display: block; }

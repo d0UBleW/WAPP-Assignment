@@ -15,22 +15,13 @@ namespace WAPP_Assignment
     {
 
         /// <summary>
-        /// TOCPanel control.
+        /// CourseLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel TOCPanel;
-
-        /// <summary>
-        /// TitleLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLbl;
+        protected global::System.Web.UI.WebControls.HyperLink CourseLink;
 
         /// <summary>
         /// ContentPanel control.
@@ -42,6 +33,15 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.Panel ContentPanel;
 
         /// <summary>
+        /// TitleLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label TitleLbl;
+
+        /// <summary>
         /// ContentPlaceholder control.
         /// </summary>
         /// <remarks>
@@ -49,6 +49,24 @@ namespace WAPP_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.PlaceHolder ContentPlaceholder;
+
+        /// <summary>
+        /// OutlinePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel OutlinePanel;
+
+        /// <summary>
+        /// ChapOutlinePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel ChapOutlinePanel;
 
         /// <summary>
         /// form1 control.

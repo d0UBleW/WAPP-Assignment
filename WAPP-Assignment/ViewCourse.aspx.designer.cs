@@ -15,6 +15,24 @@ namespace WAPP_Assignment
     {
 
         /// <summary>
+        /// CourseLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink CourseLink;
+
+        /// <summary>
+        /// BreadLiteral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal BreadLiteral;
+
+        /// <summary>
         /// CourseDetailPanel control.
         /// </summary>
         /// <remarks>
@@ -49,6 +67,15 @@ namespace WAPP_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label TitleLbl;
+
+        /// <summary>
+        /// CategoryPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel CategoryPanel;
 
         /// <summary>
         /// DescriptionLbl control.

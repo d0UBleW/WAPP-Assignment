@@ -21,9 +21,10 @@ namespace WAPP_Assignment.Admin
             {
                 return;
             }
+            DataRow dr = dt.Rows[0];
+            EditLink.NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={dr["course_id"]}";
             if (!IsPostBack)
             {
-                DataRow dr = dt.Rows[0];
                 TitleTxtBox.Text = dr["title"].ToString();
                 EditorTxtBox.Text = dr["content"].ToString();
                 int maxSeq = ChapterC.GetChapterMaxSeq(Convert.ToInt32(dr["course_id"]));

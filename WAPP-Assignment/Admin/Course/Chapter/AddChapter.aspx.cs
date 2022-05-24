@@ -24,6 +24,7 @@ namespace WAPP_Assignment.Admin
             {
                 return;
             }
+            EditLink.NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={course_id}";
 
             if (!IsPostBack)
             {

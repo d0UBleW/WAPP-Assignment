@@ -181,6 +181,7 @@ namespace WAPP_Assignment.Admin
                     cmd.CommandText = "INSERT INTO course_category (course_id, category_id) VALUES (@course_id, (SELECT category_id FROM category WHERE name=@name));";
                     foreach (string cat in inputCategories)
                     {
+                        if (string.IsNullOrEmpty(cat)) continue;
                         cmd.Parameters.AddWithValue("@course_id", course_id);
                         cmd.Parameters.AddWithValue("@name", cat);
                         cmd.ExecuteNonQuery();

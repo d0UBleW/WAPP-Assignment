@@ -94,11 +94,26 @@ namespace WAPP_Assignment
                 ID = $"qPanel_{question_id}",
             };
             qPanel.Attributes.Add("data-question-id", question_id.ToString());
+            Panel qNoPanel = new Panel
+            {
+                ID = $"qNoPanel_{question_id}",
+            };
+            qPanel.Controls.Add(qNoPanel);
+            Literal questionNo = new Literal
+            {
+                Text = $"<h5>Question {questData["sequence"]}</h5>",
+            };
+            qNoPanel.Controls.Add(questionNo);
+            Panel qQuestionPanel = new Panel
+            {
+                ID = $"qQuestionPanel_{question_id}",
+            };
+            qPanel.Controls.Add(qQuestionPanel);
             Literal question = new Literal
             {
-                Text = $"Question {questData["sequence"]} {questData["content"]}",
+                Text = $"{questData["content"]}",
             };
-            qPanel.Controls.Add(question);
+            qQuestionPanel.Controls.Add(question);
             int numOfAnswer = Question.GetAnswerID(question_id).Count;
             DataTable optTable = Question.GetQuestionOption(question_id);
             if (numOfAnswer > 1)
@@ -118,7 +133,7 @@ namespace WAPP_Assignment
                     };
                     optList.Items.Add(optListItem);
                 }
-                qPanel.Controls.Add(optList);
+                qQuestionPanel.Controls.Add(optList);
             }
             else
             {
@@ -137,7 +152,7 @@ namespace WAPP_Assignment
                     };
                     optList.Items.Add(optListItem);
                 }
-                qPanel.Controls.Add(optList);
+                qQuestionPanel.Controls.Add(optList);
             }
             return qPanel;
         }

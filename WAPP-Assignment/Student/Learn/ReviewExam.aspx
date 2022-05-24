@@ -5,33 +5,46 @@
   <link rel="stylesheet" href="/jquery-oembed-all/jquery.oembed.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
+  <!-- add after bootstrap.min.css -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" />
+  <!-- add after bootstrap.min.js or bootstrap.bundle.min.js -->
+  <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="container">
+    <div class="row">
+      <div class="col-sm-2">
+        <nav id="toc" class="sticky-top" style="margin-top: -100px; padding-top: 100px;"></nav>
+      </div>
+      <div class="col-sm-8">
+        <asp:Panel ID="TOCPanel" runat="server"></asp:Panel>
+        <h1 data-toc-skip="true">
+          <asp:Label ID="TitleLbl" runat="server"></asp:Label>
+        </h1>
+        <asp:Label ID="ScoreLbl" runat="server"></asp:Label>
+        <asp:Panel ID="RetakePanel" runat="server">
+          <br />
+          <asp:HyperLink ID="RetakeLink" runat="server" CssClass="btn btn-primary btn-md" Text="Retake"></asp:HyperLink>
+          <br />
+          <br />
+        </asp:Panel>
+        <div class="form-check">
+          <input type="checkbox" class="form-check-input" id="toggleAnswer" />
+          <label for="toggleAnswer" class="form-check-label">Show answer</label>
+        </div>
+        <br />
 
-    <asp:Panel ID="TOCPanel" runat="server"></asp:Panel>
-    <h1>
-      <asp:Label ID="TitleLbl" runat="server"></asp:Label>
-    </h1>
-    <asp:Label ID="ScoreLbl" runat="server"></asp:Label>
-    <asp:Panel ID="RetakePanel" runat="server">
-      <br />
-      <asp:HyperLink ID="RetakeLink" runat="server" CssClass="btn btn-primary btn-md" Text="Retake"></asp:HyperLink>
-      <br />
-      <br />
-    </asp:Panel>
-    <div class="form-check">
-      <input type="checkbox" class="form-check-input" id="toggleAnswer" />
-      <label for="toggleAnswer" class="form-check-label">Show answer</label>
+        <form id="form1" runat="server">
+          <asp:Panel ID="ContentPanel" runat="server">
+          </asp:Panel>
+          <asp:HiddenField ID="CorrectOptIDField" runat="server" />
+        </form>
+
+      </div>
     </div>
-    <br />
-
-    <form id="form1" runat="server">
-      <asp:Panel ID="ContentPanel" runat="server">
-      </asp:Panel>
-      <asp:HiddenField ID="CorrectOptIDField" runat="server" />
-    </form>
   </div>
   <script>
 
@@ -68,11 +81,18 @@
             $label.text(currText + " ✔")
           }
           else {
-            $label.text(currText.slice(0, currText.length-2))
+            $label.text(currText.slice(0, currText.length - 2))
           }
         }
       })
     })
-
+    $(function () {
+      var navSelector = "#toc";
+      var $myNav = $(navSelector);
+      Toc.init($myNav);
+      $("body").scrollspy({
+        target: navSelector,
+      });
+    })
   </script>
 </asp:Content>

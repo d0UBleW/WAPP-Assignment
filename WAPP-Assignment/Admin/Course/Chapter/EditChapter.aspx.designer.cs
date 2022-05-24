@@ -15,6 +15,15 @@ namespace WAPP_Assignment.Admin
     {
 
         /// <summary>
+        /// EditLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink EditLink;
+
+        /// <summary>
         /// form1 control.
         /// </summary>
         /// <remarks>
@@ -22,15 +31,6 @@ namespace WAPP_Assignment.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// BackLinkButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton BackLinkButton;
 
         /// <summary>
         /// ChapNoLbl control.

@@ -130,7 +130,7 @@ namespace WAPP_Assignment
                 {
                     Text = "Delete Course",
                     NavigateUrl = $"~/Admin/Course/DeleteCourse.aspx?course_id={course_id}",
-                    CssClass = "btn btn-outline-primary btn-sm del-course-link",
+                    CssClass = "btn btn-outline-danger btn-sm del-course-link",
                 };
                 linkBtnGroup.Controls.Add(delLink);
             }

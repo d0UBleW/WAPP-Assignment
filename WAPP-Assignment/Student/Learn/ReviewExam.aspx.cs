@@ -75,7 +75,7 @@ namespace WAPP_Assignment.Learn
                 List<int> answer_id = Question.GetAnswerID(question_id);
                 overall_answer_id.AddRange(answer_id);
                 totalScore += answer_id.Count;
-                Panel qPanel = ContentPanel.FindControl($"qPanel_{question_id}") as Panel;
+                Panel qPanel = ContentPanel.FindControl($"qQuestionPanel_{question_id}") as Panel;
                 string wrongHexColor = "#fee9e9";
                 if (userType == "admin") continue;
                 if (!worksheetDict.ContainsKey(question_id))

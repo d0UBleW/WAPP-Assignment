@@ -22,6 +22,10 @@ namespace WAPP_Assignment
             chapterRow = dt.Rows[0];
 
             int course_id = Convert.ToInt32(chapterRow["course_id"]);
+            DataTable courseTable = CourseC.GetCourseData(course_id);
+            CourseLink.Text = courseTable.Rows[0]["title"].ToString();
+            CourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}";
+
             List<int> enroll_course_id = StudentC.GetEnrolledCourseID(student_id);
             if (!enroll_course_id.Contains(course_id) && userType != "admin")
             {
@@ -48,10 +52,10 @@ namespace WAPP_Assignment
                 {
                     link.NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={dataRow["chapter_id"]}";
                 }
-                TOCPanel.Controls.Add(link);
-                TOCPanel.Controls.Add(new Literal { Text = "<br />" });
+                ChapOutlinePanel.Controls.Add(link);
+                ChapOutlinePanel.Controls.Add(new Literal { Text = "<br />" });
             }
-            TOCPanel.Controls.Add(new Literal { Text = "<br />" });
+            ChapOutlinePanel.Controls.Add(new Literal { Text = "<br />" });
 
             TitleLbl.Text = chapterRow["title"].ToString();
             Page.Title = chapterRow["title"].ToString();
@@ -61,18 +65,18 @@ namespace WAPP_Assignment
             int chapter_no_end = ChapterC.GetChapterMaxSeq(course_id);
             if (chapter_no_end == 1)
             {
-                PrevBtn.Visible = false;
-                NextBtn.Visible = false;
+                PrevBtn.Enabled = false;
+                NextBtn.Enabled = false;
             }
             else if (chapter_no == 1)
             {
-                PrevBtn.Visible = false;
-                NextBtn.Visible = true;
+                PrevBtn.Enabled = false;
+                NextBtn.Enabled = true;
             }
             else if (chapter_no == chapter_no_end)
             {
-                PrevBtn.Visible = true;
-                NextBtn.Visible = false;
+                PrevBtn.Enabled = true;
+                NextBtn.Enabled = false;
             }
         }
 

@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/SiteAnon.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WAPP_Assignment.Login" %>
 
+<asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+  <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
+  <li class="breadcrumb-item active" aria-current="page">Login</li>
+</asp:Content>
+
 <asp:Content ID="LoginContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
@@ -25,5 +30,5 @@
       <asp:Label ID="ErrorLbl" runat="server" Text="Login credential is incorrect." ForeColor="Red" Visible="false"></asp:Label>
     </div>
   </form>
-  <input type="hidden" id="NavLocation" value="Login" disabled="disabled" />
+  <input type="hidden" id="NavLocation" value="login" disabled="disabled" />
 </asp:Content>

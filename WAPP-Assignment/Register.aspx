@@ -1,5 +1,10 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/SiteAnon.Master" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="WAPP_Assignment.Register" %>
 
+<asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+  <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
+  <li class="breadcrumb-item active" aria-current="page">Register</li>
+</asp:Content>
+
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
   <script src="/Scripts/register.js" defer></script>
 </asp:Content>
@@ -47,5 +52,5 @@
       <asp:Button ID="RegisterBtn" runat="server" Text="Register" OnClick="RegisterBtn_Click" CssClass="btn btn-md btn-primary btn-block" />
     </div>
   </form>
-  <input type="hidden" id="NavLocation" value="Register" disabled="disabled" />
+  <input type="hidden" id="NavLocation" value="register" disabled="disabled" />
 </asp:Content>

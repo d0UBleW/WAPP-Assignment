@@ -17,6 +17,13 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected void Page_Load(object sender, EventArgs e)
         {
             exam_id = GetQueryString("exam_id");
+            DataTable examTable = ExamC.GetExamData(exam_id);
+            if (examTable.Rows.Count == 0)
+            {
+                return;
+            }
+            EditExamLink.NavigateUrl = $"/Admin/Course/Exam/EditExam.aspx?exam_id={exam_id}";
+            EditLink.NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={examTable.Rows[0]["course_id"]}";
             if (!IsPostBack)
             {
                 int maxSeq = WAPP_Assignment.Question.GetQueMaxSeq(exam_id) + 1;
