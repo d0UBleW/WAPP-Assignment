@@ -1,13 +1,7 @@
 ﻿body {
-  margin-top: 80px;
+  margin-top: 90px;
 }
 
-/*@media (max-width: 768px) {
-  body {
-    margin-top: 80px;
-  }
-}
-*/
 :target::before {
   content: "";
   display: block;

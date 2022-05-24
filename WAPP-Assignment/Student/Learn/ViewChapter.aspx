@@ -29,9 +29,13 @@
       </div>
       <div class="col-sm-8">
         <asp:Panel ID="ContentPanel" runat="server">
-          <h1 data-toc-skip="true">
-            <asp:Label ID="TitleLbl" runat="server"></asp:Label></h1>
-          <asp:PlaceHolder ID="ContentPlaceholder" runat="server"></asp:PlaceHolder>
+          <header>
+            <h1 data-toc-skip="true">
+              <asp:Literal ID="TitleLtl" runat="server"></asp:Literal></h1>
+          </header>
+          <article>
+            <asp:PlaceHolder ID="ContentPlaceholder" runat="server"></asp:PlaceHolder>
+          </article>
         </asp:Panel>
       </div>
       <div class="col-sm-2">

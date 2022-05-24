@@ -57,7 +57,7 @@ namespace WAPP_Assignment
             }
             ChapOutlinePanel.Controls.Add(new Literal { Text = "<br />" });
 
-            TitleLbl.Text = chapterRow["title"].ToString();
+            TitleLtl.Text = chapterRow["title"].ToString();
             Page.Title = chapterRow["title"].ToString();
             ContentPlaceholder.Controls.Add(new Literal { Text = chapterRow["content"].ToString() });
 
