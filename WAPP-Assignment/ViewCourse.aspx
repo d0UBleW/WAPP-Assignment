@@ -60,7 +60,7 @@
       <br />
       <div id="AdminStudentPanel" runat="server" class="btn-group btn-group-md" role="group">
         <asp:HyperLink ID="StudentDataLink" runat="server" Text="Enrolled Student" CssClass="btn btn-outline-primary btn-md"></asp:HyperLink>
-        <asp:HyperLink ID="GradeLink" runat="server" Text="Grades" CssClass="btn btn-outline-danger btn-md"></asp:HyperLink>
+        <asp:HyperLink ID="GradeLink" runat="server" Text="Grades" CssClass="btn btn-outline-primary btn-md"></asp:HyperLink>
       </div>
     </div>
   </asp:Panel>

@@ -14,6 +14,12 @@ namespace WAPP_Assignment.Student.Course
         protected void Page_Load(object sender, EventArgs e)
         {
             student_id = Convert.ToInt32(Session["user_id"]);
+            if (userType == "admin")
+            {
+                student_id = GetQueryString("student_id");
+                CurrPasswdLbl.Visible = false;
+                CurrPasswdTxtBox.Visible = false;
+            }
         }
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
@@ -33,7 +39,7 @@ namespace WAPP_Assignment.Student.Course
                     cmd.Parameters.AddWithValue("@student_id", student_id);
                     storedPasswd = (string)cmd.ExecuteScalar();
                     Label1.Visible = true;
-                    if (storedPasswd != currHash)
+                    if (userType == "student" && storedPasswd != currHash)
                     {
                         conn.Close();
                         cmd.Dispose();
@@ -41,13 +47,13 @@ namespace WAPP_Assignment.Student.Course
                         Label1.Text = "Current password does not match";
                         return;
                     }
-                    Label1.ForeColor = System.Drawing.Color.Green;
-                    Label1.Text = "Password changed successfully";
                     cmd.Parameters.Clear();
                     cmd.CommandText = "UPDATE student SET password=@password WHERE student_id=@student_id;";
                     cmd.Parameters.AddWithValue("@password", newHash);
                     cmd.Parameters.AddWithValue("@student_id", student_id);
                     cmd.ExecuteNonQuery();
+                    Label1.ForeColor = System.Drawing.Color.Green;
+                    Label1.Text = "Password changed successfully";
                 }
                 conn.Close();
             }

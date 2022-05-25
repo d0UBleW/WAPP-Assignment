@@ -14,10 +14,8 @@
       <asp:Label ID="CurrPasswdLbl" runat="server" Text="Current Password"></asp:Label>
       <asp:TextBox ID="CurrPasswdTxtBox" runat="server" CssClass="form-control" TextMode="Password" Required="required"></asp:TextBox>
       <br />
-      <br />
       <asp:Label ID="NewPasswdLbl" runat="server" Text="New Password"></asp:Label>
       <asp:TextBox ID="NewPasswdTxtBox" runat="server" CssClass="form-control" TextMode="Password" Required="required"></asp:TextBox>
-      <br />
       <br />
       <asp:Label ID="RetypePasswdLbl" runat="server" Text="Retype New Password"></asp:Label>
       <asp:TextBox ID="RetypePasswdTxtBox" runat="server" CssClass="form-control" TextMode="Password" Required="required"></asp:TextBox>
@@ -50,8 +48,8 @@
       }
     }
 
-    $("input[id$='NewPasswdTxtBox']").on('change', warnTxtBox)
-    $("input[id$='RetypePasswdTxtBox']").on('change', warnTxtBox)
+    $("input[id$='NewPasswdTxtBox']").on('keyup', warnTxtBox)
+    $("input[id$='RetypePasswdTxtBox']").on('keyup', warnTxtBox)
 
     $("[id$='SubmitBtn']").on('click', function () {
       return checkNewPassMatch

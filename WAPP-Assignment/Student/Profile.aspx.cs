@@ -16,8 +16,13 @@ namespace WAPP_Assignment
         protected void Page_Load(object sender, EventArgs e)
         {
             student_id = Convert.ToInt32(Session["user_id"]);
+            if (userType == "admin")
+            {
+                student_id = GetQueryString("student_id");
+            }
             DataRow studentRow = StudentC.GetStudentData(student_id);
             if (studentRow == null) return;
+            ChangePasswdLink.NavigateUrl = $"/Student/ChangePassword.aspx?student_id={student_id}";
             if (!IsPostBack)
             {
                 FullNameTxtBox.Text = studentRow["full_name"].ToString();

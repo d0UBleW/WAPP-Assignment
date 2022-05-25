@@ -16,7 +16,7 @@ namespace WAPP_Assignment.Learn
             student_id = Convert.ToInt32(Session["user_id"]);
             if (userType == "admin")
             {
-                student_id = 0;
+                student_id = GetQueryString("student_id");
             }
 
             exam_id = GetQueryString("exam_id");
@@ -37,7 +37,7 @@ namespace WAPP_Assignment.Learn
             }
 
             DataTable examResult = StudentC.GetExamResult(student_id, exam_id);
-            if (examResult.Rows.Count == 0 && student_id != 0)
+            if (examResult.Rows.Count == 0 && student_id > 0)
             {
                 return;
             }
@@ -53,7 +53,7 @@ namespace WAPP_Assignment.Learn
             DataRow examResultData = null;
             List<string> worksheet = null;
             Dictionary<int, List<string>> worksheetDict = null;
-            if (userType == "student")
+            if (student_id > 0)
             {
                 examResultData = examResult.Rows[0];
                 worksheet = examResultData["worksheet"].ToString().Split(new string[] { ";" }, StringSplitOptions.None).ToList();
@@ -77,7 +77,7 @@ namespace WAPP_Assignment.Learn
                 totalScore += answer_id.Count;
                 Panel qPanel = ContentPanel.FindControl($"qQuestionPanel_{question_id}") as Panel;
                 string wrongHexColor = "#fee9e9";
-                if (userType == "admin") continue;
+                if (student_id <= 0) continue;
                 if (!worksheetDict.ContainsKey(question_id))
                 {
                     qPanel.Style.Add("background-color", wrongHexColor);

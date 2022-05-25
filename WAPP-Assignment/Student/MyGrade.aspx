@@ -16,13 +16,14 @@
           <asp:BoundField DataField="exam_id" HeaderText="exam_id" SortExpression="exam_id" InsertVisible="False" ReadOnly="True" Visible="False" />
           <asp:BoundField DataField="title" HeaderText="Course" SortExpression="title" />
           <asp:BoundField DataField="title1" HeaderText="Exam" SortExpression="title1" />
-          <asp:BoundField DataField="value" HeaderText="Score" SortExpression="value" />
-          <asp:HyperLinkField DataNavigateUrlFields="exam_id" DataNavigateUrlFormatString="~/Student/Learn/ReviewExam.aspx?exam_id={0}" Text="Review" ItemStyle-CssClass="review-exam" />
+          <asp:BoundField DataField="value" HeaderText="value" SortExpression="value" />
+          <asp:BoundField DataField="Column1" HeaderText="total" ReadOnly="True" SortExpression="Column1" />
+          <asp:HyperLinkField DataNavigateUrlFields="exam_id" DataNavigateUrlFormatString="/Student/Learn/ReviewExam.aspx?exam_id={0}" HeaderText="Review" Text="Review" />
         </Columns>
       </asp:GridView>
-      <asp:SqlDataSource ID="MyGradeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:iLearnDBConStr %>" SelectCommand="SELECT exam.exam_id, course.title, exam.title, grade.value FROM [grade] INNER JOIN [exam] ON grade.exam_id = exam.exam_id INNER JOIN [course] ON exam.course_id=course.course_id WHERE grade.student_id=@student_id">
+      <asp:SqlDataSource ID="MyGradeDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:iLearnDBConStr %>" SelectCommand="SELECT exam.exam_id, course.title, exam.title, grade.value, (SELECT SUM(weight) FROM question WHERE question.exam_id=exam.exam_id) FROM [grade] INNER JOIN [exam] ON grade.exam_id = exam.exam_id INNER JOIN [course] ON exam.course_id=course.course_id WHERE grade.student_id=@student_id">
         <SelectParameters>
-          <asp:SessionParameter Name="student_id" SessionField="user_id" />
+          <asp:SessionParameter Name="student_id" SessionField="user_id" DefaultValue="0" />
         </SelectParameters>
       </asp:SqlDataSource>
     </div>

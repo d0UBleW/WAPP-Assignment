@@ -58,6 +58,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
                     int question_id = (int)cmd.ExecuteScalar();
                     cmd.Parameters.Clear();
 
+                    int answerCount = 0;
                     var formData = Request.Form;
                     foreach (string key in formData.Keys)
                     {
@@ -70,6 +71,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
                         else if (key.EndsWith("_checked"))
                         {
                             isAnswer = 1;
+                            answerCount++;
                         }
                         else
                         {
@@ -80,6 +82,12 @@ namespace WAPP_Assignment.Admin.Course.Exam
                         cmd.Parameters.AddWithValue("@question_id", question_id);
                         cmd.Parameters.AddWithValue("@content", optContent);
                         cmd.Parameters.AddWithValue("@isAnswer", isAnswer);
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+
+                        cmd.CommandText = "UPDATE exam SET weight=@weight WHERE exam_id=@exam_id";
+                        cmd.Parameters.AddWithValue("@weight", answerCount);
+                        cmd.Parameters.AddWithValue("@exam_id", exam_id);
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
                     }

@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace WAPP_Assignment.Student
 {
-    public partial class MyGrade : System.Web.UI.Page
+    public partial class MyGrade : UtilClass.BaseStudentPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

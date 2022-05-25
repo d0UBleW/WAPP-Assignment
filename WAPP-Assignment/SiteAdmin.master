@@ -11,6 +11,9 @@
     <a href="/Dashboard.aspx" class="nav-link" data-nav-loc="dashboard">Dashboard</a>
     <%--<asp:HyperLink CssClass="nav-link" runat="server" ID="DashLink" NavigateUrl="~/Dashboard.aspx" Text="Dashboard"></asp:HyperLink>--%>
   </li>
+  <li class="nav-item">
+    <a href="/Admin/StudentData/StudentList.aspx" class="nav-link" data-nav-loc="student">Student</a>
+  </li>
 </asp:Content>
 
 <asp:Content ID="NavRight" ContentPlaceHolderID="NavRightContent" runat="server">
