@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Add Exam" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="AddExam.aspx.cs" Inherits="WAPP_Assignment.Admin.AddExam" %>
+﻿<%@ Page Title="Add Exam" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="AddExam.aspx.cs" Inherits="WAPP_Assignment.Admin.AddExam" ValidateRequest="false" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server"></asp:Content>
 

@@ -8,7 +8,7 @@
       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="student_id" DataSourceID="StudentListDataSource">
         <Columns>
           <asp:BoundField DataField="student_id" HeaderText="student_id" InsertVisible="False" ReadOnly="True" SortExpression="student_id" Visible="False" />
-          <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" Visible="False" />
+          <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" />
           <asp:BoundField DataField="full_name" HeaderText="full_name" SortExpression="full_name" />
           <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
           <asp:BoundField DataField="gender" HeaderText="gender" SortExpression="gender" />

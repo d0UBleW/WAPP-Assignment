@@ -40,11 +40,12 @@ namespace WAPP_Assignment.Admin
         {
             int maxSeq = Convert.ToInt32(ChapNoTxtBox.Attributes["Max"]);
             int seq = Convert.ToInt32(ChapNoTxtBox.Text);
-            string title = TitleTxtBox.Text;
+            string title = MyUtil.SanitizeInput(TitleTxtBox);
+            //string title = TitleTxtBox.Text;
             var sanitizer = new HtmlSanitizer();
             sanitizer.AllowedTags.Add("iframe");
             sanitizer.AllowedTags.Add("oembed");
-            var rawHtml = EditorTxtBox.Text;
+            string rawHtml = EditorTxtBox.Text;
             string content = sanitizer.Sanitize(rawHtml);
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Edit Course" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="EditCourse.aspx.cs" Inherits="WAPP_Assignment.Admin.EditCourse" %>
+﻿<%@ Page Title="Edit Course" Language="C#" MasterPageFile="~/SiteAdmin.Master" AutoEventWireup="true" CodeBehind="EditCourse.aspx.cs" Inherits="WAPP_Assignment.Admin.EditCourse" ValidateRequest="false" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
   <script src="/Scripts/addCourse.js" defer></script>

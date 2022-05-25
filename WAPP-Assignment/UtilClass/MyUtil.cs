@@ -6,6 +6,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Data.SqlClient;
 using System.Text;
+using Ganss.XSS;
 
 namespace WAPP_Assignment
 {
@@ -113,6 +114,20 @@ namespace WAPP_Assignment
                 }
                 conn.Close();
             }
+        }
+
+        public static string SanitizeInput(TextBox txtBox)
+        {
+            var sanitizer = new HtmlSanitizer();
+            string sanitized = sanitizer.Sanitize(txtBox.Text);
+            return sanitized;
+        }
+
+        public static string SanitizeInput(HiddenField field)
+        {
+            var sanitizer = new HtmlSanitizer();
+            string sanitized = sanitizer.Sanitize(field.Value);
+            return sanitized;
         }
     }
 }

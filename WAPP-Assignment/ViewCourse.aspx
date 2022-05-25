@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/SiteAnon.master" AutoEventWireup="true" CodeBehind="ViewCourse.aspx.cs" Inherits="WAPP_Assignment.ViewCourse" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/SiteAnon.master" AutoEventWireup="true" CodeBehind="ViewCourse.aspx.cs" Inherits="WAPP_Assignment.ViewCourse" ValidateRequest="false" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
   <style>
@@ -21,6 +21,16 @@
 
     .WaitingStar {
       background-image: url('images/star-wait.svg');
+    }
+
+    .user-rating-img {
+      display: flex;
+      float: left;
+    }
+
+    .user-rating-name {
+      display: flex;
+      float: left;
     }
   </style>
 </asp:Content>
@@ -92,8 +102,10 @@
           <br />
           <asp:TextBox ID="RatingContentTxtBox" runat="server" TextMode="MultiLine"></asp:TextBox>
           <br />
+          <br />
           <asp:Button ID="RatingBtn" runat="server" Text="Rating" OnClick="RatingBtn_Click" />
         </asp:Panel>
+          <br />
       </asp:Panel>
     </form>
   </div>

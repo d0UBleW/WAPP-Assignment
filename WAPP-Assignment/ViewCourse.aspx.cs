@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using Ganss.XSS;
 
 namespace WAPP_Assignment
 {
@@ -161,8 +162,18 @@ namespace WAPP_Assignment
                     Width = 40,
                     Height = 40,
                 };
-                p.Controls.Add(image);
-                p.Controls.Add(new Label { Text = studentData["full_name"].ToString() });
+                Panel imgPanel = new Panel
+                {
+                    CssClass = "user-rating-img",
+                };
+                p.Controls.Add(imgPanel);
+                imgPanel.Controls.Add(image);
+                Panel namePanel = new Panel
+                {
+                    CssClass = "user-rating-name",
+                };
+                p.Controls.Add(namePanel);
+                namePanel.Controls.Add(new Literal { Text = studentData["full_name"].ToString() });
 
                 RatingPanel.Controls.Add(p);
                 AjaxControlToolkit.Rating rating = new AjaxControlToolkit.Rating
@@ -178,7 +189,7 @@ namespace WAPP_Assignment
                 };
                 p.Controls.Add(rating);
                 p.Controls.Add(new Literal { Text = "<br/>" });
-                p.Controls.Add(new Label { Text = ratingData["content"].ToString() });
+                p.Controls.Add(new Literal { Text = ratingData["content"].ToString() });
                 RatingPanel.Controls.Add(new Literal { Text = "<br/>" });
             }
         }
@@ -187,7 +198,9 @@ namespace WAPP_Assignment
         {
             int student_id = Convert.ToInt32(Session["user_id"]);
             int rating = Rating1.CurrentRating;
-            string content = RatingContentTxtBox.Text;
+            var sanitizer = new HtmlSanitizer();
+            string rawContent = RatingContentTxtBox.Text;
+            string content = sanitizer.Sanitize(rawContent);
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();

@@ -42,8 +42,10 @@ namespace WAPP_Assignment.Admin
                 ThumbnailUpload.SaveAs(Server.MapPath("~/upload/thumbnail/") + filename);
                 this.UploadStatusPanel.Visible = false;
             }
-            string title = this.TitleTxtBox.Text;
-            string description = this.DescTxtBox.Text;
+            string title = MyUtil.SanitizeInput(TitleTxtBox);
+            //string title = this.TitleTxtBox.Text;
+            string description = MyUtil.SanitizeInput(DescTxtBox);
+            //string description = this.DescTxtBox.Text;
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();
@@ -58,7 +60,7 @@ namespace WAPP_Assignment.Admin
                     cmd.Parameters.AddWithValue("@title", title);
                     cmd.Parameters.AddWithValue("@description", description);
                     int course_id = (int) cmd.ExecuteScalar();
-                    List<string> inputCategories = CatField.Value.Split(new string[]{"<|>"}, StringSplitOptions.None).ToList();
+                    List<string> inputCategories = MyUtil.SanitizeInput(CatField).Split(new string[]{"<|>"}, StringSplitOptions.None).ToList();
                     Category.AddNewCategory(inputCategories);
                     cmd.Parameters.Clear();
                     cmd.CommandText = "INSERT INTO course_category (course_id, category_id) VALUES (@course_id, (SELECT category_id FROM category WHERE name=@name));";

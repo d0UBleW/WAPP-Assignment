@@ -113,13 +113,6 @@
     <Content Include="App_Data\ilearn_log.ldf">
       <DependentUpon>ilearn.mdf</DependentUpon>
     </Content>
-    <None Include="Connected Services\MyServiceReference\MyService.disco" />
-    <None Include="Connected Services\MyServiceReference\configuration91.svcinfo" />
-    <None Include="Connected Services\MyServiceReference\configuration.svcinfo" />
-    <None Include="Connected Services\MyServiceReference\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Content\course.css" />
     <Content Include="Content\master.css" />
     <Content Include="Dashboard.aspx" />
@@ -127,6 +120,7 @@
     <Content Include="Student\Course\EnrollCourse.aspx" />
     <Content Include="Home.aspx" />
     <Content Include="Student\Course\UnenrollCourse.aspx" />
+    <Content Include="Student\DeleteAccount.aspx" />
     <Content Include="Student\Feedback.aspx" />
     <Content Include="Student\Learn\ReviewExam.aspx" />
     <Content Include="Student\Learn\ViewExam.aspx" />
@@ -260,11 +254,6 @@
     <Compile Include="Admin\StudentData\StudentList.aspx.designer.cs">
       <DependentUpon>StudentList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Connected Services\MyServiceReference\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Student\ChangePassword.aspx.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -278,6 +267,13 @@
     </Compile>
     <Compile Include="Student\Course\UnenrollCourse.aspx.designer.cs">
       <DependentUpon>UnenrollCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student\DeleteAccount.aspx.cs">
+      <DependentUpon>DeleteAccount.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\DeleteAccount.aspx.designer.cs">
+      <DependentUpon>DeleteAccount.aspx</DependentUpon>
     </Compile>
     <Compile Include="Student\Feedback.aspx.cs">
       <DependentUpon>Feedback.aspx</DependentUpon>
@@ -438,13 +434,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\MyServiceReference\MyService.wsdl" />
-    <Content Include="Connected Services\MyServiceReference\WAPP_Assignment.MyServiceReference.HelloWorldResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Connected Services\MyServiceReference\WAPP_Assignment.MyServiceReference.IsUsernameDuplicateResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="SiteAnon.master" />
@@ -466,9 +455,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Connected Services\MyServiceReference\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

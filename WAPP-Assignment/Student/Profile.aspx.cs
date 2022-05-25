@@ -23,6 +23,7 @@ namespace WAPP_Assignment
             DataRow studentRow = StudentC.GetStudentData(student_id);
             if (studentRow == null) return;
             ChangePasswdLink.NavigateUrl = $"/Student/ChangePassword.aspx?student_id={student_id}";
+            DeleteAccLink.NavigateUrl = $"/Student/DeleteAccount.aspx?student_id={student_id}";
             if (!IsPostBack)
             {
                 FullNameTxtBox.Text = studentRow["full_name"].ToString();
@@ -34,8 +35,10 @@ namespace WAPP_Assignment
 
         protected void EditBtn_Click(object sender, EventArgs e)
         {
-            string fullName = FullNameTxtBox.Text;
-            string email = EmailTxtBox.Text;
+            string fullName = MyUtil.SanitizeInput(FullNameTxtBox);
+            //string fullName = FullNameTxtBox.Text;
+            string email = MyUtil.SanitizeInput(EmailTxtBox);
+            //string email = EmailTxtBox.Text;
             string gender = GenderList.SelectedValue;
             string filename = Path.GetFileName(ProfileImg.ImageUrl);
             if (gender == "m")

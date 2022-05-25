@@ -38,7 +38,7 @@ $(document).ready(function () {
 let valid = false;
 
 const isValidUsername = (data) => {
-  if (data == "true")
+  if (data != "valid")
     valid = false;
   else
     valid = true;
@@ -50,20 +50,26 @@ const checkUsername = () => {
   if ($usernameTxtBox.val() == "") return;
   $.ajax({
     type: "POST",
-    url: "MyService.asmx/IsUsernameDuplicate",
+    url: "MyService.asmx/IsValidUsername",
     data: {
       table: $("input[name$='UserTypeRadio']:checked").val(),
       username: $usernameTxtBox.val()
     },
     success: function (response) {
       $("#username_feedback").hide()
-      const isDup = $(response).find("boolean").text()
-      if (isDup == "true") {
+      console.log(response)
+      const isValid = $(response).find("string").text()
+      if (isValid != "valid") {
         $usernameTxtBox.removeClass("is-valid")
         $("#username_feedback").removeClass("valid-feedback")
         $usernameTxtBox.addClass("is-invalid")
         $("#username_feedback").addClass("invalid-feedback")
-        $("#username_feedback").text("Username is already taken")
+        if (isValid == "dup") {
+          $("#username_feedback").text("Username is already taken")
+        }
+        else {
+          $("#username_feedback").text("Invalid username")
+        }
         $("#username_feedback").show()
       }
       else {
@@ -73,7 +79,7 @@ const checkUsername = () => {
         $("#username_feedback").addClass("valid-feedback")
         $("#username_feedback").hide()
       }
-      isValidUsername(isDup);
+      isValidUsername(isValid);
     }
   })
 }
@@ -85,4 +91,4 @@ $("[id$='RegisterBtn']").on('click', function () {
   return valid
 })
 
-$("[id$='UsernameTxtBox']").on('change', checkUsername)
+$("[id$='UsernameTxtBox']").on('keyup', checkUsername)

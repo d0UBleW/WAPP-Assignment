@@ -25,8 +25,17 @@ namespace WAPP_Assignment
         }
 
         [WebMethod]
-        public bool IsUsernameDuplicate(string table, string username)
+        public string IsValidUsername(string table, string username)
         {
+            foreach (char c in username)
+            {
+                if ((c >= '0' && c <= '9') || (c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z') || c == '_')
+                {
+                    continue;
+                }
+                return "invalid";
+            }
+
             int count;
             string queryExist = $"SELECT COUNT(*) FROM {table} WHERE username=@username;";
             using (SqlConnection conn = DatabaseManager.CreateConnection())
@@ -39,8 +48,9 @@ namespace WAPP_Assignment
                     var result = cmd.ExecuteScalar();
                     count = Convert.ToInt32(result);
                 }
+                conn.Close();
             }
-            return count > 0;
+            return count > 0 ? "dup": "valid";
         }
     }
 }

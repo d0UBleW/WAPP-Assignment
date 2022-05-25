@@ -67,8 +67,10 @@ namespace WAPP_Assignment.Admin
                 ThumbnailImg.ImageUrl = $"/upload/thumbnail/{filename}";
                 this.UploadStatusPanel.Visible = false;
             }
-            string title = TitleTxtBox.Text;
-            string description = DescTxtBox.Text;
+            string title = MyUtil.SanitizeInput(TitleTxtBox);
+            //string title = TitleTxtBox.Text;
+            string description = MyUtil.SanitizeInput(DescTxtBox);
+            //string description = DescTxtBox.Text;
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();

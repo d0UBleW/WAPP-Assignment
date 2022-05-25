@@ -27,12 +27,13 @@ namespace WAPP_Assignment
         protected void RegisterBtn_Click(object sender, EventArgs e)
         {
             SetDbTable();
-            string username = UsernameTxtBox.Text;
+            string username = MyUtil.SanitizeInput(UsernameTxtBox);
+            //string username = UsernameTxtBox.Text;
             string password = PasswordTxtBox.Text;
             password = MyUtil.ComputeSHA1(password);
             string userType = UserTypeRadio.SelectedValue;
             var client = new MyService();
-            if (client.IsUsernameDuplicate(DbTable, username))
+            if (client.IsValidUsername(DbTable, username) != "valid")
             {
                 this.UsernameTxtBox.Focus();
                 return;
@@ -52,8 +53,10 @@ namespace WAPP_Assignment
                     }
                     else
                     {
-                        string fullName = this.FullNameTxtBox.Text;
-                        string email = this.EmailTxtBox.Text;
+                        string fullName = MyUtil.SanitizeInput(FullNameTxtBox);
+                        //string fullName = this.FullNameTxtBox.Text;
+                        string email = MyUtil.SanitizeInput(EmailTxtBox);
+                        //string email = this.EmailTxtBox.Text;
                         string gender = this.GenderDropDownList.SelectedValue;
                         queryInsert += " (username, password, full_name, email, gender, profile) VALUES (@username, @password, @full_name, @email, @gender, @profile);";
                         cmd.CommandText = queryInsert;

@@ -59,7 +59,8 @@ namespace WAPP_Assignment.Admin.Course.Exam
 
         protected void EditBtn_Click(object sender, EventArgs e)
         {
-            string title = TitleTxtBox.Text;
+            string title = MyUtil.SanitizeInput(TitleTxtBox);
+            //string title = TitleTxtBox.Text;
             bool retake = RetakeChkBox.Checked;
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {

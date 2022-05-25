@@ -26,7 +26,8 @@ namespace WAPP_Assignment.Admin
 
         protected void AddExBtn_Click(object sender, EventArgs e)
         {
-            string title = TitleTxtBox.Text;
+            string title = MyUtil.SanitizeInput(TitleTxtBox);
+            //string title = TitleTxtBox.Text;
             bool retake = RetakeChkBox.Checked;
             int exam_id;
             using (SqlConnection conn = DatabaseManager.CreateConnection())

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Profile" Language="C#" MasterPageFile="~/SiteStudent.master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="WAPP_Assignment.Profile" %>
+﻿<%@ Page Title="Profile" Language="C#" MasterPageFile="~/SiteStudent.master" AutoEventWireup="true" CodeBehind="Profile.aspx.cs" Inherits="WAPP_Assignment.Profile" ValidateRequest="false" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server"></asp:Content>
 
@@ -44,10 +44,16 @@
       <br />
       <asp:HyperLink ID="ChangePasswdLink" runat="server" NavigateUrl="/Student/ChangePassword.aspx"
         Text="Change Password" CssClass="btn btn-secondary btn-sm"></asp:HyperLink>
+      <asp:HyperLink ID="DeleteAccLink" runat="server" NavigateUrl="/Student/DeleteAccount.aspx"
+        Text="Delete Account" CssClass="btn btn-outline-danger btn-sm"></asp:HyperLink>
     </div>
   </form>
   <script>
-    $("a").on('click', function () {
+    $("a[id$='DeleteAccLink']").on('click', function () {
+      return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
+    })
+
+    $("a:not(a[id$='DeleteAccLink']").on('click', function () {
       return confirm('Discard current working progress?');
     })
   </script>
