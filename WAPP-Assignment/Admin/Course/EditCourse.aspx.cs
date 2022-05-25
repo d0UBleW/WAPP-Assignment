@@ -25,9 +25,11 @@ namespace WAPP_Assignment.Admin
                 Panel1.Visible = false;
                 return;
             }
+            DataRow courseData = courseDataTable.Rows[0];
+            ViewCourseLink.Text = courseData["title"].ToString();
+            ViewCourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}";
             if (!IsPostBack)
             {
-                DataRow courseData = courseDataTable.Rows[0];
                 TitleTxtBox.Text = courseData["title"].ToString();
                 DescTxtBox.Text = courseData["description"].ToString();
                 ThumbnailImg.ImageUrl = $"/upload/thumbnail/{courseData["thumbnail"]}";
@@ -42,102 +44,6 @@ namespace WAPP_Assignment.Admin
                 }
                 CatField.Value = string.Join("<|>", categoryList);
             }
-            DataTable chapterDataTable = ChapterC.GetCourseChapterData(course_id);
-            foreach (DataRow chapterData in chapterDataTable.Rows)
-            {
-                Panel container = new Panel();
-                container.CssClass = "container";
-                Label chapTitle = new Label {  Text = $"{chapterData["sequence"]}. {chapterData["title"]}" };
-                container.Controls.Add(chapTitle);
-                ChapterPlaceholder.Controls.Add(container);
-                LinkButton editChapBtn = new LinkButton
-                {
-                    Text = "Edit Chapter",
-                    ID = $"editChapBtn-{chapterData["chapter_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
-                };
-                editChapBtn.Click += new EventHandler(EditChapBtn_Click);
-                editChapBtn.Attributes.Add("data-chap-id", chapterData["chapter_id"].ToString());
-                LinkButton delChapBtn = new LinkButton
-                {
-                    Text = "Delete Chapter",
-                    ID = $"delChapBtn_{chapterData["chapter_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
-                };
-                delChapBtn.Attributes.Add("data-chap-id", chapterData["chapter_id"].ToString());
-                delChapBtn.OnClientClick = "return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';";
-                delChapBtn.Click += new EventHandler(DelChapBtn_Click);
-                ChapterPlaceholder.Controls.Add(editChapBtn);
-                ChapterPlaceholder.Controls.Add(delChapBtn);
-                ChapterPlaceholder.Controls.Add(new Literal { Text = "<br/><br/>" });
-            }
-            DataTable examTable = ExamC.GetCourseExamData(course_id);
-            foreach (DataRow examData in examTable.Rows)
-            {
-                Panel container = new Panel();
-                container.CssClass = "container";
-                Label examTitle = new Label {  Text = $"{examData["title"]}" };
-                container.Controls.Add(examTitle);
-                ExamPlaceholder.Controls.Add(container);
-                LinkButton editExamBtn = new LinkButton
-                {
-                    Text = "Edit Exam",
-                    ID = $"editExamBtn-{examData["exam_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
-                };
-                editExamBtn.Click += new EventHandler(EditExamBtn_Click);
-                editExamBtn.Attributes.Add("data-exam-id", examData["exam_id"].ToString());
-                LinkButton delExamBtn = new LinkButton
-                {
-                    Text = "Delete Exam",
-                    ID = $"delExamBtn_{examData["exam_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
-                };
-                delExamBtn.Attributes.Add("data-exam-id", examData["exam_id"].ToString());
-                delExamBtn.OnClientClick = "return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';";
-                delExamBtn.Click += new EventHandler(DelExamBtn_Click);
-                ExamPlaceholder.Controls.Add(editExamBtn);
-                ExamPlaceholder.Controls.Add(delExamBtn);
-                ExamPlaceholder.Controls.Add(new Literal { Text = "<br/><br/>" });
-            }
-        }
-
-        protected void AddChapBtn_Click(object sender, EventArgs e)
-        {
-            Response.Redirect($"/Admin/Course/Chapter/AddChapter.aspx?course_id={course_id}");
-        }
-        protected void EditChapBtn_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = sender as LinkButton;
-            //Regex rg = new Regex(@"editChapBtn-(\d+)");
-            //Match match = rg.Match(btn.ID);
-            //string chapter_id = match.Groups[1].Value;
-            string chapter_id = btn.Attributes["data-chap-id"];
-            Response.Redirect($"/Admin/Course/Chapter/EditChapter.aspx?chapter_id={chapter_id}");
-        }
-
-        protected void DelChapBtn_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = sender as LinkButton;
-            //Regex rg = new Regex(@"delChapBtn(\d+)");
-            //Match match = rg.Match(btn.ID);
-            //string chapter_id = match.Groups[1].Value;
-            string chapter_id = btn.Attributes["data-chap-id"];
-            Response.Redirect($"/Admin/Course/Chapter/DeleteChapter.aspx?chapter_id={chapter_id}");
-        }
-
-        protected void EditExamBtn_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = sender as LinkButton;
-            string exam_id = btn.Attributes["data-exam-id"];
-            Response.Redirect($"/Admin/Course/Exam/EditExam.aspx?exam_id={exam_id}");
-        }
-
-        protected void DelExamBtn_Click(object sender, EventArgs e)
-        {
-            LinkButton btn = sender as LinkButton;
-            string exam_id = btn.Attributes["data-exam-id"];
-            Response.Redirect($"/Admin/Course/Exam/DeleteExam.aspx?exam_id={exam_id}");
         }
 
         protected void EditBtn_Click(object sender, EventArgs e)
@@ -210,11 +116,6 @@ namespace WAPP_Assignment.Admin
         public static List<string> SearchCategory(string prefixText, int count)
         {
             return MyAutoComplete.ListCategory(prefixText, count);
-        }
-
-        protected void AddExBtn_Click(object sender, EventArgs e)
-        {
-            Response.Redirect($"/Admin/Course/Exam/AddExam.aspx?course_id={course_id}");
         }
 
         protected void BackLinkButton_Click(object sender, EventArgs e)

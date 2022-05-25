@@ -6,7 +6,8 @@
 
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
   <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
-  <li class="breadcrumb-item"><a href="/ListCourse.aspx">All Courses</a></li>
+  <li class="breadcrumb-item"><asp:HyperLink ID="CourseLink" runat="server" Text="All Courses" NavigateUrl="~/ListCourse.aspx"></asp:HyperLink></li>
+  <li class="breadcrumb-item"><asp:HyperLink ID="ViewCourseLink" runat="server"></asp:HyperLink></li>
   <li class="breadcrumb-item active" aria-current="page">Edit Course</li>
 </asp:Content>
 
@@ -50,17 +51,6 @@
         <asp:Label ID="UploadStatusLbl" runat="server" Text=""></asp:Label>
         <br />
       </asp:Panel>
-      <br />
-      <asp:Button ID="AddChapBtn" runat="server" Text="Add Chapter" OnClick="AddChapBtn_Click" />
-      <br />
-      <br />
-      <asp:PlaceHolder ID="ChapterPlaceholder" runat="server"></asp:PlaceHolder>
-      <br />
-      <br />
-      <asp:Button ID="AddExBtn" runat="server" Text="Add Exam" OnClick="AddExBtn_Click" />
-      <br />
-      <br />
-      <asp:PlaceHolder ID="ExamPlaceholder" runat="server"></asp:PlaceHolder>
     </asp:Panel>
   </form>
   <script>

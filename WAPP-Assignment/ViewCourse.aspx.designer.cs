@@ -96,6 +96,15 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.Label OverallRatingLbl;
 
         /// <summary>
+        /// NonAdminLinkPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel NonAdminLinkPanel;
+
+        /// <summary>
         /// EnrollLink control.
         /// </summary>
         /// <remarks>
@@ -114,6 +123,24 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.HyperLink UnenrollLink;
 
         /// <summary>
+        /// AdminActionPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminActionPanel;
+
+        /// <summary>
+        /// AdminEditPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminEditPanel;
+
+        /// <summary>
         /// EditLink control.
         /// </summary>
         /// <remarks>
@@ -130,6 +157,51 @@ namespace WAPP_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink DelLink;
+
+        /// <summary>
+        /// EditChapMenuLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink EditChapMenuLink;
+
+        /// <summary>
+        /// EditExamMenuLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink EditExamMenuLink;
+
+        /// <summary>
+        /// AdminStudentPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminStudentPanel;
+
+        /// <summary>
+        /// StudentDataLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink StudentDataLink;
+
+        /// <summary>
+        /// GradeLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink GradeLink;
 
         /// <summary>
         /// ChapterTOCPanel control.

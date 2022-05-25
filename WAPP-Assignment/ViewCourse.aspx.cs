@@ -68,8 +68,8 @@ namespace WAPP_Assignment
 
             EnrollLink.Visible = true;
             UnenrollLink.Visible = false;
-            EditLink.Visible = false;
-            DelLink.Visible = false;
+
+            AdminActionPanel.Visible = false;
             if (userType == "student")
             {
                 int student_id = Convert.ToInt32(Session["user_id"]);
@@ -89,9 +89,11 @@ namespace WAPP_Assignment
             }
             else if (userType == "admin")
             {
-                EnrollLink.Visible = false;
-                EditLink.Visible = true;
-                DelLink.Visible = true;
+                NonAdminLinkPanel.Visible = false;
+                AdminActionPanel.Visible = true;
+                StudentDataLink.NavigateUrl = $"/Admin/Course/EnrolledStudent.aspx?course_id={course_id}";
+                EditChapMenuLink.NavigateUrl = $"/Admin/Course/Chapter/EditChapMenu.aspx?course_id={course_id}";
+                EditExamMenuLink.NavigateUrl = $"/Admin/Course/Exam/EditExamMenu.aspx?course_id={course_id}";
             }
 
             DataTable chapterTable = ChapterC.GetCourseChapterData(course_id);

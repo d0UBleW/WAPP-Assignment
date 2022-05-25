@@ -27,8 +27,10 @@
 
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
   <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
-  <li class="breadcrumb-item"><asp:HyperLink ID="CourseLink" runat="server" Text="All Courses" NavigateUrl="~/ListCourse.aspx"></asp:HyperLink></li>
-  <li class="breadcrumb-item active" aria-current="page"><asp:Literal ID="BreadLiteral" runat="server"></asp:Literal></li>
+  <li class="breadcrumb-item">
+    <asp:HyperLink ID="CourseLink" runat="server" Text="All Courses" NavigateUrl="~/ListCourse.aspx"></asp:HyperLink></li>
+  <li class="breadcrumb-item active" aria-current="page">
+    <asp:Literal ID="BreadLiteral" runat="server"></asp:Literal></li>
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -43,10 +45,24 @@
     <asp:Label ID="OverallRatingLbl" runat="server"></asp:Label>
     <br />
     <br />
-    <asp:HyperLink ID="EnrollLink" runat="server" Text="Enroll" Visible="false" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
-    <asp:HyperLink ID="UnenrollLink" runat="server" Text="Unenroll" Visible="false" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
-    <asp:HyperLink ID="EditLink" runat="server" Text="Edit Course" Visible="false" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
-    <asp:HyperLink ID="DelLink" runat="server" Text="Delete Course" Visible="false" CssClass="btn btn-danger btn-md"></asp:HyperLink>
+    <asp:Panel ID="NonAdminLinkPanel" runat="server">
+      <asp:HyperLink ID="EnrollLink" runat="server" Text="Enroll" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
+      <asp:HyperLink ID="UnenrollLink" runat="server" Text="Unenroll" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
+    </asp:Panel>
+    <div id="AdminActionPanel" runat="server">
+      <div id="AdminEditPanel" runat="server" class="btn-group btn-group-md" role="group">
+        <asp:HyperLink ID="EditLink" runat="server" Text="Edit Course" CssClass="btn btn-outline-primary btn-md"></asp:HyperLink>
+        <asp:HyperLink ID="DelLink" runat="server" Text="Delete Course" CssClass="btn btn-outline-danger btn-md"></asp:HyperLink>
+        <asp:HyperLink ID="EditChapMenuLink" runat="server" Text="Edit Chapter" CssClass="btn btn-outline-primary"></asp:HyperLink>
+        <asp:HyperLink ID="EditExamMenuLink" runat="server" Text="Edit Exam" CssClass="btn btn-outline-primary"></asp:HyperLink>
+      </div>
+      <br />
+      <br />
+      <div id="AdminStudentPanel" runat="server" class="btn-group btn-group-md" role="group">
+        <asp:HyperLink ID="StudentDataLink" runat="server" Text="Enrolled Student" CssClass="btn btn-outline-primary btn-md"></asp:HyperLink>
+        <asp:HyperLink ID="GradeLink" runat="server" Text="Grades" CssClass="btn btn-outline-danger btn-md"></asp:HyperLink>
+      </div>
+    </div>
   </asp:Panel>
   <br />
   <div class="container">

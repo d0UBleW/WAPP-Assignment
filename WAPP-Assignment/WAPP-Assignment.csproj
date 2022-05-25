@@ -95,6 +95,8 @@
   <ItemGroup>
     <Content Include="Admin\Course\Chapter\AddChapter.aspx" />
     <Content Include="Admin\Course\AddCourse.aspx" />
+    <Content Include="Admin\Course\Chapter\EditChapMenu.aspx" />
+    <Content Include="Admin\Course\EnrolledStudent.aspx" />
     <Content Include="Admin\Course\Exam\AddExam.aspx" />
     <Content Include="Admin\Course\Chapter\DeleteChapter.aspx" />
     <Content Include="Admin\Course\Chapter\EditChapter.aspx" />
@@ -104,6 +106,8 @@
     <Content Include="Admin\Course\Exam\DeleteQuestion.aspx" />
     <Content Include="Admin\Course\Exam\EditExam.aspx" />
     <Content Include="Admin\Course\DeleteCourse.aspx" />
+    <Content Include="Admin\Course\Exam\EditExamMenu.aspx" />
+    <Content Include="Admin\Course\Grades.aspx" />
     <Content Include="Admin\StudentData\StudentList.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
@@ -157,6 +161,20 @@
     </Compile>
     <Compile Include="Admin\Course\AddCourse.aspx.designer.cs">
       <DependentUpon>AddCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\Chapter\EditChapMenu.aspx.cs">
+      <DependentUpon>EditChapMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\Chapter\EditChapMenu.aspx.designer.cs">
+      <DependentUpon>EditChapMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\EnrolledStudent.aspx.cs">
+      <DependentUpon>EnrolledStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\EnrolledStudent.aspx.designer.cs">
+      <DependentUpon>EnrolledStudent.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Course\Exam\AddExam.aspx.cs">
       <DependentUpon>AddExam.aspx</DependentUpon>
@@ -220,6 +238,20 @@
     </Compile>
     <Compile Include="Admin\Course\DeleteCourse.aspx.designer.cs">
       <DependentUpon>DeleteCourse.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\Exam\EditExamMenu.aspx.cs">
+      <DependentUpon>EditExamMenu.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\Exam\EditExamMenu.aspx.designer.cs">
+      <DependentUpon>EditExamMenu.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\Grades.aspx.cs">
+      <DependentUpon>Grades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\Grades.aspx.designer.cs">
+      <DependentUpon>Grades.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\StudentData\StudentList.aspx.cs">
       <DependentUpon>StudentList.aspx</DependentUpon>
