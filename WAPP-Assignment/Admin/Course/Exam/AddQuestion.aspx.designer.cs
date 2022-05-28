@@ -42,15 +42,6 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// QueNoLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label QueNoLbl;
-
-        /// <summary>
         /// QueNoTxtBox control.
         /// </summary>
         /// <remarks>
@@ -69,15 +60,6 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected global::System.Web.UI.WebControls.RangeValidator QueNoRangeValidator;
 
         /// <summary>
-        /// ContentLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ContentLbl;
-
-        /// <summary>
         /// EditorTxtBox control.
         /// </summary>
         /// <remarks>
@@ -87,15 +69,6 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected global::System.Web.UI.WebControls.TextBox EditorTxtBox;
 
         /// <summary>
-        /// AddBtn control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button AddBtn;
-
-        /// <summary>
         /// OptStatus control.
         /// </summary>
         /// <remarks>
@@ -103,5 +76,14 @@ namespace WAPP_Assignment.Admin.Course.Exam
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label OptStatus;
+
+        /// <summary>
+        /// AddBtn control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddBtn;
     }
 }

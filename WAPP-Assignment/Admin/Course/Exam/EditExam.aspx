@@ -5,24 +5,36 @@
 
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
   <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
-  <li class="breadcrumb-item"><a href="/ListCourse.aspx">All Courses</a></li>
   <li class="breadcrumb-item">
-    <asp:HyperLink ID="EditLink" runat="server" Text="Edit Course"></asp:HyperLink></li>
+    <asp:HyperLink ID="CourseLink" runat="server" Text="All Courses" NavigateUrl="~/ListCourse.aspx"></asp:HyperLink></li>
+  <li class="breadcrumb-item">
+    <asp:HyperLink ID="ViewCourseLink" runat="server"></asp:HyperLink></li>
+  <li class="breadcrumb-item"><asp:HyperLink ID="EditLink" runat="server" Text="Edit Exam Menu"></asp:HyperLink></li>
+  <li class="breadcrumb-item"><asp:Label ID="ExamLbl" runat="server"></asp:Label></li>
   <li class="breadcrumb-item active" aria-current="page">Edit Exam</li>
 </asp:Content>
 
 <asp:Content ID="EditExamContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <asp:Panel ID="MainPanel" CssClass="container" runat="server">
-      <asp:Label ID="TitleLbl" runat="server" Text="Title"></asp:Label>
-      <asp:TextBox ID="TitleTxtBox" runat="server" Required="required"></asp:TextBox>
-      <asp:CheckBox ID="RetakeChkBox" runat="server" Text="Allow retake" />
+      <div class="form-floating mb-3">
+        <asp:TextBox
+          ID="TitleTxtBox"
+          runat="server"
+          CssClass="form-control"
+          Placeholder="Exam Title"
+          ToolTip="ExamTitle"
+          Required="required"
+          ></asp:TextBox>
+        <label for="<%= TitleTxtBox.ClientID %>" class="text-muted">Exam Title</label>
+      </div>
+      <div class="form-check mb-3">
+        <asp:CheckBox ID="RetakeChkBox" runat="server" Text="Allow Retake" />
+      </div>
+      <asp:Button ID="EditBtn" runat="server" Text="Edit Exam" OnClick="EditBtn_Click" CssClass="btn btn-outline-primary" />
       <br />
       <br />
-      <asp:Button ID="EditBtn" runat="server" Text="Edit Exam" OnClick="EditBtn_Click" />
-      <br />
-      <br />
-      <asp:LinkButton ID="AddQueBtnLink" runat="server" Text="Add Question" CssClass="btn btn-secondary btn-md" OnClick="AddQueBtnLink_Click"></asp:LinkButton>
+      <asp:HyperLink ID="AddQueLink" runat="server" Text="Add Question" CssClass="btn btn-outline-primary"></asp:HyperLink>
       <br />
       <br />
       <asp:Panel ID="QuePanel" runat="server">
@@ -34,5 +46,13 @@
     $("a").on('click', function () {
       return confirm('Discard current working progress?');
     })
+
+    const $retakeChkBox = $("input[id$='RetakeChkBox']")
+    $retakeChkBox.addClass("form-check-input")
+    $retakeChkBox.css({ "cursor": "pointer" })
+
+    const $retakeLbl = $retakeChkBox.siblings("label")
+    $retakeLbl.addClass("form-check-label")
+    $retakeLbl.css({"cursor": "pointer"})
   </script>
 </asp:Content>

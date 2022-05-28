@@ -10,42 +10,71 @@
 <asp:Content ID="ProfileContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
-      <asp:Image ID="ProfileImg" runat="server" Height="200" Width="200" />
+      <asp:Image
+        ID="ProfileImg"
+        runat="server"
+        Height="200"
+        Width="200"
+        style="object-fit: cover;"
+        />
       <br />
       <br />
-      <asp:FileUpload ID="ProfileUpload" runat="server" />
+      <div class="input-group mb-3">
+        <asp:FileUpload ID="ProfileUpload" runat="server" CssClass="form-control"/>
+        <asp:Button
+          ID="RemoveBtn"
+          runat="server"
+          Text="Remove Image"
+          UseSubmitBehavior="false"
+          CausesValidation="false"
+          OnClick="RemoveBtn_Click"
+          CssClass="btn btn-outline-secondary"
+          />
+      </div>
+      <div class="form-floating mb-3 mt-3">
+        <asp:TextBox
+          ID="FullNameTxtBox"
+          runat="server"
+          TextMode="SingleLine"
+          ToolTip="Full Name"
+          Required="required"
+          CssClass="form-control"
+          Placeholder="Full Name"
+          ></asp:TextBox>
+        <label for="<%= FullNameTxtBox.ClientID %>" class="text-muted">Full Name</label>
+      </div>
+      <div class="form-floating mb-3">
+        <asp:TextBox
+          ID="EmailTxtBox"
+          runat="server"
+          TextMode="Email"
+          CssClass="form-control"
+          ToolTip="Email"
+          Placeholder="Email"
+          Required="required"
+          ></asp:TextBox>
+        <label for="<%= EmailTxtBox.ClientID %>" class="text-muted">Email</label>
+      </div>
+      <div class="form-floating mb-3">
+        <asp:DropDownList ID="GenderList" runat="server" Required="required" CssClass="form-select">
+          <asp:ListItem Selected="True" Text="Please select a gender" Value=""></asp:ListItem>
+          <asp:ListItem Selected="False" Text="Male" Value="m"></asp:ListItem>
+          <asp:ListItem Selected="False" Text="Female" Value="f"></asp:ListItem>
+        </asp:DropDownList>
+        <label for="<%= GenderList.ClientID %>" class="text-muted"">Gender</label>
+      </div>
+      <asp:Button ID="EditBtn" runat="server" Text="Edit Profile" OnClick="EditBtn_Click" CssClass="btn btn-outline-primary mb-3" />
       <br />
-      <br />
-      <asp:Button ID="RemoveBtn" runat="server" Text="Remove Image" UseSubmitBehavior="false" CausesValidation="false" OnClick="RemoveBtn_Click" />
-      <br />
-      <br />
-      <asp:Label ID="FullNameLbl" runat="server" Text="Full Name"></asp:Label>
-      <asp:TextBox ID="FullNameTxtBox" runat="server" Required="required"></asp:TextBox>
-      <br />
-      <br />
-      <asp:Label ID="EmailLbl" runat="server" Text="Email"></asp:Label>
-      <asp:TextBox ID="EmailTxtBox" runat="server" TextMode="Email" Required="required"></asp:TextBox>
-      <br />
-      <br />
-      <asp:Label ID="GenderLbl" runat="server" Text="Gender"></asp:Label>
-      <asp:DropDownList ID="GenderList" runat="server" Required="required">
-        <asp:ListItem Selected="True" Text="Please select a gender" Value=""></asp:ListItem>
-        <asp:ListItem Selected="False" Text="Male" Value="m"></asp:ListItem>
-        <asp:ListItem Selected="False" Text="Female" Value="f"></asp:ListItem>
-      </asp:DropDownList>
-      <br />
-      <br />
-      <asp:Button ID="EditBtn" runat="server" Text="Edit Profile" OnClick="EditBtn_Click" />
-      <asp:Panel ID="UploadStatusPanel" runat="server" Visible="false">
+      <asp:Panel ID="UploadStatusPanel" runat="server" Visible="false" CssClass="mb-3">
         <asp:Label ID="UploadStatusLbl" runat="server" Text=""></asp:Label>
         <br />
       </asp:Panel>
-      <br />
-      <br />
-      <asp:HyperLink ID="ChangePasswdLink" runat="server" NavigateUrl="/Student/ChangePassword.aspx"
-        Text="Change Password" CssClass="btn btn-secondary btn-sm"></asp:HyperLink>
-      <asp:HyperLink ID="DeleteAccLink" runat="server" NavigateUrl="/Student/DeleteAccount.aspx"
-        Text="Delete Account" CssClass="btn btn-outline-danger btn-sm"></asp:HyperLink>
+      <div class="btn-group" role="group">
+        <asp:HyperLink ID="ChangePasswdLink" runat="server" NavigateUrl="/Student/ChangePassword.aspx"
+          Text="Change Password" CssClass="btn btn-outline-primary btn-sm"></asp:HyperLink>
+        <asp:HyperLink ID="DeleteAccLink" runat="server" NavigateUrl="/Student/DeleteAccount.aspx"
+          Text="Delete Account" CssClass="btn btn-outline-danger btn-sm"></asp:HyperLink>
+      </div>
     </div>
   </form>
   <script>

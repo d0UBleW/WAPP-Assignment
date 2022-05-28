@@ -132,13 +132,13 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminActionPanel;
 
         /// <summary>
-        /// AdminEditPanel control.
+        /// AdminEditPanel_1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminEditPanel;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminEditPanel_1;
 
         /// <summary>
         /// EditLink control.
@@ -157,6 +157,15 @@ namespace WAPP_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink DelLink;
+
+        /// <summary>
+        /// AdminEditPanel_2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl AdminEditPanel_2;
 
         /// <summary>
         /// EditChapMenuLink control.

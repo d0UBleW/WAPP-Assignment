@@ -33,15 +33,6 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// SearchLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label SearchLbl;
-
-        /// <summary>
         /// SearchTitleTxtBox control.
         /// </summary>
         /// <remarks>
@@ -76,15 +67,6 @@ namespace WAPP_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::AjaxControlToolkit.AutoCompleteExtender AutoCat;
-
-        /// <summary>
-        /// FilterLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FilterLbl;
 
         /// <summary>
         /// FilterList control.

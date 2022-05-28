@@ -15,6 +15,24 @@ namespace WAPP_Assignment.Admin.Course.Exam
     {
 
         /// <summary>
+        /// CourseLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink CourseLink;
+
+        /// <summary>
+        /// ViewCourseLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink ViewCourseLink;
+
+        /// <summary>
         /// EditLink control.
         /// </summary>
         /// <remarks>
@@ -22,6 +40,15 @@ namespace WAPP_Assignment.Admin.Course.Exam
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink EditLink;
+
+        /// <summary>
+        /// ExamLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ExamLbl;
 
         /// <summary>
         /// form1 control.
@@ -40,15 +67,6 @@ namespace WAPP_Assignment.Admin.Course.Exam
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Panel MainPanel;
-
-        /// <summary>
-        /// TitleLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLbl;
 
         /// <summary>
         /// TitleTxtBox control.
@@ -78,13 +96,13 @@ namespace WAPP_Assignment.Admin.Course.Exam
         protected global::System.Web.UI.WebControls.Button EditBtn;
 
         /// <summary>
-        /// AddQueBtnLink control.
+        /// AddQueLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton AddQueBtnLink;
+        protected global::System.Web.UI.WebControls.HyperLink AddQueLink;
 
         /// <summary>
         /// QuePanel control.

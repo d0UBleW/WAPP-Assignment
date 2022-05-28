@@ -15,6 +15,24 @@ namespace WAPP_Assignment.Admin
     {
 
         /// <summary>
+        /// CourseLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink CourseLink;
+
+        /// <summary>
+        /// ViewCourseLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink ViewCourseLink;
+
+        /// <summary>
         /// EditLink control.
         /// </summary>
         /// <remarks>
@@ -31,15 +49,6 @@ namespace WAPP_Assignment.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// TitleLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLbl;
 
         /// <summary>
         /// TitleTxtBox control.

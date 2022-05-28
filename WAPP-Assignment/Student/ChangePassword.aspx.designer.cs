@@ -24,13 +24,13 @@ namespace WAPP_Assignment.Student.Course
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// CurrPasswdLbl control.
+        /// CurrPasswd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label CurrPasswdLbl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CurrPasswd;
 
         /// <summary>
         /// CurrPasswdTxtBox control.
@@ -42,13 +42,22 @@ namespace WAPP_Assignment.Student.Course
         protected global::System.Web.UI.WebControls.TextBox CurrPasswdTxtBox;
 
         /// <summary>
-        /// NewPasswdLbl control.
+        /// CurrPasswdLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label NewPasswdLbl;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CurrPasswdLabel;
+
+        /// <summary>
+        /// CurrToggler control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CurrToggler;
 
         /// <summary>
         /// NewPasswdTxtBox control.
@@ -58,15 +67,6 @@ namespace WAPP_Assignment.Student.Course
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox NewPasswdTxtBox;
-
-        /// <summary>
-        /// RetypePasswdLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label RetypePasswdLbl;
 
         /// <summary>
         /// RetypePasswdTxtBox control.

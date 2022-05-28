@@ -69,15 +69,6 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.TextBox PasswordTxtBox;
 
         /// <summary>
-        /// FullNameLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label FullNameLbl;
-
-        /// <summary>
         /// FullNameTxtBox control.
         /// </summary>
         /// <remarks>
@@ -87,15 +78,6 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.TextBox FullNameTxtBox;
 
         /// <summary>
-        /// EmailLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label EmailLbl;
-
-        /// <summary>
         /// EmailTxtBox control.
         /// </summary>
         /// <remarks>
@@ -103,15 +85,6 @@ namespace WAPP_Assignment
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox EmailTxtBox;
-
-        /// <summary>
-        /// GenderLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label GenderLbl;
 
         /// <summary>
         /// GenderDropDownList control.

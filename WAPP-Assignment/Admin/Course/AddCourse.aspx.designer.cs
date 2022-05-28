@@ -33,15 +33,6 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.ScriptManager ScriptManager1;
 
         /// <summary>
-        /// TitleLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLbl;
-
-        /// <summary>
         /// TitleTxtBox control.
         /// </summary>
         /// <remarks>
@@ -49,15 +40,6 @@ namespace WAPP_Assignment.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TitleTxtBox;
-
-        /// <summary>
-        /// DescLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DescLbl;
 
         /// <summary>
         /// DescTxtBox control.
@@ -96,24 +78,6 @@ namespace WAPP_Assignment.Admin
         protected global::AjaxControlToolkit.AutoCompleteExtender Auto1;
 
         /// <summary>
-        /// CatField control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField CatField;
-
-        /// <summary>
-        /// ThumbnailLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ThumbnailLbl;
-
-        /// <summary>
         /// ThumbnailUpload control.
         /// </summary>
         /// <remarks>
@@ -121,6 +85,15 @@ namespace WAPP_Assignment.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.FileUpload ThumbnailUpload;
+
+        /// <summary>
+        /// CatField control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField CatField;
 
         /// <summary>
         /// UploadStatusPanel control.

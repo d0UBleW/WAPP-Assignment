@@ -16,8 +16,17 @@ namespace WAPP_Assignment.Admin.Course.Exam
         {
             exam_id = GetQueryString("exam_id");
             DataTable examTable = ExamC.GetExamData(exam_id);
+            if (examTable.Rows.Count == 0)
+            {
+                return;
+            }
             DataRow examData = examTable.Rows[0];
-            EditLink.NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={examData["course_id"]}";
+            EditLink.NavigateUrl = $"/Admin/Course/Exam/EditExamMenu.aspx?course_id={examData["course_id"]}";
+            AddQueLink.NavigateUrl = $"~/Admin/Course/Exam/AddQuestion.aspx?exam_id={exam_id}";
+            DataTable courseTable = CourseC.GetCourseData(Convert.ToInt32(examData["course_id"]));
+            ViewCourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={examData["course_id"]}";
+            ViewCourseLink.Text = $"{courseTable.Rows[0]["title"]}";
+            ExamLbl.Text = $"{examData["title"]}";
             if (!IsPostBack)
             {
                 TitleTxtBox.Text = examData["title"].ToString();
@@ -50,11 +59,6 @@ namespace WAPP_Assignment.Admin.Course.Exam
             LinkButton linkButton = sender as LinkButton;
             int question_id = Convert.ToInt32(linkButton.Attributes["data-question-id"]);
             Response.Redirect($"~/Admin/Course/Exam/DeleteQuestion.aspx?question_id={question_id}");
-        }
-
-        protected void AddQueBtnLink_Click(object sender, EventArgs e)
-        {
-            Response.Redirect($"~/Admin/Course/Exam/AddQuestion.aspx?exam_id={exam_id}");
         }
 
         protected void EditBtn_Click(object sender, EventArgs e)

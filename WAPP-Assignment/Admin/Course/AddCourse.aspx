@@ -16,38 +16,69 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
     </asp:ScriptManager>
     <div class="container">
-      <asp:Label ID="TitleLbl" runat="server" Text="Course Title"></asp:Label>
-      <br />
-      <asp:TextBox ID="TitleTxtBox" runat="server" TextMode="SingleLine" Required="required"></asp:TextBox>
-      <br />
-      <br />
-      <asp:Label ID="DescLbl" runat="server" Text="Course Description"></asp:Label>
-      <br />
-      <asp:TextBox ID="DescTxtBox" runat="server" TextMode="MultiLine"></asp:TextBox>
-      <br />
-      <br />
-      <asp:ListBox ID="CatList" runat="server" Height="200px" Width="200px" SelectionMode="Multiple"></asp:ListBox>
-      <br />
-      <asp:TextBox ID="CatTxtBox" runat="server"></asp:TextBox>
+      <div class="form-floating mb-3">
+        <asp:TextBox
+          ID="TitleTxtBox"
+          runat="server"
+          CssClass="form-control"
+          TextMode="SingleLine"
+          Placeholder="Course Title"
+          ToolTip="Course Title"
+          Required="required"
+          ></asp:TextBox>
+        <label for="<%= TitleTxtBox.ClientID %>" class="text-muted">Course Title</label>
+      </div>
+      <div class="form-floating mb-3">
+        <asp:TextBox
+          ID="DescTxtBox"
+          runat="server"
+          CssClass="form-control"
+          TextMode="MultiLine"
+          Placeholder="Course Description"
+          ToolTip="Course Description"
+          Required="required"
+          style="height: 100px;"
+          ></asp:TextBox>
+        <label for="<%= DescTxtBox.ClientID %>" class="text-muted">Course Description</label>
+      </div>
+      <div class="list-group mb-3">
+        <asp:ListBox ID="CatList" runat="server" Height="200px" Width="100%" SelectionMode="Multiple"></asp:ListBox>
+      </div>
+      <div class="input-group mb-3">
+        <div class="form-floating flex-grow-1">
+          <asp:TextBox
+            ID="CatTxtBox"
+            runat="server"
+            CssClass="form-control"
+            TextMode="SingleLine"
+            Placeholder="Course Category"
+            ToolTip="Course Category"
+            ></asp:TextBox>
+          <label for="<%= CatTxtBox.ClientID %>" class="text-muted">Course Category</label>
+        </div>
+        <button id="CatAddBtn" type="button" class="btn btn-outline-primary">Add Category</button>
+        <button id="CatDelBtn" type="button" class="btn btn-outline-danger">Remove Category</button>
+      </div>
       <ajaxToolkit:AutoCompleteExtender ID="Auto1" runat="server" ServiceMethod="SearchCategory"
         MinimumPrefixLength="2" CompletionInterval="100" EnableCaching="false"
         CompletionSetCount="10" TargetControlID="CatTxtBox" FirstRowSelected="false">
       </ajaxToolkit:AutoCompleteExtender>
-      <button id="CatAddBtn" type="button">Add Category</button>
-      <button id="CatDelBtn" type="button">Remove Category</button>
+
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">
+          Thumbnail
+        </span>
+        <asp:FileUpload ID="ThumbnailUpload" runat="server" CssClass="form-control"/>
+      </div>
+
       <asp:HiddenField ID="CatField" runat="server" />
-      <br />
-      <br />
-      <asp:Label ID="ThumbnailLbl" runat="server" Text="Thumbnail"></asp:Label>
-      <br />
-      <asp:FileUpload ID="ThumbnailUpload" runat="server" />
-      <br />
       <asp:Panel ID="UploadStatusPanel" runat="server">
         <asp:Label ID="UploadStatusLbl" runat="server" Text=""></asp:Label>
         <br />
       </asp:Panel>
       <br />
-      <asp:Button ID="AddBtn" runat="server" Text="Add" OnClick="AddBtn_Click" />
+      <asp:Button ID="AddBtn" runat="server" Text="Add" OnClick="AddBtn_Click" CssClass="btn btn-outline-primary" />
     </div>
   </form>
   <script>

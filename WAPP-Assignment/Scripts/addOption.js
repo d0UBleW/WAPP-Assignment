@@ -5,8 +5,8 @@
     const newIdx = seedIdx+1
     const newId = `${tableId}_${newIdx}`
     const newName = `${tableId}\$${newIdx}`
-    const $inp = $(`<input id="${newId}" type="checkbox" name="${newName}" value="${value}" />`)
-    const $hid = $(`<input id="${newId}_hidden" type="hidden" name="${newName}_unchecked" value="${value}" />`)
+    const $inp = $(`<input id="${newId}" type="checkbox" name="${newName}" value="${value}" class="form-check-input" />`)
+    const $hid = $(`<input id="${newId}_hidden" type="hidden" name="${newName}_unchecked" value="${value}" class="form-check-input" />`)
     $inp.on("change", function () {
         if (!$inp.is(":checked")) {
             const unchecked = newName + "_unchecked"
@@ -21,11 +21,11 @@
     })
     $valColumn.append($inp)
     $valColumn.append($hid)
-    $valColumn.append($(`<label for="${newId}">${value}</label>`))
+    $valColumn.append($(`<label for="${newId}" class="form-label">${value}</label>`))
 
     $newOpt.append($("<td>"))
     const $btnColumn = $newOpt.find("td:last")
-    const $btn = $(`<button type="button">Delete</button>`)
+    const $btn = $(`<button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-x"></i></button>`)
     $btn.on('click', function () {
         this.closest("tr").remove()
     })

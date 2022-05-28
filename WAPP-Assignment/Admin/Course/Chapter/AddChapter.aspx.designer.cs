@@ -15,6 +15,24 @@ namespace WAPP_Assignment.Admin
     {
 
         /// <summary>
+        /// CourseLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink CourseLink;
+
+        /// <summary>
+        /// ViewCourseLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink ViewCourseLink;
+
+        /// <summary>
         /// EditLink control.
         /// </summary>
         /// <remarks>
@@ -31,15 +49,6 @@ namespace WAPP_Assignment.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-
-        /// <summary>
-        /// ChapNoLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ChapNoLbl;
 
         /// <summary>
         /// ChapNoTxtBox control.
@@ -60,15 +69,6 @@ namespace WAPP_Assignment.Admin
         protected global::System.Web.UI.WebControls.RangeValidator ChapNoRangeValidator;
 
         /// <summary>
-        /// TitleLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label TitleLbl;
-
-        /// <summary>
         /// TitleTxtBox control.
         /// </summary>
         /// <remarks>
@@ -76,15 +76,6 @@ namespace WAPP_Assignment.Admin
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TitleTxtBox;
-
-        /// <summary>
-        /// ContentLbl control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ContentLbl;
 
         /// <summary>
         /// EditorTxtBox control.

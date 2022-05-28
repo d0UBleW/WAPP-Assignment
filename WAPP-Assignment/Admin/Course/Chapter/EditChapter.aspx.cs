@@ -22,7 +22,11 @@ namespace WAPP_Assignment.Admin
                 return;
             }
             DataRow dr = dt.Rows[0];
-            EditLink.NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={dr["course_id"]}";
+            DataTable courseTable = CourseC.GetCourseData(Convert.ToInt32(dr["course_id"]));
+            ViewCourseLink.Text = $"{courseTable.Rows[0]["title"]}";
+            ViewCourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}";
+            EditLink.NavigateUrl = $"/Admin/Course/Chapter/EditChapMenu.aspx?course_id={dr["course_id"]}";
+            ChapLbl.Text = $"{dr["sequence"]}. {dr["title"]}";
             if (!IsPostBack)
             {
                 TitleTxtBox.Text = dr["title"].ToString();

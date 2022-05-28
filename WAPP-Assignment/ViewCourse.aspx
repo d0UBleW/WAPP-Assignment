@@ -60,13 +60,15 @@
       <asp:HyperLink ID="UnenrollLink" runat="server" Text="Unenroll" CssClass="btn btn-secondary btn-md"></asp:HyperLink>
     </asp:Panel>
     <div id="AdminActionPanel" runat="server">
-      <div id="AdminEditPanel" runat="server" class="btn-group btn-group-md" role="group">
+      <div id="AdminEditPanel_1" runat="server" class="btn-group btn-group-md mb-3" role="group">
         <asp:HyperLink ID="EditLink" runat="server" Text="Edit Course" CssClass="btn btn-outline-primary btn-md"></asp:HyperLink>
         <asp:HyperLink ID="DelLink" runat="server" Text="Delete Course" CssClass="btn btn-outline-danger btn-md"></asp:HyperLink>
-        <asp:HyperLink ID="EditChapMenuLink" runat="server" Text="Edit Chapter" CssClass="btn btn-outline-primary"></asp:HyperLink>
-        <asp:HyperLink ID="EditExamMenuLink" runat="server" Text="Edit Exam" CssClass="btn btn-outline-primary"></asp:HyperLink>
       </div>
       <br />
+      <div id="AdminEditPanel_2" runat="server" class="btn-group btn-group-md mb-3" role="group">
+        <asp:HyperLink ID="EditChapMenuLink" runat="server" Text="Edit Chapter Menu" CssClass="btn btn-outline-primary"></asp:HyperLink>
+        <asp:HyperLink ID="EditExamMenuLink" runat="server" Text="Edit Exam Menu" CssClass="btn btn-outline-primary"></asp:HyperLink>
+      </div>
       <br />
       <div id="AdminStudentPanel" runat="server" class="btn-group btn-group-md" role="group">
         <asp:HyperLink ID="StudentDataLink" runat="server" Text="Enrolled Student" CssClass="btn btn-outline-primary btn-md"></asp:HyperLink>
