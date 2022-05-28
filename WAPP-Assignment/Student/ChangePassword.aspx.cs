@@ -17,8 +17,8 @@ namespace WAPP_Assignment.Student.Course
             if (userType == "admin")
             {
                 student_id = GetQueryString("student_id");
-                CurrPasswdLbl.Visible = false;
-                CurrPasswdTxtBox.Visible = false;
+                CurrPasswd.Visible = false;
+                CurrToggler.Visible = false;
             }
         }
 

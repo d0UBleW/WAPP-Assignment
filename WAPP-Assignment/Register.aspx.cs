@@ -28,7 +28,6 @@ namespace WAPP_Assignment
         {
             SetDbTable();
             string username = MyUtil.SanitizeInput(UsernameTxtBox);
-            //string username = UsernameTxtBox.Text;
             string password = PasswordTxtBox.Text;
             password = MyUtil.ComputeSHA1(password);
             string userType = UserTypeRadio.SelectedValue;

@@ -15,9 +15,42 @@
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
     </asp:ScriptManager>
     <div class="container">
-      <asp:Label ID="SearchLbl" runat="server" Text="Search: "></asp:Label>
-      <asp:TextBox ID="SearchTitleTxtBox" runat="server" CssClass="form-control" Placeholder="Search"></asp:TextBox>
-      <asp:TextBox ID="SearchCatTxtBox" runat="server" Style="display: none;" CssClass="form-control" Placeholder="Search"></asp:TextBox>
+      <div class="mb-3">
+        <div class="input-group" id="searchTitle">
+          <div class="form-floating flex-grow-1">
+            <asp:TextBox
+              ID="SearchTitleTxtBox"
+              runat="server"
+              CssClass="form-control"
+              Placeholder="Search"
+              ToolTip="Search"></asp:TextBox>
+            <label for="<%= SearchTitleTxtBox.ClientID %>" class="text-muted">Search</label>
+          </div>
+          <span class="input-group-text border-start-0">
+            <button type="button" name="searchBtn" class="btn btn-outline-secondary">
+              <i class="bi bi-search"></i>
+            </button>
+          </span>
+        </div>
+
+        <div class="input-group" id="searchCat">
+          <div class="form-floating flex-grow-1">
+            <asp:TextBox
+              ID="SearchCatTxtBox"
+              runat="server"
+              CssClass="form-control"
+              Placeholder="Search"
+              ToolTip="Search"
+              ></asp:TextBox>
+            <label for="<%= SearchCatTxtBox.ClientID %>" class="text-muted">Search</label>
+          </div>
+          <span class="input-group-text">
+            <button type="button" name="searchBtn" class="btn btn-outline-secondary">
+              <i class="bi bi-search"></i>
+            </button>
+          </span>
+        </div>
+      </div>
       <ajaxToolkit:AutoCompleteExtender ID="AutoTitle" runat="server" ServiceMethod="SearchTitle"
         MinimumPrefixLength="2" CompletionInterval="100" EnableCaching="false"
         CompletionSetCount="10" TargetControlID="SearchTitleTxtBox" FirstRowSelected="false">
@@ -26,21 +59,25 @@
         MinimumPrefixLength="2" CompletionInterval="100" EnableCaching="false"
         CompletionSetCount="10" TargetControlID="SearchCatTxtBox" FirstRowSelected="false">
       </ajaxToolkit:AutoCompleteExtender>
-      <br />
-      <asp:Label ID="FilterLbl" runat="server" Text="Filter: "></asp:Label>
-      <br />
-      <asp:DropDownList ID="FilterList" runat="server">
-        <asp:ListItem Selected="True" Text="Title" Value="title"></asp:ListItem>
-        <asp:ListItem Selected="False" Text="Category" Value="category"></asp:ListItem>
-      </asp:DropDownList>
-      <br />
+
+      <div class="input-group mb-3">
+        <span class="input-group-text">
+          <i class="bi bi-funnel"></i>
+        </span>
+        <div class="form-floating flex-grow-1">
+          <asp:DropDownList ID="FilterList" runat="server" CssClass="form-select">
+            <asp:ListItem Selected="True" Text="Title" Value="title"></asp:ListItem>
+            <asp:ListItem Selected="False" Text="Category" Value="category"></asp:ListItem>
+          </asp:DropDownList>
+          <label for="<%= FilterList.ClientID %>" class="text-muted">Filter</label>
+        </div>
+      </div>
+
       <div class="form-check" id="EnrollmentDiv" runat="server">
         <input type="checkbox" id="enrollmentChk" class="form-check-input" />
         <label for="enrollmentChk" class="form-check-label">Unenrolled</label>
         <br />
       </div>
-      <br />
-      <button type="button" id="searchBtn" class="btn btn-primary btn-sm">Search</button>
     </div>
     <br />
     <br />

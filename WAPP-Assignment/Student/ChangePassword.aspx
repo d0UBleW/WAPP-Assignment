@@ -1,5 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteStudent.master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="WAPP_Assignment.Student.Course.ChangePassword" ValidateRequest="false" %>
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
+  <script src="/Scripts/togglePassword.js" defer></script>
+  <script src="/Scripts/strengthMeter.js" defer></script>
 </asp:Content>
 
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
@@ -11,19 +13,67 @@
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
-      <asp:Label ID="CurrPasswdLbl" runat="server" Text="Current Password"></asp:Label>
-      <asp:TextBox ID="CurrPasswdTxtBox" runat="server" CssClass="form-control" TextMode="Password" Required="required"></asp:TextBox>
-      <br />
-      <asp:Label ID="NewPasswdLbl" runat="server" Text="New Password"></asp:Label>
-      <asp:TextBox ID="NewPasswdTxtBox" runat="server" CssClass="form-control" TextMode="Password" Required="required"></asp:TextBox>
-      <br />
-      <asp:Label ID="RetypePasswdLbl" runat="server" Text="Retype New Password"></asp:Label>
-      <asp:TextBox ID="RetypePasswdTxtBox" runat="server" CssClass="form-control" TextMode="Password" Required="required"></asp:TextBox>
-      <br />
+      <div class="input-group mb-3">
+        <div class="form-floating flex-grow-1" id="CurrPasswd" runat="server">
+          <asp:TextBox ID="CurrPasswdTxtBox"
+            runat="server"
+            CssClass="form-control"
+            TextMode="Password"
+            ToolTip="Current Password"
+            Placeholder="Password"
+            data-toggle="password"
+            Required="required"></asp:TextBox>
+          <label for="<%= CurrPasswdTxtBox.ClientID %>" class="text-muted" runat="server" id="CurrPasswdLabel">Current Password</label>
+        </div>
+        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;" id="CurrToggler" runat="server">
+          <i class="bi bi-eye-slash"></i>
+        </span>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="form-floating flex-grow-1">
+          <asp:TextBox ID="NewPasswdTxtBox"
+            runat="server"
+            CssClass="form-control"
+            TextMode="Password"
+            ToolTip="New Password"
+            Placeholder="Password"
+            data-toggle="password"
+            data-strength-meter=""
+            Required="required"></asp:TextBox>
+          <label for="<%= NewPasswdTxtBox.ClientID %>" class="text-muted">New Password</label>
+        </div>
+        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
+          <i class="bi bi-eye-slash"></i>
+        </span>
+      </div>
+      <div class="progress mb-3">
+        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Strong</div>
+      </div>
+      <div class="mb-3">
+        <span class="text-muted" id="helpLbl"></span>
+      </div>
+
+      <div class="input-group mb-3">
+        <div class="form-floating flex-grow-1">
+          <asp:TextBox ID="RetypePasswdTxtBox"
+            runat="server"
+            CssClass="form-control"
+            TextMode="Password"
+            ToolTip="Retype Password"
+            Placeholder="Password"
+            data-toggle="password"
+            Required="required"></asp:TextBox>
+          <label for="<%= RetypePasswdTxtBox.ClientID %>" class="text-muted">Retype Password</label>
+        </div>
+        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
+          <i class="bi bi-eye-slash"></i>
+        </span>
+      </div>
+
       <div id="password_feedback" class="invalid-feedback" style="display: none;">New and retyped password do not match</div>
       <br />
-      <br />
-      <asp:Button ID="SubmitBtn" runat="server" Text="Change password" OnClick="SubmitBtn_Click" />
+      <asp:Button ID="SubmitBtn" runat="server" Text="Change password" OnClick="SubmitBtn_Click" CssClass="btn btn-outline-primary" />
       <br />
       <asp:Label ID="Label1" runat="server" Visible="false"></asp:Label>
     </div>

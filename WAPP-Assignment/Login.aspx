@@ -26,7 +26,7 @@
           Required="required" CssClass="form-control"
           Placeholder="Username"
           ></asp:TextBox>
-        <label for="<%= UsernameTxtBox.ClientID %>">Username</label>
+        <label for="<%= UsernameTxtBox.ClientID %>" class="text-muted">Username</label>
       </div>
       <div class="input-group mb-3">
         <div class="form-floating flex-grow-1">
@@ -39,7 +39,7 @@
             Placeholder="Password"
             data-toggle="password"
             ></asp:TextBox>
-          <label for="<%= PasswordTxtBox.ClientID %>">Password</label>
+          <label for="<%= PasswordTxtBox.ClientID %>" class="text-muted">Password</label>
         </div>
         <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
           <i class="bi bi-eye-slash" id="togglePassword"></i>
