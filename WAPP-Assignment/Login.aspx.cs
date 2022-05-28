@@ -26,8 +26,8 @@ namespace WAPP_Assignment
             SetDbTable();
             string username = UsernameTxtBox.Text;
             string password = PasswordTxtBox.Text;
+            System.Diagnostics.Debug.WriteLine(username);
             password = MyUtil.ComputeSHA1(password);
-            System.Diagnostics.Debug.WriteLine(password);
 
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {

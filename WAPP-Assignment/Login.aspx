@@ -1,5 +1,14 @@
 ﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/SiteAnon.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WAPP_Assignment.Login" ValidateRequest="false" %>
 
+<asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
+  <style>
+    #togglePassword {
+      cursor: pointer;
+    }
+  </style>
+  <script src="/Scripts/togglePassword.js" defer></script>
+</asp:Content>
+
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
   <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
   <li class="breadcrumb-item active" aria-current="page">Login</li>
@@ -14,16 +23,33 @@
         <asp:ListItem Selected="False" Text="Student" Value="student"></asp:ListItem>
       </asp:RadioButtonList>
       <br />
-      <asp:Label ID="UsernameLbl" runat="server" Text="Username"></asp:Label>
-      <br />
-      <asp:TextBox ID="UsernameTxtBox" runat="server" TextMode="SingleLine" ToolTip="username for login" Required="required"></asp:TextBox>
-      <br />
-      <br />
-      <asp:Label ID="PasswordLbl" runat="server" Text="Password"></asp:Label>
-      <br />
-      <asp:TextBox ID="PasswordTxtBox" runat="server" TextMode="Password" Required="required"></asp:TextBox>
-      <br />
-      <br />
+      <div class="form-floating mb-3">
+        <asp:TextBox ID="UsernameTxtBox"
+          runat="server"
+          TextMode="SingleLine"
+          ToolTip="Username"
+          Required="required" CssClass="form-control"
+          Placeholder="Username"
+          ClientIDMode="Static"></asp:TextBox>
+        <label for="<%= UsernameTxtBox.ClientID %>">Username</label>
+      </div>
+      <div class="input-group mb-3">
+        <div class="form-floating flex-grow-1">
+          <asp:TextBox ID="PasswordTxtBox"
+            runat="server"
+            TextMode="Password"
+            ToolTip="Password"
+            Required="required"
+            CssClass="form-control"
+            Placeholder="Password"
+            data-toggle="password"
+            ClientIDMode="Static"></asp:TextBox>
+          <label for="<%= PasswordTxtBox.ClientID %>">Password</label>
+        </div>
+        <span class="input-group-text">
+          <i class="bi bi-eye-slash" id="togglePassword" data-toggle="passwordToggler"></i>
+        </span>
+      </div>
       <asp:Button ID="LoginBtn" runat="server" Text="Login" OnClick="LoginBtn_Click" CssClass="btn btn-primary btn-md btn-block" />
       <br />
       <br />
@@ -31,4 +57,6 @@
     </div>
   </form>
   <input type="hidden" id="NavLocation" value="login" disabled="disabled" />
+  <script>
+  </script>
 </asp:Content>
