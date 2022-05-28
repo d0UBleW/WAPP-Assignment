@@ -342,6 +342,7 @@
     <Content Include="jquery-oembed-all\examples\test.html" />
     <Content Include="jquery-oembed-all\jquery.oembed.css" />
     <Content Include="jquery-oembed-all\jquery.oembed.js" />
+    <Content Include="Scripts\strengthMeter.js" />
     <Content Include="Scripts\togglePassword.js" />
     <Content Include="Student\ChangePassword.aspx" />
     <Content Include="Student\Course\EnrollCourse.aspx" />

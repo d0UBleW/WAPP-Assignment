@@ -1,11 +1,6 @@
 ﻿<%@ Page Title="Login" Language="C#" MasterPageFile="~/SiteAnon.Master" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="WAPP_Assignment.Login" ValidateRequest="false" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
-  <style>
-    #togglePassword {
-      cursor: pointer;
-    }
-  </style>
   <script src="/Scripts/togglePassword.js" defer></script>
 </asp:Content>
 
@@ -30,7 +25,7 @@
           ToolTip="Username"
           Required="required" CssClass="form-control"
           Placeholder="Username"
-          ClientIDMode="Static"></asp:TextBox>
+          ></asp:TextBox>
         <label for="<%= UsernameTxtBox.ClientID %>">Username</label>
       </div>
       <div class="input-group mb-3">
@@ -43,11 +38,11 @@
             CssClass="form-control"
             Placeholder="Password"
             data-toggle="password"
-            ClientIDMode="Static"></asp:TextBox>
+            ></asp:TextBox>
           <label for="<%= PasswordTxtBox.ClientID %>">Password</label>
         </div>
-        <span class="input-group-text">
-          <i class="bi bi-eye-slash" id="togglePassword" data-toggle="passwordToggler"></i>
+        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
+          <i class="bi bi-eye-slash" id="togglePassword"></i>
         </span>
       </div>
       <asp:Button ID="LoginBtn" runat="server" Text="Login" OnClick="LoginBtn_Click" CssClass="btn btn-primary btn-md btn-block" />

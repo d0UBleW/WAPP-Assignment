@@ -1,5 +1,5 @@
 ﻿$("[data-toggle='passwordToggler']").on('click', function () {
-  const $passwordTxtBox = $("[data-toggle='password']")
+  const $passwordTxtBox = $(this).closest("div").find("[data-toggle='password']")
   const type = $passwordTxtBox.prop("type")
   if (type === "password") {
     $passwordTxtBox.prop("type", "text")
@@ -7,5 +7,5 @@
   else {
     $passwordTxtBox.prop("type", "password")
   }
-  $(this).toggleClass("bi-eye")
+  $(this).find("i").toggleClass("bi-eye")
 })
