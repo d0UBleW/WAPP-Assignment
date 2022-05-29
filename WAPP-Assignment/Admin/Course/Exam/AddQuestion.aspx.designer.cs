@@ -15,6 +15,24 @@ namespace WAPP_Assignment.Admin.Course.Exam
     {
 
         /// <summary>
+        /// CourseLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink CourseLink;
+
+        /// <summary>
+        /// ViewCourseLink control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink ViewCourseLink;
+
+        /// <summary>
         /// EditLink control.
         /// </summary>
         /// <remarks>
@@ -22,6 +40,15 @@ namespace WAPP_Assignment.Admin.Course.Exam
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink EditLink;
+
+        /// <summary>
+        /// ExamLbl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label ExamLbl;
 
         /// <summary>
         /// EditExamLink control.

@@ -8,11 +8,13 @@
 
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
   <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
-  <li class="breadcrumb-item"><a href="/ListCourse.aspx">All Courses</a></li>
   <li class="breadcrumb-item">
-    <asp:HyperLink ID="EditLink" runat="server" Text="Edit Course"></asp:HyperLink></li>
+    <asp:HyperLink ID="CourseLink" runat="server" Text="All Courses" NavigateUrl="~/ListCourse.aspx"></asp:HyperLink></li>
   <li class="breadcrumb-item">
-    <asp:HyperLink ID="EditExamLink" runat="server" Text="Edit Exam"></asp:HyperLink></li>
+    <asp:HyperLink ID="ViewCourseLink" runat="server"></asp:HyperLink></li>
+  <li class="breadcrumb-item"><asp:HyperLink ID="EditLink" runat="server" Text="Edit Exam Menu"></asp:HyperLink></li>
+  <li class="breadcrumb-item"><asp:Label ID="ExamLbl" runat="server"></asp:Label></li>
+  <li class="breadcrumb-item"><asp:HyperLink ID="EditExamLink" runat="server" Text="Edit Exam"></asp:HyperLink></li>
   <li class="breadcrumb-item active" aria-current="page">Add Question</li>
 </asp:Content>
 
@@ -64,25 +66,10 @@
       </div>
       <asp:Label ID="OptStatus" runat="server" ForeColor="Red" Style="display: none;" Text="Please choose at least one option as answer."></asp:Label>
       <br />
-      <h4>Option List</h4>
-      <div class="form-check">
-        <table id="OptTable">
-          <tbody>
-          </tbody>
-        </table>
-      </div>
-      <br />
-      <br />
-      <asp:Button ID="AddBtn" runat="server" OnClick="AddBtn_Click" OnClientClick="return CheckOption();" Text="Add Question" CssClass="btn btn-outline-primary" />
-      <ul class="list-group">
-        <li class="list-group-item d-flex">
-          <span class="badge bg-danger rounded-pill" style="float: left;"><i class="bi bi-x-lg"></i></span>
-          <div class="form-check" style="float: left;">
-            <input type="checkbox" id="ck1" class="form-check-input"/>
-            <label for="ck1" class="form-check-label">Test</label>
-          </div>
-        </li>
+      <h4 class="mb-3">Option List</h4>
+      <ul class="list-group mb-3" id="OptList">
       </ul>
+      <asp:Button ID="AddBtn" runat="server" OnClick="AddBtn_Click" OnClientClick="return CheckOption();" Text="Add Question" CssClass="btn btn-outline-primary" />
     </div>
   </form>
   <script>

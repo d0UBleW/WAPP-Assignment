@@ -23,7 +23,11 @@ namespace WAPP_Assignment.Admin.Course.Exam
                 return;
             }
             EditExamLink.NavigateUrl = $"/Admin/Course/Exam/EditExam.aspx?exam_id={exam_id}";
-            EditLink.NavigateUrl = $"/Admin/Course/EditCourse.aspx?course_id={examTable.Rows[0]["course_id"]}";
+            EditLink.NavigateUrl = $"/Admin/Course/Exam/EditExamMenu.aspx?exam_id={exam_id}";
+            ViewCourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={examTable.Rows[0]["course_id"]}";
+            DataTable courseTable = CourseC.GetCourseData(Convert.ToInt32(examTable.Rows[0]["course_id"]));
+            ViewCourseLink.Text = $"{courseTable.Rows[0]["title"]}";
+            ExamLbl.Text = $"{examTable.Rows[0]["title"]}";
             if (!IsPostBack)
             {
                 int maxSeq = WAPP_Assignment.Question.GetQueMaxSeq(exam_id) + 1;
@@ -62,7 +66,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
                     var formData = Request.Form;
                     foreach (string key in formData.Keys)
                     {
-                        if (!key.StartsWith("OptTable$")) continue;
+                        if (!key.StartsWith("OptList$")) continue;
                         int isAnswer = 0;
                         if (key.EndsWith("_unchecked"))
                         {
@@ -85,7 +89,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
 
-                        cmd.CommandText = "UPDATE exam SET weight=@weight WHERE exam_id=@exam_id";
+                        cmd.CommandText = "UPDATE question SET weight=@weight WHERE exam_id=@exam_id";
                         cmd.Parameters.AddWithValue("@weight", answerCount);
                         cmd.Parameters.AddWithValue("@exam_id", exam_id);
                         cmd.ExecuteNonQuery();

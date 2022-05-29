@@ -1,61 +1,59 @@
-﻿const createOption = (tableId, seedIdx, value) => {
-    const $newOpt = $("<tr>")
-    $newOpt.append($("<td>"))
-    const $valColumn = $newOpt.find("td:last")
-    const newIdx = seedIdx+1
-    const newId = `${tableId}_${newIdx}`
-    const newName = `${tableId}\$${newIdx}`
-    const $inp = $(`<input id="${newId}" type="checkbox" name="${newName}" value="${value}" class="form-check-input" />`)
-    const $hid = $(`<input id="${newId}_hidden" type="hidden" name="${newName}_unchecked" value="${value}" class="form-check-input" />`)
-    $inp.on("change", function () {
-        if (!$inp.is(":checked")) {
-            const unchecked = newName + "_unchecked"
-            $hid.prop("name", unchecked)
-            // $inp.prop("name", unchecked)
-        }
-        else {
-            const checked = newName + "_checked"
-            $hid.prop("name", checked)
-            // $inp.prop("name", newName)
-        }
-    })
-    $valColumn.append($inp)
-    $valColumn.append($hid)
-    $valColumn.append($(`<label for="${newId}" class="form-label">${value}</label>`))
+﻿const createOption = ($list, seedIdx, value) => {
+  const newIdx = seedIdx+1
+  const listId = $list.prop("id")
+  const newId = `${listId}_${newIdx}`
+  const newName = `${listId}\$${newIdx}`
 
-    $newOpt.append($("<td>"))
-    const $btnColumn = $newOpt.find("td:last")
-    const $btn = $(`<button type="button" class="btn btn-outline-danger btn-sm"><i class="bi bi-x"></i></button>`)
-    $btn.on('click', function () {
-        this.closest("tr").remove()
-    })
-    //$btnColumn.append($(`<button type="button" id="btn${tableId}_${newIdx}">Delete</button>`))
-    $btnColumn.append($btn)
-    return $newOpt
+  const $newItem = $(`<li class="list-group-item d-flex align-items-center">`)
+  const $delBtn = $(`<button type="button" class="btn btn-outline-danger btn-sm rounded-circle me-3"><i class="bi bi-x-lg"></i></button>`)
+  $delBtn.on('click', function () {
+    this.closest("li").remove()
+  })
+  $newItem.append($delBtn)
+
+  const $newDiv = $(`<div class="form-check">`)
+  const $newCheckBox = $(`<input type="checkbox" id="${newId}" name="${newName}" value="${value}" class="form-check-input me-2" data-idx="${newIdx}" />`)
+  const $newLabel = $(`<label for="${newId}">${value}</label>`)
+  const $newHidden = $(`<input type="hidden" id="${newId}_hidden" name="${newName}_unchecked" value="${value}" />`)
+  $newDiv.append($newCheckBox)
+  $newDiv.append($newLabel)
+  $newDiv.append($newHidden)
+
+  $newItem.append($newDiv)
+
+  $newCheckBox.on('change', function () {
+    if ($(this).is(":checked")) {
+      const checked = newName +"_checked"
+      $newHidden.prop("name", checked)
+      $newItem.addClass("list-group-item-success")
+    } else {
+      const unchecked = newName + "_unchecked"
+      $newHidden.prop("name", unchecked)
+      $newItem.removeClass("list-group-item-success")
+    }
+  })
+    return $newItem
 }
 
-$(document).ready(function () {
-    $("[id$='AddOptBtn']").on('click', function () {
-        const opt = $("[id$='OptTxtBox']").val()
-        $("[id$='OptTxtBox']").val("")
-        if (opt === "") return
-        const $tbody = $("[id$='OptTable']").find("tbody")
-        const $lastRow = $tbody.find("tr:last")
-        if ($lastRow.length == 0) {
-            const $newRow = createOption("OptTable", 0, opt)
-            $tbody.append($newRow)
-            return
-        }
-        const seedIdx = parseInt($lastRow.find("input").prop("id").match(/OptTable_(\d+)/)[1])
-        const $newRow = createOption("OptTable", seedIdx, opt)
-        $tbody.append($newRow)
-    })
+$("[id$='AddOptBtn']").on('click', function () {
+  const $optList = $("#OptList")
+  const opt = $("[id$='OptTxtBox']").val()
+  $("[id$='OptTxtBox']").val("")
+  if (opt === "") return
+  const $lastItem = $optList.find("li:last")
+  let seedIdx = 0
+  if ($lastItem.length != 0) {
+    seedIdx = parseInt($lastItem.find("input[type='checkbox']").data("idx"))
+  }
+  const $newItem = createOption($optList, seedIdx, opt)
+  $optList.append($newItem)
 })
 
 const CheckOption = () => {
+  const $optList = $("#OptList")
   let checked = false
   $("[id$='OptStatus']").hide()
-  $("input[type='checkbox']").each(function () {
+  $optList.find("input[type='checkbox']").each(function () {
       if ($(this).is(":checked")) {
           checked = true
       }

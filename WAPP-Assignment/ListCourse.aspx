@@ -42,11 +42,9 @@
               ></asp:TextBox>
             <label for="<%= SearchCatTxtBox.ClientID %>" class="text-muted">Search</label>
           </div>
-          <span class="input-group-text">
             <button type="button" name="searchBtn" class="btn btn-outline-secondary">
               <i class="bi bi-search"></i>
             </button>
-          </span>
         </div>
       </div>
       <ajaxToolkit:AutoCompleteExtender ID="AutoTitle" runat="server" ServiceMethod="SearchTitle"

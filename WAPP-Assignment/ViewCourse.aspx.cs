@@ -104,6 +104,7 @@ namespace WAPP_Assignment
                 HyperLink title = new HyperLink
                 {
                     Text = $"{chapterRow["sequence"]}. {chapterRow["title"]}",
+                    CssClass = "list-group-item list-group-item-action",
                 };
                 title.NavigateUrl = "#";
                 if (userType == "admin")
@@ -119,8 +120,7 @@ namespace WAPP_Assignment
                         title.NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={chapterRow["chapter_id"]}";
                     }
                 }
-                ChapterTOCPanel.Controls.Add(title);
-                ChapterTOCPanel.Controls.Add(new Literal { Text = "<br />" });
+                ChapListPanel.Controls.Add(title);
             }
 
             DataTable examTable = ExamC.GetCourseExamData(course_id);
@@ -129,6 +129,7 @@ namespace WAPP_Assignment
                 HyperLink title = new HyperLink
                 {
                     Text = $"{examRow["title"]}",
+                    CssClass = "list-group-item list-group-item-action",
                 };
                 title.NavigateUrl = "#";
                 if (userType == "admin")
@@ -144,8 +145,7 @@ namespace WAPP_Assignment
                         title.NavigateUrl = $"/Student/Learn/ViewExam.aspx?exam_id={examRow["exam_id"]}";
                     }
                 }
-                ExamPanel.Controls.Add(title);
-                ExamPanel.Controls.Add(new Literal { Text = "<br />" });
+                ExamListPanel.Controls.Add(title);
             }
 
             RtgLbl.Text = $"Rating ({ratingCount})";
@@ -153,7 +153,11 @@ namespace WAPP_Assignment
             int i = 0;
             foreach (DataRow ratingData in ratingTable.Rows)
             {
-                Panel p = new Panel();
+                Panel p = new Panel
+                {
+                    CssClass = "list-group-item",
+                };
+                RatingListPanel.Controls.Add(p);
                 int student_id = Convert.ToInt32(ratingData["student_id"]);
                 DataRow studentData = StudentC.GetStudentData(student_id);
                 Image image = new Image
@@ -175,7 +179,6 @@ namespace WAPP_Assignment
                 p.Controls.Add(namePanel);
                 namePanel.Controls.Add(new Literal { Text = studentData["full_name"].ToString() });
 
-                RatingPanel.Controls.Add(p);
                 AjaxControlToolkit.Rating rating = new AjaxControlToolkit.Rating
                 {
                     ID = $"userRating_{i++}",
@@ -190,7 +193,6 @@ namespace WAPP_Assignment
                 p.Controls.Add(rating);
                 p.Controls.Add(new Literal { Text = "<br/>" });
                 p.Controls.Add(new Literal { Text = ratingData["content"].ToString() });
-                RatingPanel.Controls.Add(new Literal { Text = "<br/>" });
             }
         }
 

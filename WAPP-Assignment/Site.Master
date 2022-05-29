@@ -108,7 +108,7 @@
       </div>
       <div class="col"></div>
       <div class="col">
-        <h5>Section</h5>
+        <h5 data-toc-skip="true">Section</h5>
         <ul class="nav flex-column">
           <li class="nav-item">
             <a href="mailto:a@example.com" class="nav-link" style="color: white;">

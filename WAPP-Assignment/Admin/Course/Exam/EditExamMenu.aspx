@@ -9,7 +9,7 @@
     <asp:HyperLink ID="CourseLink" runat="server" Text="All Courses" NavigateUrl="~/ListCourse.aspx"></asp:HyperLink></li>
   <li class="breadcrumb-item">
     <asp:HyperLink ID="ViewCourseLink" runat="server"></asp:HyperLink></li>
-  <li class="breadcrumb-item active" aria-current="page">Edit Exam</li>
+  <li class="breadcrumb-item active" aria-current="page">Edit Exam Menu</li>
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
