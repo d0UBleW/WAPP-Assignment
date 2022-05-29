@@ -36,7 +36,6 @@
           TextMode="MultiLine"
           Placeholder="Course Description"
           ToolTip="Course Description"
-          Required="required"
           style="height: 100px;"
           ></asp:TextBox>
         <label for="<%= DescTxtBox.ClientID %>" class="text-muted">Course Description</label>

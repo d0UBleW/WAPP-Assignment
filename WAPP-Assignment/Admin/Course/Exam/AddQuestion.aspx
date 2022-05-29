@@ -75,7 +75,7 @@
       <br />
       <asp:Button ID="AddBtn" runat="server" OnClick="AddBtn_Click" OnClientClick="return CheckOption();" Text="Add Question" CssClass="btn btn-outline-primary" />
       <ul class="list-group">
-        <li class="list-group-item">
+        <li class="list-group-item d-flex">
           <span class="badge bg-danger rounded-pill" style="float: left;"><i class="bi bi-x-lg"></i></span>
           <div class="form-check" style="float: left;">
             <input type="checkbox" id="ck1" class="form-check-input"/>

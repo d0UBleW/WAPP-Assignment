@@ -12,7 +12,7 @@ namespace WAPP_Assignment
 {
     public static class MyUtil
     {
-        public const string defaultThumb = "3041EBCF66C0270BBB172CCDB32C9386F61CC211.svg";
+        public const string defaultThumb = "46ECB7BBD7D75AEA077A274C3B192E21534366E2.svg";
         public const string defaultMaleProfile = "man.png";
         public const string defaultFemaleProfile = "girl.png";
         public const string defaultProfile = "default.svg";

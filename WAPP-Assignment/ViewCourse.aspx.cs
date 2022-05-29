@@ -58,7 +58,7 @@ namespace WAPP_Assignment
             DescriptionLbl.Text = courseRow["description"].ToString();
             double overallRating = CourseC.GetCourseOverallRating(course_id);
             int ratingCount = CourseC.GetCourseRatingCount(course_id);
-            OverallRatingLbl.Text = $"Rating: {overallRating:0.00}/5 ({ratingCount})";
+            OverallRatingLbl.Text = $"Rating: {overallRating:0.00}/5.00 ({ratingCount})";
 
             RatingSubPanel.Visible = false;
 

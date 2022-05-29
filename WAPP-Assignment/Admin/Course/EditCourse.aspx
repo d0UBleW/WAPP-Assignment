@@ -52,7 +52,6 @@
           ToolTip="Course Description"
           TextMode="MultiLine"
           CssClass="form-control"
-          Required="required"
           aria-label="Course Description"
           style="height: 100px;"
           ></asp:TextBox>

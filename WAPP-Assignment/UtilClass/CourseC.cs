@@ -19,12 +19,12 @@ namespace WAPP_Assignment
 
             Panel colPanel = new Panel
             {
-                CssClass = "col course-container",
+                CssClass = "col-lg-4 course-container d-flex align-items-stretch",
             };
 
             Panel cPanel = new Panel
             {
-                CssClass = "card mb-3 course-card",
+                CssClass = "card mb-3 course-card flex-fill",
             };
             colPanel.Controls.Add(cPanel);
 
@@ -40,13 +40,6 @@ namespace WAPP_Assignment
             };
 
             rowInCard.Controls.Add(imgCol);
-
-
-            //Panel imgPanel = new Panel
-            //{
-            //    CssClass = "course-img-container",
-            //};
-            //imgCol.Controls.Add(imgPanel);
 
             Image thumbnail = new Image
             {

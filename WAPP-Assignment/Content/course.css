@@ -1,18 +1,17 @@
 ﻿body {
 }
 
-.cover {
-  object-fit: cover;
-}
-
 .course-card {
-  height: 250px;
 }
 
 .course-img {
   height: 100%;
+  object-fit: cover;
 }
 
 .badge {
   margin: 0px 2px 0px 2px;
+}
+
+.row {
 }

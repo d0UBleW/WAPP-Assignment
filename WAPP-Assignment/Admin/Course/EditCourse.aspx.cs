@@ -33,7 +33,6 @@ namespace WAPP_Assignment.Admin
                 TitleTxtBox.Text = courseData["title"].ToString();
                 DescTxtBox.Text = courseData["description"].ToString();
                 ThumbnailImg.ImageUrl = $"/upload/thumbnail/{courseData["thumbnail"]}";
-
                 DataTable categoryDataTable = Category.GetCourseCategoryData(course_id);
                 List<string> categoryList = new List<string>();
                 foreach (DataRow row in categoryDataTable.Rows)
@@ -48,7 +47,12 @@ namespace WAPP_Assignment.Admin
 
         protected void EditBtn_Click(object sender, EventArgs e)
         {
-            List<string> old_category = CatField.Value.Split(new string[] { "<|>" }, StringSplitOptions.None).ToList();
+            DataTable categoryTable = Category.GetCourseCategoryData(course_id);
+            List<string> old_category = new List<string>();
+            foreach (DataRow row in categoryTable.Rows)
+            {
+                old_category.Add(row["name"].ToString());
+            }
             string filename = Path.GetFileName(ThumbnailImg.ImageUrl);
             if (ThumbnailUpload.HasFile)
             {
@@ -112,6 +116,16 @@ namespace WAPP_Assignment.Admin
                 }
                 conn.Close();
             }
+            DataTable categoryDataTable = Category.GetCourseCategoryData(course_id);
+            CatList.Items.Clear();
+            List<string> categoryList = new List<string>();
+            foreach (DataRow row in categoryDataTable.Rows)
+            {
+                ListItem item = new ListItem { Text = row["name"].ToString() };
+                CatList.Items.Add(item);
+                categoryList.Add(item.Text);
+            }
+            CatField.Value = string.Join("<|>", categoryList);
         }
 
         [WebMethod]
