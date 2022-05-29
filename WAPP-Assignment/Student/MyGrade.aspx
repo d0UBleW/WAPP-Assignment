@@ -11,13 +11,13 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
-      <asp:GridView ID="GradeView" runat="server" AutoGenerateColumns="False" DataSourceID="MyGradeDataSource" DataKeyNames="exam_id">
+      <asp:GridView ID="GradeView" runat="server" AutoGenerateColumns="False" DataSourceID="MyGradeDataSource" DataKeyNames="exam_id" CssClass="table table-hover table-striped">
         <Columns>
           <asp:BoundField DataField="exam_id" HeaderText="exam_id" SortExpression="exam_id" InsertVisible="False" ReadOnly="True" Visible="False" />
           <asp:BoundField DataField="title" HeaderText="Course" SortExpression="title" />
           <asp:BoundField DataField="title1" HeaderText="Exam" SortExpression="title1" />
-          <asp:BoundField DataField="value" HeaderText="value" SortExpression="value" />
-          <asp:BoundField DataField="Column1" HeaderText="total" ReadOnly="True" SortExpression="Column1" />
+          <asp:BoundField DataField="value" HeaderText="Score" SortExpression="value" />
+          <asp:BoundField DataField="Column1" HeaderText="Total" ReadOnly="True" SortExpression="Column1" />
           <asp:HyperLinkField DataNavigateUrlFields="exam_id" DataNavigateUrlFormatString="/Student/Learn/ReviewExam.aspx?exam_id={0}" HeaderText="Review" Text="Review" />
         </Columns>
       </asp:GridView>

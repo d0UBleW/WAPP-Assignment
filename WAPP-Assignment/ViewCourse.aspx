@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/SiteAnon.master" AutoEventWireup="true" CodeBehind="ViewCourse.aspx.cs" Inherits="WAPP_Assignment.ViewCourse" ValidateRequest="false" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
+  <link rel="stylesheet" href="/Content/course.css" />
   <style>
     .Star {
       font-size: 0pt;
@@ -32,6 +33,11 @@
       display: flex;
       float: left;
     }
+
+    .my-break-word {
+      word-wrap: break-word;
+    }
+
   </style>
 </asp:Content>
 
@@ -51,9 +57,12 @@
         <asp:Panel ID="ImagePanel" runat="server">
           <asp:Image ID="ThumbnailImage" runat="server" Width="200" Height="200" />
         </asp:Panel>
-        <asp:Label ID="TitleLbl" runat="server"></asp:Label>
+        <h1>
+          <asp:Label ID="TitleLbl" runat="server"></asp:Label>
+        </h1>
         <asp:Panel ID="CategoryPanel" runat="server"></asp:Panel>
-        <asp:Label ID="DescriptionLbl" runat="server"></asp:Label>
+        <asp:Label ID="DescriptionLbl" CssClass="my-break-word" runat="server"></asp:Label>
+        <br />
         <br />
         <asp:Label ID="OverallRatingLbl" runat="server"></asp:Label>
         <br />
@@ -125,6 +134,9 @@
   <input type="hidden" id="NavLocation" value="course" disabled="disabled" />
   <script>
     $("[id$='DelLink'").on('click', function () {
+      return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
+    })
+    $("[data-del-rating='yes'").on('click', function () {
       return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
     })
   </script>

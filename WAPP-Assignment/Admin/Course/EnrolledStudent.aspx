@@ -16,12 +16,12 @@
   <form id="form1" runat="server">
     <div class="container">
 
-      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="student_id" DataSourceID="EnrolledStudentDataSource" Width="785px">
+      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="student_id" DataSourceID="EnrolledStudentDataSource" Width="785px" CssClass="table table-hover table-striped">
         <Columns>
           <asp:BoundField DataField="student_id" HeaderText="student_id" SortExpression="student_id" InsertVisible="False" ReadOnly="True" Visible="False" />
-          <asp:BoundField DataField="full_name" HeaderText="full_name" SortExpression="full_name" />
-          <asp:BoundField DataField="gender" HeaderText="gender" SortExpression="gender" />
-          <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
+          <asp:BoundField DataField="full_name" HeaderText="Full Name" SortExpression="full_name" />
+          <asp:BoundField DataField="gender" HeaderText="Gender" SortExpression="gender" />
+          <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
           <asp:BoundField DataField="course_id" HeaderText="course_id" SortExpression="course_id" Visible="False" />
           <asp:HyperLinkField DataNavigateUrlFields="course_id,student_id" DataNavigateUrlFormatString="/Student/Course/UnenrollCourse.aspx?course_id={0}&amp;student_id={1}" HeaderText="Action" Text="Unenroll" />
         </Columns>

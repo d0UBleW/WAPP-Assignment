@@ -106,7 +106,7 @@ namespace WAPP_Assignment
                     Text = $"{chapterRow["sequence"]}. {chapterRow["title"]}",
                     CssClass = "list-group-item list-group-item-action",
                 };
-                title.NavigateUrl = "#";
+                title.NavigateUrl = "~/Login.aspx";
                 if (userType == "admin")
                 {
                     title.NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={chapterRow["chapter_id"]}";
@@ -131,7 +131,7 @@ namespace WAPP_Assignment
                     Text = $"{examRow["title"]}",
                     CssClass = "list-group-item list-group-item-action",
                 };
-                title.NavigateUrl = "#";
+                title.NavigateUrl = "~/Login.aspx";
                 if (userType == "admin")
                 {
                     title.NavigateUrl = $"/Student/Learn/ReviewExam.aspx?exam_id={examRow["exam_id"]}";
@@ -158,27 +158,56 @@ namespace WAPP_Assignment
                     CssClass = "list-group-item",
                 };
                 RatingListPanel.Controls.Add(p);
+                Panel profileRow = new Panel
+                {
+                    CssClass = "row row-cols-3 d-flex flex-row align-items-center",
+                };
                 int student_id = Convert.ToInt32(ratingData["student_id"]);
                 DataRow studentData = StudentC.GetStudentData(student_id);
                 Image image = new Image
                 {
                     ImageUrl = $"/upload/profile/{studentData["profile"]}",
-                    Width = 40,
-                    Height = 40,
+                    CssClass = "img-fluid",
                 };
                 Panel imgPanel = new Panel
                 {
-                    CssClass = "user-rating-img",
+                    CssClass = "col-sm-2",
                 };
-                p.Controls.Add(imgPanel);
                 imgPanel.Controls.Add(image);
+                profileRow.Controls.Add(imgPanel);
                 Panel namePanel = new Panel
                 {
-                    CssClass = "user-rating-name",
+                    CssClass = "col-sm-8",
                 };
-                p.Controls.Add(namePanel);
-                namePanel.Controls.Add(new Literal { Text = studentData["full_name"].ToString() });
+                namePanel.Controls.Add(new Label { Text = studentData["full_name"].ToString() });
+                profileRow.Controls.Add(namePanel);
 
+                if (userType == "admin")
+                {
+                    Panel deleteRatingPanel = new Panel
+                    {
+                        CssClass = "col-sm-2",
+                    };
+                    HyperLink delLink = new HyperLink
+                    {
+                        NavigateUrl = $"~/Admin/Course/DeleteRating.aspx?course_id={course_id}&student_id={student_id}",
+                        CssClass = "btn btn-outline-danger btn-sm rounded-circle",
+                    };
+                    delLink.Attributes.Add("data-del-rating", "yes");
+                    Literal delIcon = new Literal
+                    {
+                        Text = "<i class=\"bi bi-x-lg\"></i>",
+                    };
+                    delLink.Controls.Add(delIcon);
+                    deleteRatingPanel.Controls.Add(delLink);
+                    profileRow.Controls.Add(deleteRatingPanel);
+                }
+
+                Panel ratingRow = new Panel
+                {
+                    CssClass = "row",
+                };
+                Panel starPanel = new Panel();
                 AjaxControlToolkit.Rating rating = new AjaxControlToolkit.Rating
                 {
                     ID = $"userRating_{i++}",
@@ -190,9 +219,16 @@ namespace WAPP_Assignment
                     EmptyStarCssClass = "EmptyStar",
                     ReadOnly = true,
                 };
-                p.Controls.Add(rating);
-                p.Controls.Add(new Literal { Text = "<br/>" });
-                p.Controls.Add(new Literal { Text = ratingData["content"].ToString() });
+                starPanel.Controls.Add(rating);
+                ratingRow.Controls.Add(starPanel);
+                Panel rateText = new Panel
+                {
+                    CssClass = "text-wrap my-break-word",
+                };
+                rateText.Controls.Add(new Literal { Text = ratingData["content"].ToString() });
+                ratingRow.Controls.Add(rateText);
+                p.Controls.Add(profileRow);
+                p.Controls.Add(ratingRow);
             }
         }
 

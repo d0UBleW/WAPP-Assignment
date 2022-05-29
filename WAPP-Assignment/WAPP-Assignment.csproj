@@ -109,6 +109,7 @@
     <Content Include="Admin\Course\DeleteCourse.aspx" />
     <Content Include="Admin\Course\Exam\EditExamMenu.aspx" />
     <Content Include="Admin\Course\Grades.aspx" />
+    <Content Include="Admin\Course\DeleteRating.aspx" />
     <Content Include="Admin\StudentData\StudentList.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
@@ -335,6 +336,8 @@
     <Content Include="images\favicon.ico" />
     <Content Include="images\i-Learn.png" />
     <Content Include="images\loading.gif" />
+    <Content Include="images\slide1.jpg" />
+    <Content Include="images\slide2.jpg" />
     <Content Include="images\star-fill.svg" />
     <Content Include="images\star-wait.svg" />
     <Content Include="images\star.svg" />
@@ -485,6 +488,13 @@
     </Compile>
     <Compile Include="Admin\Course\Grades.aspx.designer.cs">
       <DependentUpon>Grades.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\DeleteRating.aspx.cs">
+      <DependentUpon>DeleteRating.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\DeleteRating.aspx.designer.cs">
+      <DependentUpon>DeleteRating.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\StudentData\StudentList.aspx.cs">
       <DependentUpon>StudentList.aspx</DependentUpon>

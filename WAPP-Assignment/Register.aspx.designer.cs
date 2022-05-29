@@ -69,6 +69,24 @@ namespace WAPP_Assignment
         protected global::System.Web.UI.WebControls.TextBox PasswordTxtBox;
 
         /// <summary>
+        /// SecretTxtBox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox SecretTxtBox;
+
+        /// <summary>
+        /// SecretPanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel SecretPanel;
+
+        /// <summary>
         /// FullNameTxtBox control.
         /// </summary>
         /// <remarks>

@@ -31,6 +31,18 @@ namespace WAPP_Assignment
             string password = PasswordTxtBox.Text;
             password = MyUtil.ComputeSHA1(password);
             string userType = UserTypeRadio.SelectedValue;
+            if (userType == "admin")
+            {
+                if (SecretTxtBox.Text != "31337")
+                {
+                    SecretPanel.Visible = true;
+                    SecretTxtBox.CssClass = "form-control is-invalid";
+                    SecretTxtBox.Focus();
+                    return;
+                }
+                SecretPanel.Visible = false;
+                SecretTxtBox.CssClass = "form-control";
+            }
             var client = new MyService();
             if (client.IsValidUsername(DbTable, username) != "valid")
             {
@@ -73,8 +85,9 @@ namespace WAPP_Assignment
                     cmd.Connection = conn;
                     cmd.ExecuteNonQuery();
                     conn.Close();
-                    Response.Write("<script>alert('Registration successful!'); window.location.href = 'Login.aspx';</script>");
                 }
+                Response.Redirect("~/Login.aspx");
+                // Response.Write("<script>alert('Registration successful!'); window.location.href = 'Login.aspx';</script>");
             }
         }
 

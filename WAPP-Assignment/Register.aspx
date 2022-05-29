@@ -61,6 +61,31 @@
         <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Strong</div>
       </div>
 
+      <div id="admin-div">
+        <div class="input-group mb-3">
+
+        <div class="form-floating flex-grow-1">
+          <asp:TextBox
+            ID="SecretTxtBox"
+            runat="server"
+            TextMode="Password"
+            CssClass="form-control"
+            ToolTip="Admin Secret Code"
+            Placeholder="Admin Secret Code"
+            data-toggle="password"
+            Required="required"
+            ></asp:TextBox>
+          <label for="<%= SecretTxtBox.ClientID %>" class="text-muted">Secret Code</label>
+        </div>
+        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
+          <i class="bi bi-eye-slash"></i>
+        </span>
+        </div>
+        <asp:Panel ID="SecretPanel" CssClass="text-danger mb-3" runat="server" Visible="false">
+          Invalid secret code
+        </asp:Panel>
+      </div>
+
       <div id="student-div">
         <div class="form-floating mb-3">
           <asp:TextBox
