@@ -223,7 +223,7 @@ namespace WAPP_Assignment
                 ratingRow.Controls.Add(starPanel);
                 Panel rateText = new Panel
                 {
-                    CssClass = "text-wrap my-break-word",
+                    CssClass = "text-wrap text-break",
                 };
                 rateText.Controls.Add(new Literal { Text = ratingData["content"].ToString() });
                 ratingRow.Controls.Add(rateText);

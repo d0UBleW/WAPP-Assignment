@@ -45,7 +45,7 @@ namespace WAPP_Assignment
                         sda.Fill(dt);
                         if (dt.Rows.Count > 0)
                         {
-                            ErrorLbl.Visible = false;
+                            ErrorPanel.Visible = false;
                             string user_id = dt.Rows[0][DbTable+"_id"].ToString();
                             Session["username"] = username;
                             Session["user_id"] = Convert.ToInt32(user_id);
@@ -55,7 +55,7 @@ namespace WAPP_Assignment
                         }
                         else
                         {
-                            ErrorLbl.Visible = true;
+                            ErrorPanel.Visible = true;
                             PasswordTxtBox.Focus();
                         }
                         conn.Close();

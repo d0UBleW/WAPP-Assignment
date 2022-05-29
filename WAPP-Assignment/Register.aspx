@@ -81,7 +81,7 @@
           <i class="bi bi-eye-slash"></i>
         </span>
         </div>
-        <asp:Panel ID="SecretPanel" CssClass="text-danger mb-3" runat="server" Visible="false">
+        <asp:Panel ID="SecretPanel" CssClass="alert alert-danger mb-3" runat="server" Visible="false" role="alert">
           Invalid secret code
         </asp:Panel>
       </div>
@@ -125,6 +125,11 @@
       </div>
 
       <asp:Button ID="RegisterBtn" runat="server" Text="Register" OnClick="RegisterBtn_Click" CssClass="btn btn-md btn-primary btn-block" />
+      <div class="border-top pt-3 mt-3">
+        Already have an account?
+        <br />
+        <a href="/Login.aspx">Log in here</a>
+      </div>
     </div>
   </form>
   <input type="hidden" id="NavLocation" value="register" disabled="disabled" />

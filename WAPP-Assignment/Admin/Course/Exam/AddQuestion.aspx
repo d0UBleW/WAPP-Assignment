@@ -34,12 +34,11 @@
           aria-label="Question Number"></asp:TextBox>
         <label for="<%= QueNoTxtBox.ClientID %>" class="text-muted">Question Number</label>
       </div>
-      <div class="mb-3" style="display: none;">
+      <div class="alert alert-danger mb-3" style="display: none;" role="alert">
         <asp:RangeValidator
           ID="QueNoRangeValidator"
           runat="server"
           ErrorMessage="Invalid Question Number"
-          ForeColor="Red"
           ControlToValidate="QueNoTxtBox"
           Type="Integer"
           SetFocusOnError="True"

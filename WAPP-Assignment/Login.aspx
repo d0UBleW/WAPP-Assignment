@@ -46,9 +46,14 @@
         </span>
       </div>
       <asp:Button ID="LoginBtn" runat="server" Text="Login" OnClick="LoginBtn_Click" CssClass="btn btn-primary btn-md btn-block" />
-      <br />
-      <br />
-      <asp:Label ID="ErrorLbl" runat="server" Text="Login credential is incorrect." ForeColor="Red" Visible="false"></asp:Label>
+      <asp:Panel ID="ErrorPanel" runat="server" class="alert alert-danger mt-3" role="alert" Visible="false">
+        <asp:Label ID="ErrorLbl" runat="server" Text="Login credential is incorrect."></asp:Label>
+      </asp:Panel>
+      <div class="border-top pt-3 mt-3">
+        Do not have an account yet?
+        <br />
+        <a href="/Register.aspx">Register now</a>
+      </div>
     </div>
   </form>
   <input type="hidden" id="NavLocation" value="login" disabled="disabled" />

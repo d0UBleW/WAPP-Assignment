@@ -34,10 +34,6 @@
       float: left;
     }
 
-    .my-break-word {
-      word-wrap: break-word;
-    }
-
   </style>
 </asp:Content>
 
@@ -61,7 +57,7 @@
           <asp:Label ID="TitleLbl" runat="server"></asp:Label>
         </h1>
         <asp:Panel ID="CategoryPanel" runat="server"></asp:Panel>
-        <asp:Label ID="DescriptionLbl" CssClass="my-break-word" runat="server"></asp:Label>
+        <asp:Label ID="DescriptionLbl" CssClass="text-break" runat="server"></asp:Label>
         <br />
         <br />
         <asp:Label ID="OverallRatingLbl" runat="server"></asp:Label>

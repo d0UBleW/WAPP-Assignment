@@ -60,7 +60,6 @@ namespace WAPP_Assignment.Admin
                 this.UploadStatusLbl.Text = result;
                 if (result != "Upload success")
                 {
-                    this.UploadStatusLbl.ForeColor = System.Drawing.Color.Red;
                     this.UploadStatusPanel.Visible = true;
                     return;
                 }

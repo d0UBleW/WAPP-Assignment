@@ -72,11 +72,9 @@
       </div>
 
       <asp:HiddenField ID="CatField" runat="server" />
-      <asp:Panel ID="UploadStatusPanel" runat="server">
+      <asp:Panel ID="UploadStatusPanel" CssClass="alert alert-danger mb-3" runat="server" role="alert">
         <asp:Label ID="UploadStatusLbl" runat="server" Text=""></asp:Label>
-        <br />
       </asp:Panel>
-      <br />
       <asp:Button ID="AddBtn" runat="server" Text="Add" OnClick="AddBtn_Click" CssClass="btn btn-outline-primary" />
     </div>
   </form>

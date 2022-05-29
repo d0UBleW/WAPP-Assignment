@@ -30,12 +30,11 @@
           Min="1"></asp:TextBox>
         <label for="<%= ChapNoTxtBox.ClientID %>" class="text-muted">Chapter Number</label>
       </div>
-      <div class="mb-3" style="display: none;">
+      <div class="alert alert-danger mb-3" style="display: none;" role="alert">
         <asp:RangeValidator
           ID="ChapNoRangeValidator"
           runat="server"
           ErrorMessage="Invalid Chapter Number"
-          ForeColor="Red"
           ControlToValidate="ChapNoTxtBox"
           Type="Integer"
           SetFocusOnError="True"

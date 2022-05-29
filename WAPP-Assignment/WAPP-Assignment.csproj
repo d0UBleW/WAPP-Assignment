@@ -338,6 +338,15 @@
     <Content Include="images\loading.gif" />
     <Content Include="images\slide1.jpg" />
     <Content Include="images\slide2.jpg" />
+    <Content Include="images\slides\19199360.jpg" />
+    <Content Include="images\slides\2022_05_29.svg" />
+    <Content Include="images\slides\4498903.jpg" />
+    <Content Include="images\slides\a.jpg" />
+    <Content Include="images\slides\b.jpg" />
+    <Content Include="images\slides\c.jpg" />
+    <Content Include="images\slides\d.jpg" />
+    <Content Include="images\slides\Project_76-01.jpg" />
+    <Content Include="images\slides\Web_Programmer_01_generated.jpg" />
     <Content Include="images\star-fill.svg" />
     <Content Include="images\star-wait.svg" />
     <Content Include="images\star.svg" />
@@ -691,6 +700,7 @@
     <Content Include="jquery-oembed-all\CHANGELOG" />
     <Content Include="jquery-oembed-all\README.md" />
     <Content Include="images\site.webmanifest" />
+    <Content Include="images\slides\iloveimg-resized.zip" />
     <None Include="packages.config" />
     <Content Include="Site.Master" />
     <Content Include="SiteAnon.master" />

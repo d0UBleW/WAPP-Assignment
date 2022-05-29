@@ -95,7 +95,7 @@
   <br />
   <div class="bg-dark py-3">
   <div class="container">
-    <footer class="row row-cols-4 py-3 text-white">
+    <footer class="row row-cols-4 py-3 my-3 text-white border-top">
       <div class="col-sm-2" style="text-align: center;">
         <figure>
           <img
@@ -111,9 +111,29 @@
         <h5 data-toc-skip="true">Contact Us</h5>
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a href="mailto:a@example.com" class="nav-link" style="color: white;">
-              <i class="bi bi-envelope-fill"></i>
+            <a href="mailto:a@example.com" class="nav-link text-white">
+              <i class="bi bi-envelope-fill"></i> Email
             </a>
+            <a href="tel:+60123456789" class="nav-link text-white">
+              <i class="bi bi-telephone-fill"></i> Phone
+            </a>
+            <a href="/Student/Feedback.aspx" class="nav-link text-white">
+              <i class="bi bi-chat-right-dots-fill"></i> Feedback
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col">
+        <h5>About Us</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="/Home.aspx#Story" class="nav-link text-white">Our Story</a>
+          </li>
+          <li class="nav-item">
+            <a href="/Home.aspx#Vision" class="nav-link text-white">Our Vision</a>
+          </li>
+          <li class="nav-item">
+            <a href="/Home.aspx#Goal" class="nav-link text-white">Our Goal</a>
           </li>
         </ul>
       </div>

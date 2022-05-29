@@ -81,10 +81,8 @@
       </ajaxToolkit:AutoCompleteExtender>
       <asp:HiddenField ID="CatField" runat="server" />
       <asp:Button ID="EditBtn" runat="server" Text="Edit Course" OnClick="EditBtn_Click" CssClass="btn btn-outline-primary" />
-      <br />
-      <asp:Panel ID="UploadStatusPanel" runat="server">
+      <asp:Panel ID="UploadStatusPanel" runat="server" CssClass="alert alert-danger mt-3" Visible="false" role="alert">
         <asp:Label ID="UploadStatusLbl" runat="server" Text=""></asp:Label>
-        <br />
       </asp:Panel>
     </asp:Panel>
   </form>
