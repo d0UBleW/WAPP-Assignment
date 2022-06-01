@@ -129,5 +129,41 @@ namespace WAPP_Assignment
             return result;
         }
 
+        public static int GetStudentCount()
+        {
+            int count;
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT COUNT(*) FROM [student];";
+                    var result = cmd.ExecuteScalar();
+                    count = Convert.ToInt32(result);
+                }
+                conn.Close();
+            }
+            return count;
+        }
+        public static int GetStudentCount(string gender)
+        {
+            int count;
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT COUNT(*) FROM [student] WHERE gender=@gender;";
+                    cmd.Parameters.AddWithValue("@gender", gender);
+                    var result = cmd.ExecuteScalar();
+                    count = Convert.ToInt32(result);
+                }
+                conn.Close();
+            }
+            return count;
+        }
+
     }
 }

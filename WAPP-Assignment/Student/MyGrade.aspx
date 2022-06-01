@@ -11,6 +11,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
+      <h1 class="border-bottom mb-3">My Grades</h1>
       <asp:GridView ID="GradeView" runat="server" AutoGenerateColumns="False" DataSourceID="MyGradeDataSource" DataKeyNames="exam_id" CssClass="table table-hover table-striped">
         <Columns>
           <asp:BoundField DataField="exam_id" HeaderText="exam_id" SortExpression="exam_id" InsertVisible="False" ReadOnly="True" Visible="False" />

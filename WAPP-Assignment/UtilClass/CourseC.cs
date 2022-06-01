@@ -57,7 +57,7 @@ namespace WAPP_Assignment
 
             Panel detail = new Panel
             {
-                CssClass = "course-detail-container card-body",
+                CssClass = "course-detail-container card-body mb-3",
             };
             detailCol.Controls.Add(detail);
 
@@ -65,15 +65,24 @@ namespace WAPP_Assignment
             {
                 NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}",
                 Text = dr["title"].ToString(),
-                CssClass = "course-title card-title fs-4",
+                CssClass = "course-title card-title fs-4 mb-3",
             };
             detail.Controls.Add(title);
+            detail.Controls.Add(new Literal { Text = "<br />" });
+
+            double overallRating = CourseC.GetCourseOverallRating(course_id);
+            int ratingCount = CourseC.GetCourseRatingCount(course_id);
+            Label rating = new Label
+            {
+                Text = $"Rating: {overallRating:0.00}/5.00 ({ratingCount})",
+            };
+            detail.Controls.Add(rating);
+
 
             Panel categoryPanel = new Panel
             {
-                CssClass = "course-category"
+                CssClass = "course-category mb-3"
             };
-            detail.Controls.Add(new Literal { Text = "<br />" });
             detail.Controls.Add(categoryPanel);
 
             foreach (DataRow categoryRow in courseCatTable.Rows)
@@ -85,24 +94,6 @@ namespace WAPP_Assignment
                 };
                 categoryPanel.Controls.Add(cat);
             }
-
-            Label description = new Label
-            {
-                Text = dr["description"].ToString(),
-                CssClass = "card-text",
-            };
-            detail.Controls.Add(description);
-            detail.Controls.Add(new Literal { Text = "<br />" });
-
-            double overallRating = CourseC.GetCourseOverallRating(course_id);
-            int ratingCount = CourseC.GetCourseRatingCount(course_id);
-            Label rating = new Label
-            {
-                Text = $"Rating: {overallRating:0.00}/5.00 ({ratingCount})",
-            };
-            detail.Controls.Add(rating);
-            detail.Controls.Add(new Literal { Text = "<br />" } );
-            detail.Controls.Add(new Literal { Text = "<br />" } );
 
             Panel linkBtnGroup = new Panel
             {
@@ -167,7 +158,7 @@ namespace WAPP_Assignment
                 conn.Open();
                 using (SqlCommand cmd = new SqlCommand())
                 {
-                    cmd.CommandText = "SELECT * FROM course";
+                    cmd.CommandText = "SELECT * FROM course ORDER BY [title]";
                     cmd.Connection = conn;
                     using (SqlDataAdapter sda = new SqlDataAdapter())
                     {
@@ -276,6 +267,45 @@ namespace WAPP_Assignment
                     cmd.Connection = conn;
                     cmd.CommandText = "SELECT COUNT(*) FROM [rating] WHERE course_id=@course_id;";
                     cmd.Parameters.AddWithValue("@course_id", course_id);
+                    var result = cmd.ExecuteScalar();
+                    count = Convert.ToInt32(result);
+                }
+                conn.Close();
+            }
+            return count;
+        }
+
+        public static DataTable GetPopularCourseID()
+        {
+            DataTable dataTable = new DataTable();
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT course.course_id, ISNULL(AVG(CAST(rating AS DECIMAL)), 0) AS rate FROM course FULL JOIN [rating] ON course.course_id = rating.course_id GROUP BY course.course_id ORDER BY rate DESC;";
+                    using (SqlDataAdapter adapter = new SqlDataAdapter())
+                    {
+                        adapter.SelectCommand = cmd;
+                        adapter.Fill(dataTable);
+                    }
+                }
+                conn.Close();
+            }
+            return dataTable;
+        }
+
+        public static int GetCourseCount()
+        {
+            int count;
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "SELECT COUNT(*) FROM [course];";
                     var result = cmd.ExecuteScalar();
                     count = Convert.ToInt32(result);
                 }

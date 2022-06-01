@@ -12,6 +12,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
+      <h1 class="border-bottom mb-3">Student</h1>
       <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="student_id" DataSourceID="StudentListDataSource" CssClass="table table-hover table-striped">
         <Columns>
           <asp:BoundField DataField="student_id" HeaderText="student_id" InsertVisible="False" ReadOnly="True" SortExpression="student_id" Visible="False" />

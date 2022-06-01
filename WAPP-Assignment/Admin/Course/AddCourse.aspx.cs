@@ -15,6 +15,7 @@ namespace WAPP_Assignment.Admin
 {
     public partial class AddCourse : UtilClass.BaseAdminPage
     {
+        private int course_id;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -59,7 +60,7 @@ namespace WAPP_Assignment.Admin
                     }
                     cmd.Parameters.AddWithValue("@title", title);
                     cmd.Parameters.AddWithValue("@description", description);
-                    int course_id = (int) cmd.ExecuteScalar();
+                    course_id = (int) cmd.ExecuteScalar();
                     List<string> inputCategories = MyUtil.SanitizeInput(CatField).Split(new string[]{"<|>"}, StringSplitOptions.None).ToList();
                     Category.AddNewCategory(inputCategories);
                     cmd.Parameters.Clear();
@@ -76,6 +77,7 @@ namespace WAPP_Assignment.Admin
                 conn.Close();
                 CatField.Value = "";
             }
+            Response.Redirect($"~/ViewCourse.aspx?course_id={course_id}");
         }
 
         [WebMethod]
