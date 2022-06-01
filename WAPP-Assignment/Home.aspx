@@ -1,6 +1,36 @@
 ﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/SiteAnon.Master" AutoEventWireup="true" CodeBehind="Home.aspx.cs" Inherits="WAPP_Assignment.Home" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
+  <style>
+    .carousel-indicators {
+      bottom: -30px;
+    }
+
+    .carousel-indicators button {
+      background-color: gray !important;
+    }
+
+    .carousel-indicators .active {
+      background-color: black !important;
+    }
+
+    #carouselSlides {
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+
+    .carousel-control-prev {
+      margin-left: -150px;
+    }
+
+    .carousel-control-next {
+      margin-right: -150px;
+    }
+
+    .carousel-inner {
+      margin-bottom: 30px;
+    }
+  </style>
 </asp:Content>
 
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
@@ -11,11 +41,11 @@
 <asp:Content ID="HomeContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="container">
     <div class="d-flex justify-content-center align-items-center">
-      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" style="width: 1000px;">
+      <div id="carouselSlides" class="carousel slide" data-bs-ride="carousel" style="width: 1000px;">
         <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+          <button type="button" data-bs-target="#carouselSlides" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselSlides" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselSlides" data-bs-slide-to="2" aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -28,12 +58,12 @@
             <img src="/images/slides/c.jpg" class="d-block w-100 img-fluid" alt="...">
           </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSlides" data-bs-slide="prev">
+          <span class="bi bi-arrow-left-circle-fill text-dark fs-1" aria-hidden="true"></span>
           <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselSlides" data-bs-slide="next">
+          <span class="bi bi-arrow-right-circle-fill text-dark fs-1" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
       </div>

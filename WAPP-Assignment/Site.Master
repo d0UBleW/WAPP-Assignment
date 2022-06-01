@@ -17,6 +17,7 @@
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-maxlength/1.10.0/bootstrap-maxlength.min.js" integrity="sha512-04L+TAgzlDAaUpaEGriEBg/qEryUjw4GNL/FkxA3h621EFPycccO2Y8vNhvid9UhgGC/9+MHLAFwGythpvOAAQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" integrity="sha384-ejwKkLla8gPP8t2u0eQyL0Q/4ItcnyveF505U0NIobD/SMsNyXrLti6CWaD0L52l" crossorigin="anonymous">
   <style>
     .nav-loc {
@@ -124,7 +125,7 @@
         </ul>
       </div>
       <div class="col">
-        <h5>About Us</h5>
+        <h5 data-toc-skip="true">About Us</h5>
         <ul class="nav flex-column">
           <li class="nav-item">
             <a href="/Home.aspx#Story" class="nav-link text-white">Our Story</a>
@@ -149,6 +150,13 @@
         }
       });
       $("a").addClass("text-decoration-none")
+    })
+    $("[data-max-len='true']").maxlength({
+      alwaysShow: true,
+      warningClass: "form-text text-muted fs-6",
+      limitReachedClass: "form-text text-danger fs-6",
+      validate: true,
+      appendToParent: true,
     })
     </script>
 </body>

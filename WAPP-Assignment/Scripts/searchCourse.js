@@ -18,56 +18,55 @@ const escapeRegExp = (string) => {
 
 const resetView = () => {
   $CoursePanel.find(".course-container").show()
+  $CoursePanel.find(".course-container").addClass("d-flex")
 }
 
 const search = () => {
   const by = $FilterList.find("option:selected").val()
+  console.log(by)
+  const unenrolled = $("#enrollmentChk").is(":checked")
   const $courseContainer = $CoursePanel.find(".course-container")
-  if (by == "title") {
-    const $ele = $courseContainer.find(".course-title")
-    const keyword = $SearchTitleTxtBox.val()
-    if (keyword != "") {
-      $courseContainer.each(function () {
+  resetView()
+  $courseContainer.each(function () {
+    if (by == "title") {
+      const keyword = $SearchTitleTxtBox.val()
+      const pattern = `.*${escapeRegExp(keyword.toLowerCase())}.*`
+      const rg = new RegExp(pattern)
+      const title = $($(this).find(".course-title")).text().toLowerCase()
+      if (title.match(rg) == null || (unenrolled && $(this).data("enrolled"))) {
+        $(this).removeClass("d-flex")
         $(this).hide()
-      })
+      }
     }
     else {
-      resetView()
-    }
-    const pattern = `.*${escapeRegExp(keyword.toLowerCase())}.*`
-    const rg = new RegExp(pattern)
-    $ele.each(function () {
-      if ($(this).text().toLowerCase().match(rg) != null) {
-        $(this).closest(".course-container").show()
+      const keyword = $SearchCatTxtBox.val()
+      if (keyword == "") {
+        if (unenrolled && $(this).data("enrolled")) {
+          $(this).removeClass("d-flex")
+          $(this).hide()
+        }
+        return
       }
-      else {
-        $(this).closest(".course-container").hide()
-      }
-    })
-  }
-  else {
-    const $ele = $courseContainer.find(".course-category-item")
-    const keyword = $SearchCatTxtBox.val()
-    if (keyword != "") {
-      $courseContainer.each(function () {
+      const pattern = `.*${escapeRegExp(keyword.toLowerCase())}.*`
+      const rg = new RegExp(pattern)
+      const $ele = $(this).find(".course-category-item")
+      if ($ele.length == 0) {
+        $(this).removeClass("d-flex")
         $(this).hide()
-      })
-    }
-    else {
-      resetView()
-    }
-    const pattern = `.*${escapeRegExp(keyword.toLowerCase())}.*`
-    const rg = new RegExp(pattern)
-    $ele.each(function () {
-      if ($(this).text().toLowerCase().match(rg) != null) {
-        $(this).closest(".course-container").show()
-        return false // breaks out
+        return
       }
-      else {
-        $(this).closest(".course-container").hide()
+      const categoryName = Array.from($ele.map(function () {
+        return $(this).text().toLowerCase()
+      }))
+      const matches = new Set(categoryName.map((str) => {
+        return str.match(rg)
+      }))
+      if ((matches.size == 1 && matches.has(null)) || (unenrolled && $(this).data("enrolled"))) {
+        $(this).removeClass("d-flex")
+        $(this).hide()
       }
-    })
-  }
+    }
+  })
 }
 
 $FilterList.on('change', function () {
@@ -92,6 +91,10 @@ $FilterList.on('change', function () {
 })
 
 $("button[name='searchBtn']").on('click', search)
+$("#enrollmentChk").on('change', function () {
+  console.log('a')
+  search()
+})
 
 $SearchCatTxtBox.keyup(search)
 $SearchTitleTxtBox.keyup(search)

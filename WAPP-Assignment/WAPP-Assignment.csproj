@@ -110,7 +110,7 @@
     <Content Include="Admin\Course\Exam\EditExamMenu.aspx" />
     <Content Include="Admin\Course\Grades.aspx" />
     <Content Include="Admin\Course\DeleteRating.aspx" />
-    <Content Include="Admin\FeedbackList.aspx" />
+    <Content Include="Admin\Feedback\FeedbackList.aspx" />
     <Content Include="Admin\StudentData\StudentList.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
@@ -506,11 +506,11 @@
     <Compile Include="Admin\Course\DeleteRating.aspx.designer.cs">
       <DependentUpon>DeleteRating.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Admin\FeedbackList.aspx.cs">
+    <Compile Include="Admin\Feedback\FeedbackList.aspx.cs">
       <DependentUpon>FeedbackList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin\FeedbackList.aspx.designer.cs">
+    <Compile Include="Admin\Feedback\FeedbackList.aspx.designer.cs">
       <DependentUpon>FeedbackList.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\StudentData\StudentList.aspx.cs">

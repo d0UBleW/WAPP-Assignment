@@ -14,6 +14,9 @@
   <li class="nav-item">
     <a href="/Admin/StudentData/StudentList.aspx" class="nav-link" data-nav-loc="student">Student</a>
   </li>
+  <li class="nav-item">
+    <a href="/Admin/Feedback/FeedbackList.aspx" class="nav-link" data-nav-loc="feedback">Feedback</a>
+  </li>
 </asp:Content>
 
 <asp:Content ID="NavRight" ContentPlaceHolderID="NavRightContent" runat="server">

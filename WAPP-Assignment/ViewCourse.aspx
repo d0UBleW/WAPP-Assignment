@@ -84,10 +84,13 @@
           </div>
         </div>
       <form id="form1" runat="server">
-        <asp:Panel ID="RatingPanel" runat="server">
-          <h5>
-            <asp:Label ID="RtgLbl" runat="server" Text="Rating"></asp:Label>
-          </h5>
+        <h5>
+          <button id="ratingToggler" type="button" class="btn btn-sm" data-bs-toggle="collapse" data-bs-target="#<%= RatingPanel.ClientID %>" aria-expanded="true" aria-controls="<%= RatingPanel.ClientID %>">
+            <i class="bi bi-chevron-down"></i>
+          </button>
+          <asp:Label ID="RtgLbl" runat="server" Text="Rating"></asp:Label>
+        </h5>
+        <asp:Panel ID="RatingPanel" runat="server" CssClass="collapse show">
           <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
           <asp:Panel ID="RatingSubPanel" CssClass="mb-3" runat="server">
             <asp:Label ID="ScoreLbl" runat="server" Text="Score: "></asp:Label>
@@ -96,12 +99,21 @@
               FilledStarCssClass="FilledStar" CurrentRating="0">
             </ajaxToolkit:Rating>
             <br />
-            <asp:Label ID="RatingContentLbl" runat="server" Text="Comment: "></asp:Label>
-            <br />
-            <asp:TextBox ID="RatingContentTxtBox" runat="server" TextMode="MultiLine"></asp:TextBox>
-            <br />
-            <br />
-            <asp:Button ID="RatingBtn" runat="server" Text="Rating" OnClick="RatingBtn_Click" />
+            <div class="form-floating mb-3">
+              <asp:TextBox
+                ID="RatingContentTxtBox"
+                runat="server"
+                CssClass="form-control"
+                Placeholder="Rating comment"
+                ToolTip="Rating comment"
+                TextMode="MultiLine"
+                Height="100"
+                MaxLength="1000"
+                data-max-len="true"
+                ></asp:TextBox>
+              <label for="<%= RatingContentTxtBox.ClientID %>" class="text-muted">Comment</label>
+            </div>
+            <asp:Button ID="RatingBtn" runat="server" Text="Rate" OnClick="RatingBtn_Click" CssClass="btn btn-outline-primary btn-sm" />
           </asp:Panel>
           <div id="RatingListPanel" class="list-group list-group-flush" runat="server"></div>
         </asp:Panel>
@@ -110,17 +122,23 @@
       <div class="col-md-8">
         <asp:Panel ID="ChapterTOCPanel" CssClass="mb-3" runat="server">
           <h2 class="mb-1">
+            <button id="chapToggler" type="button" class="btn btn-sm" data-bs-toggle="collapse" data-bs-target="#<%= ChapListPanel.ClientID %>" aria-expanded="true" aria-controls="<%= ChapListPanel.ClientID %>">
+              <i class="bi bi-chevron-down"></i>
+            </button>
             <asp:Label ID="ChpLbl" runat="server" Text="Chapter"></asp:Label>
           </h2>
-          <div id="ChapListPanel" class="list-group list-group-flush" runat="server">
+          <div id="ChapListPanel" class="list-group list-group-flush collapse show" runat="server">
           </div>
         </asp:Panel>
         <br />
         <asp:Panel ID="ExamPanel" CssClass="mb-3" runat="server">
           <h2 class="mb-1">
+            <button id="examToggler" type="button" class="btn btn-sm" data-bs-toggle="collapse" data-bs-target="#<%= ExamListPanel.ClientID %>" aria-expanded="true" aria-controls="<%= ExamListPanel.ClientID %>">
+              <i class="bi bi-chevron-down"></i>
+            </button>
             <asp:Label ID="ExmLbl" runat="server" Text="Exam"></asp:Label>
           </h2>
-          <div id="ExamListPanel" class="list-group list-group-flush" runat="server">
+          <div id="ExamListPanel" class="list-group list-group-flush collapse show" runat="server">
           </div>
         </asp:Panel>
       </div>
@@ -134,6 +152,10 @@
     })
     $("[data-del-rating='yes'").on('click', function () {
       return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
+    })
+
+    $("[data-bs-toggle='collapse']").on('click', function () {
+      $(this).find("i").toggleClass("bi-chevron-down bi-chevron-right")
     })
   </script>
 </asp:Content>

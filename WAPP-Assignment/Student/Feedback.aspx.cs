@@ -23,6 +23,7 @@ namespace WAPP_Assignment.Student
 
         protected void SubmitBtn_Click(object sender, EventArgs e)
         {
+            string subject = MyUtil.SanitizeInput(SubjectTxtBox);
             string content = MyUtil.SanitizeInput(ContentTxtBox);
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
@@ -30,15 +31,17 @@ namespace WAPP_Assignment.Student
                 using (SqlCommand cmd = new SqlCommand())
                 {
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO feed (student_id, content) VALUES (@student_id, @content);";
+                    cmd.CommandText = "INSERT INTO feed (student_id, content, subject) VALUES (@student_id, @content, @subject);";
                     cmd.Parameters.AddWithValue("@student_id", student_id);
                     cmd.Parameters.AddWithValue("@content", content);
+                    cmd.Parameters.AddWithValue("@subject", subject);
                     cmd.ExecuteNonQuery();
                 }
                 conn.Close();
             }
             StatusPanel.Visible = true;
             ContentTxtBox.Text = "";
+            SubjectTxtBox.Text = "";
         }
     }
 }

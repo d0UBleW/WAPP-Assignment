@@ -3,13 +3,8 @@
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
   <link rel="stylesheet" href="/Content/course.css" />
   <style>
-    .statistic {
-      align-items: center;
-    }
-
     .statistic span {
-      display: block;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
     }
   </style>
 </asp:Content>
@@ -41,7 +36,7 @@
                 </span>
               </div>
               <div class="my-2">
-                <a href="/ListCourse.aspx" class="btn btn-primary btn-lg">View</a>
+                <a href="/ListCourse.aspx" class="btn btn-primary btn-lg stretched-link">View</a>
               </div>
             </div>
           </div>
@@ -69,7 +64,7 @@
                 </span>
               </div>
               <div class="my-2">
-                <a href="/Admin/StudentData/StudentList.aspx" class="btn btn-primary btn-lg">View</a>
+                <a href="/Admin/StudentData/StudentList.aspx" class="btn btn-primary btn-lg stretched-link">View</a>
               </div>
             </div>
           </div>

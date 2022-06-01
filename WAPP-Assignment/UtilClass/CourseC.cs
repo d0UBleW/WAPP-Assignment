@@ -125,9 +125,10 @@ namespace WAPP_Assignment
                     {
                         NavigateUrl = $"/Student/Course/UnenrollCourse.aspx?course_id={course_id}",
                         Text = "Unenroll",
-                        CssClass = "btn btn-outline-primary btn-sm unenroll-link",
+                        CssClass = "btn btn-outline-primary btn-sm",
                     };
                     linkBtnGroup.Controls.Add(unenrollLink);
+                    colPanel.Attributes.Add("data-enrolled", "true");
                 }
                 else
                 {
@@ -138,6 +139,7 @@ namespace WAPP_Assignment
                         CssClass = "btn btn-outline-primary btn-sm",
                     };
                     linkBtnGroup.Controls.Add(enrollLink);
+                    colPanel.Attributes.Add("data-enrolled", "false");
                 }
             }
             HyperLink viewLink = new HyperLink

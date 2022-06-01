@@ -31,7 +31,9 @@
           TextMode="SingleLine"
           ToolTip="Username"
           Placeholder="Username"
-          Required="required"></asp:TextBox>
+          Required="required"
+          MaxLength="50"
+          ></asp:TextBox>
         <label for="<%= UsernameTxtBox.ClientID %>" class="text-muted">Username</label>
       </div>
 
@@ -47,7 +49,9 @@
             Placeholder="Password"
             data-toggle="password"
             data-strength-meter=""
-            Required="required"></asp:TextBox>
+            Required="required"
+            MaxLength="50"
+            ></asp:TextBox>
           <label for="<%= PasswordTxtBox.ClientID %>" class="text-muted">Password</label>
         </div>
         <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
@@ -97,6 +101,7 @@
             ToolTip="Full Name"
             Placeholder="Full Name"
             Required="required"
+            MaxLength="50"
             ></asp:TextBox>
           <label for="<%= FullNameTxtBox.ClientID %>" class="text-muted">Full Name</label>
         </div>
@@ -110,6 +115,7 @@
             ToolTip="Email"
             Placeholder="Email"
             Required="required"
+            MaxLength="100"
             ></asp:TextBox>
           <label for="<%= EmailTxtBox.ClientID %>" class="text-muted">Email</label>
         </div>

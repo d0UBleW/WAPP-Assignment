@@ -23,7 +23,7 @@
           <asp:BoundField DataField="gender" HeaderText="Gender" SortExpression="gender" />
           <asp:BoundField DataField="value" HeaderText="Score" SortExpression="value" />
           <asp:BoundField DataField="total" HeaderText="Total" ReadOnly="True" SortExpression="total" />
-          <asp:HyperLinkField DataNavigateUrlFields="exam_id,student_id" DataNavigateUrlFormatString="/Student/Learn/ReviewExam.aspx?exam_id={0}&amp;student_id={1}" HeaderText="Review" Text="Review" />
+          <asp:HyperLinkField DataNavigateUrlFields="exam_id,student_id" DataNavigateUrlFormatString="/Student/Learn/ReviewExam.aspx?exam_id={0}&amp;student_id={1}" HeaderText="Review" Text="Review" ControlStyle-CssClass="btn btn-primary btn-sm" />
         </Columns>
       </asp:GridView>
       <asp:SqlDataSource ID="GradesDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:iLearnDBConStr %>" SelectCommand="SELECT exam.exam_id, student.student_id, exam.title, student.full_name, student.email, student.gender, grade.value, (SELECT SUM(weight) FROM question WHERE question.exam_id=grade.exam_id) AS total FROM student INNER JOIN grade ON grade.student_id = student.student_id INNER JOIN exam ON grade.exam_id=exam.exam_id WHERE grade.exam_id IN (SELECT exam_id FROM exam WHERE course_id=@course_id)">

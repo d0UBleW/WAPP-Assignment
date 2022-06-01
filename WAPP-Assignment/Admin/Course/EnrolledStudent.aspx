@@ -23,7 +23,7 @@
           <asp:BoundField DataField="gender" HeaderText="Gender" SortExpression="gender" />
           <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
           <asp:BoundField DataField="course_id" HeaderText="course_id" SortExpression="course_id" Visible="False" />
-          <asp:HyperLinkField DataNavigateUrlFields="course_id,student_id" DataNavigateUrlFormatString="/Student/Course/UnenrollCourse.aspx?course_id={0}&amp;student_id={1}" HeaderText="Action" Text="Unenroll" />
+          <asp:HyperLinkField DataNavigateUrlFields="course_id,student_id" DataNavigateUrlFormatString="/Student/Course/UnenrollCourse.aspx?course_id={0}&amp;student_id={1}" HeaderText="Action" Text="Unenroll" ControlStyle-CssClass="btn btn-danger btn-sm" />
         </Columns>
       </asp:GridView>
       <asp:SqlDataSource ID="EnrolledStudentDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:iLearnDBConStr %>" SelectCommand="SELECT student.student_id, student.full_name, student.gender, student.email, enroll.course_id FROM student INNER JOIN enroll ON enroll.student_id = student.student_id WHERE (enroll.course_id = @course_id)">
