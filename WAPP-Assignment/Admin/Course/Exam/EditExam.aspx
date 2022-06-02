@@ -33,13 +33,10 @@
       <div class="form-check mb-3">
         <asp:CheckBox ID="RetakeChkBox" runat="server" Text="Allow Retake" />
       </div>
-      <asp:Button ID="EditBtn" runat="server" Text="Edit Exam" OnClick="EditBtn_Click" CssClass="btn btn-outline-primary" />
+      <asp:Button ID="EditBtn" runat="server" Text="Edit Exam" OnClick="EditBtn_Click" CssClass="btn btn-primary btn-main-date mb-3" />
       <br />
-      <br />
-      <asp:HyperLink ID="AddQueLink" runat="server" Text="Add Question" CssClass="btn btn-outline-primary"></asp:HyperLink>
-      <br />
-      <br />
-      <asp:Panel ID="QuePanel" runat="server">
+      <asp:HyperLink ID="AddQueLink" runat="server" Text="Add Question" CssClass="btn btn-outline-primary mb-3"></asp:HyperLink>
+      <asp:Panel ID="QuePanel" runat="server" CssClass="list-group list-group-flush text-truncate">
         <asp:PlaceHolder ID="QuePlaceholder" runat="server"></asp:PlaceHolder>
       </asp:Panel>
     </asp:Panel>

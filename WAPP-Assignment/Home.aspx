@@ -124,7 +124,7 @@
               </div>
             </div>
           </div>
-          <a href="/Register.aspx" class="btn btn-primary btn-lg mt-5">Register</a>
+          <asp:HyperLink ID="JumboLink" runat="server" NavigateUrl="/Login.aspx" class="btn btn-primary btn-lg mt-5">Login</asp:HyperLink>
         </div>
       </div>
     </div>

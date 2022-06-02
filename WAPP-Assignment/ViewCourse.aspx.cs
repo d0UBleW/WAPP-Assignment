@@ -15,20 +15,7 @@ namespace WAPP_Assignment
         private int course_id;
         protected void Page_Load(object sender, EventArgs e)
         {
-            string course_id_temp = Request.QueryString["course_id"];
-            if (string.IsNullOrEmpty(course_id_temp))
-            {
-                return;
-            }
-            try
-            {
-                course_id = int.Parse(course_id_temp);
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                return;
-            }
+            course_id = GetQueryString("course_id");
             DataTable courseTable = CourseC.GetCourseData(course_id);
             if (courseTable.Rows.Count == 0)
             {
@@ -119,6 +106,12 @@ namespace WAPP_Assignment
                     {
                         title.NavigateUrl = $"/Student/Learn/ViewChapter.aspx?chapter_id={chapterRow["chapter_id"]}";
                     }
+                    else
+                    {
+                        title.NavigateUrl = "#";
+                        title.Attributes.Add("data-bs-toggle", "modal");
+                        title.Attributes.Add("data-bs-target", "#enrollModal");
+                    }
                 }
                 ChapListPanel.Controls.Add(title);
             }
@@ -143,6 +136,12 @@ namespace WAPP_Assignment
                     if (enrolled.Contains(course_id))
                     {
                         title.NavigateUrl = $"/Student/Learn/ViewExam.aspx?exam_id={examRow["exam_id"]}";
+                    }
+                    else
+                    {
+                        title.NavigateUrl = "#";
+                        title.Attributes.Add("data-bs-toggle", "modal");
+                        title.Attributes.Add("data-bs-target", "#enrollModal");
                     }
                 }
                 ExamListPanel.Controls.Add(title);

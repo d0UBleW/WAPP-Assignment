@@ -358,8 +358,10 @@
     <Content Include="jquery-oembed-all\jquery.oembed.css" />
     <Content Include="jquery-oembed-all\jquery.oembed.js" />
     <Content Include="Scripts\delete.js" />
+    <Content Include="Scripts\imageinsertui.js" />
     <Content Include="Scripts\strengthMeter.js" />
     <Content Include="Scripts\togglePassword.js" />
+    <Content Include="Scripts\utils.js" />
     <Content Include="Student\ChangePassword.aspx" />
     <Content Include="Student\Course\EnrollCourse.aspx" />
     <Content Include="Home.aspx" />

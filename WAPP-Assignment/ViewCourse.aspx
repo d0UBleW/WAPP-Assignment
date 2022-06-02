@@ -52,7 +52,7 @@
         <asp:Panel ID="ImagePanel" runat="server">
           <asp:Image ID="ThumbnailImage" runat="server" Width="200" Height="200" />
         </asp:Panel>
-        <h1>
+        <h1 class="text-break mb-3">
           <asp:Label ID="TitleLbl" runat="server"></asp:Label>
         </h1>
         <asp:Panel ID="CategoryPanel" runat="server"></asp:Panel>
@@ -142,6 +142,24 @@
         </asp:Panel>
       </div>
       <br />
+    </div>
+    <div class="modal fade" id="enrollModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="enrollModalTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="enrollModalTitle">Unable to view</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>
+              You are not enrolled to this course yet. Please enroll before viewing its content.
+            </p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <input type="hidden" id="NavLocation" value="course" disabled="disabled" />

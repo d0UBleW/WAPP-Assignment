@@ -22,10 +22,11 @@ namespace WAPP_Assignment.Admin.Course.Exam
             {
                 return;
             }
+            int course_id = Convert.ToInt32(examTable.Rows[0]["course_id"]);
             EditExamLink.NavigateUrl = $"/Admin/Course/Exam/EditExam.aspx?exam_id={exam_id}";
-            EditLink.NavigateUrl = $"/Admin/Course/Exam/EditExamMenu.aspx?exam_id={exam_id}";
-            ViewCourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={examTable.Rows[0]["course_id"]}";
-            DataTable courseTable = CourseC.GetCourseData(Convert.ToInt32(examTable.Rows[0]["course_id"]));
+            EditLink.NavigateUrl = $"/Admin/Course/Exam/EditExamMenu.aspx?course_id={course_id}";
+            ViewCourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}";
+            DataTable courseTable = CourseC.GetCourseData(course_id);
             ViewCourseLink.Text = $"{courseTable.Rows[0]["title"]}";
             ExamLbl.Text = $"{examTable.Rows[0]["title"]}";
             if (!IsPostBack)

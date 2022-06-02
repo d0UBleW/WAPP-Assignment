@@ -8,7 +8,7 @@
 <asp:Content ID="CourseContent" ContentPlaceHolderID="MainContent" runat="server">
   <asp:Panel ID="CoursePanel" runat="server" CssClass="container">
     <h1 class="border-bottom mb-3">My Courses</h1>
-    <asp:Panel ID="GridPanel" runat="server" CssClass="row row-cols-3 g-4">
+    <asp:Panel ID="GridPanel" runat="server" CssClass="row g-4">
       <asp:PlaceHolder ID="CoursePlaceholder" runat="server"></asp:PlaceHolder>
     </asp:Panel>
   </asp:Panel>

@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteAdmin.master" AutoEventWireup="true" CodeBehind="EditChapMenu.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Chapter.ListChapter" %>
+﻿<%@ Page Title="Edit Chapter Menu" Language="C#" MasterPageFile="~/SiteAdmin.master" AutoEventWireup="true" CodeBehind="EditChapMenu.aspx.cs" Inherits="WAPP_Assignment.Admin.Course.Chapter.ListChapter" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -15,11 +15,10 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
-      <asp:Button ID="AddChapBtn" runat="server" Text="Add Chapter" OnClick="AddChapBtn_Click" />
-    </div>
-    <br />
-    <div class="container">
-      <asp:PlaceHolder ID="ChapterPlaceholder" runat="server"></asp:PlaceHolder>
+      <asp:Button ID="AddChapBtn" runat="server" Text="Add Chapter" OnClick="AddChapBtn_Click" CssClass="btn btn-primary btn-md mb-3" />
+      <div class="list-group list-group-flush text-truncate">
+        <asp:PlaceHolder ID="ChapterPlaceholder" runat="server"></asp:PlaceHolder>
+      </div>
     </div>
   </form>
 </asp:Content>

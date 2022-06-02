@@ -26,9 +26,15 @@ namespace WAPP_Assignment.Learn
             {
                 return;
             }
-            TitleLbl.Text = examTable.Rows[0]["title"].ToString();
+            DataRow examData = examTable.Rows[0];
+            TitleLbl.Text = examData["title"].ToString();
+            int course_id = Convert.ToInt32(examData["course_id"]);
+            DataRow courseData = CourseC.GetCourseData(course_id).Rows[0];
+            CourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}";
+            CourseLink.Text = $"{courseData["title"]}";
+            ExamBreadLit.Text = $"{examData["title"]}";
 
-            bool retake = Convert.ToBoolean(examTable.Rows[0]["retake"]);
+            bool retake = Convert.ToBoolean(examData["retake"]);
             RetakePanel.Visible = false;
             if (retake && userType == "student")
             {

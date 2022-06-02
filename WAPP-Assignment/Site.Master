@@ -75,8 +75,8 @@
       </nav>
     </div>
     <div class="container">
-      <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';" class="fs-5">
-        <ol class="breadcrumb text-truncate">
+      <nav id="breadNav" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';" class="fs-5">
+        <ol class="breadcrumb">
           <asp:ContentPlaceHolder ID="BreadcrumbContent" runat="server">
           </asp:ContentPlaceHolder>
         </ol>

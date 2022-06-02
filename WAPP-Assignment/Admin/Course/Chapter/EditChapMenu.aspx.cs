@@ -27,16 +27,26 @@ namespace WAPP_Assignment.Admin.Course.Chapter
             {
                 Panel container = new Panel
                 {
-                    CssClass = "container"
+                    CssClass = "list-group-item list-group-item-action d-flex align-items-center"
                 };
-                Label chapTitle = new Label {  Text = $"{chapterData["sequence"]}. {chapterData["title"]}" };
+                Label chapTitle = new Label
+                {
+                    Text = $"{chapterData["sequence"]}. {chapterData["title"]}",
+                    CssClass = "me-auto",
+                };
                 container.Controls.Add(chapTitle);
                 ChapterPlaceholder.Controls.Add(container);
+                Panel btnGroup = new Panel
+                {
+                    CssClass = "btn-group",
+                };
+                btnGroup.Attributes.Add("role", "group");
+                btnGroup.Attributes.Add("aria-label", "Edit and delete chapter button group");
                 LinkButton editChapBtn = new LinkButton
                 {
                     Text = "Edit Chapter",
                     ID = $"editChapBtn-{chapterData["chapter_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
+                    CssClass = "btn btn-outline-primary btn-sm",
                 };
                 editChapBtn.Click += new EventHandler(EditChapBtn_Click);
                 editChapBtn.Attributes.Add("data-chap-id", chapterData["chapter_id"].ToString());
@@ -44,14 +54,14 @@ namespace WAPP_Assignment.Admin.Course.Chapter
                 {
                     Text = "Delete Chapter",
                     ID = $"delChapBtn_{chapterData["chapter_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
+                    CssClass = "btn btn-outline-danger btn-sm",
                 };
                 delChapBtn.Attributes.Add("data-chap-id", chapterData["chapter_id"].ToString());
                 delChapBtn.Attributes.Add("data-action", "warn");
                 delChapBtn.Click += new EventHandler(DelChapBtn_Click);
-                container.Controls.Add(editChapBtn);
-                container.Controls.Add(delChapBtn);
-                container.Controls.Add(new Literal { Text = "<br/><br/>" });
+                btnGroup.Controls.Add(editChapBtn);
+                btnGroup.Controls.Add(delChapBtn);
+                container.Controls.Add(btnGroup);
             }
         }
         protected void EditChapBtn_Click(object sender, EventArgs e)

@@ -31,6 +31,10 @@ namespace WAPP_Assignment.Learn
             }
             DataRow examData = examTable.Rows[0];
             int course_id = Convert.ToInt32(examData["course_id"]);
+            DataTable courseTable = CourseC.GetCourseData(course_id);
+            CourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}";
+            CourseLink.Text = $"{courseTable.Rows[0]["title"]}";
+            ExamBreadLit.Text = $"{examData["title"]}";
             List<int> enrolled = StudentC.GetEnrolledCourseID(student_id);
             if (!enrolled.Contains(course_id) && userType != "admin")
             {
@@ -46,11 +50,11 @@ namespace WAPP_Assignment.Learn
             bool retake = Convert.ToBoolean(examData["retake"]);
             if (retake)
             {
-                RetakeLbl.Text = "Retake: Yes";
+                RetakeLbl.Text = "Yes";
             }
             else
             {
-                RetakeLbl.Text = "Retake: No";
+                RetakeLbl.Text = "No";
             }
 
             DataTable studentExamAttempt = StudentC.GetExamResult(student_id, exam_id);

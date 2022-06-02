@@ -24,16 +24,28 @@ namespace WAPP_Assignment.Admin.Course.Exam
             DataTable examTable = ExamC.GetCourseExamData(course_id);
             foreach (DataRow examData in examTable.Rows)
             {
-                Panel container = new Panel();
-                container.CssClass = "container";
-                Label examTitle = new Label {  Text = $"{examData["title"]}" };
+                Panel container = new Panel
+                {
+                    CssClass = "list-group-item list-group-item-action d-flex align-items-center"
+                };
+                Label examTitle = new Label
+                {
+                    Text = $"{examData["title"]}",
+                    CssClass = "me-auto",
+                };
                 container.Controls.Add(examTitle);
                 ExamPlaceholder.Controls.Add(container);
+                Panel btnGroup = new Panel
+                {
+                    CssClass = "btn-group",
+                };
+                btnGroup.Attributes.Add("role", "group");
+                btnGroup.Attributes.Add("aria-label", "Edit and delete chapter button group");
                 LinkButton editExamBtn = new LinkButton
                 {
                     Text = "Edit Exam",
                     ID = $"editExamBtn-{examData["exam_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
+                    CssClass = "btn btn-outline-primary btn-sm",
                 };
                 editExamBtn.Click += new EventHandler(EditExamBtn_Click);
                 editExamBtn.Attributes.Add("data-exam-id", examData["exam_id"].ToString());
@@ -41,14 +53,14 @@ namespace WAPP_Assignment.Admin.Course.Exam
                 {
                     Text = "Delete Exam",
                     ID = $"delExamBtn_{examData["exam_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
+                    CssClass = "btn btn-outline-danger btn-sm",
                 };
                 delExamBtn.Attributes.Add("data-exam-id", examData["exam_id"].ToString());
                 delExamBtn.Attributes.Add("data-action", "warn");
                 delExamBtn.Click += new EventHandler(DelExamBtn_Click);
-                ExamPlaceholder.Controls.Add(editExamBtn);
-                ExamPlaceholder.Controls.Add(delExamBtn);
-                ExamPlaceholder.Controls.Add(new Literal { Text = "<br/><br/>" });
+                btnGroup.Controls.Add(editExamBtn);
+                btnGroup.Controls.Add(delExamBtn);
+                container.Controls.Add(btnGroup);
             }
         }
 

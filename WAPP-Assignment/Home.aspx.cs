@@ -12,6 +12,11 @@ namespace WAPP_Assignment
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (userType != "nobody")
+            {
+                JumboLink.NavigateUrl = "~/ListCourse.aspx";
+                JumboLink.Text = "Learn";
+            }
         }
     }
 }

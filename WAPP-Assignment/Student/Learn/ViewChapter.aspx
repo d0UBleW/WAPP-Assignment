@@ -18,7 +18,8 @@
   <li class="breadcrumb-item"><a href="/Student/Course/MyCourse.aspx">My Courses</a></li>
   <li class="breadcrumb-item">
     <asp:HyperLink ID="CourseLink" runat="server"></asp:HyperLink></li>
-  <li class="breadcrumb-item active" aria-current="page">View Chapter</li>
+  <li class="breadcrumb-item">Chapter</li>
+  <li class="breadcrumb-item active" aria-current="page"><asp:Literal ID="ChapBreadLit" runat="server"></asp:Literal></li>
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -28,7 +29,7 @@
         <nav id="toc" class="sticky-top" style="margin-top: -100px; padding-top: 100px;"></nav>
       </div>
       <div class="col-sm-8">
-        <asp:Panel ID="ContentPanel" runat="server">
+        <asp:Panel ID="ContentPanel" runat="server" CssClass="text-break">
           <header>
             <h1 data-toc-skip="true">
               <asp:Literal ID="TitleLtl" runat="server"></asp:Literal></h1>
@@ -40,7 +41,7 @@
       </div>
       <div class="col-sm-2">
         <nav class="sticky-top" style="margin-top: -100px; padding-top: 100px;">
-          <asp:Panel ID="OutlinePanel" runat="server" Visible="true" style="width: 150px; margin: 0 auto; height: auto; position: relative;">
+          <asp:Panel ID="OutlinePanel" runat="server" CssClass="text-break" Visible="true" style="width: 150px; margin: 0 auto; height: auto; position: relative;">
             <span>Chapter</span>
             <asp:Panel ID="ChapOutlinePanel" runat="server">
             </asp:Panel>

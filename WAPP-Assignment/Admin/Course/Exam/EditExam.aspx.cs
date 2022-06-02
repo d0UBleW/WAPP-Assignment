@@ -35,22 +35,29 @@ namespace WAPP_Assignment.Admin.Course.Exam
             DataTable questionTable = Question.GetExamQuestion(exam_id);
             foreach (DataRow questData in questionTable.Rows)
             {
+                Panel container = new Panel
+                {
+                    CssClass = "list-group-item list-group-item-action d-flex align-items-center",
+                };
+                QuePlaceholder.Controls.Add(container);
                 Label quest = new Label
                 {
-                    Text = $"{questData["sequence"]}",
+                    Text = $"{questData["sequence"]}.",
+                    CssClass = "me-auto"
                 };
+                container.Controls.Add(quest);
+
+
                 LinkButton delQueBtn = new LinkButton
                 {
                     Text = "Delete Question",
                     ID = $"delQueBtn-{questData["question_id"]}",
-                    CssClass = "btn btn-secondary btn-md",
+                    CssClass = "btn btn-outline-danger btn-sm",
                 };
                 delQueBtn.Attributes.Add("data-question-id", questData["question_id"].ToString());
                 delQueBtn.Attributes.Add("data-action", "warn");
                 delQueBtn.Click += new EventHandler(DelQueBtn_Click);
-                QuePlaceholder.Controls.Add(quest);
-                QuePlaceholder.Controls.Add(delQueBtn);
-                QuePlaceholder.Controls.Add(new Literal { Text = "<br/>" });
+                container.Controls.Add(delQueBtn);
             }
         }
 

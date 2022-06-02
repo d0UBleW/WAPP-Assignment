@@ -65,7 +65,7 @@ namespace WAPP_Assignment
             {
                 NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}",
                 Text = dr["title"].ToString(),
-                CssClass = "course-title card-title fs-4 mb-3",
+                CssClass = "course-title card-title fs-4 mb-1",
             };
             detail.Controls.Add(title);
             detail.Controls.Add(new Literal { Text = "<br />" });
@@ -100,6 +100,7 @@ namespace WAPP_Assignment
                 CssClass = "btn-group btn-group-md"
             };
             linkBtnGroup.Attributes.Add("role", "group");
+            linkBtnGroup.Attributes.Add("aria-label", "Course Button Group");
 
             if (userType == "admin")
             {
@@ -126,7 +127,7 @@ namespace WAPP_Assignment
                     {
                         NavigateUrl = $"/Student/Course/UnenrollCourse.aspx?course_id={course_id}",
                         Text = "Unenroll",
-                        CssClass = "btn btn-outline-primary btn-sm",
+                        CssClass = "btn btn-outline-danger btn-sm",
                     };
                     unenrollLink.Attributes.Add("data-action", "warn");
                     linkBtnGroup.Controls.Add(unenrollLink);

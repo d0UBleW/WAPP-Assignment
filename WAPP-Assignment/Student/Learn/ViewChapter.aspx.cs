@@ -25,6 +25,7 @@ namespace WAPP_Assignment
             DataTable courseTable = CourseC.GetCourseData(course_id);
             CourseLink.Text = courseTable.Rows[0]["title"].ToString();
             CourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}";
+            ChapBreadLit.Text = $"{chapterRow["sequence"]}. {chapterRow["title"]}";
 
             List<int> enroll_course_id = StudentC.GetEnrolledCourseID(student_id);
             if (!enroll_course_id.Contains(course_id) && userType != "admin")

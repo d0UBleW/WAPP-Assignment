@@ -15,13 +15,22 @@ namespace WAPP_Assignment.Learn
     {
 
         /// <summary>
-        /// TOCPanel control.
+        /// CourseLink control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel TOCPanel;
+        protected global::System.Web.UI.WebControls.HyperLink CourseLink;
+
+        /// <summary>
+        /// ExamBreadLit control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ExamBreadLit;
 
         /// <summary>
         /// TitleLbl control.
