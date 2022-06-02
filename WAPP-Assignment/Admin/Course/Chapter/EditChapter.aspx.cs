@@ -69,14 +69,7 @@ namespace WAPP_Assignment.Admin
                 }
                 conn.Close();
             }
-        }
-
-
-        protected void BackLinkButton_Click(object sender, EventArgs e)
-        {
-            DataTable dataTable = ChapterC.GetChapterData(chapter_id);
-            DataRow dataRow = dataTable.Rows[0];
-            Response.Redirect($"/Admin/Course/EditCourse.aspx?course_id={dataRow["course_id"]}");
+            ChapLbl.Text = $"{seq}. {title}";
         }
     }
 }

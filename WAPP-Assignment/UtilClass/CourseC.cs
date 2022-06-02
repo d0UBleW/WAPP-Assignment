@@ -114,8 +114,9 @@ namespace WAPP_Assignment
                 {
                     Text = "Delete Course",
                     NavigateUrl = $"~/Admin/Course/DeleteCourse.aspx?course_id={course_id}",
-                    CssClass = "btn btn-outline-danger btn-sm del-course-link",
+                    CssClass = "btn btn-outline-danger btn-sm",
                 };
+                delLink.Attributes.Add("data-action", "warn");
                 linkBtnGroup.Controls.Add(delLink);
             }
             else if (userType == "student")
@@ -127,6 +128,7 @@ namespace WAPP_Assignment
                         Text = "Unenroll",
                         CssClass = "btn btn-outline-primary btn-sm",
                     };
+                    unenrollLink.Attributes.Add("data-action", "warn");
                     linkBtnGroup.Controls.Add(unenrollLink);
                     colPanel.Attributes.Add("data-enrolled", "true");
                 }

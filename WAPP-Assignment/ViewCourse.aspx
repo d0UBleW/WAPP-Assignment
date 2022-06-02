@@ -33,7 +33,6 @@
       display: flex;
       float: left;
     }
-
   </style>
 </asp:Content>
 
@@ -49,7 +48,7 @@
   <div class="container">
     <div class="row">
 
-      <asp:Panel ID="CourseDetailPanel" CssClass="col-md-4" runat="server">
+      <asp:Panel ID="CourseDetailPanel" CssClass="col-md-4 sticky-lg-top" runat="server">
         <asp:Panel ID="ImagePanel" runat="server">
           <asp:Image ID="ThumbnailImage" runat="server" Width="200" Height="200" />
         </asp:Panel>
@@ -70,7 +69,7 @@
         <div id="AdminActionPanel" runat="server">
           <div id="AdminEditPanel_1" runat="server" class="btn-group btn-group-md mb-3" role="group">
             <asp:HyperLink ID="EditLink" runat="server" Text="Edit Course" CssClass="btn btn-outline-primary"></asp:HyperLink>
-            <asp:HyperLink ID="DelLink" runat="server" Text="Delete Course" CssClass="btn btn-outline-danger"></asp:HyperLink>
+            <asp:HyperLink ID="DelLink" runat="server" Text="Delete Course" CssClass="btn btn-outline-danger" data-action="warn"></asp:HyperLink>
           </div>
           <br />
           <div id="AdminEditPanel_2" runat="server" class="btn-group btn-group-md mb-3" role="group">
@@ -83,42 +82,42 @@
             <asp:HyperLink ID="GradeLink" runat="server" Text="Grades" CssClass="btn btn-outline-primary btn-md"></asp:HyperLink>
           </div>
         </div>
-      <form id="form1" runat="server">
-        <h5>
-          <button id="ratingToggler" type="button" class="btn btn-sm" data-bs-toggle="collapse" data-bs-target="#<%= RatingPanel.ClientID %>" aria-expanded="true" aria-controls="<%= RatingPanel.ClientID %>">
-            <i class="bi bi-chevron-down"></i>
-          </button>
-          <asp:Label ID="RtgLbl" runat="server" Text="Rating"></asp:Label>
-        </h5>
-        <asp:Panel ID="RatingPanel" runat="server" CssClass="collapse show">
-          <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
-          <asp:Panel ID="RatingSubPanel" CssClass="mb-3" runat="server">
-            <asp:Label ID="ScoreLbl" runat="server" Text="Score: "></asp:Label>
-            <ajaxToolkit:Rating ID="Rating1" runat="server" MaxRating="5"
-              StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="EmptyStar"
-              FilledStarCssClass="FilledStar" CurrentRating="0">
-            </ajaxToolkit:Rating>
-            <br />
-            <div class="form-floating mb-3">
-              <asp:TextBox
-                ID="RatingContentTxtBox"
-                runat="server"
-                CssClass="form-control"
-                Placeholder="Rating comment"
-                ToolTip="Rating comment"
-                TextMode="MultiLine"
-                Height="100"
-                MaxLength="1000"
-                data-max-len="true"
-                ></asp:TextBox>
-              <label for="<%= RatingContentTxtBox.ClientID %>" class="text-muted">Comment</label>
-            </div>
-            <asp:Button ID="RatingBtn" runat="server" Text="Rate" OnClick="RatingBtn_Click" CssClass="btn btn-outline-primary btn-sm" />
+        <form id="form1" runat="server">
+          <h5>
+            <button id="ratingToggler" type="button" class="btn btn-sm" data-bs-toggle="collapse" data-bs-target="#<%= RatingPanel.ClientID %>" aria-expanded="true" aria-controls="<%= RatingPanel.ClientID %>">
+              <i class="bi bi-chevron-down"></i>
+            </button>
+            <asp:Label ID="RtgLbl" runat="server" Text="Rating"></asp:Label>
+          </h5>
+          <asp:Panel ID="RatingPanel" runat="server" CssClass="collapse show">
+            <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+            <asp:Panel ID="RatingSubPanel" CssClass="mb-3" runat="server">
+              <asp:Label ID="ScoreLbl" runat="server" Text="Score: "></asp:Label>
+              <ajaxToolkit:Rating ID="Rating1" runat="server" MaxRating="5"
+                StarCssClass="Star" WaitingStarCssClass="WaitingStar" EmptyStarCssClass="EmptyStar"
+                FilledStarCssClass="FilledStar" CurrentRating="0">
+              </ajaxToolkit:Rating>
+              <br />
+              <div class="form-floating mb-3">
+                <asp:TextBox
+                  ID="RatingContentTxtBox"
+                  runat="server"
+                  CssClass="form-control"
+                  Placeholder="Rating comment"
+                  ToolTip="Rating comment"
+                  TextMode="MultiLine"
+                  Height="100"
+                  MaxLength="1000"
+                  data-max-len="true"></asp:TextBox>
+                <label for="<%= RatingContentTxtBox.ClientID %>" class="text-muted">Comment</label>
+              </div>
+              <asp:Button ID="RatingBtn" runat="server" Text="Rate" OnClick="RatingBtn_Click" CssClass="btn btn-outline-primary btn-sm" />
+            </asp:Panel>
+            <div id="RatingListPanel" class="list-group list-group-flush" runat="server"></div>
           </asp:Panel>
-          <div id="RatingListPanel" class="list-group list-group-flush" runat="server"></div>
-        </asp:Panel>
-      </form>
+        </form>
       </asp:Panel>
+
       <div class="col-md-8">
         <asp:Panel ID="ChapterTOCPanel" CssClass="mb-3" runat="server">
           <h2 class="mb-1">
@@ -127,7 +126,7 @@
             </button>
             <asp:Label ID="ChpLbl" runat="server" Text="Chapter"></asp:Label>
           </h2>
-          <div id="ChapListPanel" class="list-group list-group-flush collapse show" runat="server">
+          <div id="ChapListPanel" class="list-group list-group-flush collapse show text-truncate" runat="server">
           </div>
         </asp:Panel>
         <br />
@@ -138,7 +137,7 @@
             </button>
             <asp:Label ID="ExmLbl" runat="server" Text="Exam"></asp:Label>
           </h2>
-          <div id="ExamListPanel" class="list-group list-group-flush collapse show" runat="server">
+          <div id="ExamListPanel" class="list-group list-group-flush collapse show text-truncate" runat="server">
           </div>
         </asp:Panel>
       </div>
@@ -147,13 +146,6 @@
   </div>
   <input type="hidden" id="NavLocation" value="course" disabled="disabled" />
   <script>
-    $("[id$='DelLink'").on('click', function () {
-      return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
-    })
-    $("[data-del-rating='yes'").on('click', function () {
-      return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
-    })
-
     $("[data-bs-toggle='collapse']").on('click', function () {
       $(this).find("i").toggleClass("bi-chevron-down bi-chevron-right")
     })

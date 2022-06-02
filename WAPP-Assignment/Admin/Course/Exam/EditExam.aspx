@@ -25,6 +25,8 @@
           Placeholder="Exam Title"
           ToolTip="ExamTitle"
           Required="required"
+          MaxLength="100"
+          data-max-len=true
           ></asp:TextBox>
         <label for="<%= TitleTxtBox.ClientID %>" class="text-muted">Exam Title</label>
       </div>

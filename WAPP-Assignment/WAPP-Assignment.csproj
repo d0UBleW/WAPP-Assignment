@@ -110,7 +110,9 @@
     <Content Include="Admin\Course\Exam\EditExamMenu.aspx" />
     <Content Include="Admin\Course\Grades.aspx" />
     <Content Include="Admin\Course\DeleteRating.aspx" />
+    <Content Include="Admin\Feedback\DeleteFeedback.aspx" />
     <Content Include="Admin\Feedback\FeedbackList.aspx" />
+    <Content Include="Admin\Feedback\ViewFeedback.aspx" />
     <Content Include="Admin\StudentData\StudentList.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
@@ -355,6 +357,7 @@
     <Content Include="jquery-oembed-all\examples\test.html" />
     <Content Include="jquery-oembed-all\jquery.oembed.css" />
     <Content Include="jquery-oembed-all\jquery.oembed.js" />
+    <Content Include="Scripts\delete.js" />
     <Content Include="Scripts\strengthMeter.js" />
     <Content Include="Scripts\togglePassword.js" />
     <Content Include="Student\ChangePassword.aspx" />
@@ -506,12 +509,26 @@
     <Compile Include="Admin\Course\DeleteRating.aspx.designer.cs">
       <DependentUpon>DeleteRating.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Feedback\DeleteFeedback.aspx.cs">
+      <DependentUpon>DeleteFeedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Feedback\DeleteFeedback.aspx.designer.cs">
+      <DependentUpon>DeleteFeedback.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Feedback\FeedbackList.aspx.cs">
       <DependentUpon>FeedbackList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Admin\Feedback\FeedbackList.aspx.designer.cs">
       <DependentUpon>FeedbackList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Feedback\ViewFeedback.aspx.cs">
+      <DependentUpon>ViewFeedback.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Feedback\ViewFeedback.aspx.designer.cs">
+      <DependentUpon>ViewFeedback.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\StudentData\StudentList.aspx.cs">
       <DependentUpon>StudentList.aspx</DependentUpon>
@@ -635,6 +652,7 @@
       <DependentUpon>EnrollCourse.aspx</DependentUpon>
     </Compile>
     <Compile Include="UtilClass\ExamC.cs" />
+    <Compile Include="UtilClass\FeedbackC.cs" />
     <Compile Include="UtilClass\MyAutoComplete.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>

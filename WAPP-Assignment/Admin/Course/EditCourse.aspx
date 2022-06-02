@@ -40,6 +40,8 @@
           TextMode="SingleLine"
           CssClass="form-control"
           Required="required"
+          MaxLength="100"
+          data-max-len="true"
           aria-label="Course Title"></asp:TextBox>
         <label for="<%= TitleTxtBox.ClientID %>" class="text-muted">Course Title</label>
       </div>
@@ -53,6 +55,8 @@
           TextMode="MultiLine"
           CssClass="form-control"
           aria-label="Course Description"
+          MaxLength="1000"
+          data-max-len="true"
           style="height: 100px;"
           ></asp:TextBox>
         <label for="<%= DescTxtBox.ClientID %>" class="text-muted">Course Description</label>
@@ -69,7 +73,10 @@
             ToolTip="Course Category"
             TextMode="SingleLine"
             CssClass="form-control"
-            aria-label="Course Category"></asp:TextBox>
+            aria-label="Course Category"
+            MaxLength="50"
+            data-max-len="true"
+            ></asp:TextBox>
           <label for="<%= CatTxtBox.ClientID %>" class="text-muted">Course Category</label>
         </div>
         <button id="CatAddBtn" type="button" class="btn btn-outline-primary">Add Category</button>

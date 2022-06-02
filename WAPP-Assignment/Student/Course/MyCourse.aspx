@@ -12,9 +12,4 @@
       <asp:PlaceHolder ID="CoursePlaceholder" runat="server"></asp:PlaceHolder>
     </asp:Panel>
   </asp:Panel>
-  <script>
-    $("a.unenroll-link").on('click', function () {
-      return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
-    })
-  </script>
 </asp:Content>

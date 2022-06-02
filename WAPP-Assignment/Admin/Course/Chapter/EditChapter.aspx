@@ -51,6 +51,8 @@
           Placeholder="Chapter Title"
           ToolTip="Chapter Title"
           TextMode="SingleLine"
+          MaxLength="100"
+          data-max-len="true"
           Required="required"></asp:TextBox>
         <label for="<%= TitleTxtBox.ClientID %>" class="text-muted">Chapter Title</label>
       </div>

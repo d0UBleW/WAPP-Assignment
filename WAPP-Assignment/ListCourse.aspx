@@ -85,25 +85,4 @@
     </asp:Panel>
   </form>
   <input type="hidden" id="NavLocation" value="course" disabled="disabled" />
-  <script>
-    $("a.del-course-link").on('click', function () {
-      return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
-    })
-
-    $("a.unenroll-link").on('click', function () {
-      return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
-    })
-
-    const toggleEnrollment = ($el) => {
-      const $unenrollLink = $(".unenroll-link")
-      $unenrollLink.closest(".course-container").show();
-      if ($el.is(":checked")) {
-        $unenrollLink.closest(".course-container").hide();
-      }
-    }
-
-    $("#enrollmentChk").on('change', function () {
-      toggleEnrollment($(this))
-    })
-  </script>
 </asp:Content>

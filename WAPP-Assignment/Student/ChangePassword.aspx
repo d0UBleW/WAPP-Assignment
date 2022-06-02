@@ -22,6 +22,7 @@
             ToolTip="Current Password"
             Placeholder="Password"
             data-toggle="password"
+            MaxLength="50"
             Required="required"></asp:TextBox>
           <label for="<%= CurrPasswdTxtBox.ClientID %>" class="text-muted" runat="server" id="CurrPasswdLabel">Current Password</label>
         </div>
@@ -40,6 +41,7 @@
             Placeholder="Password"
             data-toggle="password"
             data-strength-meter=""
+            MaxLength="50"
             Required="required"></asp:TextBox>
           <label for="<%= NewPasswdTxtBox.ClientID %>" class="text-muted">New Password</label>
         </div>
@@ -63,6 +65,7 @@
             ToolTip="Retype Password"
             Placeholder="Password"
             data-toggle="password"
+            MaxLength="50"
             Required="required"></asp:TextBox>
           <label for="<%= RetypePasswdTxtBox.ClientID %>" class="text-muted">Retype Password</label>
         </div>

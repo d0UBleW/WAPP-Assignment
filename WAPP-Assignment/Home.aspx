@@ -19,16 +19,20 @@
       margin-right: 50px;
     }
 
-    .carousel-control-prev {
+    #carouselSlides .carousel-control-prev {
       margin-left: -150px;
     }
 
-    .carousel-control-next {
+    #carouselSlides .carousel-control-next {
       margin-right: -150px;
     }
 
-    .carousel-inner {
+    #carouselSlides .carousel-inner {
       margin-bottom: 30px;
+    }
+
+    #AboutUs p {
+      text-align: justify;
     }
   </style>
 </asp:Content>
@@ -41,7 +45,7 @@
 <asp:Content ID="HomeContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="container">
     <div class="d-flex justify-content-center align-items-center">
-      <div id="carouselSlides" class="carousel slide" data-bs-ride="carousel" style="width: 1000px;">
+      <div id="carouselSlides" class="carousel slide carousel-fade" data-bs-ride="carousel" style="width: 1000px;">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselSlides" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
           <button type="button" data-bs-target="#carouselSlides" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -73,49 +77,77 @@
       <div class="p-5 mb-4 bg-light rounded-3">
         <div class="container-fluid py-5">
           <h1 class="fw-bold">Embark on Your Journey Now</h1>
-          <p class="col-md-8 fs-4">
-            Abcd
-          </p>
-          <a href="/Register.aspx" class="btn btn-primary btn-lg">Register</a>
+          <div class="col-md-8">
+            <div id="quoteCarousel" class="carousel slide" data-bs-ride="carousel">
+              <div class="carousel-indicators">
+                <button type="button" data-bs-target="#quoteCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#quoteCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#quoteCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+              </div>
+              <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                  <figure class="fs-4 text-start">
+                    <blockquote class="blockquote">
+                      <p>Those who keep learning, will keep rising in life.</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                      Charlie Munger
+                    </figcaption>
+                  </figure>
+                </div>
+
+
+                <div class="carousel-item">
+                  <figure class="fs-4 text-start">
+                    <blockquote class="blockquote">
+                      <p>A good education is a foundation for a better future</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                      Elizabeth Warren
+                    </figcaption>
+                  </figure>
+                </div>
+
+
+                <div class="carousel-item">
+                  <figure class="fs-4 text-start">
+                    <blockquote class="blockquote">
+                      <p>The roots of education are bitter, but the fruit is sweet</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                      Aristotle
+                    </figcaption>
+                  </figure>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <a href="/Register.aspx" class="btn btn-primary btn-lg mt-5">Register</a>
         </div>
       </div>
     </div>
 
-    <div class="border-top pt-5 mt-5" style="text-align: justify;">
-      <h1 id="Story">Our Story</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-    </div>
-    <div class="border-top pt-5 mt-5" style="text-align: justify;">
-      <h1 id="Vision">Our Vision</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-    </div>
-    <div class="border-top pt-5 mt-5" style="text-align: justify;">
-      <h1 id="Goal">Our Goal</h1>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-      </p>
+    <div id="AboutUs">
+      <div class="border-top pt-5 mt-5" style="text-align: justify;">
+        <h1 id="Story">Our Story</h1>
+        <p>
+          <b>i-Learn</b> web application is a web-based learning platform for students to make learning activities more interactive and entertaining. In this platform, everyone would be able to list down all available resources and view ratings of the materials. To gain more functionality, students must go through the registration process before diving into the learning proccess. Students could take quiz exam to test their knowledge as well. Students would be able to submit feedback and raating so that the learning materials' quality is well-maintained.
+        </p>
+      </div>
+      <div class="border-top pt-5 mt-5" style="text-align: justify;">
+        <h1 id="Vision">Our Vision</h1>
+        <p>
+          We envision ourselves to be everyone's first choice when learning programming.
+        </p>
+      </div>
+      <div class="border-top pt-5 mt-5" style="text-align: justify;">
+        <h1 id="Goal">Our Goal</h1>
+        <p>
+          The goal of creating this web application is to provide students with a fun and interactive learning environment and introduce them to the basic of programming where they get to choose what langauge they wish to learn. Besides, this web application ensures that student understandingg by testing them with questions.
+        </p>
+      </div>
     </div>
 
   </div>

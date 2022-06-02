@@ -44,7 +44,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
                     CssClass = "btn btn-secondary btn-md",
                 };
                 delExamBtn.Attributes.Add("data-exam-id", examData["exam_id"].ToString());
-                delExamBtn.OnClientClick = "return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';";
+                delExamBtn.Attributes.Add("data-action", "warn");
                 delExamBtn.Click += new EventHandler(DelExamBtn_Click);
                 ExamPlaceholder.Controls.Add(editExamBtn);
                 ExamPlaceholder.Controls.Add(delExamBtn);

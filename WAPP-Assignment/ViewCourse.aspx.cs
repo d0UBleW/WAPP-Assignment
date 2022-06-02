@@ -193,7 +193,7 @@ namespace WAPP_Assignment
                         NavigateUrl = $"~/Admin/Course/DeleteRating.aspx?course_id={course_id}&student_id={student_id}",
                         CssClass = "btn btn-outline-danger btn-sm rounded-circle",
                     };
-                    delLink.Attributes.Add("data-del-rating", "yes");
+                    delLink.Attributes.Add("data-action", "warn");
                     Literal delIcon = new Literal
                     {
                         Text = "<i class=\"bi bi-x-lg\"></i>",

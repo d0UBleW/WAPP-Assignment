@@ -40,6 +40,8 @@
           Required="required"
           CssClass="form-control"
           Placeholder="Full Name"
+          MaxLength="50"
+          data-max-len="true"
           ></asp:TextBox>
         <label for="<%= FullNameTxtBox.ClientID %>" class="text-muted">Full Name</label>
       </div>
@@ -52,6 +54,8 @@
           ToolTip="Email"
           Placeholder="Email"
           Required="required"
+          MaxLength="100"
+          data-max-len="true"
           ></asp:TextBox>
         <label for="<%= EmailTxtBox.ClientID %>" class="text-muted">Email</label>
       </div>
@@ -73,15 +77,11 @@
         <asp:HyperLink ID="ChangePasswdLink" runat="server" NavigateUrl="/Student/ChangePassword.aspx"
           Text="Change Password" CssClass="btn btn-outline-primary btn-sm"></asp:HyperLink>
         <asp:HyperLink ID="DeleteAccLink" runat="server" NavigateUrl="/Student/DeleteAccount.aspx"
-          Text="Delete Account" CssClass="btn btn-outline-danger btn-sm"></asp:HyperLink>
+          Text="Delete Account" CssClass="btn btn-outline-danger btn-sm" data-action="warn"></asp:HyperLink>
       </div>
     </div>
   </form>
   <script>
-    $("a[id$='DeleteAccLink']").on('click', function () {
-      return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';
-    })
-
     $("a:not(a[id$='DeleteAccLink']").on('click', function () {
       return confirm('Discard current working progress?');
     })

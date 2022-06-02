@@ -24,6 +24,8 @@
           TextMode="SingleLine"
           Placeholder="Course Title"
           ToolTip="Course Title"
+          MaxLength="100"
+          data-max-len="true"
           Required="required"
           ></asp:TextBox>
         <label for="<%= TitleTxtBox.ClientID %>" class="text-muted">Course Title</label>
@@ -36,6 +38,8 @@
           TextMode="MultiLine"
           Placeholder="Course Description"
           ToolTip="Course Description"
+          MaxLength="1000"
+          data-max-len="true"
           style="height: 100px;"
           ></asp:TextBox>
         <label for="<%= DescTxtBox.ClientID %>" class="text-muted">Course Description</label>
@@ -52,6 +56,8 @@
             TextMode="SingleLine"
             Placeholder="Course Category"
             ToolTip="Course Category"
+            MaxLength="50"
+            data-max-len="true"
             ></asp:TextBox>
           <label for="<%= CatTxtBox.ClientID %>" class="text-muted">Course Category</label>
         </div>

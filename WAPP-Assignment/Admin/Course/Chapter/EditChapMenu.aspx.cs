@@ -47,7 +47,7 @@ namespace WAPP_Assignment.Admin.Course.Chapter
                     CssClass = "btn btn-secondary btn-md",
                 };
                 delChapBtn.Attributes.Add("data-chap-id", chapterData["chapter_id"].ToString());
-                delChapBtn.OnClientClick = "return prompt('Please type in \"Yes, I am sure!\" to proceed') === 'Yes, I am sure!';";
+                delChapBtn.Attributes.Add("data-action", "warn");
                 delChapBtn.Click += new EventHandler(DelChapBtn_Click);
                 container.Controls.Add(editChapBtn);
                 container.Controls.Add(delChapBtn);

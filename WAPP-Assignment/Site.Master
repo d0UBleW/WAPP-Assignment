@@ -19,12 +19,8 @@
     referrerpolicy="no-referrer"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-maxlength/1.10.0/bootstrap-maxlength.min.js" integrity="sha512-04L+TAgzlDAaUpaEGriEBg/qEryUjw4GNL/FkxA3h621EFPycccO2Y8vNhvid9UhgGC/9+MHLAFwGythpvOAAQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" integrity="sha384-ejwKkLla8gPP8t2u0eQyL0Q/4ItcnyveF505U0NIobD/SMsNyXrLti6CWaD0L52l" crossorigin="anonymous">
-  <style>
-    .nav-loc {
-      visibility: hidden;
-    }
-  </style>
   <link href="/Content/master.css" rel="stylesheet" />
+  <script src="/Scripts/delete.js" defer></script>
   <asp:ContentPlaceHolder ID="head" runat="server">
   </asp:ContentPlaceHolder>
 </head>
@@ -79,8 +75,8 @@
       </nav>
     </div>
     <div class="container">
-      <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';">
-        <ol class="breadcrumb">
+      <nav aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';" class="fs-5">
+        <ol class="breadcrumb text-truncate">
           <asp:ContentPlaceHolder ID="BreadcrumbContent" runat="server">
           </asp:ContentPlaceHolder>
         </ol>
