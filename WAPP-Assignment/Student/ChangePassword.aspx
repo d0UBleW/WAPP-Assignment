@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteStudent.master" AutoEventWireup="true" CodeBehind="ChangePassword.aspx.cs" Inherits="WAPP_Assignment.Student.Course.ChangePassword" ValidateRequest="false" %>
+
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
   <script src="/Scripts/togglePassword.js" defer></script>
   <script src="/Scripts/strengthMeter.js" defer></script>
@@ -6,29 +7,34 @@
 
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
   <li class="breadcrumb-item"><a href="/Home.aspx">Home</a></li>
-  <li class="breadcrumb-item"><a href="/Student/Profile.aspx">Profile</a></li>
+  <li class="breadcrumb-item"><asp:HyperLink ID="ProfileLink" runat="server" NavigateUrl="/Student/Profile.aspx">Profile</asp:HyperLink></li>
   <li class="breadcrumb-item active" aria-current="page">Change Password</li>
 </asp:Content>
 
 <asp:Content ID="MainContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
-      <div class="input-group mb-3">
-        <div class="form-floating flex-grow-1" id="CurrPasswd" runat="server">
-          <asp:TextBox ID="CurrPasswdTxtBox"
-            runat="server"
-            CssClass="form-control"
-            TextMode="Password"
-            ToolTip="Current Password"
-            Placeholder="Password"
-            data-toggle="password"
-            MaxLength="50"
-            Required="required"></asp:TextBox>
-          <label for="<%= CurrPasswdTxtBox.ClientID %>" class="text-muted" runat="server" id="CurrPasswdLabel">Current Password</label>
+      <div id="CurrPasswd" runat="server">
+        <div class="input-group mb-3">
+          <div class="form-floating flex-grow-1">
+            <asp:TextBox ID="CurrPasswdTxtBox"
+              runat="server"
+              CssClass="form-control"
+              TextMode="Password"
+              ToolTip="Current Password"
+              Placeholder="Password"
+              MaxLength="50"
+              Required="required"></asp:TextBox>
+            <label for="<%= CurrPasswdTxtBox.ClientID %>" class="text-muted" runat="server" id="CurrPasswdLabel">Current Password</label>
+          </div>
+          <span class="input-group-text"
+            data-toggle="passwordToggler"
+            data-toggle-class="bi-eye"
+            data-toggle-target="#<%= CurrPasswdTxtBox.ClientID %>"
+            style="cursor: pointer;">
+            <i class="bi bi-eye-slash"></i>
+          </span>
         </div>
-        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;" id="CurrToggler" runat="server">
-          <i class="bi bi-eye-slash"></i>
-        </span>
       </div>
 
       <div class="input-group mb-3">
@@ -39,18 +45,27 @@
             TextMode="Password"
             ToolTip="New Password"
             Placeholder="Password"
-            data-toggle="password"
-            data-strength-meter=""
             MaxLength="50"
             Required="required"></asp:TextBox>
           <label for="<%= NewPasswdTxtBox.ClientID %>" class="text-muted">New Password</label>
         </div>
-        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
+        <span class="input-group-text"
+          data-toggle="passwordToggler"
+          data-toggle-class="bi-eye"
+          data-toggle-target="#<%= NewPasswdTxtBox.ClientID %>"
+          style="cursor: pointer;">
           <i class="bi bi-eye-slash"></i>
         </span>
       </div>
       <div class="progress mb-3">
-        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Strong</div>
+        <div class="progress-bar" role="progressbar"
+          style="width: 0%;"
+          aria-valuenow="0" aria-valuemin="0"
+          aria-valuemax="100"
+          data-password-meter="true"
+          data-password-meter-target="#<%= NewPasswdTxtBox.ClientID %>"
+          data-password-meter-help="#helpLbl"
+          ></div>
       </div>
       <div class="mb-3">
         <span class="text-muted" id="helpLbl"></span>
@@ -64,12 +79,15 @@
             TextMode="Password"
             ToolTip="Retype Password"
             Placeholder="Password"
-            data-toggle="password"
             MaxLength="50"
             Required="required"></asp:TextBox>
           <label for="<%= RetypePasswdTxtBox.ClientID %>" class="text-muted">Retype Password</label>
         </div>
-        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
+        <span class="input-group-text"
+          data-toggle="passwordToggler"
+          data-toggle-class="bi-eye"
+          data-toggle-target="#<%= RetypePasswdTxtBox.ClientID %>"
+          style="cursor: pointer;">
           <i class="bi bi-eye-slash"></i>
         </span>
       </div>

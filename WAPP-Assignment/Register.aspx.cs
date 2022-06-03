@@ -33,7 +33,10 @@ namespace WAPP_Assignment
             string userType = UserTypeRadio.SelectedValue;
             if (userType == "admin")
             {
-                if (SecretTxtBox.Text != "31337")
+                string secretCode = SecretTxtBox.Text;
+                string secretCodeHash = MyUtil.ComputeSHA1(secretCode);
+                // Demonstration purpose: valid secret code = 31337
+                if (secretCodeHash != "E580726D31F6E1AD216FFD87279E536D1F74E606")
                 {
                     SecretPanel.Visible = true;
                     SecretTxtBox.CssClass = "form-control is-invalid";

@@ -37,12 +37,15 @@
             Required="required"
             CssClass="form-control"
             Placeholder="Password"
-            data-toggle="password"
             ></asp:TextBox>
           <label for="<%= PasswordTxtBox.ClientID %>" class="text-muted">Password</label>
         </div>
-        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
-          <i class="bi bi-eye-slash" id="togglePassword"></i>
+        <span class="input-group-text"
+          data-toggle="passwordToggler"
+          data-toggle-class="bi-eye"
+          data-toggle-target="#<%= PasswordTxtBox.ClientID %>"
+          style="cursor: pointer;">
+          <i class="bi bi-eye-slash"></i>
         </span>
       </div>
       <asp:Button ID="LoginBtn" runat="server" Text="Login" OnClick="LoginBtn_Click" CssClass="btn btn-primary btn-md btn-block" />

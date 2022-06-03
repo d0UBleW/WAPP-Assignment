@@ -36,7 +36,7 @@ namespace WAPP_Assignment
                 }
                 conn.Close();
             }
-            RedirectBack();
+            Response.Redirect($"~/ViewCourse.aspx?course_id={course_id}");
         }
     }
 }

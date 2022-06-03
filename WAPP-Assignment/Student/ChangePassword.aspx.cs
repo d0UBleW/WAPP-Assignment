@@ -17,8 +17,8 @@ namespace WAPP_Assignment.Student.Course
             if (userType == "admin")
             {
                 student_id = GetQueryString("student_id");
+                ProfileLink.NavigateUrl = $"/Student/Profile.aspx?student_id={student_id}";
                 CurrPasswd.Visible = false;
-                CurrToggler.Visible = false;
             }
         }
 

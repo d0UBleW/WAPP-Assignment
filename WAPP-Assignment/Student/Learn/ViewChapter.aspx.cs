@@ -79,6 +79,11 @@ namespace WAPP_Assignment
                 PrevBtn.Enabled = true;
                 NextBtn.Enabled = false;
             }
+            else
+            {
+                PrevBtn.Enabled = true;
+                NextBtn.Enabled = true;
+            }
         }
 
         protected void PrevBtn_Click(object sender, EventArgs e)

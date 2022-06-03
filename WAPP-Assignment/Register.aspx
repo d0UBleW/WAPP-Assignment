@@ -47,14 +47,17 @@
             TextMode="Password"
             ToolTip="Password"
             Placeholder="Password"
-            data-toggle="password"
-            data-strength-meter=""
             Required="required"
             MaxLength="50"
             ></asp:TextBox>
-          <label for="<%= PasswordTxtBox.ClientID %>" class="text-muted">Password</label>
+          <label for="<%= PasswordTxtBox.ClientID %>"
+            class="text-muted">Password</label>
         </div>
-        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
+        <span class="input-group-text"
+          data-toggle="passwordToggler"
+          data-toggle-class="bi-eye"
+          data-toggle-target="#<%= PasswordTxtBox.ClientID %>"
+          style="cursor: pointer;">
           <i class="bi bi-eye-slash"></i>
         </span>
       </div>
@@ -62,7 +65,14 @@
         <span class="form-text" id="helpLbl"></span>
       </div>
       <div class="progress mb-3">
-        <div class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">Strong</div>
+        <div class="progress-bar" role="progressbar"
+          style="width: 0%;"
+          aria-valuenow="0" aria-valuemin="0"
+          aria-valuemax="100"
+          data-password-meter="true"
+          data-password-meter-target="#<%= PasswordTxtBox.ClientID %>"
+          data-password-meter-help="#helpLbl"
+          ></div>
       </div>
 
       <div id="admin-div">
@@ -76,12 +86,15 @@
             CssClass="form-control"
             ToolTip="Admin Secret Code"
             Placeholder="Admin Secret Code"
-            data-toggle="password"
             Required="required"
             ></asp:TextBox>
           <label for="<%= SecretTxtBox.ClientID %>" class="text-muted">Secret Code</label>
         </div>
-        <span class="input-group-text" data-toggle="passwordToggler" style="cursor: pointer;">
+        <span class="input-group-text"
+          data-toggle="passwordToggler"
+          data-toggle-class="bi-eye"
+          data-toggle-target="#<%= SecretTxtBox.ClientID %>"
+          style="cursor: pointer;">
           <i class="bi bi-eye-slash"></i>
         </span>
         </div>

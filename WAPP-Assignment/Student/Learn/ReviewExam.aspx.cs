@@ -99,9 +99,10 @@ namespace WAPP_Assignment.Learn
                     }
                     foreach (string stuAns in studentAnswer)
                     {
+                        System.Diagnostics.Debug.WriteLine(stuAns);
                         if (stuAns != "")
                         {
-                            optList.SelectedValue = stuAns;
+                            optList.Items.FindByValue(stuAns).Selected = true;
                             if (!answer_id.Contains(Convert.ToInt32(stuAns)))
                             {
                                 ListItem listItem = optList.Items.FindByValue(stuAns);
@@ -132,7 +133,13 @@ namespace WAPP_Assignment.Learn
                 }
             }
             if (userType == "student")
+            {
                 ScoreLbl.Text = $"Score: {examResultData["value"]}/{totalScore}";
+            }
+            else
+            {
+                ScoreLbl.Text = $"Total Score: {totalScore}";
+            }
 
             CorrectOptIDField.Value = String.Join(",", overall_answer_id);
         }

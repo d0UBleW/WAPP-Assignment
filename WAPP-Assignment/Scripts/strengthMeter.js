@@ -1,6 +1,4 @@
-﻿const $passwordTxtBox = $("[data-strength-meter='']")
-
-const base = {
+﻿const base = {
   "upper": 1,
   "lower": 1,
   "numeric": 1,
@@ -90,7 +88,9 @@ const calculateStrength = (count, base, valid) => {
   return Math.min(Math.floor(strength), 100)
 }
 
-const updateHelp = (base) => {
+const updateHelp = ($bar, base) => {
+  const $passwordTxtBox = $($.find($bar.data("passwordMeterTarget")))
+  const $helpLbl = $($.find($bar.data("passwordMeterHelp")))
   const passwd = $passwordTxtBox.val()
   const count = enumerateString(passwd)
   let helpLabel = "Require "
@@ -120,16 +120,17 @@ const updateHelp = (base) => {
   }
 
   if (helpLabel === "Require ") {
-    $("#helpLbl").hide()
+    $helpLbl.hide()
   }
   else {
-    $("#helpLbl").show()
-    $("#helpLbl").text(helpLabel)
+    $helpLbl.show()
+    $helpLbl.text(helpLabel)
   }
 
 }
 
-const updateMeter = () => {
+const updateMeter = ($bar) => {
+  const $passwordTxtBox = $($.find($bar.data("passwordMeterTarget")))
   const passwd = $passwordTxtBox.val()
   const count = enumerateString(passwd)
   const valid = isValidPassword(passwd)
@@ -164,17 +165,21 @@ const updateMeter = () => {
     bgColor = "#dc3545"
   }
 
-  const $bar = $(".progress-bar")
   $bar.css({"width": `${strength}%`, "background-color": bgColor})
   $bar.text(indicator)
   $bar.prop("aria-valuenow", strength)
 }
 
-$passwordTxtBox.on('keyup', function () {
-  updateMeter()
-  updateHelp(base)
-})
-
 $(document).ready(function () {
-  updateHelp(base)
+  const $bars = $("[data-password-meter='true']")
+  $bars.each(function () {
+    const $bar = $(this)
+    const $passwordTxtBox = $($.find($bar.data("passwordMeterTarget")))
+    $passwordTxtBox.on('keyup', function () {
+      updateMeter($bar)
+      updateHelp($bar, base)
+    })
+    updateHelp($bar, base)
+  })
+
 })
