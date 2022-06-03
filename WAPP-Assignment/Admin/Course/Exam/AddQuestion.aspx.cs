@@ -56,7 +56,7 @@ namespace WAPP_Assignment.Admin.Course.Exam
                 {
                     Question.UpdateQueSequence(exam_id, seq, maxSeq);
                     cmd.Connection = conn;
-                    cmd.CommandText = "INSERT INTO question (exam_id, content, sequence) OUTPUT INSERTED.question_id VALUES (@exam_id, @content, @sequence);";
+                    cmd.CommandText = "INSERT INTO question (exam_id, content, sequence, weight) OUTPUT INSERTED.question_id VALUES (@exam_id, @content, @sequence, 0);";
                     cmd.Parameters.AddWithValue("@exam_id", exam_id);
                     cmd.Parameters.AddWithValue("@content", content);
                     cmd.Parameters.AddWithValue("@sequence", seq);
