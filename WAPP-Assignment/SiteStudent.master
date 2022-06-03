@@ -7,41 +7,43 @@
 </asp:Content>
 
 <asp:Content ID="NavLeft" ContentPlaceHolderID="NavLeftContent" runat="server">
+  <!-- Student top left side navbar -->
   <li class="nav-item">
     <a href="/Dashboard.aspx" class="nav-link" data-nav-loc="dashboard">Dashboard</a>
-    <%--<asp:HyperLink CssClass="nav-link" runat="server" ID="DashLink" NavigateUrl="~/Dashboard.aspx" Text="Dashboard"></asp:HyperLink>--%>
   </li>
   <li>
     <a href="/Student/MyGrade.aspx" class="nav-link" data-nav-loc="grade">My Grades</a>
-    <%--<asp:HyperLink CssClass="nav-link" runat="server" ID="MyGradeLink" NavigateUrl="/Student/MyGrade.aspx" Text="My Grades"></asp:HyperLink>--%>
   </li>
 </asp:Content>
 
 <asp:Content ID="Greet" ContentPlaceHolderID="GreetContent" runat="server">
+  <!-- Greetings -->
   <asp:Label ID="GreetingLbl" CssClass="navbar-text text-white" runat="server"></asp:Label>
 </asp:Content>
 
 <asp:Content ID="NavRight" ContentPlaceHolderID="NavRightContent" runat="server">
+  <!-- Student top right side navbar -->
   <li class="nav-item">
     <a href="/Logout.aspx" class="nav-link" data-nav-loc="logout">Logout</a>
-    <%--<asp:HyperLink CssClass="nav-link" runat="server" ID="LogoutLink" NavigateUrl="/Logout.aspx" Text="Logout"></asp:HyperLink>--%>
   </li>
   <li class="nav-item">
     <a href="/Student/Profile.aspx" class="nav-link" data-nav-loc="profile">Profile</a>
-    <%--<asp:HyperLink CssClass="nav-link" runat="server" ID="ProfileLink" NavigateUrl="/Student/Profile.aspx" Text="Profile"></asp:HyperLink>--%>
   </li>
 </asp:Content>
 
 <asp:Content ID="CourseDropDown" ContentPlaceHolderID="CourseDropDownContent" runat="server">
+  <!-- Student course dropdown list -->
   <li><a class="dropdown-item" href="/Student/Course/MyCourse.aspx">My Courses</a></li>
 </asp:Content>
 
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
+  <!-- breadcrumb content -->
   <asp:ContentPlaceHolder ID="BreadcrumbContent" runat="server">
   </asp:ContentPlaceHolder>
 </asp:Content>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+  <!-- main content -->
   <asp:ContentPlaceHolder ID="MainContent" runat="server">
   </asp:ContentPlaceHolder>
 </asp:Content>

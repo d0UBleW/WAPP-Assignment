@@ -19,12 +19,7 @@
 
 $(function () {
   const userType = $("input[name$='UserTypeRadio']:checked").val()
-  if (userType === "admin") {
-    toggleStudentDiv(false);
-  }
-  else if (userType === "student") {
-    toggleStudentDiv(true);
-  }
+  toggleStudentDiv(userType === "student")
 })
 
 $(document).ready(function () {

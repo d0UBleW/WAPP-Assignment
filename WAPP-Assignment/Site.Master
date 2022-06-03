@@ -2,34 +2,53 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
 <head runat="server">
-  <title></title>
+  <title><%: Page.Title %></title>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+
+  <!-- cdn link for bootstrap -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
     rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- cdn link for jQuery 3.6.0 -->
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
     integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
     crossorigin="anonymous"
     referrerpolicy="no-referrer"></script>
+
+  <!-- cdn link for displaying number of chars typed as well as the maximum chars allowed -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-maxlength/1.10.0/bootstrap-maxlength.min.js" integrity="sha512-04L+TAgzlDAaUpaEGriEBg/qEryUjw4GNL/FkxA3h621EFPycccO2Y8vNhvid9UhgGC/9+MHLAFwGythpvOAAQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- cdn link for bootstrap icon -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css" integrity="sha384-ejwKkLla8gPP8t2u0eQyL0Q/4ItcnyveF505U0NIobD/SMsNyXrLti6CWaD0L52l" crossorigin="anonymous">
+
   <link href="/Content/master.css" rel="stylesheet" />
+
+  <!-- javascript to prompt user before proceed to deletion -->
+  <!-- defer to make sure it is run after the page is loaded -->
   <script src="/Scripts/delete.js" defer></script>
+
   <asp:ContentPlaceHolder ID="head" runat="server">
   </asp:ContentPlaceHolder>
+
 </head>
+
 <body>
   <header>
 
+    <!-- fixed top nav bar -->
     <div id="header_nav">
+
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
         <div class="container-fluid">
+
           <a class="navbar-brand" href="/Home.aspx">
             <figure>
               <img
@@ -39,7 +58,9 @@
                 class="rounded-pill" />
             </figure>
           </a>
+
           <span class="navbar-text text-warning">iLearn</span>
+          
           <button
             class="navbar-toggler"
             type="button"
@@ -47,10 +68,14 @@
             data-bs-target="#main_nav">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="main_nav">
             <ul class="navbar-nav me-auto">
+
               <li class="nav-item">
                 <a class="nav-link" data-nav-loc="home" href="/Home.aspx">Home</a>
+              </li>
+
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
@@ -58,22 +83,32 @@
                   role="button"
                   data-nav-loc="course"
                   data-bs-toggle="dropdown">Course</a>
+
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="/ListCourse.aspx">All Courses</a></li>
                   <asp:ContentPlaceHolder ID="CourseDropDownContent" runat="server"></asp:ContentPlaceHolder>
                 </ul>
               </li>
+
               <asp:ContentPlaceHolder ID="NavLeftContent" runat="server"></asp:ContentPlaceHolder>
             </ul>
+
             <asp:ContentPlaceHolder ID="GreetContent" runat="server"></asp:ContentPlaceHolder>
+
             <ul class="navbar-nav justify-content-end">
               <asp:ContentPlaceHolder ID="NavRightContent" runat="server">
               </asp:ContentPlaceHolder>
             </ul>
+
           </div>
+
         </div>
+
       </nav>
+
     </div>
+
+    <!-- breadcrumb navigation -->
     <div class="container">
       <nav id="breadNav" aria-label="breadcrumb" style="--bs-breadcrumb-divider: '>';" class="fs-5">
         <ol class="breadcrumb">
@@ -82,71 +117,87 @@
         </ol>
       </nav>
     </div>
+
   </header>
+
   <br />
+
   <main>
     <asp:ContentPlaceHolder ID="MainContent" runat="server">
     </asp:ContentPlaceHolder>
   </main>
+
   <br />
   <br />
-  <div class="bg-dark py-3">
-  <div class="container">
-    <footer class="row row-cols-4 py-3 my-3 text-white border-top">
-      <div class="col-sm-2" style="text-align: center;">
-        <figure>
-          <img
-            src="/images/i-Learn.png"
-            alt="i-Learn Logo"
-            style="width: 40px"
-            class="rounded-pill" />
-        </figure>
-        &copy; i-Learn 2022
-      </div>
-      <div class="col"></div>
-      <div class="col">
-        <h5 data-toc-skip="true">Contact Us</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a href="mailto:a@example.com" class="nav-link text-white">
-              <i class="bi bi-envelope-fill"></i> Email
+
+  <footer class="bg-dark py-3">
+    <div class="container">
+      <div class="row row-cols-4 py-3 my-3 text-white border-top">
+
+        <div class="col-sm-2" style="text-align: center;">
+          <figure>
+            <img
+              src="/images/i-Learn.png"
+              alt="i-Learn Logo"
+              style="width: 40px"
+              class="rounded-pill" />
+          </figure>
+          &copy; i-Learn 2022
+     
+        </div>
+
+        <div class="col"></div>
+
+        <div class="col">
+          <h5 data-toc-skip="true">Contact Us</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="mailto:a@example.com" class="nav-link text-white">
+                <i class="bi bi-envelope-fill"></i>Email
             </a>
-            <a href="tel:+60123456789" class="nav-link text-white">
-              <i class="bi bi-telephone-fill"></i> Phone
+              <a href="tel:+60123456789" class="nav-link text-white">
+                <i class="bi bi-telephone-fill"></i>Phone
             </a>
-            <a href="/Student/Feedback.aspx" class="nav-link text-white">
-              <i class="bi bi-chat-right-dots-fill"></i> Feedback
+              <a href="/Student/Feedback.aspx" class="nav-link text-white">
+                <i class="bi bi-chat-right-dots-fill"></i>Feedback
             </a>
-          </li>
-        </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col">
+          <h5 data-toc-skip="true">About Us</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="/Home.aspx#Story" class="nav-link text-white">Our Story</a>
+            </li>
+            <li class="nav-item">
+              <a href="/Home.aspx#Vision" class="nav-link text-white">Our Vision</a>
+            </li>
+            <li class="nav-item">
+              <a href="/Home.aspx#Goal" class="nav-link text-white">Our Goal</a>
+            </li>
+          </ul>
+        </div>
+
       </div>
-      <div class="col">
-        <h5 data-toc-skip="true">About Us</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a href="/Home.aspx#Story" class="nav-link text-white">Our Story</a>
-          </li>
-          <li class="nav-item">
-            <a href="/Home.aspx#Vision" class="nav-link text-white">Our Vision</a>
-          </li>
-          <li class="nav-item">
-            <a href="/Home.aspx#Goal" class="nav-link text-white">Our Goal</a>
-          </li>
-        </ul>
-      </div>
-    </footer>
-  </div></div>
+    </div>
+  </footer>
   <script>
-    $(document).ready(function () {
-      $("#main_nav .nav-link").each(function () {
-        const navText = $("input[id$='NavLocation']").val()
-        const navLoc = $(this).data("nav-loc")
-        if (navLoc == navText) {
-          $(this).addClass("active");
-        }
-      });
-      $("a").addClass("text-decoration-none")
-    })
+    // display
+
+    $("#main_nav .nav-link").each(function () {
+      const navText = $("input[id$='NavLocation']").val()
+      const navLoc = $(this).data("nav-loc")
+      if (navLoc == navText) {
+        $(this).addClass("active");
+      }
+    });
+
+    $("a").addClass("text-decoration-none")
+
+    // display characters typed for all html elements with data-max-len attribute set to true
+    // https://github.com/mimo84/bootstrap-maxlength/
     $("[data-max-len='true']").maxlength({
       alwaysShow: true,
       warningClass: "form-text text-muted fs-6",

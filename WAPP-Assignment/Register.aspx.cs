@@ -65,10 +65,8 @@ namespace WAPP_Assignment
                     else
                     {
                         string fullName = MyUtil.SanitizeInput(FullNameTxtBox);
-                        //string fullName = this.FullNameTxtBox.Text;
                         string email = MyUtil.SanitizeInput(EmailTxtBox);
-                        //string email = this.EmailTxtBox.Text;
-                        string gender = this.GenderDropDownList.SelectedValue;
+                        string gender = GenderDropDownList.SelectedValue;
                         queryInsert += " (username, password, full_name, email, gender, profile) VALUES (@username, @password, @full_name, @email, @gender, @profile);";
                         cmd.CommandText = queryInsert;
                         cmd.Parameters.AddWithValue("@username", username);
@@ -87,7 +85,6 @@ namespace WAPP_Assignment
                     conn.Close();
                 }
                 Response.Redirect("~/Login.aspx");
-                // Response.Write("<script>alert('Registration successful!'); window.location.href = 'Login.aspx';</script>");
             }
         }
 

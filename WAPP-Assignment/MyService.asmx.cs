@@ -19,12 +19,6 @@ namespace WAPP_Assignment
     {
 
         [WebMethod]
-        public string HelloWorld()
-        {
-            return "Hello World";
-        }
-
-        [WebMethod]
         public string IsValidUsername(string table, string username)
         {
             foreach (char c in username)
