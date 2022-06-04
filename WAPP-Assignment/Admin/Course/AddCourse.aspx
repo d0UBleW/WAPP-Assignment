@@ -1,7 +1,5 @@
 ﻿<%@ Page Title="Add Course" Language="C#" MasterPageFile="~/SiteAdmin.master" AutoEventWireup="true" CodeBehind="AddCourse.aspx.cs" Inherits="WAPP_Assignment.Admin.AddCourse" ValidateRequest="false" %>
 
-<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
-
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
   <script src="/Scripts/addCourse.js" defer></script>
 </asp:Content>
@@ -75,18 +73,31 @@
           Thumbnail
         </span>
         <asp:FileUpload ID="ThumbnailUpload" runat="server" CssClass="form-control"/>
+        <span class="input-group-text">
+          image only, max. 400 KBs
+        </span>
       </div>
 
       <asp:HiddenField ID="CatField" runat="server" />
       <asp:Panel ID="UploadStatusPanel" CssClass="alert alert-danger mb-3" runat="server" role="alert">
         <asp:Label ID="UploadStatusLbl" runat="server" Text=""></asp:Label>
       </asp:Panel>
-      <asp:Button ID="AddBtn" runat="server" Text="Add" OnClick="AddBtn_Click" CssClass="btn btn-outline-primary" />
+      <asp:Button ID="CourseAddBtn" runat="server" Text="Add" OnClick="AddBtn_Click" CssClass="btn btn-outline-primary" role="button" />
     </div>
   </form>
   <script>
     $("a").on('click', function () {
       return confirm('Discard current working progress?');
+    })
+    $("input[id$='CatTxtBox']").keypress(function (e) {
+      var key = e.keyCode || e.which
+      if (key == 13) {
+        $("#CatAddBtn").click()
+        return false
+      }
+    })
+    $("input[id$='CourseAddBtn']").on('click', function () {
+      return confirm('Proceed to add course?')
     })
   </script>
 </asp:Content>

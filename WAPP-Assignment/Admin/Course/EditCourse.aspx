@@ -97,5 +97,12 @@
     $("a").on('click', function () {
       return confirm('Discard current working progress?');
     })
+    $("input[id$='CatTxtBox']").keypress(function (e) {
+      var key = e.keyCode || e.which
+      if (key == 13) {
+        $("#CatAddBtn").click()
+        return false
+      }
+    })
   </script>
 </asp:Content>

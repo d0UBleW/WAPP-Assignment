@@ -6,7 +6,7 @@ const $CatDelBtn = $("[id$='CatDelBtn']")
 const updateCat = () => {
     $CatField.val([].concat([...$CatList.find("option")].map(el => {
         return el.value
-    })).join("<|>"))
+    })).join("~|~"))
 }
 
 $CatAddBtn.click(function (event) {
