@@ -41,7 +41,7 @@ namespace WAPP_Assignment.Admin
                     CatList.Items.Add(item);
                     categoryList.Add(item.Text);
                 }
-                CatField.Value = string.Join("<|>", categoryList);
+                CatField.Value = string.Join("~|~", categoryList);
             }
         }
 
@@ -71,9 +71,7 @@ namespace WAPP_Assignment.Admin
                 this.UploadStatusPanel.Visible = false;
             }
             string title = MyUtil.SanitizeInput(TitleTxtBox);
-            //string title = TitleTxtBox.Text;
             string description = MyUtil.SanitizeInput(DescTxtBox);
-            //string description = DescTxtBox.Text;
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
                 conn.Open();
@@ -86,11 +84,11 @@ namespace WAPP_Assignment.Admin
                     cmd.Parameters.AddWithValue("@course_id", course_id);
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
-                    List<string> inputCategories = CatField.Value.Split(new string[]{"<|>"}, StringSplitOptions.None).ToList();
-                    Category.AddNewCategory(inputCategories);
+                    List<string> inputCategories = MyUtil.SanitizeInput(CatField).Split(new string[]{"~|~"}, StringSplitOptions.None).ToList();
+                    Category.AddCategory(inputCategories);
                     List<string> newCategories = inputCategories.Except(old_category).ToList();
                     cmd.CommandText = "INSERT INTO course_category (course_id, category_id) VALUES (@course_id, (SELECT category_id FROM category WHERE name=@name));";
-                    foreach (string cat in inputCategories)
+                    foreach (string cat in newCategories)
                     {
                         if (string.IsNullOrEmpty(cat)) continue;
                         cmd.Parameters.AddWithValue("@course_id", course_id);
@@ -124,7 +122,7 @@ namespace WAPP_Assignment.Admin
                 CatList.Items.Add(item);
                 categoryList.Add(item.Text);
             }
-            CatField.Value = string.Join("<|>", categoryList);
+            CatField.Value = string.Join("~|~", categoryList);
         }
 
         [WebMethod]

@@ -69,7 +69,7 @@ namespace WAPP_Assignment
             }
         }
 
-        public static void AddNewCategory(List<string> inputCategories)
+        public static void AddCategory(List<string> inputCategories)
         {
             using (SqlConnection conn = DatabaseManager.CreateConnection())
             {
