@@ -24,7 +24,9 @@
         Height="200"
         Width="200"
         Style="object-fit: cover;"
-        CssClass="img-thumbnail mb-3" />
+        CssClass="img-thumbnail mb-3"
+        AlternateText="Thumbnail Image"
+        />
       <div class="input-group mb-3">
         <span class="input-group-text">Thumbnail
         </span>

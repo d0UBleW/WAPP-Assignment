@@ -43,7 +43,6 @@ namespace WAPP_Assignment.Admin
             int maxSeq = Convert.ToInt32(ChapNoTxtBox.Attributes["Max"]);
             int seq = Convert.ToInt32(ChapNoTxtBox.Text);
             string title = MyUtil.SanitizeInput(TitleTxtBox);
-            //string title = TitleTxtBox.Text;
             var sanitizer = new HtmlSanitizer();
             sanitizer.AllowedTags.Add("iframe");
             sanitizer.AllowedTags.Add("oembed");

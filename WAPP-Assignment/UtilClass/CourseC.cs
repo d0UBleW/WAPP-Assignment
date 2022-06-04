@@ -44,7 +44,8 @@ namespace WAPP_Assignment
             Image thumbnail = new Image
             {
                 ImageUrl = "/images/loading.gif",
-                CssClass = "cover img-fluid rounded-start course-img"
+                CssClass = "cover img-fluid rounded-start course-img",
+                AlternateText = "Thumbnail Image",
             };
             thumbnail.Attributes.Add("onload", $"javascript:this.onload=null;this.src='/upload/thumbnail/{dr["thumbnail"]}'");
             imgCol.Controls.Add(thumbnail);

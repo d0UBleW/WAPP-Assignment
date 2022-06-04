@@ -167,6 +167,7 @@ namespace WAPP_Assignment
                 {
                     ImageUrl = $"/upload/profile/{studentData["profile"]}",
                     CssClass = "img-fluid",
+                    AlternateText = "Profile Image"
                 };
                 Panel imgPanel = new Panel
                 {

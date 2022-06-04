@@ -16,6 +16,7 @@
         Height="200"
         Width="200"
         style="object-fit: cover;"
+        AlternateText="Profile Image"
         />
       <br />
       <br />
