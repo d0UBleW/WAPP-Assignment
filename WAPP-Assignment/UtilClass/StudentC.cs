@@ -47,6 +47,29 @@ namespace WAPP_Assignment
 
         }
 
+        public static void Enroll(int student_id, int course_id)
+        {
+            DataTable courseTable = CourseC.GetCourseData(course_id);
+            if (courseTable.Rows.Count == 0)
+            {
+                return;
+            }
+
+            using (SqlConnection conn = DatabaseManager.CreateConnection())
+            {
+                conn.Open();
+                using (SqlCommand cmd = new SqlCommand())
+                {
+                    cmd.Connection = conn;
+                    cmd.CommandText = "INSERT INTO [enroll] (student_id, course_id) VALUES (@student_id, @course_id)";
+                    cmd.Parameters.AddWithValue("@student_id", student_id);
+                    cmd.Parameters.AddWithValue("@course_id", course_id);
+                    cmd.ExecuteNonQuery();
+                }
+                conn.Close();
+            }
+        }
+
         public static DataRow GetStudentData(int student_id)
         {
             DataTable dataTable = new DataTable();

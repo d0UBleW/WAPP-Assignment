@@ -12,7 +12,7 @@
   <form id="form1" runat="server">
     <div class="container">
       <h1 class="border-bottom mb-3">My Grades</h1>
-      <asp:GridView ID="GradeView" runat="server" AutoGenerateColumns="False" DataSourceID="MyGradeDataSource" DataKeyNames="exam_id" CssClass="table table-hover table-striped">
+      <asp:GridView ID="GradeView" runat="server" AutoGenerateColumns="False" DataSourceID="MyGradeDataSource" DataKeyNames="exam_id" CssClass="table table-hover table-striped" AllowSorting="True" AllowPaging="True">
         <Columns>
           <asp:BoundField DataField="exam_id" HeaderText="exam_id" SortExpression="exam_id" InsertVisible="False" ReadOnly="True" Visible="False" />
           <asp:BoundField DataField="title" HeaderText="Course" SortExpression="title" />

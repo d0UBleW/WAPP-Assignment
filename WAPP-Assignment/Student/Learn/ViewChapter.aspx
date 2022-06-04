@@ -39,7 +39,13 @@
       </div>
       <div class="col-sm-2">
         <nav class="sticky-top" style="margin-top: -100px; padding-top: 100px;">
-          <asp:Panel ID="OutlinePanel" runat="server" CssClass="text-break" Visible="true" style="width: 150px; margin: 0 auto; height: auto; position: relative;">
+          <asp:Panel
+            ID="OutlinePanel"
+            runat="server"
+            CssClass="text-break"
+            Visible="true"
+            style="width: 150px; margin: 0 auto; height: auto; position: relative;"
+            >
             <span>Chapter</span>
             <asp:Panel ID="ChapOutlinePanel" runat="server">
             </asp:Panel>
@@ -48,8 +54,10 @@
           <div style="width: 150px; margin: 0 auto; height: auto; position: relative;">
             <form id="form1" runat="server">
               <div class="btn-group btn-md" role="group" style="width : 100%;">
-              <asp:Button ID="PrevBtn" runat="server" Text="Previous" CssClass="btn btn-outline-primary btn-sm" Enabled="false" OnClick="PrevBtn_Click" />
-              <asp:Button ID="NextBtn" runat="server" Text="Next" CssClass="btn btn-outline-primary btn-sm" Enabled="false" OnClick="NextBtn_Click" />
+              <asp:Button ID="PrevBtn" runat="server" Text="Previous"
+                CssClass="btn btn-outline-primary btn-sm" Enabled="false" OnClick="PrevBtn_Click" />
+              <asp:Button ID="NextBtn" runat="server" Text="Next"
+                CssClass="btn btn-outline-primary btn-sm" Enabled="false" OnClick="NextBtn_Click" />
               </div>
             </form>
           </div>

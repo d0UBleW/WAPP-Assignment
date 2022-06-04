@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WAPP_Assignment.Admin.Course
+namespace WAPP_Assignment.Admin.StudentData
 {
 
 
-    public partial class EnrolledStudent
+    public partial class EnrollStudent
     {
 
         /// <summary>
@@ -51,21 +51,21 @@ namespace WAPP_Assignment.Admin.Course
         protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// EnrolledStudentDataSource control.
+        /// StudentDataSource control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource EnrolledStudentDataSource;
+        protected global::System.Web.UI.WebControls.SqlDataSource StudentDataSource;
 
         /// <summary>
-        /// UnenrollBtn control.
+        /// EnrollBtn control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UnenrollBtn;
+        protected global::System.Web.UI.WebControls.Button EnrollBtn;
     }
 }

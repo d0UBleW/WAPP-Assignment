@@ -113,6 +113,7 @@
     <Content Include="Admin\Feedback\DeleteFeedback.aspx" />
     <Content Include="Admin\Feedback\FeedbackList.aspx" />
     <Content Include="Admin\Feedback\ViewFeedback.aspx" />
+    <Content Include="Admin\Course\EnrollStudent.aspx" />
     <Content Include="Admin\StudentData\StudentList.aspx" />
     <Content Include="App_Data\ilearn.mdf" />
     <Content Include="App_Data\ilearn_log.ldf">
@@ -531,6 +532,13 @@
     </Compile>
     <Compile Include="Admin\Feedback\ViewFeedback.aspx.designer.cs">
       <DependentUpon>ViewFeedback.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Course\EnrollStudent.aspx.cs">
+      <DependentUpon>EnrollStudent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Course\EnrollStudent.aspx.designer.cs">
+      <DependentUpon>EnrollStudent.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\StudentData\StudentList.aspx.cs">
       <DependentUpon>StudentList.aspx</DependentUpon>

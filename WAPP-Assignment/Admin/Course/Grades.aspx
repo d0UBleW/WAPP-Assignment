@@ -15,7 +15,7 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <form id="form1" runat="server">
     <div class="container">
-      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GradesDataSource" CssClass="table table-hover table-striped">
+      <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="GradesDataSource" CssClass="table table-hover table-striped" AllowSorting="True" AllowPaging="True">
         <Columns>
           <asp:BoundField DataField="title" HeaderText="title" SortExpression="title" />
           <asp:BoundField DataField="full_name" HeaderText="Full Name" SortExpression="full_name" />

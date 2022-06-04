@@ -81,6 +81,7 @@ namespace WAPP_Assignment
                 AdminActionPanel.Visible = true;
                 StudentDataLink.NavigateUrl = $"/Admin/Course/EnrolledStudent.aspx?course_id={course_id}";
                 GradeLink.NavigateUrl = $"/Admin/Course/Grades.aspx?course_id={course_id}";
+                EnrollStudLink.NavigateUrl = $"/Admin/Course/EnrollStudent.aspx?course_id={course_id}";
                 EditChapMenuLink.NavigateUrl = $"/Admin/Course/Chapter/EditChapMenu.aspx?course_id={course_id}";
                 EditExamMenuLink.NavigateUrl = $"/Admin/Course/Exam/EditExamMenu.aspx?course_id={course_id}";
             }
