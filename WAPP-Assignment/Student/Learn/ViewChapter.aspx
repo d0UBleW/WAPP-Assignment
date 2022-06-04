@@ -5,11 +5,9 @@
   <link rel="stylesheet" href="/jquery-oembed-all/jquery.oembed.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/styles/default.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.5.0/highlight.min.js"></script>
-  <!-- add after bootstrap.min.css -->
   <link
     rel="stylesheet"
     href="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.css" />
-  <!-- add after bootstrap.min.js or bootstrap.bundle.min.js -->
   <script src="https://cdn.rawgit.com/afeld/bootstrap-toc/v1.0.1/dist/bootstrap-toc.min.js"></script>
 </asp:Content>
 

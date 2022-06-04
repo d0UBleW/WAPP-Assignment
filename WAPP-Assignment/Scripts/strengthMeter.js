@@ -89,8 +89,8 @@ const calculateStrength = (count, base, valid) => {
 }
 
 const updateHelp = ($bar, base) => {
-  const $passwordTxtBox = $($.find($bar.data("passwordMeterTarget")))
-  const $helpLbl = $($.find($bar.data("passwordMeterHelp")))
+  const $passwordTxtBox = $($bar.data("passwordMeterTarget"))
+  const $helpLbl = $($bar.data("passwordMeterHelp"))
   const passwd = $passwordTxtBox.val()
   const count = enumerateString(passwd)
   let helpLabel = "Require "
@@ -130,7 +130,7 @@ const updateHelp = ($bar, base) => {
 }
 
 const updateMeter = ($bar) => {
-  const $passwordTxtBox = $($.find($bar.data("passwordMeterTarget")))
+  const $passwordTxtBox = $($bar.data("passwordMeterTarget"))
   const passwd = $passwordTxtBox.val()
   const count = enumerateString(passwd)
   const valid = isValidPassword(passwd)
@@ -174,7 +174,7 @@ $(document).ready(function () {
   const $bars = $("[data-password-meter='true']")
   $bars.each(function () {
     const $bar = $(this)
-    const $passwordTxtBox = $($.find($bar.data("passwordMeterTarget")))
+    const $passwordTxtBox = $($bar.data("passwordMeterTarget"))
     $passwordTxtBox.on('keyup', function () {
       updateMeter($bar)
       updateHelp($bar, base)

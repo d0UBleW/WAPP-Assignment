@@ -15,6 +15,7 @@ namespace WAPP_Assignment.Admin
         protected void Page_Load(object sender, EventArgs e)
         {
             chapter_id = GetQueryString("chapter_id");
+            ChapterC.DeleteChapter(chapter_id);
             RedirectBack();
         }
     }

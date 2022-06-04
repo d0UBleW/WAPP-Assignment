@@ -1,5 +1,7 @@
 ﻿body {
   margin-top: 90px;
+  position: relative;
+  min-height: 100vh;
 }
 
 /* To compensate for the fixed navigational bar when jumping to section */
@@ -11,17 +13,15 @@
 }
 
 @media (min-width: 768px) {
-    .navbar .nav-item:hover .nav-link { }
-    .navbar .nav-item:hover .dropdown-menu { display: block; }
+  .navbar .nav-item:hover .nav-link {
+  }
+  .navbar .nav-item:hover .dropdown-menu {
+    display: block;
+  }
 }
 
 #breadNav li {
   z-index: 1021;
-}
-
-#page-container {
-  position: relative;
-  min-height: 100vh;
 }
 
 footer {
