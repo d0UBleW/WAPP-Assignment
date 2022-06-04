@@ -14,7 +14,7 @@
   <form id="form1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server" EnablePageMethods="true">
     </asp:ScriptManager>
-    <div class="container">
+    <div id="SearchDiv" class="container">
       <div class="mb-3">
         <div class="input-group" id="searchTitle">
           <div class="form-floating flex-grow-1">

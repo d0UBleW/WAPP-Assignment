@@ -33,16 +33,6 @@ namespace WAPP_Assignment
             }
         }
 
-        protected void AddCourseBtn_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("/Admin/Course/AddCourse.aspx");
-        }
-
-        protected void FilterList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            System.Diagnostics.Debug.WriteLine(FilterList.SelectedValue);
-        }
-
         [WebMethod]
         public static List<string> SearchCategory(string prefixText, int count)
         {

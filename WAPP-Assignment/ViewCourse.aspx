@@ -48,7 +48,7 @@
   <div class="container">
     <div class="row">
 
-      <asp:Panel ID="CourseDetailPanel" CssClass="col-md-4 sticky-lg-top" runat="server">
+      <asp:Panel ID="CourseDetailPanel" CssClass="col-md-4" runat="server">
         <asp:Panel ID="ImagePanel" runat="server">
           <asp:Image ID="ThumbnailImage" runat="server" Width="200" Height="200" />
         </asp:Panel>

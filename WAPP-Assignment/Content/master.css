@@ -2,6 +2,7 @@
   margin-top: 90px;
 }
 
+/* To compensate for the fixed navigational bar when jumping to section */
 :target::before {
   content: "";
   display: block;
@@ -14,12 +15,17 @@
     .navbar .nav-item:hover .dropdown-menu { display: block; }
 }
 
-.trunc {
-  text-overflow: ellipsis !important;
-  white-space: nowrap !important;
-  overflow: hidden !important;
-}
-
 #breadNav li {
   z-index: 1021;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

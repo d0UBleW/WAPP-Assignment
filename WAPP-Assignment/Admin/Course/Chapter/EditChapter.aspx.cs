@@ -13,6 +13,7 @@ namespace WAPP_Assignment.Admin
     public partial class EditChapter : UtilClass.BaseAdminPage
     {
         private int chapter_id;
+        private int course_id;
         protected void Page_Load(object sender, EventArgs e)
         {
             chapter_id = GetQueryString("chapter_id");
@@ -22,21 +23,22 @@ namespace WAPP_Assignment.Admin
                 return;
             }
             DataRow dr = dt.Rows[0];
-            DataTable courseTable = CourseC.GetCourseData(Convert.ToInt32(dr["course_id"]));
+            course_id = Convert.ToInt32(dr["course_id"]);
+            DataTable courseTable = CourseC.GetCourseData(course_id);
             ViewCourseLink.Text = $"{courseTable.Rows[0]["title"]}";
-            ViewCourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={dr["course_id"]}";
-            EditLink.NavigateUrl = $"/Admin/Course/Chapter/EditChapMenu.aspx?course_id={dr["course_id"]}";
+            ViewCourseLink.NavigateUrl = $"/ViewCourse.aspx?course_id={course_id}";
+            EditLink.NavigateUrl = $"/Admin/Course/Chapter/EditChapMenu.aspx?course_id={course_id}";
             ChapLbl.Text = $"{dr["sequence"]}. {dr["title"]}";
             if (!IsPostBack)
             {
                 TitleTxtBox.Text = dr["title"].ToString();
                 EditorTxtBox.Text = dr["content"].ToString();
-                int maxSeq = ChapterC.GetChapterMaxSeq(Convert.ToInt32(dr["course_id"]));
+                int maxSeq = ChapterC.GetChapterMaxSeq(course_id);
                 ChapNoTxtBox.Attributes.Add("Max", maxSeq.ToString());
                 ChapNoRangeValidator.MaximumValue = maxSeq.ToString();
                 ChapNoRangeValidator.MinimumValue = "1";
                 ChapNoTxtBox.Text = dr["sequence"].ToString();
-                CourseIDField.Value = dr["course_id"].ToString();
+                CourseIDField.Value = course_id.ToString();
             }
         }
 
@@ -44,10 +46,8 @@ namespace WAPP_Assignment.Admin
         {
             int seq = Convert.ToInt32(ChapNoTxtBox.Text);
             DataTable dt = ChapterC.GetChapterData(chapter_id);
-            int course_id = Convert.ToInt32(dt.Rows[0]["course_id"]);
             int oldSeq = Convert.ToInt32(dt.Rows[0]["sequence"]);
             string title = MyUtil.SanitizeInput(TitleTxtBox);
-            //string title = TitleTxtBox.Text;
             var sanitizer = new HtmlSanitizer();
             sanitizer.AllowedTags.Add("iframe");
             sanitizer.AllowedTags.Add("oembed");
