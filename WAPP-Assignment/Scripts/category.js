@@ -2,6 +2,7 @@
 const $CatList= $("[id$='CatList']")
 const $CatAddBtn = $("[id$='CatAddBtn']")
 const $CatDelBtn = $("[id$='CatDelBtn']")
+const $CatTxtBox = $("input[name$='CatTxtBox']")
 
 const updateCat = () => {
     $CatField.val([].concat([...$CatList.find("option")].map(el => {
@@ -10,9 +11,8 @@ const updateCat = () => {
 }
 
 $CatAddBtn.click(function (event) {
-    const inputBox = $("input[name$='CatTxtBox']")
-    const category = inputBox.val()
-    inputBox.val("")
+    const category = $CatTxtBox.val()
+    $CatTxtBox.val("")
     if (category === "") return
     const currentCategory = [].concat([...$CatList.find("option")].map(el => {
         return el.value
@@ -27,4 +27,12 @@ $CatAddBtn.click(function (event) {
 $CatDelBtn.click(function (event) {
     $CatList.find("option:selected").remove()
     updateCat()
+})
+
+$CatTxtBox.keypress(function (e) {
+  var key = e.keyCode || e.which
+  if (key == 13) {
+    $("#CatAddBtn").click()
+    return false
+  }
 })

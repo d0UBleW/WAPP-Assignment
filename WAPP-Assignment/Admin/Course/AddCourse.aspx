@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="Add Course" Language="C#" MasterPageFile="~/SiteAdmin.master" AutoEventWireup="true" CodeBehind="AddCourse.aspx.cs" Inherits="WAPP_Assignment.Admin.AddCourse" ValidateRequest="false" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="head" runat="server">
-  <script src="/Scripts/addCourse.js" defer></script>
+  <script src="/Scripts/category.js" defer></script>
 </asp:Content>
 
 <asp:Content ID="BreadContent" ContentPlaceHolderID="BreadcrumbContent" runat="server">
@@ -88,13 +88,6 @@
   <script>
     $("a").on('click', function () {
       return confirm('Discard current working progress?');
-    })
-    $("input[id$='CatTxtBox']").keypress(function (e) {
-      var key = e.keyCode || e.which
-      if (key == 13) {
-        $("#CatAddBtn").click()
-        return false
-      }
     })
     $("input[id$='CourseAddBtn']").on('click', function () {
       return confirm('Proceed to add course?')

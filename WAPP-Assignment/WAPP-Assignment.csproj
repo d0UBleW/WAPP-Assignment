@@ -379,7 +379,7 @@
     <Content Include="Register.aspx" />
     <Content Include="Scripts\addOption.js" />
     <Content Include="Scripts\ckeditor.js" />
-    <Content Include="Scripts\addCourse.js" />
+    <Content Include="Scripts\category.js" />
     <Content Include="Scripts\register.js" />
     <Content Include="Student\Learn\ViewChapter.aspx" />
     <Content Include="ListCourse.aspx" />
