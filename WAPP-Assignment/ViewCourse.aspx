@@ -23,16 +23,6 @@
     .WaitingStar {
       background-image: url('images/star-wait.svg');
     }
-
-    .user-rating-img {
-      display: flex;
-      float: left;
-    }
-
-    .user-rating-name {
-      display: flex;
-      float: left;
-    }
   </style>
 </asp:Content>
 
@@ -85,7 +75,8 @@
         </div>
         <form id="form1" runat="server">
           <h5>
-            <button id="ratingToggler" type="button" class="btn btn-sm" data-bs-toggle="collapse" data-bs-target="#<%= RatingPanel.ClientID %>" aria-expanded="true" aria-controls="<%= RatingPanel.ClientID %>">
+            <button id="ratingToggler" type="button" class="btn btn-sm" data-bs-toggle="collapse" data-bs-target="#<%= RatingPanel.ClientID %>"
+            aria-expanded="true" aria-controls="<%= RatingPanel.ClientID %>">
               <i class="bi bi-chevron-down"></i>
             </button>
             <asp:Label ID="RtgLbl" runat="server" Text="Rating"></asp:Label>

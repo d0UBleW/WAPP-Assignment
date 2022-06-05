@@ -60,31 +60,25 @@ namespace WAPP_Assignment.Learn
             DataTable studentExamAttempt = StudentC.GetExamResult(student_id, exam_id);
             if (studentExamAttempt.Rows.Count > 0)
             {
-                ContentPanel.Controls.Add(new Literal { Text = "<br/>" });
+                Panel p = new Panel
+                {
+                    CssClass = "alert alert-danger mb-3 fs-5",
+                };
+                Label info = new Label();
                 if (!retake)
                 {
-                    Label info = new Label
-                    {
-                        Text = "You've attempted this exam before, no retake is allowed",
-                        CssClass = "fs-3",
-                        ForeColor = System.Drawing.Color.Red,
-                    };
-                    ContentPanel.Controls.Add(info);
+                    info.Text = "You've attempted this exam before, no retake is allowed";
+                    p.Controls.Add(info);
+                    ContentPanel.Controls.Add(p);
                     SubmitBtn.Visible = false;
                     return;
                 }
                 else
                 {
-                    Label info = new Label
-                    {
-                        Text = "You've attempted this exam before, retaking will overwrite previous attempt!",
-                        CssClass = "fs-3",
-                        ForeColor = System.Drawing.Color.Red,
-                    };
-                    ContentPanel.Controls.Add(info);
+                    info.Text = "You've attempted this exam before, retaking will overwrite previous attempt!";
+                    p.Controls.Add(info);
+                    ContentPanel.Controls.Add(p);
                 }
-                ContentPanel.Controls.Add(new Literal { Text = "<br/>" });
-                ContentPanel.Controls.Add(new Literal { Text = "<br/>" });
             }
 
             DataTable questionTable = Question.GetExamQuestion(exam_id);
