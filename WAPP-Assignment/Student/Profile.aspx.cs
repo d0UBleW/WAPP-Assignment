@@ -36,11 +36,9 @@ namespace WAPP_Assignment
         protected void EditBtn_Click(object sender, EventArgs e)
         {
             string fullName = MyUtil.SanitizeInput(FullNameTxtBox);
-            //string fullName = FullNameTxtBox.Text;
             string email = MyUtil.SanitizeInput(EmailTxtBox);
-            //string email = EmailTxtBox.Text;
             string gender = GenderList.SelectedValue;
-            string filename = Path.GetFileName(ProfileImg.ImageUrl);
+            string filename;
             if (gender == "m")
                 filename = MyUtil.defaultMaleProfile;
             else

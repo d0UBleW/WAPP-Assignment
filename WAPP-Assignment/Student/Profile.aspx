@@ -13,15 +13,16 @@
       <asp:Image
         ID="ProfileImg"
         runat="server"
-        Height="200"
-        Width="200"
-        style="object-fit: cover;"
+        CssClass="img-fluid rounded-circle"
+        style="max-height: 200px;"
         AlternateText="Profile Image"
         />
       <br />
       <br />
       <div class="input-group mb-3">
+        <span class="input-group-text">Profile Image</span>
         <asp:FileUpload ID="ProfileUpload" runat="server" CssClass="form-control"/>
+        <span class="input-group-text">only image < 400 KBs</span>
         <asp:Button
           ID="RemoveBtn"
           runat="server"
@@ -29,7 +30,7 @@
           UseSubmitBehavior="false"
           CausesValidation="false"
           OnClick="RemoveBtn_Click"
-          CssClass="btn btn-outline-secondary"
+          CssClass="btn btn-outline-danger"
           />
       </div>
       <div class="form-floating mb-3 mt-3">
