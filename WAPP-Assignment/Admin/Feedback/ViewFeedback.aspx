@@ -32,4 +32,5 @@
       <asp:HyperLink ID="DeleteLink" runat="server" CssClass="btn btn-outline-danger" Text="Delete" data-action="warn"></asp:HyperLink>
     </div>
   </form>
+    <input type="hidden" id="NavLocation" value="feedback" disabled="disabled" />
 </asp:Content>

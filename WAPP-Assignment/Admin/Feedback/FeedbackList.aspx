@@ -18,12 +18,12 @@
         <asp:BoundField DataField="feed_id" HeaderText="feed_id" InsertVisible="False" ReadOnly="True" SortExpression="feed_id" HeaderStyle-CssClass="w-10" />
         <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" HeaderStyle-CssClass="w-25" />
         <asp:BoundField DataField="subject" HeaderText="subject" SortExpression="subject" HeaderStyle-CssClass="" ItemStyle-CssClass="text-break" />
-        <asp:HyperLinkField DataNavigateUrlFields="feed_id" DataNavigateUrlFormatString="/Admin/Feedback/ViewFeedback.aspx?feed_id={0}" HeaderText="Action" Text="View" ItemStyle-CssClass="btn btn-primary btn-sm" />
+        <asp:HyperLinkField DataNavigateUrlFields="feed_id" DataNavigateUrlFormatString="/Admin/Feedback/ViewFeedback.aspx?feed_id={0}" HeaderText="Action" Text="View" ItemStyle-CssClass="" />
       </Columns>
     </asp:GridView>
     <asp:SqlDataSource ID="FeedbackDataSource" runat="server" ConnectionString="<%$ ConnectionStrings:iLearnDBConStr %>" SelectCommand="SELECT feed.feed_id, student.username, feed.subject FROM feed INNER JOIN student ON feed.student_id = student.student_id"></asp:SqlDataSource>
       </div>
-    <input type="hidden" id="NavLocation" value="dashboard" disabled="disabled" />
+    <input type="hidden" id="NavLocation" value="feedback" disabled="disabled" />
     </div>
   </form>
 </asp:Content>
