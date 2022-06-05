@@ -29,7 +29,7 @@
         <nav id="toc" class="sticky-top" style="margin-top: -100px; padding-top: 100px;"></nav>
       </div>
       <div class="col-sm-8">
-        <h1 data-toc-skip="true">
+        <h1 data-toc-skip="true" class="border-bottom mb-3">
           <asp:Label ID="TitleLbl" runat="server"></asp:Label>
         </h1>
         <div class="alert alert-info mb-3 fs-5" role="alert">

@@ -13,18 +13,19 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
   <div class="container">
+      <h1 class="border-bottom mb-3">Enroll Students</h1>
 
   <form id="form1" runat="server">
   <asp:GridView ID="GridView1" runat="server" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="student_id" DataSourceID="StudentDataSource" CssClass="table table-hover table-striped" AllowPaging="True">
     <Columns>
       <asp:BoundField DataField="student_id" HeaderText="student_id" InsertVisible="False" ReadOnly="True" SortExpression="student_id" Visible="False" />
-      <asp:BoundField DataField="username" HeaderText="username" SortExpression="username" />
+      <asp:BoundField DataField="username" HeaderText="Username" SortExpression="username" />
       <asp:BoundField DataField="password" HeaderText="password" SortExpression="password" Visible="False" />
-      <asp:BoundField DataField="full_name" HeaderText="full_name" SortExpression="full_name" />
-      <asp:BoundField DataField="email" HeaderText="email" SortExpression="email" />
-      <asp:BoundField DataField="gender" HeaderText="gender" SortExpression="gender" />
+      <asp:BoundField DataField="full_name" HeaderText="Full Name" SortExpression="full_name" />
+      <asp:BoundField DataField="email" HeaderText="Email" SortExpression="email" />
+      <asp:BoundField DataField="gender" HeaderText="Gender" SortExpression="gender" />
       <asp:BoundField DataField="profile" HeaderText="profile" SortExpression="profile" Visible="False" />
-      <asp:TemplateField HeaderText="enroll" SortExpression="enroll">
+      <asp:TemplateField HeaderText="Enroll" SortExpression="enroll">
         <EditItemTemplate>
           <asp:CheckBox ID="CheckBox1" runat="server" Checked='<%# Bind("enroll") %>' />
         </EditItemTemplate>

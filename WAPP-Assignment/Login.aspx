@@ -10,8 +10,9 @@
 </asp:Content>
 
 <asp:Content ID="LoginContent" ContentPlaceHolderID="MainContent" runat="server">
-  <form id="form1" runat="server">
-    <div class="container">
+  <div class="container">
+    <h1 class="border-bottom mb-3">Login</h1>
+    <form id="form1" runat="server">
       <asp:Label ID="UserTypeLbl" runat="server" Text="Login as"></asp:Label>
       <asp:RadioButtonList ID="UserTypeRadio" runat="server">
         <asp:ListItem Selected="True" Text="Admin" Value="admin"></asp:ListItem>
@@ -24,8 +25,7 @@
           TextMode="SingleLine"
           ToolTip="Username"
           Required="required" CssClass="form-control"
-          Placeholder="Username"
-          ></asp:TextBox>
+          Placeholder="Username"></asp:TextBox>
         <label for="<%= UsernameTxtBox.ClientID %>" class="text-muted">Username</label>
       </div>
       <div class="input-group mb-3">
@@ -36,8 +36,7 @@
             ToolTip="Password"
             Required="required"
             CssClass="form-control"
-            Placeholder="Password"
-            ></asp:TextBox>
+            Placeholder="Password"></asp:TextBox>
           <label for="<%= PasswordTxtBox.ClientID %>" class="text-muted">Password</label>
         </div>
         <span class="input-group-text"
@@ -54,12 +53,13 @@
       </asp:Panel>
       <div class="border-top pt-3 mt-3">
         Do not have an account yet?
+       
         <br />
         <a href="/Register.aspx">Register now</a>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
   <input type="hidden" id="NavLocation" value="login" disabled="disabled" />
   <script>
-  </script>
+</script>
 </asp:Content>

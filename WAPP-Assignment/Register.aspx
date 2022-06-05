@@ -12,10 +12,11 @@
 </asp:Content>
 
 <asp:Content ID="RegisterContent" ContentPlaceHolderID="MainContent" runat="server">
-  <form id="form1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+  <div class="container">
+    <h1 class="border-bottom mb-3">Register</h1>
+    <form id="form1" runat="server">
+      <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
 
-    <div class="container">
       <asp:Label ID="UserTypeLbl" runat="server" Text="Register as"></asp:Label>
       <br />
       <asp:RadioButtonList ID="UserTypeRadio" runat="server">
@@ -32,8 +33,7 @@
           ToolTip="Username"
           Placeholder="Username"
           Required="required"
-          MaxLength="50"
-          ></asp:TextBox>
+          MaxLength="50"></asp:TextBox>
         <label for="<%= UsernameTxtBox.ClientID %>" class="text-muted">Username</label>
       </div>
 
@@ -48,10 +48,10 @@
             ToolTip="Password"
             Placeholder="Password"
             Required="required"
-            MaxLength="50"
-            ></asp:TextBox>
+            MaxLength="50"></asp:TextBox>
           <label for="<%= PasswordTxtBox.ClientID %>"
-            class="text-muted">Password</label>
+            class="text-muted">
+            Password</label>
         </div>
         <span class="input-group-text"
           data-toggle="passwordToggler"
@@ -71,35 +71,35 @@
           aria-valuemax="100"
           data-password-meter="true"
           data-password-meter-target="#<%= PasswordTxtBox.ClientID %>"
-          data-password-meter-help="#helpLbl"
-          ></div>
+          data-password-meter-help="#helpLbl">
+        </div>
       </div>
 
       <div id="admin-div">
         <div class="input-group mb-3">
 
-        <div class="form-floating flex-grow-1">
-          <asp:TextBox
-            ID="SecretTxtBox"
-            runat="server"
-            TextMode="Password"
-            CssClass="form-control"
-            ToolTip="Admin Secret Code"
-            Placeholder="Admin Secret Code"
-            Required="required"
-            ></asp:TextBox>
-          <label for="<%= SecretTxtBox.ClientID %>" class="text-muted">Secret Code</label>
-        </div>
-        <span class="input-group-text"
-          data-toggle="passwordToggler"
-          data-toggle-class="bi-eye"
-          data-toggle-target="#<%= SecretTxtBox.ClientID %>"
-          style="cursor: pointer;">
-          <i class="bi bi-eye-slash"></i>
-        </span>
+          <div class="form-floating flex-grow-1">
+            <asp:TextBox
+              ID="SecretTxtBox"
+              runat="server"
+              TextMode="Password"
+              CssClass="form-control"
+              ToolTip="Admin Secret Code"
+              Placeholder="Admin Secret Code"
+              Required="required"></asp:TextBox>
+            <label for="<%= SecretTxtBox.ClientID %>" class="text-muted">Secret Code</label>
+          </div>
+          <span class="input-group-text"
+            data-toggle="passwordToggler"
+            data-toggle-class="bi-eye"
+            data-toggle-target="#<%= SecretTxtBox.ClientID %>"
+            style="cursor: pointer;">
+            <i class="bi bi-eye-slash"></i>
+          </span>
         </div>
         <asp:Panel ID="SecretPanel" CssClass="alert alert-danger mb-3" runat="server" Visible="false" role="alert">
           Invalid secret code
+       
         </asp:Panel>
       </div>
 
@@ -114,8 +114,7 @@
             ToolTip="Full Name"
             Placeholder="Full Name"
             Required="required"
-            MaxLength="50"
-            ></asp:TextBox>
+            MaxLength="50"></asp:TextBox>
           <label for="<%= FullNameTxtBox.ClientID %>" class="text-muted">Full Name</label>
         </div>
         <div class="form-floating mb-3">
@@ -128,8 +127,7 @@
             ToolTip="Email"
             Placeholder="Email"
             Required="required"
-            MaxLength="100"
-            ></asp:TextBox>
+            MaxLength="100"></asp:TextBox>
           <label for="<%= EmailTxtBox.ClientID %>" class="text-muted">Email</label>
         </div>
 
@@ -139,18 +137,19 @@
             <asp:ListItem Selected="False" Text="Male" Value="m"></asp:ListItem>
             <asp:ListItem Selected="False" Text="Female" Value="f"></asp:ListItem>
           </asp:DropDownList>
-          <label for="<%=GenderDropDownList.ClientID %>" class="text-muted"">Gender</label>
+          <label for="<%=GenderDropDownList.ClientID %>" class="text-muted">Gender</label>
         </div>
       </div>
 
       <asp:Button ID="RegisterBtn" runat="server" Text="Register" OnClick="RegisterBtn_Click" CssClass="btn btn-md btn-primary btn-block" />
       <div class="border-top pt-3 mt-3">
         Already have an account?
+       
         <br />
         <a href="/Login.aspx">Log in here</a>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
   <input type="hidden" id="NavLocation" value="register" disabled="disabled" />
   <script>
     $("[id$='RegisterBtn']").on('click', function () {

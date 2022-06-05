@@ -29,8 +29,9 @@
       <div class="col-sm-8">
         <asp:Panel ID="ContentPanel" runat="server" CssClass="text-break">
           <header>
-            <h1 data-toc-skip="true">
-              <asp:Literal ID="TitleLtl" runat="server"></asp:Literal></h1>
+            <h1 data-toc-skip="true" class="border-bottom mb-3">
+              <asp:Literal ID="TitleLtl" runat="server"></asp:Literal>
+            </h1>
           </header>
           <article>
             <asp:PlaceHolder ID="ContentPlaceholder" runat="server"></asp:PlaceHolder>
